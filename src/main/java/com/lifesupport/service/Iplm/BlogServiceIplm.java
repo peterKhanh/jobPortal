@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.lifesupport.ConstantsClass;
 import com.lifesupport.models.Blog;
 import com.lifesupport.models.Category;
 import com.lifesupport.repository.BlogRepository;
@@ -23,9 +24,8 @@ public class BlogServiceIplm implements BlogService {
 	@Autowired
 	private CategoryRepository categoryRepo;
 	
-// Lấy giá trị config từ file application.properties
-   @Value("${number_of_item_perpage_frontend}")
-   int number_of_item_perpage;
+	// Lấy giá trị config từ file application.properties
+	   int number_of_item_perpage = ConstantsClass.CONST_NUMBER_JOB_PER_PAGE_IN_FRONTEND;
 
 	
 	@Override

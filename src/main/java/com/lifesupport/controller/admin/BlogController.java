@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.lifesupport.ConstantsClass;
 import com.lifesupport.models.Blog;
 import com.lifesupport.models.BlogTag;
 import com.lifesupport.models.Category;
@@ -47,9 +48,8 @@ public class BlogController {
 	@Autowired
 	FilesStorageService storageService;
 
-	// Lấy giá trị config từ file application.properties
-	@Value("${upload_blog_path}")
-	String upload_path;
+	// Lấy giá trị config từ file
+	String upload_path = ConstantsClass.CONST_BLOG_UPLOAD_PATH;
 
 	@GetMapping("/add")
 	public String showAddPage(Model model) {

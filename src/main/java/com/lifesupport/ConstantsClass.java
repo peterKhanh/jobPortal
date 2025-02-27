@@ -17,6 +17,9 @@ public class ConstantsClass {
 //	   Enterprise Upload path 
 	   public static final String CONST_ENTERPRISE_UPLOAD_PATH = "public/upload/enterprise/";
 
+//	   Enterprise Upload path 
+	   public static final String CONST_BLOG_UPLOAD_PATH = "public/upload/blog/";
+
 //	   User Upload path 
 	   public static final String CONST_USER_IMAGE_UPLOAD_PATH = "public/upload/user/";
 	   

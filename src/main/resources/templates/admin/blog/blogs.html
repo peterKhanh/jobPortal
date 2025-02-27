@@ -13,7 +13,7 @@
 		<!-- Main Sidebar Container -->
 
 		<aside th:replace="~{admin/frags/aside :: aside}"></aside>
-				<div class="content-wrapper">
+		<div class="content-wrapper">
 
 			<!-- Main content -->
 			<section class="content">
@@ -34,7 +34,7 @@
 											<input type="text" name="keyword" class="form-control pull-right"
 												placeholder="từ khóa" th:value="${keyword}">
 										</div>
-									
+
 										<div class="col-4">
 											<button type="submit" class="btn btn-default"><i
 													class="fa fa-search"></i></button>
@@ -53,40 +53,47 @@
 
 								<table class="table table-bordered">
 									<thead>
-											<tr>
-								<th> Image</th>
-								<th> Title</th>
-								<th> Created At</th>
-								<th> View Count</th>
-								<th> Actions </th>
-							</tr>
+										<tr>
+											<th> Image</th>
+											<th> Title</th>
+											<th> Created At</th>
+											<th> View Count</th>
+											<th> Actions </th>
+										</tr>
 									</thead>
 									<tbody>
-										
+
 										<tr th:each="blog: ${blogs}">
-								<td><img th:src="@{'/images/blog/'+ ${blog.imageFileName}}" alt="..." width="60"></td>
-								<td th:text="${blog.title}" style="width: 40%;"></td>
-								<td th:text="${blog.updateAt}"></td>
-								<td th:text="${blog.count}"></td>
+											<td>
+											
+											 <img th:src="@{'/upload/blog/'+ ${blog.imageFileName}}" alt="..."
+													width="50">
 
-								<td>
-									<a class="btn btn-primary btn-sm" href="#">
-										<i class="fas fa-folder">
-										</i>
-										
-									</a>
-									<a th:href="@{/admin/blog/edit(id=${blog.id})}" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt">
-										</i> </a>
+											</td>
+											<td th:text="${blog.title}" style="width: 40%;"></td>
+											<td th:text="${blog.updateAt}"></td>
+											<td th:text="${blog.count}"></td>
+
+											<td>
+												<a class="btn btn-primary btn-sm" href="#">
+													<i class="fas fa-folder">
+													</i>
+
+												</a>
+												<a th:href="@{/admin/blog/edit(id=${blog.id})}"
+													class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt">
+													</i> </a>
 
 
-									<a th:href="@{/admin/blog/delete(id=${blog.id})}" class="btn btn-danger btn-sm"
-										onclick="return confirm('Are you sure?')"><i class="fas fa-trash">
-										</i> </a>
+												<a th:href="@{/admin/blog/delete(id=${blog.id})}"
+													class="btn btn-danger btn-sm"
+													onclick="return confirm('Are you sure?')"><i class="fas fa-trash">
+													</i> </a>
 
-								</td>
-							</tr>
-										
-										
+											</td>
+										</tr>
+
+
 									</tbody>
 								</table>
 							</div>
@@ -110,11 +117,11 @@
 				</div><!-- /.container-fluid -->
 			</section>
 			<!-- /.content -->
-			</div>
-		
+		</div>
 
 
-	
+
+
 
 		<!-- /.content-wrapper -->
 		<footer th:replace="~{admin/frags/footer :: footer}"></footer>

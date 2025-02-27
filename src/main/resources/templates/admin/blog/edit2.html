@@ -1,190 +1,195 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
 
-<head>
+<head th:replace="~{admin/frags/head :: head}"></head>
 
-	<head th:replace="admin/fragments/head :: head"></head>
-
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition sidebar-mini ayout-fixed">
 	<div class="wrapper">
-		<div th:replace="admin/fragments/header :: header"></div>
-		<!-- Left side column. contains the sidebar -->
-		<div th:replace="admin/fragments/sidebar :: sidebar"></div>
+		<!-- Navbar -->
+		<nav th:replace="~{admin/frags/navbar :: navbar}"></nav>
+		<!-- /.navbar -->
+		<!-- Main Sidebar Container -->
+
+		<aside th:replace="~{admin/frags/aside :: aside}"></aside>
+		<!--Content from here-->
+		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 
-			<section class="content-header">
-				<h1>
-					Dashboard
-					<small>Version 2.0</small>
-				</h1>
-				<ol class="breadcrumb">
-					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-					<li class="active">Dashboard</li>
-				</ol>
-			</section>
-
+			<!-- Main content -->
 			<section class="content">
-				<!-- Box Info before content 
-				<div th:replace="admin/fragments/top_page :: top_page"></div>
-				-->
-				<!-- Main content -->
-				<div class="row">
-					<div class="row">
-						<div class="col-md-10">
-							<div class="box box-info">
-								<div class="box-header with-border">
-									<h3 class="box-title">Update</h3>
-									<div class="box-tools pull-right">
-										<button type="button" class="btn btn-box-tool" data-widget="collapse"><i
-												class="fa fa-minus"></i>
-										</button>
-										<button type="button" class="btn btn-box-tool" data-widget="remove"><i
-												class="fa fa-times"></i></button>
+				<div class="container-fluid">
+
+
+					<div class="col-sm-6">
+						<h3 class="m-0 text-dark">Sửa bài viết</h3>
+					</div><!-- /.col -->
+
+					<div class="card card-default col-md-12">
+						<form id="frm_blog" enctype="multipart/form-data" th:action="@{/admin/blog/edit}" th:object="${blog}" method="POST">
+							<input type="hidden" name="id" th:value="${blog.id}" />
+
+							<!-- /.card-header -->
+							<div class="card-body">
+
+								<div class="row">
+									<div class="col-12">
+										<div class="form-group">
+											<label> Tên công việcc</label>
+											<input type="text" id="title" name="title" class="form-control"  th:field="${blog.title}" 
+												placeholder="Enter job title" />
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-12">
+
+										<div class="form-group">
+											<label> Short content </label>
+
+											<textarea id="shortcontent" name="shortcontent" class="form-control" th:field="${blog.shortcontent}" 
+												rows="5" cols="30" placeholder="Enter Short Content"></textarea>
+											<script>
+												ClassicEditor
+													.create(document.querySelector('#shortcontent'), {
+														height: 800,
+
+														toolbar: [
+															'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
+															'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList'
+														],
+													})
+													.catch(error => {
+														console.error(error);
+													});
+											</script>
+										</div>
 									</div>
 								</div>
 
-								<div class="box-body">
-									<div class="table-responsive">
-										<table class="table no-margin">
-											<div class="box box-primary">
-												<form enctype="multipart/form-data" th:action="@{/admin/blog/edit}"
-													th:object="${blog}" method="POST">
-													<div class="box-body">
-														<input type="hidden" name="id" th:value="${blog.id}" />
+								<div class="row">
+									<div class="col-12">
+										<div class="form-group">
+											<label> Nhóm bài viết </label>
 
-														<div class="form-group">
-															<label> Title </label>
-															<input type="text" name="title" class="form-control"
-																placeholder="Enter title" th:field="${blog.title}" />
+											<select class="form-control" id="category" name="category" th:field="${blog.category}">
+												<option value=""> -----------Select Category -------------
+												<option th:each="cate : ${listCate}" th:value="${cate.id}"
+													th:text="${cate.categoryName}">
+												</option>
+											</select>
+										</div>
+									</div>
+								</div>
 
-														</div>
+								<div class="row">
+									<div class="col-12">
+										<div class="form-group">
 
-														<div class="form-group">
-															<label> Short content </label>
-															<textarea name="shortcontent"
-																th:field="${blog.shortcontent}" class="form-control"
-																rows="5" cols="30"
-																placeholder="Enter Short Content"></textarea>
+											<label> Nội dung bài viết </label>
+											<textarea id="content" name="content" class="form-control" rows="5" th:field="${blog.content}"
+												cols="30" placeholder="Blog content"></textarea>
+											<script>
+												ClassicEditor
+													.create(document.querySelector('#content'), {
+														height: 800,
 
-														</div>
-
-
-														<div class="box-body">
-															<div class="row">
-																<div class="col-xs-8">
-																	<div class="form-group">
-																		<label> Category </label>
-																		<select class="form-control" name="category"
-																			th:field="${blog.category}">
-																			<option th:each="cate : ${listCate}"
-																				th:value="${cate.Id}"
-																				th:text="${cate.categoryName}"></option>
-																		</select>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-
-														<div class="form-group">
-															<label> Main content </label>
-
-															<textarea id="content" name="content" class="form-control"
-																th:field="${blog.content}" rows="50"
-																cols="30"></textarea>
-
-														</div>
+														toolbar: [
+															'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
+															'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList'
+														],
+													})
+													.catch(error => {
+														console.error(error);
+													});
+											</script>
+										</div>
+									</div>
+								</div>
 
 
 
-														<div class="form-group" <label> Image </label>
-															<input type="file" name="file" class="form-control"
-																placeholder="Upload the Image" />
-														</div>
-														<input type="hidden" id="hd_list_tag" name="hd_list_tag"/>
-														<div class="form-group">
-															<label> Tag </label>
-															<select id="list_tag" name="list_tag"
-																placeholder="Select upto 15 tags" multiple>
-																<option th:each="tag : ${listBlogTag}" th:value="${tag.Id}" th:text="${tag.name}" 
-																th:selected="${id_list.contains(tag.Id)}"
-																</option>
-															</select>
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="form-group">
+											<div class="form-group" <label> Image </label>
+												<input type="file" name="file" class="form-control"
+													placeholder="Enter Product Brand" />
+											</div>
+											<input type="hidden" id="hd_list_tag" name="hd_list_tag" />
+											<div class="form-group" style="display: none;">
+												<label> Tag </label>
+												<select id="list_tag" name="list_tag" placeholder="Select upto 15 tags"
+													multiple>
+													<option th:each="tag : ${listBlogTag}" th:value="${tag.Id}"
+														th:text="${tag.name}" </option>
+												</select>
 
-															<script>
-																$(document).ready(function () {
-																	var multipleCancelButton = new Choices('#list_tag', {
-																		removeItemButton: true,
-																		maxItemCount: 15,
-																		searchResultLimit: 10,
-																		renderChoiceLimit: 10
-																	});
+												<script>
+													$(document).ready(function () {
+														var multipleCancelButton = new Choices('#list_tag', {
+															removeItemButton: true,
+															maxItemCount: 15,
+															searchResultLimit: 10,
+															renderChoiceLimit: 10
+														});
 
-																	$('#list_tag').change(function () {
-																		var selValues = $('#list_tag').val();																	
-																		$('#hd_list_tag').val(selValues);
-																		var hdValues = $('#hd_list_tag').val();
-																		alert("hdValues : " + hdValues);
-																	});
-																});
-															</script>
-														</div>
-
-
-														<div class="box-footer">
-															<button type="submit" class="btn btn-primary">
-																Submit
-															</button>
-														</div>
-													</div>
-												</form>
+														$('#list_tag').change(function () {
+															var selValues = $('#list_tag').val();
+															$('#hd_list_tag').val(selValues);
+															var hdValues = $('#hd_list_tag').val();
+															alert("hdValues : " + hdValues);
+														});
+													});
+												</script>
 											</div>
 
-										</table>
+										</div>
 									</div>
-
 								</div>
+
+
+
+
+
+
+
+
 							</div>
+							<!-- /.card-body -->
 
-						</div>
-						<!-- Right Content -->
-						<!--
-						<div th:replace="admin/fragments/right_content :: right_content"></div>
-						-->
+							<div class="card-footer">
+								<button type="submit" id="btn_save_blog" class="btn btn-primary">
+									Submit
+								</button>
+							</div>
+						</form>
 					</div>
-				</div>
-				<!-- End Main content -->
-
+					<!-- /.card -->
+			</section>
 		</div>
-		</section>
-
-	</div>
-	<div th:replace="admin/fragments/footer :: footer"></div>
-	<div th:replace="admin/fragments/sidebar_right :: sidebar_right"></div>
-	<div class="control-sidebar-bg"></div>
+		<!-- /.container-fluid -->
+		<!-- /.content -->
 	</div>
 
-	<script>
-		ClassicEditor
-			.create(document.querySelector('#content'), {
-				height: 400,
-				baseFloatZIndex: 10005,
-				ckfinder: {
-					//	uploadUrl:"http://localhost:8080/images/blog/"
-					filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
-					filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-					filebrowserWindowWidth: '1000',
-					filebrowserWindowHeight: '700',
-					uploadUrl: 'https://ckeditor.com/apps/ckfinder/3.5.0/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
-				}
-			})
-			.catch(error => {
-				console.error(error);
-			});
-	</script>
+	<!--Content end here-->
 
-	<div th:replace="admin/fragments/script :: script"></div>
+
+
+
+
+
+
+	<!--Content end here-->
+
+	<!-- /.content-wrapper -->
+	<footer th:replace="~{admin/frags/footer :: footer}"></footer>
+
+	<!-- Control Sidebar -->
+	<aside class="control-sidebar control-sidebar-dark">
+		<!-- Control sidebar content goes here -->
+	</aside>
+	<!-- /.control-sidebar -->
+	</div>
+	<!-- ./wrapper -->
+	<div th:replace="~{admin/frags/script :: script}"></div>
 
 </body>
-
-</html>

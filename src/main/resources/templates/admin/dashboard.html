@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
+
+<head th:replace="~{admin/frags/head :: head}"></head>
+
+<body class="hold-transition sidebar-mini ayout-fixed">
+	<div class="wrapper">
+
+		<!-- Navbar -->
+		<nav th:replace="~{admin/frags/navbar :: navbar}"></nav>
+		<!-- /.navbar -->
+
+		<!-- Main Sidebar Container -->
+
+		<aside th:replace="~{admin/frags/aside :: aside}"></aside>
+
+		<!--Content from here-->
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1 class="m-0 text-dark">Dashboard</h1>
+						</div><!-- /.col -->
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a href="#">Home</a></li>
+								<li class="breadcrumb-item active">Dashboard v1</li>
+							</ol>
+						</div><!-- /.col -->
+					</div><!-- /.row -->
+				</div><!-- /.container-fluid -->
+			</div>
+			<!-- /.content-header -->
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="container-fluid">
+
+					<!-- Small boxes (Stat box) -->
+					
+						<div class="row" th:replace="~{admin/frags/stat_box :: stat_box}"></div>
+					<!-- /.row -->
+					<!-- Main row -->
+
+					<div class="row">
+						<!-- Left col -->
+					<!--
+							<section class="col-lg-6 connectedSortable">
+							<div class="card">
+								<div class="card-header border-transparent">
+									<h3 class="card-title">Job mới đăng tuyển</h3>
+
+									<div class="card-tools">
+										<button type="button" class="btn btn-tool" data-card-widget="collapse">
+											<i class="fas fa-minus"></i>
+										</button>
+										<button type="button" class="btn btn-tool" data-card-widget="remove">
+											<i class="fas fa-times"></i>
+										</button>
+									</div>
+								</div>
+								 /.card-header 
+								<div class="card-body p-0">
+									<div class="table-responsive">
+										<table class="table m-0">
+											<thead>
+												<tr>
+													<th>Tiêu đề Job</th>
+													<th>Ngày hết hạn</th>
+													<th>Status</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr th:each="job: ${recent_jobs}">
+													<td th:text="${job.title}">Call of Duty IV</td>
+													<td>
+														<div class="sparkbar" data-color="#00a65a" data-height="20">
+															<span
+																th:text="${#dates.format(job.expiredDate, 'dd/MM/yyyy')}" /></span>
+														</div>
+													</td>
+													<td>
+														<span th:switch="${job.status}">
+															<p th:case="'APPROVED'">
+																<button type="button" class="badge badge-success"> Đang
+																	tuyển</button>
+															</p>
+															<p th:case="'EDITING'">
+																<button type="button" class="badge badge-warning"> Đang
+																	sửa</button>
+															</p>
+															<p th:case="'BLOCKED'">
+																<button type="button" class="badge badge-danger">Bị
+																	khóa</button>
+															</p>
+														</span>
+
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									 /.table-responsive 
+								</div>
+								 /.card-body 
+							</div>
+						
+							 /.card 
+
+						
+
+
+						</section>-->
+						<!-- /.Left col -->
+						<!-- right col (We are only adding the ID to make the widgets sortable)-->
+					<!--
+							<section class="col-lg-6 connectedSortable">
+
+							 Job moi tuyern 
+
+							<div class="card">
+								<div class="card-header border-transparent">
+									<h2 class="card-title">Thông tin ứng tuyển</h2>
+
+									<div class="card-tools">
+										<button type="button" class="btn btn-tool" data-card-widget="collapse">
+											<i class="fas fa-minus"></i>
+										</button>
+										<button type="button" class="btn btn-tool" data-card-widget="remove">
+											<i class="fas fa-times"></i>
+										</button>
+									</div>
+								</div>
+								 /.card-header 
+								<div class="card-body p-0">
+									<div class="table-responsive">
+										<table class="table m-0">
+											<thead>
+												<tr>
+													<th>Ứng viên</th>
+													<th>Tiêu đề Job</th>
+													<th>Ngày ứng tuyển</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr th:each="recent_apply_job: ${recent_apply_jobs}">
+
+													<td><a
+															th:href="@{/admin/user-view-profile/{id}(id=${recent_apply_job.user.getId()})}">
+															<span th:text="${recent_apply_job.user.getFullName()}">
+															</span>
+														</a></td>
+													<td th:text="${recent_apply_job.job.getTitle()}"></td>
+
+													</td>
+													<td>
+														<div class="sparkbar" data-color="#00a65a" data-height="20">
+															<span
+																th:text="${#dates.format(recent_apply_job.applyDate, 'dd/MM/yyyy')}" /></span>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									 /.table-responsive 
+								</div>
+								 /.card-body 
+							</div>
+							 Job moi tuyen
+
+							 USERS LIST 
+							<div class="card" style="display: none;">
+								<div class="card-header">
+									<h3 class="card-title">Latest Members</h3>
+
+									<div class="card-tools">
+										<span class="badge badge-danger">8 New Members</span>
+										<button type="button" class="btn btn-tool" data-card-widget="collapse">
+											<i class="fas fa-minus"></i>
+										</button>
+										<button type="button" class="btn btn-tool" data-card-widget="remove">
+											<i class="fas fa-times"></i>
+										</button>
+									</div>
+								</div>
+								 /.card-header 
+								<div class="card-body p-0">
+									<ul class="users-list clearfix">
+										<li>
+											<img src="dist/img/user1-128x128.jpg" alt="User Image">
+											<a class="users-list-name" href="#">Alexander Pierce</a>
+											<span class="users-list-date">Today</span>
+										</li>
+										<li>
+											<img src="dist/img/user8-128x128.jpg" alt="User Image">
+											<a class="users-list-name" href="#">Norman</a>
+											<span class="users-list-date">Yesterday</span>
+										</li>
+										<li>
+											<img src="dist/img/user7-128x128.jpg" alt="User Image">
+											<a class="users-list-name" href="#">Jane</a>
+											<span class="users-list-date">12 Jan</span>
+										</li>
+										<li>
+											<img src="dist/img/user6-128x128.jpg" alt="User Image">
+											<a class="users-list-name" href="#">John</a>
+											<span class="users-list-date">12 Jan</span>
+										</li>
+										<li>
+											<img src="dist/img/user2-160x160.jpg" alt="User Image">
+											<a class="users-list-name" href="#">Alexander</a>
+											<span class="users-list-date">13 Jan</span>
+										</li>
+										<li>
+											<img src="dist/img/user5-128x128.jpg" alt="User Image">
+											<a class="users-list-name" href="#">Sarah</a>
+											<span class="users-list-date">14 Jan</span>
+										</li>
+										<li>
+											<img src="dist/img/user4-128x128.jpg" alt="User Image">
+											<a class="users-list-name" href="#">Nora</a>
+											<span class="users-list-date">15 Jan</span>
+										</li>
+										<li>
+											<img src="dist/img/user3-128x128.jpg" alt="User Image">
+											<a class="users-list-name" href="#">Nadia</a>
+											<span class="users-list-date">15 Jan</span>
+										</li>
+									</ul>
+									 /.users-list 
+								</div>
+								 /.card-body 
+								<div class="card-footer text-center">
+									<a href="javascript:">View All Users</a>
+								</div>
+								 /.card-footer 
+							</div>
+							/.card 
+
+							 Map card 
+							<div class="card bg-gradient-primary" style="display: none;">
+								<div class="card-header border-0">
+									<h3 class="card-title">
+										<i class="fas fa-map-marker-alt mr-1"></i>
+										Visitors
+									</h3>
+									 card tools 
+									<div class="card-tools">
+										<button type="button" class="btn btn-primary btn-sm daterange"
+											data-toggle="tooltip" title="Date range">
+											<i class="far fa-calendar-alt"></i>
+										</button>
+										<button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse"
+											data-toggle="tooltip" title="Collapse">
+											<i class="fas fa-minus"></i>
+										</button>
+									</div>
+									 /.card-tools 
+								</div>
+								<div class="card-body">
+									<div id="world-map" style="height: 250px; width: 100%;"></div>
+								</div>
+								 /.card-body
+								<div class="card-footer bg-transparent">
+									<div class="row">
+										<div class="col-4 text-center">
+											<div id="sparkline-1"></div>
+											<div class="text-white">Visitors</div>
+										</div>
+										 ./col 
+										<div class="col-4 text-center">
+											<div id="sparkline-2"></div>
+											<div class="text-white">Online</div>
+										</div>
+										 ./col 
+										<div class="col-4 text-center">
+											<div id="sparkline-3"></div>
+											<div class="text-white">Sales</div>
+										</div>
+										 ./col 
+									</div>
+									 /.row 
+								</div>
+							</div>
+							 /.card 
+
+							 solid sales graph 
+							<div class="card bg-gradient-info" style="display: none;">
+								<div class="card-header border-0">
+									<h3 class="card-title">
+										<i class="fas fa-th mr-1"></i>
+										Sales Graph
+									</h3>
+
+									<div class="card-tools">
+										<button type="button" class="btn bg-info btn-sm" data-card-widget="collapse">
+											<i class="fas fa-minus"></i>
+										</button>
+										<button type="button" class="btn bg-info btn-sm" data-card-widget="remove">
+											<i class="fas fa-times"></i>
+										</button>
+									</div>
+								</div>
+								<div class="card-body">
+									<canvas class="chart" id="line-chart"
+										style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+								</div>
+								 /.card-body 
+								<div class="card-footer bg-transparent">
+									<div class="row">
+										<div class="col-4 text-center">
+											<input type="text" class="knob" data-readonly="true" value="20"
+												data-width="60" data-height="60" data-fgColor="#39CCCC">
+
+											<div class="text-white">Mail-Orders</div>
+										</div>
+										 ./col 
+										<div class="col-4 text-center">
+											<input type="text" class="knob" data-readonly="true" value="50"
+												data-width="60" data-height="60" data-fgColor="#39CCCC">
+
+											<div class="text-white">Online</div>
+										</div>
+										 ./col 
+										<div class="col-4 text-center">
+											<input type="text" class="knob" data-readonly="true" value="30"
+												data-width="60" data-height="60" data-fgColor="#39CCCC">
+
+											<div class="text-white">In-Store</div>
+										</div>
+										 ./col 
+									</div>
+									 /.row 
+								</div>
+								 /.card-footer 
+							</div>
+							 /.card 
+
+							 Calendar 
+							<div class="card bg-gradient-success" style="display: none;">
+								<div class="card-header border-0">
+
+									<h3 class="card-title">
+										<i class="far fa-calendar-alt"></i>
+										Calendar
+									</h3>
+									 tools card 
+									<div class="card-tools">
+										 button with a dropdown 
+										<div class="btn-group">
+											<button type="button" class="btn btn-success btn-sm dropdown-toggle"
+												data-toggle="dropdown">
+												<i class="fas fa-bars"></i></button>
+											<div class="dropdown-menu float-right" role="menu">
+												<a href="#" class="dropdown-item">Add new event</a>
+												<a href="#" class="dropdown-item">Clear events</a>
+												<div class="dropdown-divider"></div>
+												<a href="#" class="dropdown-item">View calendar</a>
+											</div>
+										</div>
+										<button type="button" class="btn btn-success btn-sm"
+											data-card-widget="collapse">
+											<i class="fas fa-minus"></i>
+										</button>
+										<button type="button" class="btn btn-success btn-sm" data-card-widget="remove">
+											<i class="fas fa-times"></i>
+										</button>
+									</div>
+									 /. tools 
+								</div>
+								 /.card-header 
+								<div class="card-body pt-0">
+									The calendar 
+									<div id="calendar" style="width: 100%"></div>
+								</div>
+								 /.card-body 
+							</div>
+							 /.card 
+						</section>-->
+						<!-- right col -->
+					</div>
+					<!-- /.row (main row) -->
+				</div><!-- /.container-fluid -->
+			</section>
+			<!-- /.content -->
+		</div>
+
+		<!--Content end here-->
+
+
+
+		<!-- /.content-wrapper -->
+		<footer th:replace="~{admin/frags/footer :: footer}"></footer>
+
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Control sidebar content goes here -->
+		</aside>
+		<!-- /.control-sidebar -->
+	</div>
+	<!-- ./wrapper -->
+	<div th:replace="~{admin/frags/script :: script}"></div>
+
+</body>

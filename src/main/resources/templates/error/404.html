@@ -1,0 +1,37 @@
+<head th:replace="~{views/fragments/head :: head}"></head>
+
+<body>
+
+	<!-- Header Start -->
+	<header th:replace="~{views/fragments/menu_bar :: menu_bar}"> </header>
+
+	<main>
+
+
+		<div>
+			<div class="container" style="height: 500px;"
+				th:data-background="@{/assets-fe/img/banner/error_banner.png}">
+				<div class="col-xl-10">
+					<div class="cv-caption text-center">
+						<p class="sub-title2">
+						</p>
+					</div>
+
+				</div>
+			</div>
+
+
+
+		</div>
+
+
+
+
+	</main>
+
+	<!-- Footer Include -->
+	<!-- Script Include -->
+	<div th:replace="~{views/fragments/script :: script}"></div>
+</body>
+
+</html>

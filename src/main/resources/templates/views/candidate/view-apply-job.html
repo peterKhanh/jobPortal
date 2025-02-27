@@ -1,0 +1,97 @@
+<!--<section class="featured-job-area feature-padding" th:fragment="view-enterprise">
+-->
+
+<head th:replace="~{views/fragments/head :: head}"></head>
+
+<body>
+		<!-- Header Start -->
+	<header th:replace="~{views/fragments/menu_bar :: menu_bar}"> </header>
+
+	<main>
+
+		<!--Begin-->
+
+		<div class=" container py-2">
+			<div class="row pt-15">
+				<div th:replace="~{views/candidate/profile-panel :: profile-panel}"></div>
+				<div class="col-xl-9 col-lg-9 col-md-8">
+					<div class="container p-2">
+						<div class="widget_title">
+							<p class="mb-2">Công việc đã ứng tuyển</p>
+						</div>
+								<!--Danh sách CV - Hồ sơ-->
+								<div class="row" style="display: block;">
+									
+
+									<div class="col-sm-12 ">
+										<ul class="list-group-item d-flex justify-content-between align-items-center p-2 bg-light">
+											<li  class="col-sm-2">ứng tuyển</li>
+											<li class="col-sm-5">Tiêu đề</li>
+											<li class="col-sm-3">Ngày hết hạn</li>
+											<li  class="col-sm-2">#</li>
+
+										</ul>
+										<ul class="list-group-item d-flex justify-content-between align-items-center p-2" th:each="jobApply: ${jobApplyByUser}">
+											<li  class="col-sm-2">
+												<p class="mb-0" th:text="${#dates.format(jobApply.getApplyDate(), 'dd/MM/yyyy')}">
+												</p>
+											</li>
+											<li class="col-sm-5">
+												<a th:href="@{/job/viewjob/{id}(id=${jobApply.job.getId()})}">
+													<p class="mb-0" th:text="${jobApply.job.getTitle()}" />
+												</a>	
+											</li>
+											<li class="col-sm-3">
+												<p class="mb-0" th:text="${#dates.format(jobApply.job.getExpiredDate(), 'dd/MM/yyyy')}">
+												</p>
+												<span th:switch="${jobApply.job.getStatus()}">
+													<p th:case="'APPROVED'">
+														<button type="button" class="genric-btn primary circle arrow small"> Đang
+															tuyển</button>
+													</p>
+													<p th:case="'EDITING'">
+														<button type="button" class="genric-btn warning  circle arrow small"> Đang
+															sửa</button>
+													</p>
+													<p th:case="'BLOCKED'">
+														<button type="button" class="genric-btn danger  circle arrow small">Bị
+															khóa</button>
+													</p>
+												</span>
+											</li>
+
+										
+											<li class="col-sm-2">
+												<a href="#"
+														onclick="return confirm('Bạn có muốn xóa không?')">
+														<span class="" title="Xóa">
+														<i class='fas fa-trash-alt' style='font-size:24px;color:red'></i>
+
+														</span>
+													</a>
+											</li>
+											
+										</ul>
+									</div>
+								</div>
+
+								<!--Hết Danh sách CV - Hồ sơ-->
+					</div> 
+
+				</div>
+			</div>
+		</div>
+
+		<!--End-->
+
+
+
+	</main>
+
+	<!-- Footer Include -->
+	<div th:replace="~{views/fragments/footer :: footer}"></div>
+	<!-- Script Include -->
+	<div th:replace="~{views/fragments/script :: script}"></div>
+</body>
+
+</html>

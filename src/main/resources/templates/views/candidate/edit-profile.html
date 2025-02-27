@@ -1,0 +1,219 @@
+<head th:replace="~{views/fragments/head :: head}"></head>
+
+<body>
+	<!-- Header Start -->
+	<header th:replace="~{views/fragments/menu_bar :: menu_bar}"> </header>
+	<main>
+		<!--Begin-->
+			<div class="container py-2">
+				<div class="row pt-15">
+					<div th:replace="~{views/candidate/profile-panel :: profile-panel}"></div>
+					<div class="col-xl-9 col-lg-9 col-md-8">
+						<div class="container p-2">
+							<div class="widget_title">
+								<p class="mb-2">Chỉnh sửa hồ sơ</p>
+							</div>
+								<!--Thông tin chung-->
+								<div class="row border" style="display: block;">								
+									<div class="col-sm-12">
+										<form id="frm_edit_profile" th:action="@{/candidate/edit-profile}"
+											enctype="multipart/form-data" th:object="${profile}" method="POST">
+											<input type="hidden" name="id" th:value="${profile.id}" />
+											<div class="row">
+												<div class="col-12">
+													<div class="form-group">
+														<label> Tiêu đề </label>
+														<input type="text" id="title" name="title" class="form-control"
+															th:field="${profile.title}" placeholder="Tiêu đề" />
+													</div>
+												</div>
+											</div>
+<!--
+											<div class="row">
+												<div class="col-6">
+													<div class="form-group">
+														<label> Năm sinh </label>
+														<input type="text" id="birthdate" name="birthdate"
+															th:field="${profile.birthdate}" class="form-control"
+															placeholder="" />
+													</div>
+												</div>
+												<div class="col-6">
+													<div class="form-group">
+														<label for="sel1" class="form-label"> Điện thoại </label>
+														<input type="text" id="phone" name="phone"
+															th:field="${profile.phone}" class="form-control" />
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-12">
+													<div class="form-group">
+														<label> Địa chỉ </label>
+														<input type="text" id="address" name="address"
+															th:field="${profile.address}" class="form-control" />
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-12">
+													<div class="form-group">
+														<label> Url </label>
+														<input type="text" id="url" name="url"
+															th:field="${profile.url}" class="form-control" />
+													</div>
+												</div>
+											</div>
+
+-->											<div class="row  mt-2 pb-2">
+												<div class="col-6">
+													<div class="small-section-tittle"><h4>Upload CV</h4></div>
+													<ul class="list-group">
+														<li class="list-group-item">
+															<a th:href="@{'/upload/user/'+ ${profile.cv_1_Filename}}"
+																th:target="_blank">
+																<span class="text-muted mb-0"
+																	th:text="${profile.cv_1_Filename} ? ${#strings.arraySplit(profile.cv_1_Filename,'_')[1]} : 'Chưa có File'">
+																</span>
+															</a>
+															<input type="file" class="form-control" id="cv_1"
+																name="cv_1" />
+														</li>
+														<li class="list-group-item">
+															<a th:href="@{'/upload/user/'+ ${profile.cv_2_Filename}}"
+																th:target="_blank">
+																<span class="text-muted mb-0"
+																	th:text="${profile.cv_2_Filename} ? ${#strings.arraySplit(profile.cv_2_Filename,'_')[1]} : 'Chưa có File'">
+																</span>
+															</a>
+															<input type="file" class="form-control" id="cv_2"
+																name="cv_2" />
+														</li>
+														<li class="list-group-item">
+															<a th:href="@{'/upload/user/'+ ${profile.cv_3_Filename}}"
+																th:target="_blank">
+																<span class="text-muted mb-0"
+																	th:text="${profile.cv_3_Filename} ? ${#strings.arraySplit(profile.cv_3_Filename,'_')[1]} : 'Chưa có File'">
+																</span>
+															</a>
+															<input type="file" class="form-control" id="cv_3"
+																name="cv_3" />
+														</li>
+
+													</ul>
+												</div>
+												<div class="col-6">
+													<div class="small-section-tittle"><h4>Upload bảng điểm</h4></div>
+
+													<ul class="list-group">
+														<li class="list-group-item">
+															<a th:href="@{'/upload/user/'+ ${profile.bd_1_Filename}}"
+																th:target="_blank">
+																<span class="text-muted mb-0"
+																	th:text="${profile.bd_1_Filename} ? ${#strings.arraySplit(profile.bd_1_Filename,'_')[1]} : 'Chưa có File'">
+																</span>
+															</a>
+															<input type="file" class="form-control" id="bd_1"
+																name="bd_1" />
+														</li>
+														<li class="list-group-item">
+															<a th:href="@{'/upload/user/'+ ${profile.bd_2_Filename}}"
+																th:target="_blank">
+																<span class="text-muted mb-0"
+																	th:text="${profile.bd_2_Filename} ? ${#strings.arraySplit(profile.bd_2_Filename,'_')[1]} : 'Chưa có File'">
+																</span>
+															</a>
+															<input type="file" class="form-control" id="bd_2"
+																name="bd_2" />
+														</li>
+														<li class="list-group-item">
+															<a th:href="@{'/upload/user/'+ ${profile.bd_3_Filename}}"
+																th:target="_blank">
+																<span class="text-muted mb-0"
+																	th:text="${profile.bd_3_Filename} ? ${#strings.arraySplit(profile.bd_3_Filename,'_')[1]} : 'Chưa có File'">
+																</span>
+															</a>
+															<input type="file" class="form-control" id="bd_3"
+																name="bd_3" />
+														</li>
+													</ul>
+												</div>
+											</div>
+
+
+
+											<div class="row" style="display: none;">
+												<div class="col-12">
+													<label> Kỹ năng chuyên môn </label>
+													<textarea id="skills" name="skills" class="form-control" rows="5"
+														cols="30" th:field="${profile.skills}"
+														placeholder="Kỹ năng chuyên môn"></textarea>
+												</div>
+											</div>
+											<div class="row" style="display: none;">
+												<div class="col-12">
+													<label> Khả năng ngoại ngữ </label>
+													<textarea name="langugages" class="form-control" rows="5" cols="30"
+														th:field="${profile.langugages}"
+														placeholder="Tiếng Nhật: N3 ..."></textarea>
+
+												</div>
+											</div>
+											<div class="row" style="display: none;">
+												<div class="col-12">
+													<label> Bằng cấp / chứng chỉ </label>
+													<textarea name="licences" class="form-control" rows="5" cols="30"
+														th:field="${profile.licences}"
+														placeholder="Bằng cấp / chứng chỉ"></textarea>
+
+												</div>
+											</div>
+											<div class="row" style="display: none;">
+												<div class="col-12">
+													<label> Kinh nghiệm làm việc</label>
+													<textarea name="expericences" class="form-control" rows="5"
+														cols="30" th:field="${profile.expericences}"
+														placeholder="Kinh nghiệm làm việc"></textarea>
+
+												</div>
+											</div>
+
+									</div>
+
+
+
+
+									<div class="card-body text-center">
+
+										<button type="submit" id="btn_save_profile" class="btn btn-primary">Lưu
+											hồ sơ</button>
+
+									</div>
+
+									</form>
+
+							</div>
+							<!--End Thông tin chung-->
+
+						</div>
+					</div>
+
+
+				</div>
+
+
+			</div>
+			</div>
+		<!--End-->
+
+
+
+	</main>
+
+	<!-- Footer Include -->
+	<div th:replace="~{views/fragments/footer :: footer}"></div>
+	<!-- Script Include -->
+	<div th:replace="~{views/fragments/script :: script}"></div>
+</body>
+
+</html>

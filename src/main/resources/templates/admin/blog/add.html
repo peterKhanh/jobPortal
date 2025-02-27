@@ -1,0 +1,194 @@
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
+
+<head th:replace="~{admin/frags/head :: head}"></head>
+
+<body class="hold-transition sidebar-mini ayout-fixed">
+	<div class="wrapper">
+		<!-- Navbar -->
+		<nav th:replace="~{admin/frags/navbar :: navbar}"></nav>
+		<!-- /.navbar -->
+		<!-- Main Sidebar Container -->
+
+		<aside th:replace="~{admin/frags/aside :: aside}"></aside>
+		<!--Content from here-->
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="container-fluid">
+
+
+					<div class="col-sm-6">
+						<h3 class="m-0 text-dark">Thêm bài viết</h3>
+					</div><!-- /.col -->
+
+					<div class="card card-default col-md-12">
+						<form id="frm_blog" enctype="multipart/form-data" th:object="${blog}" method="POST">
+
+							<!-- /.card-header -->
+							<div class="card-body">
+
+								<div class="row">
+									<div class="col-12">
+										<div class="form-group">
+											<label> Tên công việcc</label>
+											<input type="text" id="title" name="title" class="form-control"
+												placeholder="Enter job title" />
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-12">
+
+										<div class="form-group">
+											<label> Short content </label>
+
+											<textarea id="shortcontent" name="shortcontent" class="form-control"
+												rows="5" cols="30" placeholder="Enter Short Content"></textarea>
+											<script>
+												ClassicEditor
+													.create(document.querySelector('#shortcontent'), {
+														height: 800,
+
+														toolbar: [
+															'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
+															'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList'
+														],
+													})
+													.catch(error => {
+														console.error(error);
+													});
+											</script>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-12">
+										<div class="form-group">
+											<label> Nhóm bài viết </label>
+
+											<select class="form-control" id="category" name="category">
+												<option value=""> -----------Select Category -------------
+												<option th:each="cate : ${listCate}" th:value="${cate.id}"
+													th:text="${cate.categoryName}">
+												</option>
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-12">
+										<div class="form-group">
+
+											<label> Yêu cầu công việc </label>
+											<textarea id="content" name="content" class="form-control" rows="5"
+												cols="30" placeholder="Blog content"></textarea>
+											<script>
+												ClassicEditor
+													.create(document.querySelector('#content'), {
+														height: 800,
+
+														toolbar: [
+															'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
+															'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList'
+														],
+													})
+													.catch(error => {
+														console.error(error);
+													});
+											</script>
+										</div>
+									</div>
+								</div>
+
+
+
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="form-group">
+											<div class="form-group" <label> Image </label>
+												<input type="file" name="file" class="form-control"
+													placeholder="Enter Product Brand" />
+											</div>
+											<input type="hidden" id="hd_list_tag" name="hd_list_tag" />
+											<div class="form-group" style="display: none;">
+												<label> Tag </label>
+												<select id="list_tag" name="list_tag" placeholder="Select upto 15 tags"
+													multiple>
+													<option th:each="tag : ${listBlogTag}" th:value="${tag.Id}"
+														th:text="${tag.name}" </option>
+												</select>
+
+												<script>
+													$(document).ready(function () {
+														var multipleCancelButton = new Choices('#list_tag', {
+															removeItemButton: true,
+															maxItemCount: 15,
+															searchResultLimit: 10,
+															renderChoiceLimit: 10
+														});
+
+														$('#list_tag').change(function () {
+															var selValues = $('#list_tag').val();
+															$('#hd_list_tag').val(selValues);
+															var hdValues = $('#hd_list_tag').val();
+															alert("hdValues : " + hdValues);
+														});
+													});
+												</script>
+											</div>
+
+										</div>
+									</div>
+								</div>
+
+
+
+
+
+
+
+
+							</div>
+							<!-- /.card-body -->
+
+							<div class="card-footer">
+								<button type="submit" id="btn_save_blog" class="btn btn-primary">
+									Submit
+								</button>
+							</div>
+						</form>
+					</div>
+					<!-- /.card -->
+			</section>
+		</div>
+		<!-- /.container-fluid -->
+		<!-- /.content -->
+	</div>
+
+	<!--Content end here-->
+
+
+
+
+
+
+
+	<!--Content end here-->
+
+	<!-- /.content-wrapper -->
+	<footer th:replace="~{admin/frags/footer :: footer}"></footer>
+
+	<!-- Control Sidebar -->
+	<aside class="control-sidebar control-sidebar-dark">
+		<!-- Control sidebar content goes here -->
+	</aside>
+	<!-- /.control-sidebar -->
+	</div>
+	<!-- ./wrapper -->
+	<div th:replace="~{admin/frags/script :: script}"></div>
+
+</body>

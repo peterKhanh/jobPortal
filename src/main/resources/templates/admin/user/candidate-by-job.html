@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
+
+<head th:replace="~{admin/frags/head :: head}"></head>
+
+<body class="hold-transition sidebar-mini ayout-fixed">
+	<div class="wrapper">
+
+		<!-- Navbar -->
+		<nav th:replace="~{admin/frags/navbar :: navbar}"></nav>
+		<!-- /.navbar -->
+
+		<!-- Main Sidebar Container -->
+
+		<aside th:replace="~{admin/frags/aside :: aside}"></aside>
+
+		<!--Content from here-->
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="container-fluid">
+					<!-- /.row -->
+					<!-- Main row -->
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<h2 class="card-title">Danh sách các ứng viên đã ứng tuyển</h2>
+
+							</div>
+							<!-- /.card-header -->
+
+							<div class="card-body">
+
+								<table class="table table-bordered">
+									<thead>
+										<thead>
+											<tr>
+												<th style="width: 6.528189910979229%;"></th>
+												<th style="width: 27.794263105835803%;">Ứng viên</th>
+												<th style="width: 27.794263105835803%;">Địa chỉ</th>
+												<th style="width: 15.62809099901088%;">Ngày ứng tuyển</th>
+												<th class="text-center" style="width: 16.61721068249258%;">Hành động
+												</th>
+											</tr>
+										</thead>
+									<tbody>
+										<tr data-index="0" th:each="applyuser :${userbyjob}">
+											<td>
+												<div class="row">
+													<div class="col-auto pe-0">
+														<img th:if="${applyuser.user.getAvata() != null}"
+															th:src="@{'/upload/user/'+ ${applyuser.user.getAvata()}}"
+															alt="..." width="80" class="wid-40 rounded-circle">
+
+														<!--	<img th:if="${user.avata}"  src="https://mantisdashboard.io/codeignitor/default/public/assets/images/user/avatar-1.jpg"
+														alt="user-image" class="wid-40 rounded-circle">-->
+
+													</div>
+											</td>
+											<td>
+												<div class="row">
+													<div class="col">
+														<h5 class="mb-0" th:text="${applyuser.user.getUserName()}">Addie
+															Bass</h5>
+														<p class="text-muted f-12 mb-0"
+															th:text="${applyuser.user.getEmail()}">
+															mareva@gmail.com</p>
+														<p class="text-muted f-12 mb-0"
+															th:text="${applyuser.user.getTelephone()}">
+															mareva@gmail.com</p>
+													</div>
+
+												</div>
+											</td>
+											<td>
+												<div class="col">
+													<h5 class="mb-0" th:text="${applyuser.user.getAddress()}">
+														Addie Bass</h5>
+												</div>
+											</td>
+
+											<td>
+
+												<div class="col">
+													<h5 class="mb-0"
+														th:text="${#dates.format(applyuser.getApplyDate(), 'dd/MM/yyyy')}">
+														Addie Bass</h5>
+												</div>
+											</td>
+
+											<td class="text-center">
+												<ul class="list-inline me-auto mb-0">
+													<li class="list-inline-item align-bottom" data-bs-toggle="tooltip"
+														title="Xem hồ sơ">
+														<a th:href="@{/admin/user-view-profile/{id}(id=${applyuser.user.getId()})}"
+														class="btn btn-success">Xem hồ sơ</a>
+													<!--	<a href="#" class="avtar avtar-xs btn-link-danger">
+															<i class="ti ti-trash f-18">Xem hồ sơ</i>
+														</a>-->
+													</li>
+												</ul>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!-- /.card-body -->
+							<div class="card-footer">
+								<nav aria-label="Contacts Page Navigation">
+									<ul class="pagination justify-content-center m-0">
+
+										<li class="page-item" th:if="${currentPage > 1}"><a class="page-link"
+												th:href="@{'?pageNo='+${currentPage-1}}">«</a></li>
+
+										<li class="page-item" th:each="i:${#numbers.sequence(1,totalPage)}"
+											th:classappend="${currentPage == i ? 'active':''}"><a class="page-link"
+												th:href="@{${keyword != null && keyword != ''?'?keyword='+keyword+'&':'?'}+'pageNo='+${i}}"
+												th:text="${i}"></a></li>
+										<li th:if="${currentPage < totalPage}"><a class="page-link"
+												th:href="@{'?pageNo='+${currentPage+1}}">»</a>
+										</li>
+
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<!-- /.card -->
+					</div>
+				</div><!-- /.container-fluid -->
+			</section>
+			<!-- /.content -->
+
+
+	</div>
+
+	<!--Content end here-->
+
+
+
+	<!-- /.content-wrapper -->
+	<footer th:replace="~{admin/frags/footer :: footer}"></footer>
+
+	<!-- Control Sidebar -->
+	<aside class="control-sidebar control-sidebar-dark">
+		<!-- Control sidebar content goes here -->
+	</aside>
+	<!-- /.control-sidebar -->
+	</div>
+	<!-- ./wrapper -->
+	<div th:replace="~{admin/frags/script :: script}"></div>
+
+</body>

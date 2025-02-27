@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
+
+<head th:replace="~{admin/frags/head :: head}"></head>
+
+<body class="hold-transition sidebar-mini ayout-fixed">
+	<div class="wrapper">
+
+		<!-- Navbar -->
+		<nav th:replace="~{admin/frags/navbar :: navbar}"></nav>
+		<!-- /.navbar -->
+
+		<!-- Main Sidebar Container -->
+
+		<aside th:replace="~{admin/frags/aside :: aside}"></aside>
+				<div class="content-wrapper">
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="container-fluid">
+					<!-- /.row -->
+					<!-- Main row -->
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<h2 class="card-title">Danh sách bài viết</h2>
+
+							</div>
+							<!-- /.card-header -->
+							<div class="card-body">
+								<form>
+									<div class="row">
+										<div class="col-6">
+											<input type="text" name="keyword" class="form-control pull-right"
+												placeholder="từ khóa" th:value="${keyword}">
+										</div>
+									
+										<div class="col-4">
+											<button type="submit" class="btn btn-default"><i
+													class="fa fa-search"></i></button>
+											<a th:href="@{/admin/blog/add}" class="btn btn-info float-right"><i
+													class="fas fa-plus"></i>
+												<span>Thêm bài viết</span>
+											</a>
+
+										</div>
+									</div>
+								</form>
+								<!-- /.card-body -->
+							</div>
+
+							<div class="card-body">
+
+								<table class="table table-bordered">
+									<thead>
+											<tr>
+								<th> Image</th>
+								<th> Title</th>
+								<th> Created At</th>
+								<th> View Count</th>
+								<th> Actions </th>
+							</tr>
+									</thead>
+									<tbody>
+										
+										<tr th:each="blog: ${blogs}">
+								<td><img th:src="@{'/images/blog/'+ ${blog.imageFileName}}" alt="..." width="60"></td>
+								<td th:text="${blog.title}" style="width: 40%;"></td>
+								<td th:text="${blog.updateAt}"></td>
+								<td th:text="${blog.count}"></td>
+
+								<td>
+									<a class="btn btn-primary btn-sm" href="#">
+										<i class="fas fa-folder">
+										</i>
+										
+									</a>
+									<a th:href="@{/admin/blog/edit(id=${blog.id})}" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt">
+										</i> </a>
+
+
+									<a th:href="@{/admin/blog/delete(id=${blog.id})}" class="btn btn-danger btn-sm"
+										onclick="return confirm('Are you sure?')"><i class="fas fa-trash">
+										</i> </a>
+
+								</td>
+							</tr>
+										
+										
+									</tbody>
+								</table>
+							</div>
+							<!-- /.card-body -->
+							<div class="card-footer clearfix">
+								<ul class="pagination pagination-sm m-0 float-right">
+									<li class="page-item" th:if="${currentPage > 1}"><a class="page-link"
+											th:href="@{'?pageNo='+${currentPage-1}}">«</a></li>
+									<!--<li class="page-item"><a class="page-link" href="#">1</a></li>
+									<li class="page-item"><a class="page-link" href="#">2</a></li>-->
+									<li class="page-item" th:each="i:${#numbers.sequence(1,totalPage)}"
+										th:classappend="${currentPage == i ? 'active':''}"><a class="page-link"
+											th:text="${i}" th:href="@{'?pageNo='+${i}}"></a></li>
+									<li class="page-item" th:if="${currentPage < totalPage}"><a class="page-link"
+											th:href="@{'?pageNo='+${currentPage+1}}">»</a></li>
+								</ul>
+							</div>
+						</div>
+						<!-- /.card -->
+					</div>
+				</div><!-- /.container-fluid -->
+			</section>
+			<!-- /.content -->
+			</div>
+		
+
+
+	
+
+		<!-- /.content-wrapper -->
+		<footer th:replace="~{admin/frags/footer :: footer}"></footer>
+
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Control sidebar content goes here -->
+		</aside>
+		<!-- /.control-sidebar -->
+	</div>
+	<!-- ./wrapper -->
+	<div th:replace="~{admin/frags/script :: script}"></div>
+
+</body>

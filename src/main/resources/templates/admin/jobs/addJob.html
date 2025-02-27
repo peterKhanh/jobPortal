@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
+
+<head th:replace="~{admin/frags/head :: head}"></head>
+
+<body class="hold-transition sidebar-mini ayout-fixed">
+	<div class="wrapper">
+		<!-- Navbar -->
+		<nav th:replace="~{admin/frags/navbar :: navbar}"></nav>
+		<!-- /.navbar -->
+		<!-- Main Sidebar Container -->
+
+		<aside th:replace="~{admin/frags/aside :: aside}"></aside>
+
+		<!--Content from here-->
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div class="content-header" style="display: block;">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6" style="display: none;">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a href="#">Home</a></li>
+								<li class="breadcrumb-item active">Dashboard v1</li>
+							</ol>
+						</div><!-- /.col -->
+					</div><!-- /.row -->
+				</div><!-- /.container-fluid -->
+			</div>
+			<!-- /.content-header -->
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="container-fluid">
+
+					<!-- Small boxes (Stat box) -->
+					<!--<div class="row" th:replace="~{admin/frags/stat_box :: stat_box}">
+					</div>
+					-->
+					<!-- /.row -->
+					<!-- Main row -->
+					<div class="col-sm-6">
+						<h1 class="m-0 text-dark">Thêm công việc</h1>
+					</div><!-- /.col -->
+					<div class="card col-md-12">
+						<form id="frm_job" enctype="multipart/form-data" th:object="${job}" method="POST">
+							<div class="card" style="display: block;">
+								<div class="row">
+									<div class="col-12">
+										<!-- /.card-header -->
+										<div class="card-body">
+											<table class="table table-bordered" <input type="hidden"
+												name="enterprise_id" th:value="${active_enterprise.id}" />
+											<label> Thông tin nhà tuyển dụng<label>
+
+													<tbody>
+														<tr>
+															<td style="width:15%;">
+																<img th:src="@{'/upload/enterprise/'+ ${active_enterprise.logoName}}"
+																	alt="..." width="80">
+															</td>
+															<td style="width:65%;">
+																<div class="row">
+																	<div class="col-12"><a
+																			th:text="${active_enterprise.name}"></a>
+																	</div>
+																</div>
+																<div class="row">
+
+																	<div class="col-12">
+																		<i class="icofont-location-pin"></i>
+																		<span th:text="${active_enterprise.address}">
+
+																		</span>
+																	</div>
+																</div>
+																<div class="row">
+																	<div class="col-6">
+																		<i class="icofont-users"></i>
+																		<label> Quy mô </label>
+																		<span
+																			th:text="${active_enterprise.numberOfEmployee}" />
+																	</div>
+																	<div class="col-6 text-right"
+																		style="display: none;">
+																		<i class="icofont-calendar"></i>
+																		<span>Ngày tham gia </span>
+																		<span
+																			th:text="${#dates.format(active_enterprise.updateAt, 'dd/MM/yyyy hh:mm')}" />
+																	</div>
+
+																</div>
+															</td>
+
+
+														</tr>
+
+													</tbody>
+													</table>
+										</div>
+
+										<!-- /.card -->
+
+										<div class="form-group" style="display: none;">
+											<div class="col-6">
+												<div class="form-group">
+													<label th:text="${active_enterprise.name}" />
+													<label th:text="${active_enterprise.address}" />
+												</div>
+
+											</div>
+
+
+
+											<select class="form-control" id="enterprise" name="enterprise"
+												th:field="${active_enterprise.id}">
+												<option value=""> -----------Chọn doanh nghiệp-------------</option>
+												<option th:each="enterprise : ${enterprises}"
+													th:value="${enterprise.id}" th:text="${enterprise.name}">
+												</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- /.card-header -->
+							<div class="card">
+								<div class="card-body">
+
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label> Tên công việc</label>
+
+
+												<input type="text" id="title" name="title" class="form-control"
+													placeholder="Enter job title" />
+											</div>
+										</div>
+										<!--										<div class="col-2">
+											<div class="form-group">
+												<div class="icheck-success d-inline p-4">
+													<input type="checkbox" checked="" id="hotjob">
+													<label for="hotjob">Hot job
+													</label>
+												</div>
+											</div>
+										</div>
+-->
+									</div>
+
+									<div class="row">
+										<div class="col-4">
+											<div class="form-group">
+												<label> Lĩnh vực </label>
+												<select class="form-control" id="jobCategory" name="jobCategory">
+													<option value=""> -- Chọn --- </option>
+													<option th:each="cate : ${jobcategories}" th:value="${cate.id}"
+														th:text="${cate.name}">
+													</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-4">
+											<div class="form-group">
+												<label> Loại hình công việc </label>
+												<select class="form-control" id="workingModel" name="workingModel">
+													<option value=""> -- Chọn --- </option>
+													<option th:each="workingModel : ${workingModels}"
+														th:value="${workingModel.id}" th:text="${workingModel.name}">
+													</option>
+												</select>
+											</div>
+										</div>
+
+										<div class="col-4">
+											<div class="form-group">
+												<label> Trạng thái </label>
+												<select class="form-control" name="status">
+													<option value="APPROVED">Đang tuyển </option>
+													<option value="EDITING">Đang sửa</option>
+													<option value="BLOCKED">Bị khóa</option>
+												</select>
+											</div>
+										</div>
+
+									</div>
+									<div class="row">
+										<div class="col-4">
+											<div class="form-group">
+												<label> Số lượng cần tuyển</label>
+												<input type="number" id="numberOfRecruitement"
+													name="numberOfRecruitement" class="form-control" />
+											</div>
+										</div>
+										<div class="col-4">
+											<div class="form-group">
+												<label> Số năm kinh nghiệm </label>
+												<input type="text" id="yearOfExperience" name="yearOfExperience"
+													class="form-control" placeholder="Over 2 years experience" />
+											</div>
+										</div>
+										<div class="col-4">
+
+											<!-- Date -->
+											<div class="form-group">
+												<label>Ngày hết hạn:</label>
+												<div class="input-group date" id="reservationdate"
+													data-target-input="nearest">
+													<input id="expiredDate" name="expiredDate" type="text"
+														class="form-control datetimepicker-input"
+														data-target="#reservationdate" />
+													<div class="input-group-append" data-target="#reservationdate"
+														data-toggle="datetimepicker">
+														<div class="input-group-text"><i class="fa fa-calendar"></i>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-4">
+											<div class="form-group">
+												<label> Thời gian thử việc </label>
+												<input type="text" id="trialTime" name="trialTime" class="form-control"
+													placeholder="02 months" />
+											</div>
+										</div>
+										<div class="col-4">
+											<div class="form-group">
+												<label> Thời gian làm việc </label>
+												<input type="text" id="workingTime" name="workingTime"
+													class="form-control" placeholder="08:00 AM - 17:00 PM" />
+											</div>
+										</div>
+										<div class="col-4">
+											<div class="form-group">
+												<label> Mức lương </label>
+												<input type="text" id="salary" name="salary" class="form-control"
+													placeholder="Salary per month" />
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-4">
+											<div class="form-group">
+												<label> Khu vực làm việc </label>
+												<select class="form-control" name="location">
+													<option th:each="location : ${locations}" th:value="${location.id}"
+														th:text="${location.name}">
+													</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-8">
+											<div class="form-group">
+												<label> Địa chỉ làm việc </label>
+												<input type="text" id="workingAddress" name="workingAddress"
+													class="form-control" placeholder="Enter working address" />
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-4">
+											<div class="form-group">
+												<label> Giới tính </label>
+												<select class="form-control" name="gender">
+													<option value="MALE">Nam </option>
+													<option value="FEMALE">Nữ</option>
+													<option value="NOTREQUIRE">Không yêu cầu</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-5">
+											<div class="form-group">
+												<label> Độ tuổi </label>
+												<input type="text" id="website" name="ageRange" class="form-control"
+													placeholder="Below 35" />
+											</div>
+										</div>
+
+									</div>
+
+									<div class="row">
+										<div class="col-12">
+											<label> Yêu cầu công việc </label>
+											<textarea id="reponsibility" name="reponsibility" class="form-control"
+												rows="5" cols="30" placeholder="Job Reposibility"></textarea>
+											<script>
+												ClassicEditor
+													.create(document.querySelector('#reponsibility'), {
+														height: 800,
+
+														toolbar: [
+															'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
+															'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList'
+														],
+													})
+													.catch(error => {
+														console.error(error);
+													});
+											</script>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-12">
+											<label> Mô tả công việc </label>
+											<textarea id="description" name="description" class="form-control" rows="5"
+												cols="30" placeholder="Job Description"></textarea>
+											<script>
+												ClassicEditor
+													.create(document.querySelector('#description'), {
+														height: 800,
+
+														toolbar: [
+															'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
+															'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList'
+														],
+													})
+													.catch(error => {
+														console.error(error);
+													});
+											</script>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-12">
+
+											<label> Quyền lợi của ứng viên </label>
+											<textarea id="benefit" name="benefit" class="form-control" rows="5"
+												cols="30" placeholder="Job Benefits"></textarea>
+											<script>
+												ClassicEditor
+													.create(document.querySelector('#benefit'), {
+														height: 800,
+
+														toolbar: [
+															'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
+															'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList'
+														],
+													})
+													.catch(error => {
+														console.error(error);
+													});
+											</script>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- /.card-body -->
+
+							<div class="card-footer">
+								<button type="submit" id="btn_post_job" class="btn btn-primary">Lưu thông tin</button>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- /.card -->
+		</div>
+		<!-- /.container-fluid -->
+		</section>
+		<!-- /.content -->
+	</div>
+
+	<!--Content end here-->
+
+	<!-- /.content-wrapper -->
+	<footer th:replace="~{admin/frags/footer :: footer}"></footer>
+
+	<!-- Control Sidebar -->
+	<aside class="control-sidebar control-sidebar-dark">
+		<!-- Control sidebar content goes here -->
+	</aside>
+	<!-- /.control-sidebar -->
+	</div>
+	<!-- ./wrapper -->
+	<div th:replace="~{admin/frags/script :: script}"></div>
+
+	<script>
+
+	</script>
+</body>

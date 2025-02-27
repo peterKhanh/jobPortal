@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<!-- Footer Include -->
+
+<head th:replace="~{views/fragments/head :: head}"></head>
+
+<body>
+
+	<!-- Header Start -->
+	<header th:replace="~{views/fragments/menu_bar :: menu_bar}"> </header>
+
+	<main>
+
+		<!--Searching Erea-->
+		<div th:replace="~{views/fragments/search-area :: search-area}"></div>
+		<!-- Search Area End-->
+		<!--Begin-->
+
+		<div class="container border mt-4">
+			<!-- Section Tittle -->
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="widget_title float-start">
+						<h4>Kết quả tìm kiếm của bạn</h4>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="text-right" style="display: none;">
+						<a href="#" class="genric-btn info-border circle arrow small">Xem thêm<span
+								class="lnr lnr-arrow-right"></span></a>
+					</div>
+
+				</div>
+			</div>
+			<div class="row justify-content-between">
+
+				<!-- Left Content -->
+				<div class="col-xl-8 col-lg-8">
+
+					<!-- Featured_job_start -->
+					<section class="featured-job-area">
+						<!-- Begin-job list-content -->
+
+						<div class="single-job-items mb-30 joblist border" th:each="job: ${jobs}">
+							<div class="job-items" th:data-id="${job.id}">
+<!--								<div class="company-img">
+									<a href="#">
+										<img th:if="${job.enterprise.getDefaultLogo}==true"
+											th:src="@{'/upload/default.png'}" alt="..." width="90">
+										<img th:unless="${job.enterprise.getDefaultLogo}==true"
+											th:src="@{'/upload/enterprise/'+ ${job.enterprise.getLogoName}}"
+											style="width: 90px; height: 90px;" alt="">
+
+									</a>
+								</div>
+-->								<div class="job-tittle job-tittle2 ">
+									<a th:href="@{/job/viewjob/{id}(id=${job.id})}">
+										<h6 th:text="${job.getTitle()}" />
+									</a>
+									<a th:href="@{/job/viewjob/{id}(id=${job.id})}">
+										<p th:text="${job.enterprise.getName()}" />
+									</a>
+									<ul>
+										<li><i class="icofont-listing-box"></i>
+											<span th:text="${job.jobCategory.getName()}">Category </span>
+										</li>
+										<li>
+											<i class="icofont-location-pin"></i>
+											<span th:text="${job.getLocation().getName()}"></span>
+										</li>
+										<li>
+											<i class="icofont-money"></i>
+											<span th:text="${job.salary}">Salary 30$</span>
+										</li>
+									</ul>
+									<ul>
+										<li>
+											<i class="icofont-location-arrow"></i>Nơi làm việc: 
+											<span th:text="${job.workingAddress}"> </span>
+										</li>
+									</ul>
+								</div>
+
+								<!--
+									<div class="job_apply">
+									<div class="items-link items-link2 f-right small">
+										<a href="#" class="default-border circle arrow small">Ứng tuyển</a>
+									</div>
+
+								</div>
+							
+								<li class="job_apply items-link items-link2 f-right small">
+									<span class="badge rounded-pill small">Ứng tuyểnd</span>
+								</li>
+								-->
+							</div>
+
+						</div>
+						<!-- End-job list-content -->
+
+						<!--Pagination Start  -->
+						<div class="pagination-area pt-2 pb-10 text-center" th:if="${totalPage > 1}">
+							<div class="container">
+								<div class="row">
+									<div class="col-xl-12">
+										<div class="single-wrap d-flex justify-content-center">
+											<nav aria-label="Page navigation example">
+												<ul class="pagination justify-content-start">
+
+													<li class="page-item" th:if="${currentPage > 1}">
+														<a class="page-link"
+															th:href="@{${keyword != null && keyword != ''?'?keyword='+keyword+'&':'?'}+'pageNo='+${currentPage-1}}">
+															<span class="ti-angle-left"></span></a>
+													</li>
+
+
+													<li class="page-item" th:each="i:${#numbers.sequence(1,totalPage)}"
+														th:classappend="${currentPage == i ? 'active':''}">
+														<a class="page-link" th:text="${i}"
+															th:href="@{${keyword != null && keyword != ''?'?keyword='+keyword+'&':'?'}+'pageNo='+${i}}"></a>
+													</li>
+
+
+													<li class="page-item" th:if="${currentPage < totalPage}">
+														<a class="page-link"
+															th:href="@{${keyword != null && keyword != ''?'?keyword='+keyword+'&':'?'}+'pageNo='+${currentPage+1}}"><span
+																class="ti-angle-right"></span></a>
+													</li>
+												</ul>
+											</nav>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--Pagination End  -->
+					</section>
+					<!-- Featured_job_end -->
+
+
+				</div>
+				<!-- Right Content -->
+				<div class="col-xl-4 col-lg-4">
+					<div class="job_right_sidebar" border>
+						<aside th:replace="~{views/fragments/jobs/frag-recent-job :: frag-recent-job}"></aside>
+					</div>
+
+					<div class="blog_right_sidebar">
+
+						<aside th:replace="~{views/fragments/jobs/frag-cate-list :: frag-cate-list}"></aside>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+		<!--		<div th:replace="~{views/fragments/jobs/frag-job-by-cate :: frag-job-by-cate}"></div>
+--> <!-- List Job by Category End -->
+
+		<!-- How  Apply Process Start-->
+
+		<!--		<div th:replace="views/fragments/apply-process :: apply-process"></div>
+-->
+		<!-- How  Apply Process End-->
+
+
+		<!-- Blog Area Start -->
+		<!--		<div th:replace="views/fragments/seeker/blog :: blog"></div>
+--> <!-- Blog Area End -->
+
+		<!--Banner Contact-->
+		<div th:replace="~{views/fragments/banner-contact :: banner-contact}"></div>
+
+		<!-- End Banner  Contact-->
+
+	</main>
+
+	<!-- Footer Include -->
+	<div th:replace="~{views/fragments/footer :: footer}"></div>
+	<!-- Script Include -->
+	<div th:replace="~{views/fragments/script :: script}"></div>
+
+
+
+</body>
+
+</html>

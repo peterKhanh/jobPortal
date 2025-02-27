@@ -1,0 +1,63 @@
+
+
+<head th:replace="~{views/fragments/head :: head}"></head>
+
+<body>
+	
+	<!-- Header Start -->
+	<header th:replace="~{views/fragments/menu_bar :: menu_bar}">	</header>
+
+	<main>
+		<!--Searching Erea-->
+		<div th:replace="~{views/fragments/search-area :: search-area}"></div>
+		<!-- Search Area End-->
+		
+		<!-- Job Category Start -->
+		<div th:replace="~{views/fragments/homepage/frag-category-list :: frag-category-list}"></div>
+		<!-- Job Category End -->
+		
+	<!-- Featured_job_start -->
+	
+		<section th:replace="~{views/fragments/homepage/jobs-on-homepage :: jobs-on-homepage}"> </section>
+	
+		<!-- Featured_job_end -->
+
+
+		<!-- Company Start -->
+<!--		<div th:replace="~{views/fragments/homepage/frag-location-list :: frag-location-list}"></div>
+-->		<!-- Company  -->
+
+	
+		<!-- Online CV Area Start -->
+		
+		
+		<!-- Online CV Area End-->
+		
+	
+		<!-- Blog Area Start -->
+<!--
+		<div th:replace="~{views/fragments/homepage/blog-on-homepage :: blog-on-homepage}"></div>
+-->
+		<!-- Blog Area End -->
+		
+		<!-- How  Apply Process Start-->
+		<div th:replace="~{views/fragments/apply-process :: apply-process}"></div>
+		<!-- How  Apply Process End-->
+
+
+		<!--Banner Contact-->	
+			<!--<div th:replace="~{views/fragments/banner-contact :: banner-contact}"></div>-->
+		<!-- End Banner  Contact-->
+
+		<!--Nhan viên tư ván-->	
+		<div th:replace="~{views/fragments/tastimonial :: tastimonial}"></div>
+		<!--Nhan viên tư vấn-->	
+
+	</main>
+	 
+	 <!-- Footer Include -->
+	 <div th:replace="~{views/fragments/footer :: footer}"></div>
+	<!-- Script Include -->
+	<div th:replace="~{views/fragments/script :: script}"></div>
+</body>
+</html>

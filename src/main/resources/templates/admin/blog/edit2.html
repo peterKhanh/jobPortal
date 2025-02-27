@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<head th:replace="admin/fragments/head :: head"></head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+		<div th:replace="admin/fragments/header :: header"></div>
+		<!-- Left side column. contains the sidebar -->
+		<div th:replace="admin/fragments/sidebar :: sidebar"></div>
+		<div class="content-wrapper">
+
+			<section class="content-header">
+				<h1>
+					Dashboard
+					<small>Version 2.0</small>
+				</h1>
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+					<li class="active">Dashboard</li>
+				</ol>
+			</section>
+
+			<section class="content">
+				<!-- Box Info before content 
+				<div th:replace="admin/fragments/top_page :: top_page"></div>
+				-->
+				<!-- Main content -->
+				<div class="row">
+					<div class="row">
+						<div class="col-md-10">
+							<div class="box box-info">
+								<div class="box-header with-border">
+									<h3 class="box-title">Update</h3>
+									<div class="box-tools pull-right">
+										<button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+												class="fa fa-minus"></i>
+										</button>
+										<button type="button" class="btn btn-box-tool" data-widget="remove"><i
+												class="fa fa-times"></i></button>
+									</div>
+								</div>
+
+								<div class="box-body">
+									<div class="table-responsive">
+										<table class="table no-margin">
+											<div class="box box-primary">
+												<form enctype="multipart/form-data" th:action="@{/admin/blog/edit}"
+													th:object="${blog}" method="POST">
+													<div class="box-body">
+														<input type="hidden" name="id" th:value="${blog.id}" />
+
+														<div class="form-group">
+															<label> Title </label>
+															<input type="text" name="title" class="form-control"
+																placeholder="Enter title" th:field="${blog.title}" />
+
+														</div>
+
+														<div class="form-group">
+															<label> Short content </label>
+															<textarea name="shortcontent"
+																th:field="${blog.shortcontent}" class="form-control"
+																rows="5" cols="30"
+																placeholder="Enter Short Content"></textarea>
+
+														</div>
+
+
+														<div class="box-body">
+															<div class="row">
+																<div class="col-xs-8">
+																	<div class="form-group">
+																		<label> Category </label>
+																		<select class="form-control" name="category"
+																			th:field="${blog.category}">
+																			<option th:each="cate : ${listCate}"
+																				th:value="${cate.Id}"
+																				th:text="${cate.categoryName}"></option>
+																		</select>
+																	</div>
+																</div>
+															</div>
+														</div>
+
+
+														<div class="form-group">
+															<label> Main content </label>
+
+															<textarea id="content" name="content" class="form-control"
+																th:field="${blog.content}" rows="50"
+																cols="30"></textarea>
+
+														</div>
+
+
+
+														<div class="form-group" <label> Image </label>
+															<input type="file" name="file" class="form-control"
+																placeholder="Upload the Image" />
+														</div>
+														<input type="hidden" id="hd_list_tag" name="hd_list_tag"/>
+														<div class="form-group">
+															<label> Tag </label>
+															<select id="list_tag" name="list_tag"
+																placeholder="Select upto 15 tags" multiple>
+																<option th:each="tag : ${listBlogTag}" th:value="${tag.Id}" th:text="${tag.name}" 
+																th:selected="${id_list.contains(tag.Id)}"
+																</option>
+															</select>
+
+															<script>
+																$(document).ready(function () {
+																	var multipleCancelButton = new Choices('#list_tag', {
+																		removeItemButton: true,
+																		maxItemCount: 15,
+																		searchResultLimit: 10,
+																		renderChoiceLimit: 10
+																	});
+
+																	$('#list_tag').change(function () {
+																		var selValues = $('#list_tag').val();																	
+																		$('#hd_list_tag').val(selValues);
+																		var hdValues = $('#hd_list_tag').val();
+																		alert("hdValues : " + hdValues);
+																	});
+																});
+															</script>
+														</div>
+
+
+														<div class="box-footer">
+															<button type="submit" class="btn btn-primary">
+																Submit
+															</button>
+														</div>
+													</div>
+												</form>
+											</div>
+
+										</table>
+									</div>
+
+								</div>
+							</div>
+
+						</div>
+						<!-- Right Content -->
+						<!--
+						<div th:replace="admin/fragments/right_content :: right_content"></div>
+						-->
+					</div>
+				</div>
+				<!-- End Main content -->
+
+		</div>
+		</section>
+
+	</div>
+	<div th:replace="admin/fragments/footer :: footer"></div>
+	<div th:replace="admin/fragments/sidebar_right :: sidebar_right"></div>
+	<div class="control-sidebar-bg"></div>
+	</div>
+
+	<script>
+		ClassicEditor
+			.create(document.querySelector('#content'), {
+				height: 400,
+				baseFloatZIndex: 10005,
+				ckfinder: {
+					//	uploadUrl:"http://localhost:8080/images/blog/"
+					filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
+					filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+					filebrowserWindowWidth: '1000',
+					filebrowserWindowHeight: '700',
+					uploadUrl: 'https://ckeditor.com/apps/ckfinder/3.5.0/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
+				}
+			})
+			.catch(error => {
+				console.error(error);
+			});
+	</script>
+
+	<div th:replace="admin/fragments/script :: script"></div>
+
+</body>
+
+</html>

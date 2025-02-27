@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
+
+<head th:replace="~{admin/frags/head :: head}"></head>
+
+<body class="hold-transition sidebar-mini ayout-fixed">
+	<div class="wrapper">
+
+		<!-- Navbar -->
+		<nav th:replace="~{admin/frags/navbar :: navbar}"></nav>
+		<!-- /.navbar -->
+
+		<!-- Main Sidebar Container -->
+
+		<aside th:replace="~{admin/frags/aside :: aside}"></aside>
+
+		<!--Content from here-->
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div class="content-header" style="display: none;">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1 class="m-0 text-dark">Dashboard</h1>
+						</div><!-- /.col -->
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a href="#">Home</a></li>
+								<li class="breadcrumb-item active">Dashboard v1</li>
+							</ol>
+						</div><!-- /.col -->
+					</div><!-- /.row -->
+				</div><!-- /.container-fluid -->
+			</div>
+			<!-- /.content-header -->
+
+			<!-- Main content -->
+
+			<section class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-3">
+
+							<!-- Profile Image -->
+							<div class="card card-primary card-outline">
+								<div class="card-body box-profile">
+									<div class="text-center">
+										<img th:if="${user.avata != null}" th:src="@{'/upload/user/'+ ${user.avata}}"
+											alt="user-avatar" class="img-circle img-fluid" />
+									</div>
+									<h3 class="profile-username text-center" th:text="${user.fullName}">Nina Mcintire
+									</h3>
+									<p class="text-muted text-center" th:text="${user.userName}"></p>
+									<div class="card-body">
+										<strong><i class="fas fa-sm fa-building"></i> Địa chỉ:</strong>
+										<p class="text-muted" th:text="${user.address}"></p>
+										<hr>
+										<strong><i class="fas fa-sm fa-phone"></i> Điện thoại</strong>
+										<p class="text-muted" th:text="${user.telephone}"></p>
+										<hr>
+										<strong> <i class="fas fa-sm fa-envelope"></i> Email:</strong>
+										<p class="text-muted" th:text="${user.email}"></p>
+									</div>
+								</div>
+								<!-- /.card-body -->
+							</div>
+							<!-- /.card -->
+
+							<!-- About Me Box -->
+							<!--
+							<div class="card card-primary">
+								<div class="card-header">
+									<h3 class="card-title">Tương tác</h3>
+								</div>
+								<div class="card-body">
+									<ul class="list-group list-group-unbordered mb-3">
+										<li class="list-group-item">
+											<b>Hồ sơ / CV</b> <a class="float-right">1,322</a>
+										</li>
+										<li class="list-group-item">
+											<b>Job đã ứng tuyển</b> <a class="float-right">543</a>
+										</li>
+										<li class="list-group-item">
+											<b>Job đã lưu</b> <a class="float-right">13,287</a>
+										</li>
+									</ul>
+									<a href="#" class="btn btn-primary btn-block"><b>Gửi Job cho ứng viên</b></a>
+								</div>
+							</div>
+-->
+							<!-- .card -->
+						</div>
+						<!-- /.col -->
+						<div class="col-md-9">
+							<div class="card">
+								<!--Tên các Tab-->
+								<div class="card-header p-2 d-flex">
+									<ul class="nav nav-pills">
+										<li class="nav-item"><a class="nav-link active" href="#profile"
+												data-toggle="tab">Hồ sơ / CV</a></li>
+										<li class="nav-item"><a class="nav-link " href="#applyjobs"
+												data-toggle="tab">Job đã ứng tuyển</a></li>
+										<li class="nav-item"><a class="nav-link " href="#savejobs" data-toggle="tab">Job
+												đã lưu</a></li>
+										<li class="nav-item"><a class="nav-link " href="#recommendjob"
+												data-toggle="tab">Job
+												giới thiệu</a></li>
+
+										<!--
+											<li class="nav-item"><a class="nav-link" href="#settings"
+												data-toggle="tab">Settings</a></li>
+										-->
+									</ul>
+
+								</div><!-- /.card-header -->
+								<!--H-->
+								<div class="card-body">
+									<div class="tab-content">
+										<!-- The Tab Job Applied -->
+										<div class="tab-pane " id="applyjobs">
+											<section class="content">
+												<!-- Default box -->
+												<div class="card">
+													<div class="card-body p-0">
+														<table class="table">
+															<thead>
+																<tr>
+																	<th style="width: 40%">
+																		Tiêu đề công việc
+																	</th>
+																	<th style="width: 25%">
+																		Ngày ứng tuyển
+																	</th>
+																	<th style="width: 20%" class="text-center">
+																		Trạng thái Job
+																	</th>
+																	<th style="width: 15%"></th>
+																</tr>
+															</thead>
+															<tbody th:each="jobApplyByUser :${jobApplyByUser}">
+																<tr>
+																	<td>
+																		<a th:text="${jobApplyByUser.job.getTitle()}">
+																			Tên công việc</a>
+																		<br>
+																		<i class="icofont-location-pin"></i>
+																		<small
+																			th:text="${jobApplyByUser.job.location.getName()}" />
+																		<i class="icofont-money-bag"></i>
+																		<small>Mức lương: </small>
+																		<small
+																			th:text="${jobApplyByUser.job.salary}"></small>
+																	</td>
+																	<td>
+																		<span
+																			th:text="${#dates.format(jobApplyByUser.applyDate, 'dd/MM/yyyy')}">
+																			Applied Date 01.01.2019
+																		</span>
+																	</td>
+
+																	<td class="project-state">
+																		<span
+																			th:switch="${jobApplyByUser.job.getStatus()}">
+																			<p th:case="'APPROVED'">
+																				<span class="badge bg-success"> Đang
+																					tuyển</span>
+																			</p>
+																			<p th:case="'EDITING'">
+																				<span class="badge bg-warning">
+																					Đang sửa</span>
+																			</p>
+																			<p th:case="'BLOCKED'">
+																				<span class="badge bg-danger">Bị
+																					khóa</span>
+																			</p>
+																		</span>
+																	</td>
+																	<td class="project-actions text-right">
+																		<a class="btn btn-primary btn-sm" href="#" >
+																			<i class="fas fa-folder"></i>
+																		</a>
+
+																	</td>
+																</tr>
+
+															</tbody>
+														</table>
+													</div>
+													<!-- /.card-body -->
+												</div>
+												<!-- /.card -->
+
+											</section>
+
+										</div>
+										<!-- /.tab-pane Job Applied-->
+
+
+										<!-- The Tab Job Saved -->
+										<div class="tab-pane" id="savejobs">
+											<section class="content">
+												<!-- Default box -->
+												<div class="card">
+													<div class="card-body p-0">
+														<table class="table table-striped projects">
+															<thead>
+																<tr>
+																	<th style="width: 1%">
+																		#
+																	</th>
+																	<th style="width: 40%">
+																		Công viẹc
+																	</th>
+																	<th style="width: 20%">
+																		Nơi làm việc
+																	</th>
+
+																	<th style="width: 15%" class="text-center">
+																		Status
+																	</th>
+																	<th style="width: 24%"></th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr>
+																	<td>
+																		#
+																	</td>
+																	<td>
+																		<a> Tên công viẹc
+																		</a>
+																		<br>
+																		<small>
+																			Applied Date 01.01.2019
+																		</small>
+																	</td>
+																	<td>
+																		<ul class="list-inline">
+																			<li class="list-inline-item">
+																				<img alt="Avatar" class="table-avatar"
+																					src="../../dist/img/avatar.png">
+																			</li>
+
+																		</ul>
+																	</td>
+
+																	<td class="project-state">
+																		<span class="badge badge-success">Success</span>
+																	</td>
+																	<td class="project-actions text-right">
+																		<a class="btn btn-primary btn-sm" href="#">
+																			<i class="fas fa-folder">
+																			</i>
+
+																		</a>
+																		<a class="btn btn-info btn-sm" href="#">
+																			<i class="fas fa-pencil-alt">
+																			</i>
+
+																		</a>
+																		<a class="btn btn-danger btn-sm" href="#">
+																			<i class="fas fa-trash">
+																			</i>
+
+																		</a>
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		#
+																	</td>
+																	<td>
+																		<a>
+																			Tên công viẹc
+																		</a>
+																		<br>
+																		<small>
+																			Created 01.01.2019
+																		</small>
+																	</td>
+																	<td>
+																		<ul class="list-inline">
+																			<li class="list-inline-item">
+																				<img alt="Avatar" class="table-avatar"
+																					src="../../dist/img/avatar.png">
+																			</li>
+
+																		</ul>
+																	</td>
+
+																	<td class="project-state">
+																		<span class="badge badge-success">Success</span>
+																	</td>
+																	<td class="project-actions text-right">
+																		<a class="btn btn-primary btn-sm" href="#">
+																			<i class="fas fa-folder">
+																			</i>
+
+																		</a>
+																		<a class="btn btn-info btn-sm" href="#">
+																			<i class="fas fa-pencil-alt">
+																			</i>
+
+																		</a>
+																		<a class="btn btn-danger btn-sm" href="#">
+																			<i class="fas fa-trash">
+																			</i>
+
+																		</a>
+																	</td>
+																</tr>
+
+															</tbody>
+														</table>
+													</div>
+													<!-- /.card-body -->
+												</div>
+												<!-- /.card -->
+
+											</section>
+
+
+										</div>
+										<!-- /.tab-pane Job Saved-->
+
+										<!-- The Profile -->
+										<div class="tab-pane active" id="profile">
+
+
+											<div class="card-header" th:if="${profile == null}">
+												<div class="row" style="display: none;">
+													<div class="col-sm-12">
+														<h4>Thông tin ứng viên</h4>
+														<ul class="list-group list-group-flush rounded-3">
+
+															<li class="list-group-item d-flex justify-content-between align-items-center p-2">
+																<div class="col-sm-2">
+																	<p class="mb-0">Họ và tên:</p>
+																</div>
+																<div class="col-sm-4">
+																	<p class="text-muted mb-0"
+																		th:text="${user.fullName}">Trần Văn
+																		Long</p>
+																</div>
+															</li>
+
+
+															<li class="list-group-item d-flex justify-content-between align-items-center p-2">
+																<div class="col-sm-2">
+																	<p class="mb-0">Địa chỉ:</p>
+																</div>
+																<div class="col-sm-9">
+																	<p class="text-muted mb-0"
+																		th:text="${user.address}">Bay Area,
+																		San Francisco, CA</p>
+																</div>
+															</li>
+															<li class="list-group-item d-flex justify-content-between align-items-center p-2">
+																<div class="col-sm-2">
+																	<p class="mb-0">Mobile:</p>
+																</div>
+																<div class="col-sm-4">
+																	<p class="text-muted mb-0"
+																		th:text="${user.telephone}">(098)
+																		765-4321</p>
+																</div>
+															<div class="col-sm-2">
+																	<p class="mb-0">Email:</p>
+																</div>
+																<div class="col-sm-4">
+																	<p class="text-muted mb-0" th:text="${user.email}">
+																		example@example.com</p>
+																</div>
+															</li>
+
+														</ul>
+
+													</div>
+												</div>
+												<h2 class="card-title">Ứng viên chưa tải CV</h2>
+											</div>
+
+											<div class="card-body border p-0" th:if="${profile != null}">
+												<!-- Thông tin hồ so-->
+												<div class="row"  style="display: none;">
+													<div class="col-sm-12" >
+														<h4>Hồ sơ ứng viên: <span class="text-muted mb-0"
+																th:text="${profile.title}"></span></h4>
+														<ul class="list-group list-group-flush rounded-3">
+
+															<li
+																class="list-group-item d-flex justify-content-between align-items-center p-2">
+																<div class="col-sm-2">
+																	<p class="mb-0">Họ và tên</p>
+																</div>
+																<div class="col-sm-4">
+																	<p class="text-muted mb-0"
+																		th:text="${user.fullName}">Trần Văn
+																		Long</p>
+																</div>
+																<div class="col-sm-2">
+																	<p class="mb-0">Ngày sinh</p>
+																</div>
+																<div class="col-sm-4">
+																	<p class="text-muted mb-0"
+																		th:text="${profile.birthdate}">22 / 12
+																		/2024</p>
+																</div>
+
+															</li>
+
+
+															<li
+																class="list-group-item d-flex justify-content-between align-items-center p-2">
+																<div class="col-sm-3">
+																	<p class="mb-0">Address</p>
+																</div>
+																<div class="col-sm-9">
+																	<p class="text-muted mb-0"
+																		th:text="${profile.address}">Bay Area,
+																		San Francisco, CA</p>
+																</div>
+															</li>
+
+															<li
+																class="list-group-item d-flex justify-content-between align-items-center p-2">
+																<div class="col-sm-2">
+																	<p class="mb-0">Mobile</p>
+																</div>
+																<div class="col-sm-4">
+																	<p class="text-muted mb-0"
+																		th:text="${profile.phone}">(098)
+																		765-4321</p>
+																</div>
+																<div class="col-sm-2">
+																	<p class="mb-0">Email</p>
+																</div>
+																<div class="col-sm-4">
+																	<p class="text-muted mb-0" th:text="${user.email}">
+																		example@example.com</p>
+																</div>
+															</li>
+
+															<li
+																class="list-group-item d-flex justify-content-between align-items-center p-2">
+																<div class="col-sm-3">
+																	<p class="mb-0">Url</p>
+																</div>
+																<div class="col-sm-9">
+																	<p class="text-muted mb-0" th:text="${profile.url}">
+																		example@example.com</p>
+																</div>
+															</li>
+														</ul>
+
+													</div>
+
+												</div>
+												<!--End Thông tin cá nhân-->
+												<div class="row ">
+													<div class="col-6">
+														<label class="form-label" for="">Xem CV</label>
+
+														<ul class="list-group">
+															<li class="list-group-item"
+																th:if="${profile.cv_1_Filename}">
+																<span class="text-muted mb-0"
+																	th:text="${profile.cv_1_Filename} ? ${#strings.arraySplit(profile.cv_1_Filename,'_')[1]} : ''">
+																</span>
+																<a th:href="@{'/upload/user/'+ ${profile.cv_1_Filename}}"
+																	th:target="_blank">
+																	<span class="btn btn-primary float-right"> Tải CV
+																	</span>
+																</a>
+															</li>
+															<li class="list-group-item"
+																th:if="${profile.cv_2_Filename}">
+																<span class="text-muted mb-0"
+																	th:text="${profile.cv_2_Filename} ? ${#strings.arraySplit(profile.cv_2_Filename,'_')[1]} : ''"></span>
+																<a th:href="@{'/upload/user/'+ ${profile.cv_2_Filename}}"
+																	th:target="_blank">
+																	<span class="btn btn-primary float-right"> Tải CV
+																	</span>
+																</a>
+
+															</li>
+															<li class="list-group-item"
+																th:if="${profile.cv_3_Filename}">
+																<span class="text-muted mb-0"
+																	th:text="${profile.cv_3_Filename} ? ${#strings.arraySplit(profile.cv_3_Filename,'_')[1]} : ''"></span>
+																<a th:href="@{'/upload/user/'+ ${profile.cv_3_Filename}}"
+																	th:target="_blank">
+																	<span class="btn btn-primary float-right"> Tải CV
+																	</span> </a>
+															</li>
+														</ul>
+													</div>
+													<div class="col-6">
+
+														<label class="form-label" for="customFile"> Xem Bảng
+															điểm</label>
+														<ul class="list-group">
+															<li class="list-group-item"
+																th:if="${profile.bd_1_Filename}">
+																<span class="text-muted mb-0"
+																	th:text="${profile.bd_1_Filename} ? ${#strings.arraySplit(profile.bd_1_Filename,'_')[1]} : ''"></span>
+																<a th:href="@{'/upload/user/'+ ${profile.bd_1_Filename}}"
+																	th:target="_blank">
+																	<span class="btn btn-primary float-right"> Tải bảng
+																		điểm </span> </a>
+																</a>
+
+															</li>
+															<li class="list-group-item"
+																th:if="${profile.bd_2_Filename}">
+																<span class="text-muted mb-0"
+																	th:text="${profile.bd_2_Filename} ? ${#strings.arraySplit(profile.bd_2_Filename,'_')[1]} : ''"></span>
+																<a th:href="@{'/upload/user/'+ ${profile.bd_2_Filename}}"
+																	th:target="_blank">
+																	<span class="btn btn-primary float-right"> Tải bảng
+																		điểm </span> </a>
+																</a>
+
+															</li>
+															<li class="list-group-item"
+																th:if="${profile.bd_3_Filename}">
+																<span class="text-muted mb-0"
+																	th:text="${profile.bd_3_Filename} ? ${#strings.arraySplit(profile.bd_3_Filename,'_')[1]} : ''"></span>
+																<a th:href="@{'/upload/user/'+ ${profile.bd_3_Filename}}"
+																	th:target="_blank">
+																	<span class="btn btn-primary float-right"> Tải bảng
+																		điểm </span> </a>
+																</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+
+
+											</div>
+											<!--Danh sach cac viec làm giơi thieu cho ứng vien-->
+											<div class="card-header">
+												<div class="row">
+													<div class="col-sm-12">
+														<h6>Việc làm mới đăng</h6>
+													</div>
+													<table class="table">
+														<thead>
+															<tr>
+																<th style="width: 40%">
+																	Tiêu đề công việc
+																</th>
+																<th style="width: 25%">
+																	Ngày hết hạn
+																</th>
+																<th style="width: 20%" class="text-center">
+																	Trạng thái
+																</th>
+																<th style="width: 15%"></th>
+															</tr>
+														</thead>
+														<tbody th:each="recentjob: ${recentjobs}">
+															<tr th:jobId="${recentjob.id}" th:jobTitle="${recentjob.title}"  th:userEmail="${user.email}"  th:jobStatus="${recentjob.status}">
+																<td>
+																	<a th:text="${recentjob.title}"></a>
+																	<br>
+																	<i class="icofont-location-pin"></i>
+																	<small th:text="${recentjob.location.getName()}" />
+																	<i class="icofont-money-bag"></i>
+																	<small>Mức lương: </small>
+																	<small th:text="${recentjob.salary}"></small>
+																</td>
+																<td>
+																	<span th:text="${#dates.format(recentjob.expiredDate, 'dd/MM/yyyy')}"></span>
+																</td>
+
+																<td class="project-state">
+																	<span th:switch="${recentjob.status}">
+																		<p th:case="'APPROVED'">
+																			<span class="badge bg-success"> Đang
+																				tuyển</span>
+																		</p>
+																		<p th:case="'EDITING'">
+																			<span class="badge bg-warning">
+																				Đang sửa</span>
+																		</p>
+																		<p th:case="'BLOCKED'">
+																			<span class="badge bg-danger">Bị
+																				khóa</span>
+																		</p>
+																	</span>
+																</td>
+																<td class="project-actions text-right">
+																	<a class="btn btn-success btn-sm btn-sendEmail" href="#">
+																		Gửi Email
+																	</a>
+
+																</td>
+															</tr>
+
+														</tbody>
+													</table>
+
+												</div>
+											</div>
+											<!--End Danh sach cac viec làm giơi thieu cho ứng vien-->
+
+										</div>
+										<!-- /.tab-pane Profile-->
+
+										<!--
+										<div class="tab-pane" id="settings">
+											<form class="form-horizontal">
+												<div class="form-group row">
+													<label for="inputName" class="col-sm-2 col-form-label">Name</label>
+													<div class="col-sm-10">
+														<input type="email" class="form-control" id="inputName"
+															placeholder="Name">
+													</div>
+												</div>
+												<div class="form-group row">
+													<label for="inputEmail"
+														class="col-sm-2 col-form-label">Email</label>
+													<div class="col-sm-10">
+														<input type="email" class="form-control" id="inputEmail"
+															placeholder="Email">
+													</div>
+												</div>
+												<div class="form-group row">
+													<label for="inputName2" class="col-sm-2 col-form-label">Name</label>
+													<div class="col-sm-10">
+														<input type="text" class="form-control" id="inputName2"
+															placeholder="Name">
+													</div>
+												</div>
+												<div class="form-group row">
+													<label for="inputExperience"
+														class="col-sm-2 col-form-label">Experience</label>
+													<div class="col-sm-10">
+														<textarea class="form-control" id="inputExperience"
+															placeholder="Experience"></textarea>
+													</div>
+												</div>
+												<div class="form-group row">
+													<label for="inputSkills"
+														class="col-sm-2 col-form-label">Skills</label>
+													<div class="col-sm-10">
+														<input type="text" class="form-control" id="inputSkills"
+															placeholder="Skills">
+													</div>
+												</div>
+												<div class="form-group row">
+													<div class="offset-sm-2 col-sm-10">
+														<div class="checkbox">
+															<label>
+																<input type="checkbox"> I agree to the <a href="#">terms
+																	and conditions</a>
+															</label>
+														</div>
+													</div>
+												</div>
+												<div class="form-group row">
+													<div class="offset-sm-2 col-sm-10">
+														<button type="submit" class="btn btn-danger">Submit</button>
+													</div>
+												</div>
+											</form>
+										</div>-->
+										<!-- /.tab-pane -->
+									</div>
+									<!-- /.tab-content -->
+								</div><!-- /.card-body -->
+							</div>
+							<!-- /.card -->
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- /.row -->
+				</div><!-- /.container-fluid -->
+			</section>
+
+
+
+
+
+
+			<!-- /.content -->
+		</div>
+
+		<!--Content end here-->
+
+		<!-- /.content-wrapper -->
+		<footer th:replace="~{admin/frags/footer :: footer}"></footer>
+
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Control sidebar content goes here -->
+		</aside>
+		<!-- /.control-sidebar -->
+	</div>
+	<!-- ./wrapper -->
+	<div th:replace="~{admin/frags/script :: script}"></div>
+
+</body>

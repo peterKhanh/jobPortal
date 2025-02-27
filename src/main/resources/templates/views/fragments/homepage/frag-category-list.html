@@ -1,0 +1,66 @@
+<div class="container " th:fragment="frag-category-list">
+
+	<div class="container  mt-4">
+		<!-- Section Tittle -->
+
+		<div class="row  mt-2">
+			<div class="col-lg-6">
+				<div class="widget_title float-start">
+					<h4> Công việc theo ngành nghề</h4>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="text-right" style="display: none;">
+					<a href="#" class="genric-btn info-border circle arrow small">Xem thêm<span
+							class="lnr lnr-arrow-right"></span></a>
+				</div>
+
+			</div>
+		</div>
+
+		<div id="owl-category-on-homepage_" class="owl-carousel our-services section-pad-t10">
+
+			<ul th:each="cate: ${lists}">
+			<!--
+				<a th:href="@{/job/jobbycate/{id}(id=${cate.id})}" class="genric-btn primary-border circle mt-4 mr-4">
+					<span th:text="${cate.name}"></span>
+				</a>
+			-->				
+					<div class="items bg-light pd-4">
+					<a th:href="@{/job/jobbycate/{id}(id=${cate.id})}">
+						<h6 th:text="${cate.name}"></h6>
+					</a>
+					
+				</div>
+			
+			</ul>
+
+		</div>
+
+
+		
+		<div id="owl-category-on-homepagevv" class="button-group-area mt-10">
+			<span  th:each="cate: ${lists}">
+				<a th:href="@{/job/jobbycate/{id}(id=${cate.id})}" class="genric-btn primary-border circle"  th:text="${cate.name}">Primary</a>
+			</span>
+		</div>
+
+<!--		<div id="owl-category-on-homepage" class="owl-carousel border our-services section-pad-t10">
+-->			
+	<!--	<div  class="button-group-area mt-10">
+				<span  th:each="cate: ${lists}">
+				<a th:href="@{/job/jobbycate/{id}(id=${cate.id})}" class="genric-btn primary-border circle"  th:text="${cate.name}">Primary</a>
+			</span>
+
+		</div>-->
+
+		<div class="customNavigation" style="display: none;">
+			<a class="btn prev">Previous</a>
+			<a class="btn next">Next</a>
+			<a class="btn play">Autoplay</a>
+			<a class="btn stop">Stop</a>
+		</div>
+
+
+	</div>
+</div>

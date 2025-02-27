@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<head th:replace="admin/fragments/head :: head"></head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+		<div th:replace="admin/fragments/header :: header"></div>
+		<!-- Left side column. contains the sidebar -->
+		<div th:replace="admin/fragments/sidebar :: sidebar"></div>
+		<div class="content-wrapper">
+
+			<section class="content-header">
+				<h1>
+					Dashboard
+					<small>Version 2.0</small>
+				</h1>
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+					<li class="active">Dashboard</li>
+				</ol>
+			</section>
+
+			<section class="content">
+				<!-- Box Info before content 
+				<div th:replace="admin/fragments/top_page :: top_page"></div>
+				-->
+				<!-- Main content -->
+				<div class="row">
+					<div class="row">
+						<div class="col-md-10">
+							<div class="box box-info">
+								<div class="box-header with-border">
+									<h3 class="box-title">Thêm mới Gallery</h3>
+									<div class="box-tools pull-right">
+										<button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+												class="fa fa-minus"></i>
+										</button>
+										<button type="button" class="btn btn-box-tool" data-widget="remove"><i
+												class="fa fa-times"></i></button>
+									</div>
+								</div>
+
+								<div class="box-body">
+									<div class="table-responsive">
+										<table class="table no-margin">
+
+											<div class="box box-primary">
+
+
+												<form id="frmSlide" enctype="multipart/form-data" th:object="${blog}"
+													method="POST">
+													<div class="box-body">
+														<div class="form-group">
+															<label> Title </label>
+															<input type="text" id="title" name="title"
+																class="form-control" placeholder="Enter title" />
+															<h5 id="title_err_message"></h5>
+														</div>
+														<div class="form-group">
+															<div class="form-group">
+																<label> Type {Image / Video} </label>
+																<select class="form-control" id="type" name="type">
+																	<option value="">select option</option>
+																	<option value="IMAGE">Hình ảnh</option>
+																	<option value="VIDEO">Video</option>
+																</select>
+															</div>
+
+
+															<label> Comment </label>
+															  <textarea cols="80" id="editor1" name="editor1" rows="10">&lt;p&gt;This is some &lt;strong&gt;sample text&lt;/strong&gt;. You are using &lt;a href=&quot;https://ckeditor.com/&quot;&gt;CKEditor&lt;/a&gt;.&lt;/p&gt;</textarea>
+												<!--	<input type="text" id="comment" name="comment"
+																class="form-control" placeholder="Enter comment" />-->
+														</div>
+
+														<div class="form-group" <label> Image </label>
+															<input type="file" id="file" name="file"
+																class="form-control" />
+															<h5 id="file_err_message"></h5>
+
+														</div>
+
+														<div class="form-group">
+															<label> Status </label>
+															<div>
+																<div class="form-check form-check-inline">
+																	<input type="radio" name="status"
+																		class="form-check-input" value="1"
+																		checked="checked" />
+																	<label class="form-check-label"
+																		for="inlineRadio1">Active</label>
+																</div>
+
+																<div class="form-check form-check-inline">
+																	<input type="radio" name="status"
+																		class="form-check-input" value="0" />
+																	<label class="form-check-label"
+																		for="inlineRadio2">Hidden</label>
+																</div>
+
+															</div>
+
+														</div>
+
+														<div class="box-footer">
+															<button id="save_slide" class="btn btn-primary slide_add">
+																Update
+															</button>
+
+														</div>
+													</div>
+												</form>
+											</div>
+
+										</table>
+									</div>
+
+								</div>
+							</div>
+
+						</div>
+						<!-- Right Content -->
+						<!--
+						<div th:replace="admin/fragments/right_content :: right_content"></div>
+						-->
+					</div>
+				</div>
+				<!-- End Main content -->
+
+		</div>
+		</section>
+
+	</div>
+	<div th:replace="admin/fragments/footer :: footer"></div>
+	<div th:replace="admin/fragments/sidebar_right :: sidebar_right"></div>
+	<div class="control-sidebar-bg"></div>
+	</div>
+
+
+	<div th:replace="admin/fragments/script :: script"></div>
+	<!--
+<script>
+    CKEDITOR.replace('editor1', {
+      height: 400,
+      baseFloatZIndex: 10005,
+      removeButtons: 'PasteFromWord'
+    });
+  </script>
+  -->
+<script>
+		ClassicEditor
+			.create(document.querySelector('#editor1'),{
+				ckfinder:{
+				//	uploadUrl:"http://localhost:8080/images/blog/"
+				
+  uploadUrl: 'https://ckeditor.com/apps/ckfinder/3.5.0/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
+}
+				
+				
+			})
+			.catch(error => {
+				console.error(error);
+			});
+	</script>
+
+</body>
+
+</html>

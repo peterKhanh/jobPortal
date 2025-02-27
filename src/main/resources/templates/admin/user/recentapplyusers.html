@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
+
+<head th:replace="~{admin/frags/head :: head}"></head>
+
+<body class="hold-transition sidebar-mini ayout-fixed">
+	<div class="wrapper">
+
+		<!-- Navbar -->
+		<nav th:replace="~{admin/frags/navbar :: navbar}"></nav>
+		<!-- /.navbar -->
+
+		<!-- Main Sidebar Container -->
+
+		<aside th:replace="~{admin/frags/aside :: aside}"></aside>
+
+		<!--Content from here-->
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+	
+			<!-- Main content -->
+			<section class="content">
+
+				<div class="table-responsive">
+					<div class="datatable-wrapper datatable-loading no-footer searchable fixed-columns">
+					
+						<div class="box-body">
+							<form>
+								<div class="input-group input-group-sm hidden-xs" style="width: 150px;">
+									<input type="text" name="keyword" class="form-control pull-right"
+										placeholder="Search" th:value="${keyword}">
+									<div class="input-group-btn">
+										<button type="submit" class="btn btn-default"><i
+												class="fa fa-search"></i></button>
+									</div>
+							</form>
+						</div>
+
+						<div> 
+							<table class="table table-hover datatable-table" id="pc-dt-simple">
+								<thead>
+									<tr>
+										<th style="width: 6.528189910979229%;"></th>
+										<th style="width: 27.794263105835803%;">Ứng viên</th>
+										<th style="width: 15.62809099901088%;">Điện thoại</th>
+										<th class="text-center" style="width: 16.61721068249258%;">Hành động</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr data-index="0" th:each="applyuser :${recentapplyusers}">
+									
+										<td>
+											<div class="row">
+												<div class="col-auto pe-0">
+												<!--	<img th:if="${user.avata != null}"
+														th:src="@{'/upload/user/'+ ${user.avata}}" alt="..." width="80"
+														class="wid-40 rounded-circle">
+											-->		<!--	<img th:if="${user.avata}"  src="https://mantisdashboard.io/codeignitor/default/public/assets/images/user/avatar-1.jpg"
+														alt="user-image" class="wid-40 rounded-circle">-->
+												</div>
+												<div class="col">
+													<h5 class="mb-0" th:text="${applyuser.user_id}">Addie Bass</h5>
+												<!--	<p class="text-muted f-12 mb-0" th:text="${user.userName}">Tên đăng
+														nhập</p>
+													<p class="text-muted f-12 mb-0" th:text="${user.email}">
+														mareva@gmail.com</p>-->
+												</div>
+												<div class="col">
+																<h5 class="mb-0" th:text="${applyuser.user_id}">Addie Bass</h5>
+												</div>											
+											</div>
+										</td>
+									
+										<td class="text-center">
+											<ul class="list-inline me-auto mb-0">
+
+
+												<li class="list-inline-item align-bottom" data-bs-toggle="tooltip"
+													title="Xem hồ sơ">
+													
+													<a href="#" class="avtar avtar-xs btn-link-danger">
+														<i class="ti ti-trash f-18">Xem hồ sơ</i>
+													</a>
+												</li>
+												<li class="list-inline-item align-bottom" data-bs-toggle="tooltip"
+													title="Xem hồ sơ">
+													<a href="#" class="avtar avtar-xs btn-link-danger">
+														<i class="ti ti-trash f-18">Job đã ứng tuyển</i>
+													</a>
+												</li>
+											</ul>
+										</td>
+									</tr>
+
+								</tbody>
+							</table>
+						</div>
+
+					</div>
+				</div>
+
+				<!-- /.card-body -->
+
+			
+				<div class="card-footer">
+					<nav aria-label="Contacts Page Navigation">
+						<ul class="pagination justify-content-center m-0">
+
+							<li class="page-item" th:if="${currentPage > 1}"><a class="page-link"
+									th:href="@{'?pageNo='+${currentPage-1}}">«</a></li>
+
+							<li class="page-item" th:each="i:${#numbers.sequence(1,totalPage)}"
+								th:classappend="${currentPage == i ? 'active':''}"><a class="page-link"
+									th:href="@{${keyword != null && keyword != ''?'?keyword='+keyword+'&':'?'}+'pageNo='+${i}}"
+									th:text="${i}"></a></li>
+							<li th:if="${currentPage < totalPage}"><a class="page-link"
+									th:href="@{'?pageNo='+${currentPage+1}}">»</a>
+							</li>
+
+						</ul>
+					</nav>
+				</div>
+
+				<!-- /.card-footer -->
+		</div>
+		<!-- /.card -->
+
+		</section>
+		<!-- /.content -->
+	</div>
+
+	<!--Content end here-->
+
+
+
+	<!-- /.content-wrapper -->
+	<footer th:replace="~{admin/frags/footer :: footer}"></footer>
+
+	<!-- Control Sidebar -->
+	<aside class="control-sidebar control-sidebar-dark">
+		<!-- Control sidebar content goes here -->
+	</aside>
+	<!-- /.control-sidebar -->
+	</div>
+	<!-- ./wrapper -->
+	<div th:replace="~{admin/frags/script :: script}"></div>
+
+</body>

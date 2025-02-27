@@ -25,7 +25,7 @@ public class BlogServiceIplm implements BlogService {
 	private CategoryRepository categoryRepo;
 	
 	// Lấy giá trị config từ file application.properties
-	   int number_of_item_perpage = ConstantsClass.CONST_NUMBER_JOB_PER_PAGE_IN_FRONTEND;
+	int number_of_item_perpage = ConstantsClass.CONST_NUMBER_JOB_PER_PAGE_IN_FRONTEND;
 
 	
 	@Override
@@ -55,11 +55,6 @@ public class BlogServiceIplm implements BlogService {
 	public Page<Blog> getAllByCate(Integer pageNo, Integer cateId) {
 		System.out.println("Cate ID = " + cateId);
 		Category category = categoryRepo.findById(cateId).get();
-
-//		Pageable pageable = PageRequest.of(pageNo-1, number_of_item_perpage, Sort.by("updateAt").descending());
-//		return repository.findAll(pageable);
-
-
 		Pageable pageable = PageRequest.of(pageNo-1, number_of_item_perpage, Sort.by("createAt").descending());
 //		List list = repository.findByCategory(category, pageable);
 		Page page = repository.findByCategory(category, pageable);

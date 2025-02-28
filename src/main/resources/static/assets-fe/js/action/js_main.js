@@ -57,8 +57,9 @@ $(document).ready(function() {
 
 
 	/*
-	Form 
-	
+	Form đăng ký ứng viên
+	Thưc hiện kiểm tra thông tin 
+	Thực hiên Submit để đăng ký thông tin	
 	*/
 
 	$(function() {
@@ -136,11 +137,54 @@ $(document).ready(function() {
 	});
 
 
+/*
+	Form quên mật khẩu 
+	Thực hiên Submit để đăng ký thông tin	
+	*/
+
+	$(function() {
+		$.validator.setDefaults({
+			submitHandler: function() {
+				$("#frm-forgot-password").submit();
+			}
+		});
+		$('#frm-forgot-password').validate({
+			rules: {
+				email: {
+					required: true,
+					email: true,
+					remote: "/candidate/checkemail",
+
+				},
+			},
+			messages: {
+				email: {
+					required: "Nhập email đã đăng ký",
+					email: "Định dạng Email chưa đúng",
+					remote: "Email không tòn tại, hãy nhập email khác",
+				},
+
+			},
+			errorElement: 'span',
+			errorPlacement: function(error, element) {
+				error.addClass('invalid-feedback');
+				element.closest('.form-group').append(error);
+			},
+			highlight: function(element, errorClass, validClass) {
+				$(element).addClass('is-invalid');
+			},
+			unhighlight: function(element, errorClass, validClass) {
+				$(element).removeClass('is-invalid');
+			}
+		});
+	});
+
+
+
 	/**
 		* Bấm nút "Lưu thông tin" trên màn hình sửa thông tin ứng viên"
 		*
-		* @param 
-		* 		
+		*  		
 		* 		
 		* @return Thông tin ứng viên được lưu lại
 		*/

@@ -15,13 +15,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.lifesupport.ConstantsClass;
+import com.lifesupport.models.MailInfo;
 import com.lifesupport.models.Enterprise;
 import com.lifesupport.models.JobApply;
 import com.lifesupport.models.JobCategory;
@@ -42,6 +45,9 @@ import com.lifesupport.repository.UserRoleRepository;
 import com.lifesupport.repository.WorkingModelRepository;
 import com.lifesupport.service.FilesStorageService;
 import com.lifesupport.service.UserService;
+import com.lifesupport.service.MailService;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/candidate")
@@ -78,6 +84,10 @@ public class CandidateController {
 
 	@Autowired
 	FilesStorageService storageService;
+	
+	@Autowired
+	MailService mailService;
+
 	
 	// Lấy giá trị CONST_USER_IMAGE_UPLOAD_PATH
 	String upload_path = ConstantsClass.CONST_USER_IMAGE_UPLOAD_PATH;
@@ -207,7 +217,10 @@ public class CandidateController {
 		
 	}
 
-	// Check email when register
+	/*
+	 * Kiểm tra Email khi đăng ký User
+	 * Nếu Email đã tồn tại => trả về True => Thông báo Email đã tồn tại
+	 */	
 	@ResponseBody
 	@GetMapping("/checkemail")
 	public Boolean CheckUserEmail(Model model, @RequestParam("email") String email) {
@@ -265,9 +278,6 @@ public class CandidateController {
 		repoUser.save(logUser);		
 		return "redirect:/candidate/";
 	}
-	
-	
-
 
 	@GetMapping("/")
 	public String dashboad(Model model, Principal principal) {
@@ -629,6 +639,93 @@ public class CandidateController {
 		return "views/candidate/view-apply-job";
 	}
 
+
+
+	@GetMapping("/forgotPassword")
+	public String forgotPassword(Model model) {
+		/*
+		 * User user = new User(); user.setEnabled(true); model.addAttribute("user",
+		 * user);
+		 * 
+		 * List<Role> roles = repoRole.findAll(); model.addAttribute("roles", roles);
+		 */
+		return "views/candidate/fogot-password";
+	}
+	
+
+	// Check email when register and Send Email to Reset Password
+	
+	//@ResponseBody  	@PostMapping("/register")
+
+	@PostMapping("/forgotPassword")
+	public String SendMailToresetPassword(Model model, 		
+			@RequestParam("email") String emailValue,
+			HttpServletRequest request) {
+		
+					// Get baseUrl
+			String baseUrl = ServletUriComponentsBuilder.fromRequestUri(request)
+					.replacePath(null)
+					.build()
+					.toUriString();
+		
+			System.out.println("baseUrl : " + baseUrl);
+			System.out.println("emailValue : " + emailValue);
+
+		
+		User user_check = repoUser.findTop1ByEmail(emailValue);
+//		if (user_check != null) {
+			
+			//Send mail to friend
+			String from = "tkhn2020@gmail.com";
+
+			String comment = "<p>Hello,</p><p>You requested to Reset the Password?</p>";
+			String url_change_pass =  baseUrl + "/candidate/resetpassword/" + emailValue;
+			comment = comment +" <a href=" + "'" + url_change_pass +  "'" + ">Click Here to Reset Password</a>";
+			comment = comment + " <br> If not you, please ignore this Email!";
+		    String subject = "Reset Password";
+		    String file = null;
+		  
+			MailInfo info = new MailInfo(from, emailValue, null,null,subject, comment, file);
+			try {
+				mailService.send(info);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+//		} else {
+//			return "redirect:/candidate/forgotPassword";
+//
+//		}
+			return "redirect:/candidate/forgotPassword";
+
+	}
+	
+
+	// Display form to Reset Password
+
+	@GetMapping("/resetpassword/{email}")
+	public String FormResetPass(Model model, @PathVariable String email) {
+		System.out.println(email);
+		model.addAttribute("email", email);
+		return "views/candidate/reset-password";
+	}
+	
+	@PostMapping("/resetUserpassword")
+	public String changePassword(Model model,
+			@RequestParam("email") String emailValue,
+			@RequestParam("passWord") String password
+			) {
+		System.out.println("emailValue : " + emailValue);
+		System.out.println("emailValue : " + emailValue);
+	
+		User user = repoUser.findTop1ByEmail(emailValue);
+		user.setPassWord(bCryptPasswordEncoder.encode(password));
+		repoUser.save(user);
+		
+		return "redirect:/logon";
+	}
+
+	
+	
 	public void getAllList(Model model) {
 		List<Enterprise> enterprises = enterpriseRepo.getAllEnterprise();
 		model.addAttribute("enterprises", enterprises);

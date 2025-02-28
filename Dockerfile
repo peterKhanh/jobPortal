@@ -10,12 +10,12 @@ COPY .mvn .mvn
 
 # Set execution permission for the Maven wrapper
 RUN chmod +x ./mvnw
-RUN ./mvnw clean package -DskipTests
+RUN ./mvnw clean package -DskipTests   fdfdf
 
 # Stage 2: Create the final Docker image using OpenJDK 17
 FROM openjdk:17-jdk
 VOLUME /tmp
-
+####
 # Copy the JAR from the build stage
 COPY --from=build /app/target/JobFinder.jar JobFinder.jar
 ENTRYPOINT ["java","-jar","/JobFinder.jar"]

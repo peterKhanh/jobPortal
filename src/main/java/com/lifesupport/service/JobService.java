@@ -12,7 +12,6 @@ import com.lifesupport.models.Job;
 public interface JobService {
 		
 		public List<Job> searchJob(String keyword);
-		//Paging
 		Page<Job> getAll(Integer pageNo);
 		Page<Job> searchJob(String keyword, Integer pageNo);
 		Page<Job> getAllByLocation(Integer pageNo, Integer locationId);
@@ -23,8 +22,7 @@ public interface JobService {
 		Page<Job> getApprovedJobByCategory(Integer pageNo, Integer cateId);
 		
 		Page<Job> getApprovedJobByLocation(Integer pageNo, Integer locationId);
-	
-		
+			
 		Page<Job> getAllJobForHomePage(Integer pageNo);
 
 		

@@ -70,7 +70,7 @@ public class FeBlogController {
 		model.addAttribute("currentPage", pageNo);
 		
 		model.addAttribute("blogs", blogs);
-		return "layout/blog/list";
+		return "views/blog/list";
 		
 	}
 
@@ -103,7 +103,7 @@ public class FeBlogController {
 		model.addAttribute("currentPage", pageNo);
 		
 		model.addAttribute("blogs", blogs);
-		return "layout/blog/list";
+		return "views/blog/list";
 	}
 
 	@GetMapping("/view/{id}")
@@ -150,7 +150,7 @@ public class FeBlogController {
 		model.addAttribute("list_comment", list_comment);
 
 
-		return "layout/blog/view_blog";
+		return "views/blog/view_blog";
 	}
 
 	@ResponseBody

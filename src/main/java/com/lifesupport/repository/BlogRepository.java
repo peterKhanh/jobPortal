@@ -22,8 +22,7 @@ public interface BlogRepository extends JpaRepository<Blog, Integer> {
 	
 	Page<Blog> findByCategory(Category category, Pageable pageable);
 
-	List<Blog> findTop1ByCategory(Category category);
-	
-	
+	List<Blog> findTop4ByCategory(Category category);
+
 
 }

@@ -49,6 +49,10 @@ public class HomeController {
 	private CategoryService categoryService;
 	@Autowired
 	private JobCategoryRepository jobCateRepo;
+
+	@Autowired
+	private BlogRepository blogRepository;
+
 	@Autowired
 	private LocationRepository locationRepo;
 	@Autowired
@@ -100,14 +104,15 @@ public class HomeController {
 		model.addAttribute("v_active_slide_id", v_active_slide_id);
 
 		model.addAttribute("listSlide", listSlide);
-
-		Category cate = cateRepository.findById(7).get();
-		List<Blog> blogAboutUs = blogRepository.findTop1ByCategory(cate);
-		System.out.println("blogAboutUs:" + blogAboutUs.size());
-		
-		model.addAttribute("blogAboutUs", blogAboutUs);
-
 	*/	
+		Category cate = cateRepository.findById(2).get();
+	
+		List<Blog> blogOnHomePage = blogRepository.findTop4ByCategory(cate);
+		System.out.println("blogOnHomePage:" + blogOnHomePage.size());
+		
+		model.addAttribute("blogOnHomePage", blogOnHomePage);
+
+		
 		List<Tastimonial> listTastimonial = tastimonialRepository.findByStatusTrue();
 		model.addAttribute("listTastimonial", listTastimonial);
 

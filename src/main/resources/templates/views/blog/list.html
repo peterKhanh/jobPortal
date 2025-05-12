@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head th:replace="~{views/fragments/head :: head}"></head>
+
+<body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
+	<!-- ============= Menu Bar// ============== -->
+	<header th:replace="~{views/fragments/menu_bar :: menu_bar}">	</header>
+
+	<!---->
+	<nav class="container" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="/">Home</a></li>
+			<li class="breadcrumb-item active" aria-current="page"  th:if="${current_cate}" ><a th:text="${current_cate.categoryName}" /></li>
+		</ol>
+	</nav>
+	<!---->
+	<section class="section bloggrid">
+		<div class="container">
+			<div class="row event_box">
+				<div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 design"
+					th:each="blog: ${blogs}">
+					<div class="events_item">
+						<div class="thumb">
+							<a href="#"><img th:src="@{'/upload/blog/'+ ${blog.imageFileName}}" alt="" height="250" width="300"></a>
+							<!--						
+							<span class="category">Webdesign</span>
+              				<span class="price"><h6><em>$</em>160</h6></span>
+              				-->
+						</div>
+						<div class="title">
+							<!-- <span class="author">Stella Blair</span>-->
+							<a th:href="@{/blog/view/{id}(id=${blog.id})}">
+								<p th:text="${blog.title}" />
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Pagination -->
+	<nav class="pagination-nav" th:if="${totalPage > 1} ">
+		<ul class="pagination">
+			<li th:if="${currentPage > 1}"><a class="page-link" th:href="@{'?pageNo='+${currentPage-1}}">«</a></li>
+
+			<li th:each="i:${#numbers.sequence(1,totalPage)}" th:classappend="${currentPage == i ? 'active':''}"><a
+					class="page-link"
+					th:href="@{${keyword != null && keyword != ''?'?keyword='+keyword+'&':'?'}+'pageNo='+${i}}"
+					th:text="${i}"></a></li>
+
+			<li th:if="${currentPage < totalPage}"><a class="page-link" th:href="@{'?pageNo='+${currentPage+1}}">»</a>
+			</li>
+		</ul>
+	</nav>
+
+
+	 <!-- Footer Include -->
+	 <div th:replace="~{views/fragments/footer :: footer}"></div>
+	<!-- Script Include -->
+	<div th:replace="~{views/fragments/script :: script}"></div>
+</body>
+
+</html>

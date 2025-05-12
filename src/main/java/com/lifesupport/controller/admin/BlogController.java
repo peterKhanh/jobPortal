@@ -141,7 +141,6 @@ public class BlogController {
 		model.addAttribute(curent_blog);
 		Date createAt = new Date();
 
-		// if (!gala.getImageFileName().isBlank()) {
 		if (!image.getOriginalFilename().isEmpty()) {
 			// Xoa File
 

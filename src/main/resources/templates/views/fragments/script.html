@@ -1,4 +1,4 @@
-<div th:fragment="script_">
+<div th:fragment="script">
 
 
 	<!-- All JS Custom Plugins Link Here here -->
@@ -95,6 +95,27 @@
 		// End Script call Category on frontpage
 
 
+		// Begin Script Blog on Homepage
+		$(document).ready(function () {
+			var owl = $("#owl-blog_on_homepage");
+			owl.owlCarousel({
+				items: 4, //10 items above 1000px browser width
+				itemsDesktop: [1000, 5], //5 items between 1000px and 901px
+				itemsDesktopSmall: [900, 3], // betweem 900px and 601px
+				itemsTablet: [600, 2], //2 items between 600 and 0
+				loop:true,
+			    margin:10,
+			    autoplay:true,
+			    autoplayTimeout:1000,
+			    autoplayHoverPause:true,
+				itemsMobile: false // itemsMobile disabled - inherit from itemsTablet option
+			});
+		
+		});
+		// End Script Blog on Homepage
+
+
+
 		// Begin Script Testimonial on frontpage
 		$(document).ready(function () {
 			var owl = $("#owl-testimonial");
@@ -110,7 +131,6 @@
 			    autoplayHoverPause:true,
 				itemsMobile: false // itemsMobile disabled - inherit from itemsTablet option
 			});
-
 		
 		});
 		// End Script call Category on frontpage

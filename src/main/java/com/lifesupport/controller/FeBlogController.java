@@ -19,10 +19,12 @@ import com.lifesupport.models.Blog;
 import com.lifesupport.models.BlogTag;
 import com.lifesupport.models.Category;
 import com.lifesupport.models.Comment;
+import com.lifesupport.models.Job;
 import com.lifesupport.models.User;
 import com.lifesupport.repository.BlogRepository;
 import com.lifesupport.repository.BlogTagRepository;
 import com.lifesupport.repository.CommentRepository;
+import com.lifesupport.repository.JobRepository;
 import com.lifesupport.repository.UserRepository;
 import com.lifesupport.service.BlogService;
 import com.lifesupport.service.CategoryService;
@@ -46,7 +48,9 @@ public class FeBlogController {
 	private CommentRepository commentRepo;
 	@Autowired
 	private BlogTagRepository blogTagRepo;
-	
+	@Autowired
+	private JobRepository jobRepo;
+
 	@Autowired
 	private CommentService commentService;
 
@@ -149,6 +153,8 @@ public class FeBlogController {
 		model.addAttribute("total_comment", list_comment.size());
 		model.addAttribute("list_comment", list_comment);
 
+		List<Job> recentjobs = jobRepo.findTop10ByOrderByCreateAtDesc();
+		model.addAttribute("recentjobs", recentjobs);
 
 		return "views/blog/view_blog";
 	}

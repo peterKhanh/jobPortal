@@ -1,43 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
 <head th:replace="~{views/fragments/head :: head}"></head>
 
 <body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
 	<!-- ============= Menu Bar// ============== -->
-	<header th:replace="~{views/fragments/menu_bar :: menu_bar}">	</header>
-	<!--
-	<section class="page-title bg-1">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="block text-center">
-						<span class="text-white">News details</span>
-						<h1 class="text-capitalize mb-5 text-lg">Blog Single</h1>
-
-						<ul class="list-inline breadcumb-nav">
-							<li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>
-							<li class="list-inline-item"><span class="text-white">/</span></li>
-							<li class="list-inline-item"><a href="#" class="text-white-50">News details</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
--->
-	<!---->
-	<nav class="container" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="/">Home</a></li>
-			<li class="breadcrumb-item active" aria-current="page"><a
-					th:href="@{/blog/blogbycate/{id}(id=${current_cate.id})}" th:text="${current_cate.categoryName}" />
-			</li>
-		</ol>
-	</nav>
-	<!---->
-
-
+	<header th:replace="~{views/fragments/menu_bar :: menu_bar}"> </header>
+	
 	<section class="section blog-wrap">
 		<div class="container">
 			<div class="row">
@@ -52,7 +21,7 @@
 												class="icofont-book-mark mr-2"></i> Equipment</span>
 										<span class="text-muted text-capitalize mr-3"><i
 												class="icofont-comment mr-2"></i>
-												<span th:text="${total_comment}" />	Comments</span>
+											<span th:text="${total_comment}" /> Comments</span>
 										<span class="text-black text-capitalize mr-3"><i
 												class="icofont-calendar mr-2"></i></span>
 										<span class="text-black text-capitalize mr-3"
@@ -72,7 +41,8 @@
 									<!--Blog tag and Shared-->
 
 									<div class="mt-5 clearfix">
-										<ul class="float-left list-inline tag-option" th:if="${listBlogTag.size > 0}" th:each="blogTag: ${listBlogTag}">
+										<ul class="float-left list-inline tag-option" th:if="${listBlogTag.size > 0}"
+											th:each="blogTag: ${listBlogTag}">
 											<li class="list-inline-item"><a href="#" th:text="${blogTag.name}"></a></li>
 										</ul>
 
@@ -136,15 +106,16 @@
 										<div class="form-group">
 											<input class="form-control" type="text" name="name" id="name"
 												placeholder="Name:">
-											<small id="usercheck" class="form-text text-muted invalid-feedback">Enter valid name
+											<small id="usercheck" class="form-text text-muted invalid-feedback">Enter
+												valid name
 											</small>
 										</div>
 									</div>
-									
+
 									<div class="col-md-6">
 										<div class="form-group">
-											<input class="form-control" type="text" name="email_comment" id="email_comment"
-												placeholder="Email:">
+											<input class="form-control" type="text" name="email_comment"
+												id="email_comment" placeholder="Email:">
 											<small id="emailvalid" class="form-text text-muted invalid-feedback">
 												Your email must be a valid email
 											</small>
@@ -159,10 +130,10 @@
 
 								<input class="btn btn-main-2 btn-round-full btn-send-comment" type="button"
 									name="submit-contact" id="submit_contact" value="Submit Message">
-									
-									<small id="message_send" class="form-text text-muted invalid-feedback">
-												You send mesage successful
-											</small>
+
+								<small id="message_send" class="form-text text-muted invalid-feedback">
+									You send mesage successful
+								</small>
 							</form>
 						</div>
 						<!--End Write Comment of Blog-->
@@ -170,96 +141,25 @@
 				</div>
 				<div class="col-lg-4">
 					<div class="sidebar-wrap pl-lg-4 mt-5 mt-lg-0">
-<!--
-							<div class="sidebar-widget search  mb-3 ">
-							<h5>Search Here</h5>
-							<form action="#" class="search-form">
-								<input type="text" class="form-control" placeholder="search">
-								<i class="ti-search"></i>
-							</form>
-						</div>
--->
+
+
+						<aside class="single_sidebar_widget post_category_widget">
+							<h4 class="widget_title">Danh mục bài viết</h4>
+							<ul class="card single-job-items mt-1" th:each="cate :${listCate}">
+								<li>
+									<a th:href="@{/blog/blogbycate/{id}(id=${cate.id})}" class="d-flex">
+										<p th:text="${cate.categoryName}"></p>
+									</a>
+								</li>
+
+							</ul>
+						</aside>
+
 						<div class="sidebar-widget latest-post mb-3">
-							<h5>Popular Posts</h5>
-
-							<div class="py-2">
-								<span class="text-sm text-muted">03 Mar 2018</span>
-								<h6 class="my-2"><a href="#">Chuyến du lịch bất trắc của đoàn khách trên xe lao xuống vực</a></h6>
-							</div>
-
-							<div class="py-2">
-								<span class="text-sm text-muted">03 Mar 2018</span>
-								<h6 class="my-2"><a href="#">Vivamus molestie gravida turpis.</a></h6>
-							</div>
-
-							<div class="py-2">
-								<span class="text-sm text-muted">03 Mar 2018</span>
-								<h6 class="my-2"><a href="#">Fusce lobortis lorem at ipsum semper sagittis</a></h6>
+							<div class="job_right_sidebar" border>
+								<aside th:replace="~{views/fragments/jobs/frag-recent-job :: frag-recent-job}"></aside>
 							</div>
 						</div>
-
-
-						<div class="sidebar-widget category mb-3">
-							<h5 class="mb-4">Categories</h5>
-
-							<ul class="list-unstyled">
-								<span th:each="cate :${listCate}">
-									<li class="align-items-center">
-										<i class="icofont-arrow-right icofont-rotate-0"></i>
-
-										<a th:href="@{/blog/blogbycate/{id}(id=${cate.id})}"
-											th:text="${cate.categoryName}">
-											<span />
-										</a>
-									</li>
-								</span>
-							
-						
-							</ul>
-						</div>
-
-
-						<div class="sidebar-widget tags mb-3">
-							<h5  class="mb-4">Tags</h5>
-
-							<a href="#">Doctors</a>
-							<a href="#">agency</a>
-							<a href="#">company</a>
-							<a href="#">medicine</a>
-							<a href="#">surgery</a>
-							<a href="#">Marketing</a>
-							<a href="#">Social Media</a>
-							<a href="#">Branding</a>
-							<a href="#">Laboratory</a>
-						</div>
-
-
-						<div class="sidebar-widget schedule-widget mb-3">
-							
-							<h5 class="mb-4">Time Schedule</h5>
-								<div class="card-header bg-success">About Me</div>
-
-							<ul class="list-unstyled">
-								<li class="d-flex justify-content-between align-items-center">
-									<a href="#">Monday - Friday</a>
-									<span>9:00 - 17:00</span>
-								</li>
-								<li class="d-flex justify-content-between align-items-center">
-									<a href="#">Saturday</a>
-									<span>9:00 - 16:00</span>
-								</li>
-								<li class="d-flex justify-content-between align-items-center">
-									<a href="#">Sunday</a>
-									<span>Closed</span>
-								</li>
-							</ul>
-
-							<div class="sidebar-contatct-info mt-4">
-								<p class="mb-0">Need Urgent Help?</p>
-								<h3>+23-4565-65768</h3>
-							</div>
-						</div>
-
 					</div>
 				</div>
 			</div>
@@ -267,8 +167,8 @@
 	</section>
 
 
-	 <!-- Footer Include -->
-	 <div th:replace="~{views/fragments/footer :: footer}"></div>
+	<!-- Footer Include -->
+	<div th:replace="~{views/fragments/footer :: footer}"></div>
 	<!-- Script Include -->
 	<div th:replace="~{views/fragments/script :: script}"></div>
 </body>

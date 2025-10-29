@@ -26,7 +26,6 @@ public interface EnterpriseRepository extends JpaRepository<Enterprise, Long> {
 	
 	Page<Enterprise> findByIndustrialType(IndustrialType industrialType, Pageable pageable);
 
-
 //	Get All active Enterprise to Display in Homepage
 	@Query("SELECT c FROM Enterprise c")
 	List<Enterprise> getAllEnterpriseForHomePage();

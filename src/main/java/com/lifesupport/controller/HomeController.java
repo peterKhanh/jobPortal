@@ -77,6 +77,7 @@ public class HomeController {
 //		Get Enterprise 
 		List<Enterprise> listEnterprise = enterpriseRepo.getAllEnterpriseForHomePage()	;
 		model.addAttribute("listEnterprise", listEnterprise);
+		System.out.println("Total listEnterprise: "+ listEnterprise.size());
 
 		List<JobCategory> lists = jobCateRepo.findAllPopularCate()	;
 		model.addAttribute("lists", lists);

@@ -1,16 +1,14 @@
 <div class="container mt-5" id="featureContainer" th:fragment="frag-company-list">
 
 	<div class="container" >
-
 		<!-- Section Tittle -->
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="section-tittle">
+				<div class="widget_title float-start">
 					<h2>Nhà tuyển dụng tiêu biểu</h2>
 				</div>
 			</div>
 		</div>
-
 		<div id="owl-company" class="owl-carousel">
 			<ul th:each="enterprise: ${listEnterprise}">
 				<div class="item">
@@ -21,6 +19,5 @@
 					<h6 th:text=${enterprise.name}>Can touch this</h6>-->
 				</div>
 			</ul>
-
 		</div>
 	</div>

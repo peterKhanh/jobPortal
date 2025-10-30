@@ -108,7 +108,9 @@ public class HomeController {
 	*/	
 		Category cate = cateRepository.findById(2).get();
 	
-		List<Blog> blogOnHomePage = blogRepository.findTop4ByCategory(cate);
+		List<Blog> blogOnHomePage1 = blogRepository.findTop4ByCategory(cate);
+		
+		List<Blog> blogOnHomePage = blogOnHomePage1.subList(0, 4);
 		System.out.println("blogOnHomePage:" + blogOnHomePage.size());
 		
 		model.addAttribute("blogOnHomePage", blogOnHomePage);

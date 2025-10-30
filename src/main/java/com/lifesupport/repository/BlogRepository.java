@@ -22,6 +22,7 @@ public interface BlogRepository extends JpaRepository<Blog, Integer> {
 	
 	Page<Blog> findByCategory(Category category, Pageable pageable);
 
+	@Query("SELECT c FROM Blog c WHERE c.category = %?1% Order By c.createAt DESC ")
 	List<Blog> findTop4ByCategory(Category category);
 
 

@@ -30,6 +30,7 @@ public class Blog {
 	private Integer id;
 	private String title;
 
+	@Column(columnDefinition = "MEDIUMTEXT")
 	private String shortcontent;
 
 	@Column(columnDefinition = "LONGTEXT")

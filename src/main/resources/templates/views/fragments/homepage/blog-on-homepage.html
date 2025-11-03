@@ -47,21 +47,14 @@
 			</div>
 		</ul>
 	</div>
-	-->
-
+	
 		<div class="row">
 			<div class="col-xl-3 col-lg-6 col-md-6 p-20" th:each="blog: ${blogOnHomePage}">
 				<div class="home-blog-single mb-30 ">
 					<div class="blog-img-cap">
 						<div class="blog-img">
 							<img th:src="@{'/upload/blog/'+ ${blog.imageFileName}}" alt="" height="250" width="95%">
-							<!-- Blog date -->
-							<!--
-							<div class="blog-date text-center">
-							<span>24</span>
-							<p>Now</p>
-						</div>
-						-->
+						
 						</div>
 						<div class="card-body">
 							<a th:href="@{/blog/view/{id}(id=${blog.id})}">
@@ -71,10 +64,30 @@
 					</div>
 				</div>
 			</div>
-
-
-
 		</div>
+	-->
+
+
+		<div class="row event_box">
+				<div class="col-lg-3 col-md-4 align-self-center mb-30 event_outer design" th:each="blog: ${blogOnHomePage}">
+					<div class="events_item">
+						<div class="thumb">
+							<a th:href="@{/blog/view/{id}(id=${blog.id})}"><img th:src="@{'/upload/blog/'+ ${blog.imageFileName}}" alt="" height="220"
+									width="250"></a>												
+							<!--<span class="category">Category</span>-->
+              				<!--<span class="price"><h6><em>$</em>160</h6></span>-->
+              				
+						</div>
+						<div class="title">
+							<!-- <span class="author">Stella Blair</span>-->
+							<a th:href="@{/blog/view/{id}(id=${blog.id})}">
+								<p th:text="${blog.title}" />
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
 	</div>
 
 

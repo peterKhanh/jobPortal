@@ -1,4 +1,4 @@
-:root{
+b:root{
     --border-color: rgb(255, 0, 0);
     --background-hover: rgb(4, 177, 187);
 }
@@ -72,7 +72,7 @@
 .job_right_sidebar .single_sidebar_widget {
     background: rgb(255, 255, 255);
     padding: 5px;
-    margin-bottom: 30px
+    margin-bottom: 10px
 }
 .job_right_sidebar:hover{
     
@@ -156,7 +156,7 @@
 .job_right_sidebar .post_category_widget .cat-list li {
     border-bottom: 1px solid #f0e9ff;
     transition: all 0.3s ease 0s;
-    padding-bottom: 12px
+    padding-bottom: 5px
 }
 
 .job_right_sidebar .post_category_widget .cat-list li:last-child {

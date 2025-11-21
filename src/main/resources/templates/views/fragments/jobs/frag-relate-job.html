@@ -2,21 +2,24 @@
 
 	<div class="widget_title">Công việc liên quan</div>
 
-	<div class="bg-body">
-		<div class="card single-job-items mt-1" th:each="job: ${relatejobs}">
+	<ul class="card single-job-items mt-1" th:each="job: ${relatejobs}">
+		<li>
 			<a th:href="@{/job/viewjob/{id}(id=${job.id})}">
+
 				<p th:text="${job.title}" />
 			</a>
-			<div class="row">
+			<div class="row p-0">
 				<div class="col"> <i class="icofont-location-pin"></i>
 					<span th:text="${job.location.getName()}">Location </span>
 				</div>
 				<div class="col">
-					<li><i class="icofont-money"></i>
-						<span th:text="${job.getSalary}"> </span>
+					<i class="icofont-money"></i>
+					<span th:text="${job.getSalary}"> </span>
 				</div>
 			</div>
-			<style>
-			</style>
-		</div>
+		</li>
+
+	</ul>
+
+		
 </aside>

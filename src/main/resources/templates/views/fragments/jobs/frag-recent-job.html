@@ -1,8 +1,11 @@
 <aside class="single_sidebar_widget" th:fragment="frag-recent-job">
-	
+
 	<div class="widget_title">Việc làm mới đăng</div>
-		<div class="card single-job-items mt-1" th:each="job: ${recentjobs}">
+
+	<ul class="card single-job-items mt-1" th:each="job: ${recentjobs}">
+		<li>
 			<a th:href="@{/job/viewjob/{id}(id=${job.id})}">
+
 				<p th:text="${job.title}" />
 			</a>
 			<div class="row p-0">
@@ -14,5 +17,10 @@
 					<span th:text="${job.getSalary}"> </span>
 				</div>
 			</div>
-		</div>
+		</li>
+
+	</ul>
+
+
+
 </aside>

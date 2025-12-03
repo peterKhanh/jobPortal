@@ -94,7 +94,6 @@ public class HomeController {
 		System.out.println("totalPage : " + jobs.getTotalPages());
 		model.addAttribute("jobs", jobs);
 
-
 /*	
 		List<Category> listCate = categoryService.getAllActiveCate();	
 		model.addAttribute("listCate", listCate);

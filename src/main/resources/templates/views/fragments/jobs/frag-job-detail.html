@@ -4,29 +4,45 @@
 
 		<!-- Left Content -->
 		<div class="col-xl-8 col-lg-8 pt-2">
-			<div class="mb-4" th:data-background="@{https://cdn.prod.website-files.com/5ec2c59b0d22dc62acd1a695/60314417a65a9d0599a99fc9_header-banner1.png}">
-				<div class="job-tittle p-2 border" th:data-id="${job.id}" th:user-login="${LoggedIn}">
-					<a th:href="@{/job/viewEnterprise/{id}(id=${job.enterprise.getId()})}">
-						<h6 th:text="${job.enterprise.getName()}"></h6>
-					</a>
-					<h4 th:text="${job.title}" />
+			<div class="mb-4"
+				th:data-background="@{https://cdn.prod.website-files.com/5ec2c59b0d22dc62acd1a695/60314417a65a9d0599a99fc9_header-banner1.png}">
+				<div class="row border">
+					<div class="col-2 align-middle">
+						<img th:if="${job.enterprise.getDefaultLogo}==true" th:src="@{'/upload/default.png'}" alt="..."
+							width="90">
+						<img th:unless="${job.enterprise.getDefaultLogo}==true"
+							th:src="@{'/upload/enterprise/'+ ${job.enterprise.getLogoName}}"
+							style="width: 70px; height: 70px;" alt="">
 
-					<div class="row">
-						<div class="col">
-							<i class="icofont-listing-box"></i> Lĩnh vực:
-							<span th:text="${job.jobCategory.getName()}">Category </span>
-						</div>
-						<div class="col">
+					</div>
+					<div class="col-10">
+						<div class="job-tittle p-2 " th:data-id="${job.id}" th:user-login="${LoggedIn}">
+							<a th:href="@{/job/viewEnterprise/{id}(id=${job.enterprise.getId()})}">
+								<h6 th:text="${job.enterprise.getName()}"></h6>
+							</a>
+							<h5 th:text="${job.title}" />
 
-							<i class="icofont-calendar"></i> Ngày hết hạn:
-							<span th:text="${#dates.format(job.expiredDate, 'dd/MM/yyyy')}">Expire date </span>
-						</div>
-						<div class="col">
-							<i class="icofont-money"></i> Lương: 
-							<span th:text="${job.salary}">Salary 30$</span>
+							<div class="row">
+								<div class="col">
+									<i class="icofont-listing-box"></i> Lĩnh vực:
+									<span th:text="${job.jobCategory.getName()}">Category </span>
+								</div>
+								<div class="col">
+
+									<i class="icofont-calendar"></i> Ngày hết hạn:
+									<span th:text="${#dates.format(job.expiredDate, 'dd/MM/yyyy')}">Expire date </span>
+								</div>
+								<div class="col">
+									<i class="icofont-money"></i> Lương:
+									<span th:text="${job.salary}">Salary 30$</span>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
+
+
+
 			</div>
 
 			<div class="small-section-tittle">
@@ -40,17 +56,17 @@
 
 			<div class="small-section-tittle pt-2">
 				<div class="row">
-	
 
-					<div class="col-4 items-link items-link2 small" th:data-id="${job.id}"
-						th:user-login="${LoggedIn}">
-<!--						<a id="btn_addto_favour" class="default-border text-black circle arrow">Lưu việc làm</a>
--->					</div>
-					<div class="col-4 items-link items-link2 small" th:data-id="${job.id}"
-						th:user-login="${LoggedIn}">
-<!--						<a id="btn_addto_favour" class="default-border text-black circle arrow">Lưu việc làm</a>
--->					</div>
-				
+
+					<div class="col-4 items-link items-link2 small" th:data-id="${job.id}" th:user-login="${LoggedIn}">
+						<!--						<a id="btn_addto_favour" class="default-border text-black circle arrow">Lưu việc làm</a>
+-->
+					</div>
+					<div class="col-4 items-link items-link2 small" th:data-id="${job.id}" th:user-login="${LoggedIn}">
+						<!--						<a id="btn_addto_favour" class="default-border text-black circle arrow">Lưu việc làm</a>
+-->
+					</div>
+
 
 					<div class="col-4 items-link items-link2 f-right small" th:data-id="${job.id}"
 						th:user-login="${LoggedIn}">
@@ -59,7 +75,7 @@
 					</div>
 				</div>
 			</div>
-		
+
 			<div class="small-section-tittle">
 				<h4>Thông tin chung về công việc</h4>
 			</div>

@@ -7,10 +7,10 @@
 			<div class="mb-4"
 				th:data-background="@{https://cdn.prod.website-files.com/5ec2c59b0d22dc62acd1a695/60314417a65a9d0599a99fc9_header-banner1.png}">
 				<div class="row border">
-					<div class="col-2 align-middle">
-						<img th:if="${job.enterprise.getDefaultLogo}==true" th:src="@{'/upload/default.png'}" alt="..."
+					<div class="col-2" vertical-align="center">
+						<img  class= "img-thumbnail" th:if="${job.enterprise.getDefaultLogo}==true" th:src="@{'/upload/default.png'}" alt="..."
 							width="90">
-						<img th:unless="${job.enterprise.getDefaultLogo}==true"
+						<img class= "img-thumbnail" th:unless="${job.enterprise.getDefaultLogo}==true"
 							th:src="@{'/upload/enterprise/'+ ${job.enterprise.getLogoName}}"
 							style="width: 70px; height: 70px;" alt="">
 
@@ -29,7 +29,7 @@
 								</div>
 								<div class="col">
 
-									<i class="icofont-calendar"></i> Ngày hết hạn:
+									<i class="icofont-calendar"></i> Hết hạn:
 									<span th:text="${#dates.format(job.expiredDate, 'dd/MM/yyyy')}">Expire date </span>
 								</div>
 								<div class="col">

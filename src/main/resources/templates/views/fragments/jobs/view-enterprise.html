@@ -1,17 +1,16 @@
-<div class=" container job-listing-area pb-10 " th:fragment="view-enterprise">
+<div class=" container job-listing-area pb-10 pt-4" th:fragment="view-enterprise">
 
 	<div class="container pt-4 pb-4 border">
 		<div class="col-lg-12">
 			<div class="row">
-				<div class="col-3 text-center">
-					<img th:if="${enterprise.getDefaultLogo}==true" th:src="@{'/upload/default.png'}" alt="..."
+				<div class="col-2 text-center">
+					<img class= "img-thumbnail"  th:if="${enterprise.getDefaultLogo}==true" th:src="@{'/upload/default.png'}" alt="..."
 						width="90">
-					<img th:unless="${enterprise.getDefaultLogo}==true"
-						th:src="@{'/upload/enterprise/'+ ${enterprise.getLogoName}}" style="width: 90px; height: 90px;"
-						alt="">
+					<img class= "img-thumbnail"  th:unless="${enterprise.getDefaultLogo}==true"
+						th:src="@{'/upload/enterprise/'+ ${enterprise.getLogoName}}" style="width: 90px; height: 90px;" alt="">
 
 				</div>
-				<div class="col-7">
+				<div class="col-8">
 					<div class="row">
 						<div class="col-sm-12">
 							<h4 th:text="${enterprise.getName()}"></h4>
@@ -36,9 +35,12 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-3">
-
-				</div>
+				
+					<div class="col-2 items-link items-link2 f-right small">
+								<a href="#" class="default-border text-black circle arrow" title="">Favourite</a>
+									<a href="#" class="default-border text-black circle arrow" title="">Save Draft</a>
+					</div>
+				
 			</div>
 
 		</div>
@@ -46,23 +48,40 @@
 
 	<div class="row pt-15">
 		<!-- Left content -->
-		<div class="col-xl-3 col-lg-3 col-md-4">
+		<div class="col-xl-4 col-lg-4 col-md-4">
+		
+		
 
-			<div class="job_right_sidebar">
+	<div class="container pt-4 pb-4 border">
+			<div class="section-tittle">
+						<h4>Thông tin chung</h4>
+						
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<span th:utext="${enterprise.getIntroduction()}"></span>
+						</div>
+						
+					</div>
+				
+
+		
+										
+				<!--
 				<aside th:replace="~{views/fragments/jobs/frag-recent-job :: frag-recent-job}"></aside>
+				-->
 			</div>
-
+			<!--
 			<div class="job_right_sidebar">
 				<aside th:replace="~{views/fragments/jobs/frag-cate-list :: frag-cate-list}"></aside>
 
 			</div>
-
-
+		-->
 		</div>
 
 
 		<!-- Right content -->
-		<div class="col-xl-9 col-lg-9 col-md-8">
+		<div class="col-xl-8 col-lg-8 col-md-8">
 			<!-- Featured_job_start -->
 			<section class="featured-job-area">
 				<!-- Count of Job list Start -->
@@ -111,14 +130,14 @@
 								</li>
 							</ul>
 						</div>
-						<!--
+						
 						<p class="job_apply">
 							<i class="icofont-location-arrow"></i>
 						</p>
 						<p class="job_save">
 							<i class="icofont-heart-alt small"></i>
 						</p>
--->
+
 					</div>
 
 				</div>

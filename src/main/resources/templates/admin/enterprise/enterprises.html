@@ -98,7 +98,7 @@
 													th:src="@{'/upload/default.png'}" alt="..." width="80">
 												<img th:unless="${enterprise.getDefaultLogo}==true"
 													th:src="@{'/upload/enterprise/'+ ${enterprise.logoName}}" alt="..."
-													width="50">
+													width="90">
 											
 												
 											
@@ -132,28 +132,28 @@
 											</td>
 											<td style="width:25%;">
 												<div class="row">
-													<div class="col-sm-2">
+													<div class="col-sm-2 pd-2">
 														<span class="badge bg-danger">
 															<a th:href="@{/admin/enterprise/edit(id=${enterprise.id})}"
 																class="btn  btn-sm"><i class="fas fa-pencil-alt">
 																</i> </a></span>
 													</div>
-													<div class="col-sm-2">
-														<span class="badge bg-success">
+													<div class="col-sm-2 pd-2">
+														<span class="badge bg-success  pd-2">
 															<a th:href="@{/admin/enterprise/delete(id=${enterprise.id})}"
 																class="btn btn-sm"
 																onclick="return confirm('Are you sure?')"><i
 																	class="fas fa-trash">
 																</i> </a></span>
 													</div>
-													<div class="col-sm-4">
+													<div class="col-sm-4 pd-2">
 														<span class="badge bg-primary">
 															<a th:href="@{/admin/job/add-job(enterprise_id=${enterprise.id})}"
 																class="btn  btn-sm">
 																<i class="icofont-search-job"></i>Thêm Job</a></span>
 													</div>
 												</div>
-												<!--							
+												<!--						
 												<div class="row">
 													<div class="col-sm-6" style="display: block;">
 														<span class="badge bg-success">
@@ -169,7 +169,7 @@
 													</div>
 												</div>
 
--->
+												-->
 											</td>
 										</tr>
 									</tbody>

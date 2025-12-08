@@ -135,7 +135,9 @@ public class HomeController {
 	        String admin = "ADMIN";
 	        if (myRole.equals(admin)) {
 	            return "redirect:/admin";
-	        }
+	        }else if (myRole.equals("USER")) {
+	            return "redirect:/employer/";
+	        } 
 	        return "redirect:/";
 	    }
  

@@ -1,17 +1,9 @@
 <div class="col-lg-3" th:fragment="profile-panel">
 	<div class="container p-2">
-		<!--
-			<div class="widget_title">
-			<p class="mb-2">Thông tin ứng viên</p>
-
-		</div>
-		-->
 		<div class="text-center">
-			<!--
 				<img th:if="${loggedUser.avata == null}"
-				src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+				th:src="@{'/upload/user/1736183504164_2.png'}" alt="avatar"
 				class="rounded-circle img-fluid" style="width: 150px;">
-				-->
 
 			<img th:if="${loggedUser.avata}" id="user_image" th:src="@{'/upload/user/'+ ${loggedUser.avata}}"
 				class="rounded-circle img-fluid" width="150px" height="160">
@@ -22,35 +14,84 @@
 			</div>
 		</div>
 		<ul class="list-group ">
-			<li class="list-group-item candidate_panel-items d-flex">
-				<a th:href="@{/candidate/}">
-					<p class="mb-0">BẢNG ĐIỀU KHIỂN</p>
+
+			<li class="list-group-item candidate_panel-items d-flex group">
+				<a th:href="@{/employer/}">
+					<p class="mb-0">TIN TUYỂN DỤNG</p>
+				</a>
+			</li>
+			<li class="list-group-item candidate_panel-items">
+				<a th:href="@{/employer/view-apply-job/}">
+					<p class="mb-0">Quản lý tin đăng</p>
+				</a>
+			</li>
+			<li class="list-group-item candidate_panel-items">
+				<a th:href="@{/employer/view-apply-job/}">
+					<p class="mb-0">Tạo tin tuyển dụng</p>
+				</a>
+			</li>
+
+			<li class="list-group-item candidate_panel-items d-flex group">
+				<a th:href="@{/employer/}">
+					<p class="mb-0">THÔNG TIN ỨNG VIÊN </p>
+				</a>
+			</li>
+			<li class="list-group-item candidate_panel-items">
+				<a th:href="@{/employer/view-apply-job/}">
+					<p class="mb-0">Hồ sơ ứng tuyển</p>
+				</a>
+			</li>
+			<li class="list-group-item candidate_panel-items">
+				<a th:href="@{/employer/view-apply-job/}">
+					<p class="mb-0">Hồ sơ đã lưu</p>
+				</a>
+			</li>
+			<li class="list-group-item candidate_panel-items">
+				<a th:href="@{/employer/view-apply-job/}">
+					<p class="mb-0">Tìm kiếm hồ sơ</p>
+				</a>
+			</li>
+
+
+			
+			<li class="list-group-item candidate_panel-items d-flex group">
+				<a th:href="@{/employer/}">
+					<p class="mb-0">DỊCH VỤ </p>
 				</a>
 			</li>
 			<li class="list-group-item candidate_panel-items d-flex">
-				<a th:href="@{/candidate/account/}">
+				<a th:href="@{/employer/account/}">
+					<p class="mb-0">Bảng giá dịch vụ</p>
+				</a>
+			</li>
+			<li class="list-group-item candidate_panel-items">
+				<a th:href="@{/employer/profile/}">
+					<p class="mb-0">Thông tin thanh toán</p>
+				</a>
+
+			</li>
+
+
+			
+			<li class="list-group-item candidate_panel-items d-flex group">
+				<a th:href="@{/employer/}">
+					<p class="mb-0">TÀI KHOẢN</p>
+				</a>
+			</li>
+			<li class="list-group-item candidate_panel-items d-flex">
+				<a th:href="@{/employer/account/}">
 					<p class="mb-0">Thông tin tài khoản</p>
 				</a>
 			</li>
 			<li class="list-group-item candidate_panel-items">
-				<a th:href="@{/candidate/profile/}">
-					<p class="mb-0">Hồ sơ / CV</p>
+				<a th:href="@{/employer/profile/}">
+					<p class="mb-0">Thông tin công ty</p>
 				</a>
 
 			</li>
-			<li class="list-group-item candidate_panel-items">
-				<a th:href="@{/candidate/view-apply-job/}">
-					<p class="mb-0">Job đã ứng tuyển</p>
-				</a>
-			</li>
-			<li class="list-group-item candidate_panel-items">
-				<a th:href="@{/candidate/view-apply-job/}">
-					<p class="mb-0">Job đã lưu</p>
-				</a>
-			</li>
 
 			<li class="list-group-item candidate_panel-items">
-				<a th:href="@{/candidate/change-pasword/}">
+				<a th:href="@{/employer/change-pasword/}">
 					<p class="mb-0">Đổi mật khẩu</p>
 				</a>
 			</li>
@@ -62,7 +103,12 @@
 
 		</ul>
 	</div>
-
+<style>
+.group {
+	background-color: green;
+    border-left: 5px solid #4caf50;
+}
+</style>
 
 </div>
 

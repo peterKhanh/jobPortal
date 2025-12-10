@@ -152,7 +152,7 @@ public class EmployerController {
 		} else {
 			return "redirect:/logon/";
 		}
-		return "views/candidate/edit-account";
+		return "views/employer/edit-account";
 	}
 
 	@PostMapping("/edituser")
@@ -196,7 +196,7 @@ public class EmployerController {
 
 		repoUser.save(updateUser);
 
-		return "redirect:/candidate/account/";
+		return "redirect:/employer/account/";
 	}
 // Kierm tra ten dang nhap
 	// Neu da ton tai => False
@@ -264,7 +264,7 @@ public class EmployerController {
 			return "redirect:/logon/";
 
 		}
-		return "views/candidate/change-password";
+		return "views/employer/change-password";
 	}
 
 	@PostMapping("/change-pasword")
@@ -276,7 +276,7 @@ public class EmployerController {
 		String pass_input_encode = bCryptPasswordEncoder.encode(newPassWord);
 		logUser.setPassWord(pass_input_encode);
 		repoUser.save(logUser);		
-		return "redirect:/candidate/";
+		return "redirect:/employer/";
 	}
 
 	@GetMapping("/")
@@ -315,7 +315,7 @@ public class EmployerController {
 			model.addAttribute("profiles", profiles);
 			model.addAttribute("pro", profiles.size());
 			System.out.println("Profile: " + profiles);
-			return "views/candidate/index";
+			return "views/employer/index";
 		}else {
 			return "redirect:/logon/";
 		}
@@ -337,7 +337,7 @@ public class EmployerController {
 			model.addAttribute("profiles", profiles);
 			model.addAttribute("pro", profiles.size());
 			System.out.println("Profile: " + profiles);
-			return "views/candidate/profiles";
+			return "views/employer/profiles";
 		}else {
 			return "redirect:/logon/";
 		}

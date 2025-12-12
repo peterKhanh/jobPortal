@@ -40,7 +40,7 @@
 							<ul>
 								<div class="header-btn d-none f-right d-lg-block d-flex small" th:switch="${LoggedIn}">
 									<div class="main-menu" th:case="'NOT_LOGIN'">
-										<a th:href="@{/candidate/register}" class="btn head-btn2">Đăng ký</a>
+										<a th:href="@{/employer/register}" class="btn head-btn2">Đăng ký</a>
 										<a th:href="@{/logout-url}" class="btn head-btn2">Đăng nhập</a>
 									</div>
 
@@ -52,8 +52,8 @@
 													<span th:text="${loggedUser.fullName}" />
 													</a>
 													<ul class="submenu">
-														<li><a th:href="@{/candidate/}">Nhà tuyển dụng</a></li>
-														<li><a th:href="@{/candidate/view-apply-job/}">Sửa thông tin</a></li>
+														<li><a th:href="@{/employer/}">Nhà tuyển dụng</a></li>
+														<li><a th:href="@{/employer/view-apply-job/}">Sửa thông tin</a></li>
 														<li><a th:href="@{/logout-url}">Đăng xuất</a></li>
 													</ul>
 												</li>

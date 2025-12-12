@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.security.Principal;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -141,7 +142,7 @@ public class EmployerController {
 
 		
 //	Hiển thị màn hình sửa thông tin User
-	@GetMapping("/edituser/")
+	@GetMapping("/edit-user/")
 	public String viewEditUser(Model model, Principal principal) {
 		userService.checkLogin(model, principal);
 		if (principal != null) {
@@ -198,6 +199,39 @@ public class EmployerController {
 
 		return "redirect:/employer/account/";
 	}
+	
+	
+	
+	
+//	Hiển thị màn hình sửa thông tin User
+	@GetMapping("/edit-employer/")
+	public String viewEditEmployer(Model model, Principal principal) {
+		userService.checkLogin(model, principal);
+		if (principal != null) {
+			String userName = principal.getName();
+			User loggedUser = repoUser.findByUserName(userName);
+			
+			Enterprise enterprise = enterpriseRepo.findByUser(loggedUser);
+						
+			 if (enterprise == null) {
+				 System.out.println("enterprise:sdsdfsd "); 
+			 }else {
+				 System.out.println("enterprise:OK "); 		 
+				model.addAttribute("user", loggedUser);
+				model.addAttribute("employer", enterprise);
+			 }
+		} else {
+			return "redirect:/logon/";
+		}
+		return "views/employer/edit-employer";
+	}
+	
+	
+	
+	
+	
+	
+	
 // Kierm tra ten dang nhap
 	// Neu da ton tai => False
 	
@@ -322,9 +356,9 @@ public class EmployerController {
 	}
 
 
-	
+		
 	@GetMapping("/profile/")
-	public String viewAccountDashboard(Model model, Principal principal) {
+	public String viewEmployer(Model model, Principal principal) {
 		userService.checkLogin(model, principal);
 		getAllList(model);
 
@@ -333,11 +367,11 @@ public class EmployerController {
 			User loggedUser = repoUser.findByUserName(userName);
 			model.addAttribute("loggedUser", loggedUser);
 
-			List<Profile> profiles = repoProfile.findAllByUser(loggedUser);
-			model.addAttribute("profiles", profiles);
-			model.addAttribute("pro", profiles.size());
-			System.out.println("Profile: " + profiles);
-			return "views/employer/profiles";
+//			List<Profile> profiles = repoProfile.findAllByUser(loggedUser);
+//			model.addAttribute("profiles", profiles);
+//			model.addAttribute("pro", profiles.size());
+//			System.out.println("Profile: " + profiles);
+			return "views/employer/viewEmployer";
 		}else {
 			return "redirect:/logon/";
 		}

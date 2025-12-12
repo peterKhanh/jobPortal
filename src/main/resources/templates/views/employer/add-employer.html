@@ -1,0 +1,100 @@
+<!--<section class="featured-job-area feature-padding" th:fragment="view-enterprise">
+-->
+
+<head th:replace="~{views/fragments/head :: head}"></head>
+
+<body>
+	<!-- Header Start -->
+	<header th:replace="~{views/fragments/menu_bar_2 :: menu_bar_2}"> </header>
+	<main>
+		<!--Begin-->
+		<div class="container py-2">
+			<div class="row pt-15">
+				<div th:replace="~{views/candidate/profile-panel :: profile-panel}"></div>
+				<div class="col-xl-9 col-lg-9 col-md-8">
+					<div class="container p-2">
+						<div class="widget_title">
+							<p class="mb-2">Chỉnh sửa hồ sơ</p>
+						</div>
+						<!--Thông tin chung-->
+						<div class="row border" style="display: block;">
+							<div class="col-sm-12">
+								<form id="frm_profile" th:action="@{/candidate/add-profile}" th:object="${profile}"
+									method="POST">
+
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label> Tiêu đề </label>
+												<input type="text" id="title" name="title" class="form-control"
+													placeholder="Tiêu đề" />
+											</div>
+										</div>
+									</div>
+									<!--
+											<div class="row">
+												<div class="col-6">
+													<div class="form-group">
+														<label> Năm sinh </label>
+														<input type="text" id="birthdate" name="birthdate"
+															class="form-control" placeholder="" />
+													</div>
+												</div>
+												<div class="col-6">
+													<div class="form-group">
+														<label for="sel1" class="form-label"> Điện thoại </label>
+														<input type="text" id="phone" name="phone"
+															class="form-control" />
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-12">
+													<div class="form-group">
+														<label> Địa chỉ </label>
+														<input type="text" id="address" name="address"
+															class="form-control" />
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-12">
+													<div class="form-group">
+														<label> Url </label>
+														<input type="text" id="url" name="url"
+															class="form-control" />
+													</div>
+												</div>
+											</div>
+-->
+							</div>
+
+
+
+
+							<div class="card-footer">
+
+								<button type="submit" id="btn_save_profile" class="btn btn-primary">Lưu
+									hồ sơ</button>
+
+							</div>
+
+							</form>
+						</div>
+						<!--End Thông tin chung-->
+
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<!--End-->
+	</main>
+
+	<!-- Footer Include -->
+	<div th:replace="~{views/fragments/footer :: footer}"></div>
+	<!-- Script Include -->
+	<div th:replace="~{views/fragments/script :: script}"></div>
+</body>
+
+</html>

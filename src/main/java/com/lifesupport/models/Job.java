@@ -68,15 +68,6 @@ public class Job {
 	@ManyToOne
 	@JoinColumn(name = "enterpriseId")
 	Enterprise enterprise;
-
-	public Enterprise getEnterprise() {
-		return enterprise;
-	}
-
-	public void setEnterprise(Enterprise enterprise) {
-		this.enterprise = enterprise;
-	}
-
 	@ManyToOne
 	@JoinColumn(name = "categoryId")
 	Category category;
@@ -155,6 +146,14 @@ public class Job {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public Enterprise getEnterprise() {
+		return enterprise;
+	}
+
+	public void setEnterprise(Enterprise enterprise) {
+		this.enterprise = enterprise;
 	}
 
 	public Integer getNumberOfRecruitement() {

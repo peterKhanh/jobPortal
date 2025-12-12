@@ -59,7 +59,47 @@ public class Enterprise {
 	@DateTimeFormat(pattern = "MM/dd/yyyy hh:mm")
 	private Date approvedAt;
 	private Boolean defaultLogo = true;
-		
+
+
+	@ManyToOne
+	@JoinColumn(name = "userId")
+	User user;
+
+
+	
+	public Enterprise(Long id, String name, IndustrialType industrialType, String address, String website,
+			String introduction, String numberOfEmployee, String bannerName, String logoName, Integer likeCount,
+			Integer followCount, Date createAt, Date updateAt, Date approvedAt, Boolean defaultLogo, User user) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.industrialType = industrialType;
+		this.address = address;
+		this.website = website;
+		this.introduction = introduction;
+		this.numberOfEmployee = numberOfEmployee;
+		this.bannerName = bannerName;
+		this.logoName = logoName;
+		this.likeCount = likeCount;
+		this.followCount = followCount;
+		this.createAt = createAt;
+		this.updateAt = updateAt;
+		this.approvedAt = approvedAt;
+		this.defaultLogo = defaultLogo;
+		this.user = user;
+	}
+
+
+	public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
 	public Enterprise() {
 		super();
 	}

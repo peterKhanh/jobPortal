@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.lifesupport.models.Enterprise;
 import com.lifesupport.models.IndustrialType;
+import com.lifesupport.models.User;
 @Repository
 public interface EnterpriseRepository extends JpaRepository<Enterprise, Long> {
 	// Search Enterprise by Name
@@ -29,6 +30,10 @@ public interface EnterpriseRepository extends JpaRepository<Enterprise, Long> {
 //	Get All active Enterprise to Display in Homepage
 	@Query("SELECT c FROM Enterprise c")
 	List<Enterprise> getAllEnterpriseForHomePage();
+
+	Enterprise findByUser(User user);
+
+	//Enterprise findByUser(User user);
 	
 
 }

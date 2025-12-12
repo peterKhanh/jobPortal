@@ -37,10 +37,9 @@
 				</div>
 				
 					<div class="col-2 items-link items-link2 f-right small">
-								<a href="#" class="default-border text-black circle arrow" title="">Favourite</a>
-									<a href="#" class="default-border text-black circle arrow" title="">Save Draft</a>
+								<a href="#" class="default-border text-black circle arrow" title=""><span th:text="${enterprise.getFollowCount()}"></span></a>
+								<a href="#" class="default-border text-black circle arrow" title="">Follow</a>
 					</div>
-				
 			</div>
 
 		</div>
@@ -94,7 +93,7 @@
 				<!-- Begin-job list-content -->
 				<div class="card single-job-items p-2 mt-2" th:each="job: ${jobs}">
 					<div class="job-items pd-4" th:data-id="${job.id}" th:user-login="${LoggedIn}">
-						<!--
+						
 						<div class="company-img">
 							<a href="#">
 								<img th:if="${job.enterprise.getDefaultLogo}==true" th:src="@{'/upload/default.png'}"
@@ -105,8 +104,8 @@
 
 							</a>
 						</div>
--->
-						<div class="job-tittle job-tittle2">
+
+						<div class="job-tittle">
 							<a th:href="@{/job/viewjob/{id}(id=${job.id})}">
 								<h6 th:text="${job.getTitle()}" />
 							</a>
@@ -130,14 +129,19 @@
 								</li>
 							</ul>
 						</div>
-						
+						<!--
 						<p class="job_apply">
-							<i class="icofont-location-arrow"></i>
+							<a href="#" class="genric-btn info-border circle arrow small">Apply<span class="lnr lnr-arrow-right"></span></a>
 						</p>
+						
 						<p class="job_save">
-							<i class="icofont-heart-alt small"></i>
+							<a href="#" class="genric-btn primary circle small">Save<span class="lnr lnr-arrow-right"></span></a>
 						</p>
-
+						-->
+						<div class="items-link items-link2 f-right small">
+								<a href="#" class="job_apply default-border text-black circle arrow" title="">Apply</a>
+								<a href="#" class="job_save default-border text-black circle arrow" title="">Save</a>
+						</div>
 					</div>
 
 				</div>

@@ -41,19 +41,21 @@ b:root{
     position: relative;
 }
 
-.job_save , .job_apply{
- font-size: 25px;
+ .job_apply{
+ font-size: 10px;
  position: absolute;
- right: 10px;
- top: 15px;
+ right: 5px;
+ top: 5px;
  cursor: pointer;
-
 } 
-.job_apply{
- top: 55px;
-	
-}
 
+.job_save {
+ font-size: 10px;
+ position: absolute;
+ right: 5px;
+ bottom: 2px;
+ cursor: pointer;
+} 
 
 
 

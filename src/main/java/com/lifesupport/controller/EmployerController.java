@@ -27,6 +27,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.lifesupport.ConstantsClass;
 import com.lifesupport.models.MailInfo;
 import com.lifesupport.models.Enterprise;
+import com.lifesupport.models.IndustrialType;
 import com.lifesupport.models.JobApply;
 import com.lifesupport.models.JobCategory;
 import com.lifesupport.models.Location;
@@ -45,6 +46,7 @@ import com.lifesupport.repository.UserRepository;
 import com.lifesupport.repository.UserRoleRepository;
 import com.lifesupport.repository.WorkingModelRepository;
 import com.lifesupport.service.FilesStorageService;
+import com.lifesupport.service.IndustrialTypeService;
 import com.lifesupport.service.UserService;
 import com.lifesupport.service.MailService;
 
@@ -79,6 +81,8 @@ public class EmployerController {
 
 	@Autowired
 	private RoleRepository repoRole;
+	@Autowired
+	private IndustrialTypeService industrialTypeService;
 
 	@Autowired
 	private UserRoleRepository repoUserRole;
@@ -203,34 +207,6 @@ public class EmployerController {
 	
 	
 	
-//	Hiển thị màn hình sửa thông tin User
-	@GetMapping("/edit-employer/")
-	public String viewEditEmployer(Model model, Principal principal) {
-		userService.checkLogin(model, principal);
-		if (principal != null) {
-			String userName = principal.getName();
-			User loggedUser = repoUser.findByUserName(userName);
-			
-			Enterprise enterprise = enterpriseRepo.findByUser(loggedUser);
-						
-			 if (enterprise == null) {
-				 System.out.println("enterprise:sdsdfsd "); 
-			 }else {
-				 System.out.println("enterprise:OK "); 		 
-				model.addAttribute("user", loggedUser);
-				model.addAttribute("employer", enterprise);
-			 }
-		} else {
-			return "redirect:/logon/";
-		}
-		return "views/employer/edit-employer";
-	}
-	
-	
-	
-	
-	
-	
 	
 // Kierm tra ten dang nhap
 	// Neu da ton tai => False
@@ -322,11 +298,9 @@ public class EmployerController {
 			String userName = principal.getName();
 			User loggedUser = repoUser.findByUserName(userName);
 			model.addAttribute("loggedUser", loggedUser);
-
-			List<Profile> profiles = repoProfile.findAllByUser(loggedUser);
-			model.addAttribute("profiles", profiles);
-			model.addAttribute("pro", profiles.size());
-			System.out.println("Profile: " + profiles);
+		 	loggedUser.getUserRoles();
+			
+			
 			return "views/employer/dashboard";
 		}else {
 			return "redirect:/logon/";
@@ -357,7 +331,7 @@ public class EmployerController {
 
 
 		
-	@GetMapping("/profile/")
+	@GetMapping("/viewemployer/")
 	public String viewEmployer(Model model, Principal principal) {
 		userService.checkLogin(model, principal);
 		getAllList(model);
@@ -367,16 +341,88 @@ public class EmployerController {
 			User loggedUser = repoUser.findByUserName(userName);
 			model.addAttribute("loggedUser", loggedUser);
 
-//			List<Profile> profiles = repoProfile.findAllByUser(loggedUser);
-//			model.addAttribute("profiles", profiles);
-//			model.addAttribute("pro", profiles.size());
-//			System.out.println("Profile: " + profiles);
-			return "views/employer/viewEmployer";
+			Enterprise enterprise = enterpriseRepo.findByUser(loggedUser);
+			List<IndustrialType> industrialType = industrialTypeService.getAllActiveIndustrialType();
+			model.addAttribute("industrialType", industrialType);
+			
+			 if (enterprise == null) {
+				model.addAttribute("employer", "NOTSET");
+
+			 }else {
+			
+				model.addAttribute("user", loggedUser);
+				model.addAttribute("employer", enterprise);
+			 }
+
+			 return "views/employer/viewEmployer";
 		}else {
 			return "redirect:/logon/";
 		}
 	}
 
+	
+	
+	
+//	Hiển thị màn hình them cong ty
+	@GetMapping("/add-employer/")
+	public String viewAddEmployer(Model model, Principal principal) {
+		userService.checkLogin(model, principal);
+		if (principal != null) {
+			String userName = principal.getName();
+			User loggedUser = repoUser.findByUserName(userName);
+			
+			Enterprise enterprise = enterpriseRepo.findByUser(loggedUser);
+
+			List<IndustrialType> industrialType = industrialTypeService.getAllActiveIndustrialType();
+			model.addAttribute("industrialType", industrialType);
+	
+			 if (enterprise == null) {
+				 System.out.println("enterprise:sdsdfsd "); 
+				model.addAttribute("employer", "NOTSET");
+			 }else {
+				 System.out.println("enterprise:OK "); 		 
+				model.addAttribute("user", loggedUser);
+				model.addAttribute("employer", enterprise);
+			 }
+		} else {
+			return "redirect:/logon/";
+		}
+		return "views/employer/add-employer";
+	}
+	
+	
+	
+//	Hiển thị màn hình sửa thông tin cong ty
+	@GetMapping("/edit-employer/")
+	public String viewEditEmployer(Model model, Principal principal) {
+		userService.checkLogin(model, principal);
+		if (principal != null) {
+			String userName = principal.getName();
+			User loggedUser = repoUser.findByUserName(userName);
+			
+			Enterprise enterprise = enterpriseRepo.findByUser(loggedUser);
+			List<IndustrialType> industrialType = industrialTypeService.getAllActiveIndustrialType();
+			model.addAttribute("industrialType", industrialType);
+						
+			 if (enterprise == null) {
+				 System.out.println("enterprise:sdsdfsd "); 
+			 }else {
+				 System.out.println("enterprise:OK "); 		 
+				model.addAttribute("user", loggedUser);
+				model.addAttribute("employer", enterprise);
+			 }
+		} else {
+			return "redirect:/logon/";
+		}
+		return "views/employer/edit-employer";
+	}
+	
+	
+	
+	
+	
+/*	
+	
 	
 	@GetMapping("/add-profile/")
 	public String viewAddProfiler(Model model, Principal principal) {
@@ -394,37 +440,82 @@ public class EmployerController {
 		}
 		return "views/candidate/add-profile";
 	}
-	
+*/	
 
-	@PostMapping("/add-profile")
-	public String addProfile(Principal principal, @ModelAttribute Profile form) {
+	@PostMapping("/add-employer")
+	public String addEmployer(Principal principal, @ModelAttribute Enterprise form) {
 		Date createAt = new Date();
 		Boolean status = true;
 		if (principal != null) {
 			String userName = principal.getName();
 			User loggedUser = repoUser.findByUserName(userName);
 
-			Profile profile = new Profile();
-			profile.setCreateAt(createAt);
-			profile.setTitle(form.getTitle());
-			profile.setAddress(form.getAddress());
-			profile.setBirthdate(form.getBirthdate());
-			profile.setPhone(form.getPhone());
-			profile.setUrl(form.getUrl());
-				
-			profile.setUser(loggedUser);
-			profile.setStatus(status);
-			repoProfile.save(profile);
+//			System.out.println(form.getName());
+//			System.out.println(form.getAddress());
+//			System.out.println(form.getIntroduction());
+//			System.out.println(form.getNumberOfEmployee());
+//			System.out.println(form.getWebsite());
+//			System.out.println(form.getIndustrialType());
+			Enterprise enterprise = new Enterprise();
+			
+			enterprise.setName(form.getName());
+			enterprise.setAddress(form.getAddress());
+			enterprise.setCreateAt(createAt);
+			enterprise.setIndustrialType(form.getIndustrialType());
+			enterprise.setIntroduction(form.getIntroduction());
+			enterprise.setNumberOfEmployee(form.getNumberOfEmployee());
+			enterprise.setWebsite(form.getWebsite());
+			enterprise.setUser(loggedUser);
+			enterpriseRepo.save(enterprise);
+			
 
 		} else {
 			return "redirect:/logon/";
 
 		}
 
-		return "redirect:/candidate/profile/";
+		return "redirect:/employer/viewemployer/";
 	}
 
 	
+
+	@PostMapping("/edit-employer")
+	public String editEmployer(Principal principal,@RequestParam Long id, @ModelAttribute Enterprise form) {
+		Date updateAt = new Date();
+		Boolean status = true;
+		if (principal != null) {
+			String userName = principal.getName();
+			User loggedUser = repoUser.findByUserName(userName);
+			
+			Enterprise enterprise = enterpriseRepo.findById(id).get();
+			
+			System.out.println(form.getName());
+			System.out.println(form.getAddress());
+			System.out.println(form.getIntroduction());
+			System.out.println(form.getNumberOfEmployee());
+			System.out.println(form.getWebsite());
+			System.out.println(form.getIndustrialType());
+	//		Enterprise enterprise = new Enterprise();
+			
+			enterprise.setName(form.getName());
+			enterprise.setAddress(form.getAddress());
+			enterprise.setUpdateAt(updateAt);
+			enterprise.setIndustrialType(form.getIndustrialType());
+			enterprise.setIntroduction(form.getIntroduction());
+			enterprise.setNumberOfEmployee(form.getNumberOfEmployee());
+			enterprise.setWebsite(form.getWebsite());
+			enterpriseRepo.save(enterprise);
+			
+
+
+		} else {
+			return "redirect:/logon/";
+
+		}
+
+		return "redirect:/employer/viewemployer/";
+	}
+
 	
 	
 	
@@ -469,7 +560,6 @@ public class EmployerController {
 				System.out.print(ex.getMessage());
 			}
 	
-		// delete PROFILE
 	  		repoProfile.delete(profile);
 		} catch (Exception ex) {
 			System.out.print(ex.getMessage());
@@ -765,6 +855,7 @@ public class EmployerController {
 		model.addAttribute("enterprises", enterprises);
 //		List<Category> categories = categoryRepo.findAllByActive();
 //		model.addAttribute("categories", categories);
+
 		List<JobCategory> jobcategories = jobCategoryRepo.findAllByActive();
 		model.addAttribute("jobcategories", jobcategories);
 //		List<Rank> ranks = rankRepo.findAllByActive();

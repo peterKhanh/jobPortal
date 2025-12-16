@@ -137,6 +137,8 @@ public class HomeController {
 	            return "redirect:/admin";
 	        }else if (myRole.equals("USER")) {
 	            return "redirect:/employer/";
+	        }else if (myRole.equals("CANDIDATE")) {
+	            return "redirect:/candidate/";
 	        } 
 	        return "redirect:/";
 	    }

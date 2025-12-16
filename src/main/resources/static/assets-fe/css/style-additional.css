@@ -384,22 +384,24 @@ Left menu của ứng viên
 	display: inline-block;
 	margin-right: 2px;
 	font-size: 15px;
-	color: #061b30;
+	color: #4caf50;
 	line-height: 1.8
 }
-
 
 .candidate_panel-items:hover {
 	border: 1px solid yellowgreen;
 	border-color:  yellowgreen;
-}
+		background-color: yellowgreen;
 
+}
 
 .candidate_panel-items:active {
 	border: 1px solid yellowgreen;
 	border-color:  yellowgreen;
-	background-color: yellowgreen;
 }
+
+
+
 
 
 
@@ -423,3 +425,5 @@ Left menu của ứng viên
 	z-index: -1;
 	background-repeat: no-repeat
 }
+
+

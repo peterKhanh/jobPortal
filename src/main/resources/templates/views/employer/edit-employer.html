@@ -16,13 +16,13 @@
 									<p class="mb-2">Cập nhật thông tin doanh nghiệp</p>
 								</div>
 							</div>
-							<div class="card-body border">
+							<div class="card-body ">
 								<!--fdfdfdf-->
-								<form id="frm_edituser" enctype="multipart/form-data" th:action="@{/employer/editemployer}"
+								<form id="frm_edituser" enctype="multipart/form-data" th:action="@{/employer/edit-employer}"
 									th:object="${employer}" method="POST">
 									<input type="hidden" name="id" th:value="${employer.id}" />
 									<div class="row">
-										<div class="col-sm-9 border">
+										<div class="col-sm-12 border">
 											<ul class="list-group list-group-flush rounded-3">
 												<li
 													class="list-group-item d-flex justify-content-between align-items-center p-2">
@@ -35,26 +35,7 @@
 															placeholder="Họ và tên" />
 													</div>
 												</li>
-												<!--
-												<li
-													class="list-group-item d-flex justify-content-between align-items-center p-2">
-													<div class="col-sm-4">
-														<p class="mb-0">Tên đăng nhập</p>
-													</div>
-													<div class="col-sm-6">
-														<p class="text-muted mb-0" th:text="${loggedUser.userName}">Trần
-															Văn
-															Long</p>
-													</div>
-												
-													<div class="col-sm-2">
-														<a th:href="@{/candidate/change-pasword/}"><span
-																class="badge rounded-pill bg-primary">Đổi mật
-																khẩu</span>
-														</a>
-													</div>
-													</li>
-												-->	
+											
 												
 												<li
 													class="list-group-item d-flex justify-content-between align-items-center p-2">
@@ -67,49 +48,56 @@
 															placeholder="Nhập địa chỉ" />
 													</div>
 												</li>
-												<!--
+												
 												<li
 													class="list-group-item d-flex justify-content-between align-items-center p-2">
 													<div class="col-sm-4">
-														<p class="mb-0">Email</p>
+														<p class="mb-0">Lĩnh vực</p>
 													</div>
 													<div class="col-sm-8 form-group">
-														<input type="text" id="email" name="email" class="form-control"
-															th:field="*{email}" placeholder="" />
-
+														<select class="form-control" id="IndustrialType" name="IndustrialType" th:field="${employer.industrialType}">
+												<option th:each="cate : ${industrialType}" th:value="${cate.id}"
+													th:text="${cate.name}">
+												</option>
+											</select>
 													</div>
 												</li>
-												-->
-												<!--
+												
 												<li
 													class="list-group-item d-flex justify-content-between align-items-center p-2">
 													<div class="col-sm-4">
-														<p class="mb-0">Giới tính</p>
+														<p class="mb-0">Quy mô</p>
 													</div>
-													<div class="col-sm-8">
-														<div>
-															<label> </label>
-															<div class="form-check form-check-inline">
-																<input type="radio" name="gender"
-																	class="form-check-input" th:field="*{gender}"
-																	value="1" checked="checked" />
-																<label class="form-check-label"
-																	for="inlineRadio1">Nam</label>
-															</div>
-
-															<div class="form-check form-check-inline">
-																<input type="radio" name="gender"
-																	class="form-check-input" th:field="*{gender}"
-																	value="0" />
-																<label class="form-check-label"
-																	for="inlineRadio2">Nữ</label>
-															</div>
-														</div>
-
+													<div class="col-sm-8 form-group">
+														<input type="text" id="numberOfEmployee" name="numberOfEmployee" class="form-control"
+															th:field="*{numberOfEmployee}" placeholder="" />
 
 													</div>
 												</li>
-												-->
+												
+												<li
+													class="list-group-item d-flex justify-content-between align-items-center p-2">
+													<div class="col-sm-4">
+														<p class="mb-0">website</p>
+													</div>
+													<div class="col-sm-8 form-group">
+														<input type="text" id="website" name="website" class="form-control"
+															th:field="*{website}" placeholder="" />
+
+													</div>
+												</li>
+													
+												<li
+													class="list-group-item d-flex justify-content-between align-items-center p-2">
+													<div class="col-sm-4">
+														<p class="mb-0">Giới thiệu</p>
+													</div>
+													<div class="col-sm-8 form-group">
+														<textarea type="text" id="introduction" name="introduction" class="form-control"
+															th:field="*{introduction}" rows="5" placeholder="" />
+
+													</div>
+												</li>
 											</ul>
 										</div>
 									</div>

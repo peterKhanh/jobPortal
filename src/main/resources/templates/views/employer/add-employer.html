@@ -10,76 +10,116 @@
 		<!--Begin-->
 		<div class="container py-2">
 			<div class="row pt-15">
-				<div th:replace="~{views/candidate/profile-panel :: profile-panel}"></div>
+				<div th:replace="~{views/employer/profile-panel :: profile-panel}"></div>
 				<div class="col-xl-9 col-lg-9 col-md-8">
 					<div class="container p-2">
 						<div class="widget_title">
-							<p class="mb-2">Chỉnh sửa hồ sơ</p>
+							<p class="mb-2">Them cong ty</p>
 						</div>
-						<!--Thông tin chung-->
-						<div class="row border" style="display: block;">
-							<div class="col-sm-12">
-								<form id="frm_profile" th:action="@{/candidate/add-profile}" th:object="${profile}"
-									method="POST">
-
-									<div class="row">
-										<div class="col-12">
-											<div class="form-group">
-												<label> Tiêu đề </label>
-												<input type="text" id="title" name="title" class="form-control"
-													placeholder="Tiêu đề" />
-											</div>
+						
+							<div class="card card-default col-md-12">
+						<form id="frm_enterprise" th:object="${enterprise}" method="POST" th:action="@{/employer/add-employer}">
+							<!-- /.card-header -->
+							<div class="card-body">
+								<div class="row">
+									<div class="col-12">
+										<div class="form-group">
+											<label> Tên doanh nghiệp </label>
+											<input type="text" id="name" name="name" class="form-control"
+												placeholder="Enter Enterprise name" />
 										</div>
 									</div>
-									<!--
-											<div class="row">
-												<div class="col-6">
-													<div class="form-group">
-														<label> Năm sinh </label>
-														<input type="text" id="birthdate" name="birthdate"
-															class="form-control" placeholder="" />
-													</div>
-												</div>
-												<div class="col-6">
-													<div class="form-group">
-														<label for="sel1" class="form-label"> Điện thoại </label>
-														<input type="text" id="phone" name="phone"
-															class="form-control" />
-													</div>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-12">
-													<div class="form-group">
-														<label> Địa chỉ </label>
-														<input type="text" id="address" name="address"
-															class="form-control" />
-													</div>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-12">
-													<div class="form-group">
-														<label> Url </label>
-														<input type="text" id="url" name="url"
-															class="form-control" />
-													</div>
-												</div>
-											</div>
--->
-							</div>
+								</div>
+								<div class="row">
+									<div class="col-12">
+										<div class="form-group">
+											<label> Địa chỉ</label>
+											<input type="text" id="address" name="address" class="form-control" />
+										</div>
+
+									</div>
+									</div>
+
+								<div class="row">
+									
+									<div class="col-7">
+										<div class="form-group">
+											<label> Nhóm nghành nghề</label>
+											<select class="form-control" id="IndustrialType" name="IndustrialType">
+												<option th:each="cate : ${industrialType}" th:value="${cate.id}"
+													th:text="${cate.name}">
+												</option>
+											</select>
+										</div>
+									</div>
+						
+
+									</div>
+
+								<div class="row">
+								
+									<div class="col-5">
+										<div class="form-group">
+											<label> Quy mô </label>
+											<input type="text" id="numberOfEmployee" name="numberOfEmployee"
+												class="form-control"/>
+										</div>
+
+									</div>
+									<div class="col-5">
+										<div class="form-group">
+											<label> Website </label>
+											<input type="text" id="website" name="website" class="form-control" />
+										</div>
+
+									</div>
+								</div>
+
+
+								<div class="row">
+									<div class="col-12">
+										<div class="form-group">
+
+											<label> Giới thiệu doanh nghiệp </label>
+											<textarea id="introduction" name="introduction" class="form-control"
+												rows="5" cols="30"></textarea>
+											<!--
+											<script>
+												ClassicEditor
+													.create(document.querySelector('#introduction'), {
+														height: 800,
+
+														toolbar: [
+															'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
+															'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList'
+														],
+													})
+													.catch(error => {
+														console.error(error);
+													});
+											</script>
+											-->
+										</div>
+
+									</div>
+								</div>
+
+							
+								<!-- /.card-body -->
+								<hr />
+
+								<div class="card-footer">
+									<button type="submit" class="btn btn-primary">
+										Lưu thông tin
+									</button>
+								</div>
+						</form>
 
 
 
-
-							<div class="card-footer">
-
-								<button type="submit" id="btn_save_profile" class="btn btn-primary">Lưu
-									hồ sơ</button>
-
-							</div>
-
-							</form>
+					</div>
+						
+							
 						</div>
 						<!--End Thông tin chung-->
 

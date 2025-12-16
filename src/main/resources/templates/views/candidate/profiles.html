@@ -10,16 +10,18 @@
 				<div th:replace="~{views/candidate/profile-panel :: profile-panel}"></div>
 				<div class="col-xl-9 col-lg-9 col-md-8">
 					<div class="container p-2">
-						<div class="widget_title">
-							<p class="mb-2">Hồ sơ ứng tuyển</p>
-						</div>
-								<!--Danh sách CV - Hồ sơ-->
-								<div class="row" style="display: block;">
-									<div>
+									<!--Danh sách CV - Hồ sơ-->
+								<div class="row">
+									<div class="col-sm-12 d-flex justify-content-between align-items-center" th:switch="${employer}">
+										<div class="widget_title">
+											<p class="mb-2">Thông nhà tuyển dụng</p>
+										</div>
+										<span th:case="*">
 										<a th:if="${pro} < 1" th:href="@{/candidate/add-profile/}"><span
-												class="badge rounded-pill bg-primary">Tạo hồ sơ</span> </a>
-									</div>
-
+												class="genric-btn success-border circle arrow small">Tạo hồ sơ</span> </a>
+										</span>
+									</div>		
+								</div>
 									<div class="col-sm-12 ">
 										<ul class="list-group-item d-flex justify-content-between align-items-center p-2 bg-light">
 											<li  class="col-sm-5">Tiêu đề hồ sơ</li>

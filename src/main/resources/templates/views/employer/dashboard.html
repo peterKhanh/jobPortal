@@ -10,7 +10,7 @@
 			<div class="row pt-15">
 				<div th:replace="~{views/employer/profile-panel :: profile-panel}"></div>
 				<div class="col-xl-9 col-lg-9 col-md-8">
-					<div class="container p-2">
+					<div class="container p-2 mb-2 border" >
 
 						<!--Danh sách CV - Hồ sơ-->
 						<div class="row" style="display: block;">
@@ -22,7 +22,7 @@
 										<div class="card bg-warning">
 											<div class="card-body">
 												<h5 class="ctr">523</h5>
-												<p>Đbcvbvcbvcb</p>
+												<p>Job đang tuyển</p>
 											</div>
 										</div>
 									</li>
@@ -30,7 +30,7 @@
 										<div class="card bg-success">
 											<div class="card-body">
 												<h5 class="ctr">523</h5>
-												<p>Đã lưu</p>
+												<p>Hồ sơ đã nộp</p>
 											</div>
 										</div>
 									</li>
@@ -38,388 +38,35 @@
 										<div class="card bg-info">
 											<div class="card-body">
 												<h5 class="ctr">523</h5>
-												<p>Trạng thái hồ sơ</p>
+												<p>Hồ sơ đã lưu</p>
 											</div>
 										</div>
 									</li>
 								</ul>
 
 
-								<div class="dashboard-widg-bar d-block">
-									<!-- Row Start -->
-									<div class="row gx-4 gy-4 mb-4">
-										<div class="col-xl-8 col-lg-12 col-md-12 col-sm-12">
-											<div class="card d-none d-lg-block">
-												<div class="card-header">
-													<h4 class="mb-0">Extra Area Chart</h4>
-												</div>
-												<div class="card-body border">
-													<ul class="list-inline d-flex text-center m-t-40">
-														<li>
-															<h5><i class="fa fa-circle me-1 text-warning"></i>Applied
-																jobs</h5>
-														</li>
-														<li>
-															<h5><i class="fa fa-circle me-1 text-danger"></i>Viewed Jobs
-															</h5>
-														</li>
-														<li>
-															<h5><i class="fa fa-circle me-1 text-success"></i>Saved jobs
-															</h5>
-														</li>
-													</ul>
-													<div class="chart full-width" id="line-chart"
-														style="height: 300px; position: relative; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-														<svg height="300" version="1.1" width="635.328"
-															xmlns="http://www.w3.org/2000/svg"
-															xmlns:xlink="http://www.w3.org/1999/xlink"
-															style="overflow: hidden; position: relative; top: -0.6875px;">
-															<desc
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-																Created with Raphaël 2.2.0</desc>
-															<defs
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</defs><text x="32.84765625" y="261" text-anchor="end"
-																font-family="sans-serif" font-size="12px" stroke="none"
-																fill="#888888"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;"
-																font-weight="normal">
-																<tspan dy="4"
-																	style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-																	0</tspan>
-															</text>
-															<path fill="none" stroke="#e0e0e0"
-																d="M45.34765625,261H610.328" stroke-width="0.5"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</path><text x="32.84765625" y="202" text-anchor="end"
-																font-family="sans-serif" font-size="12px" stroke="none"
-																fill="#888888"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;"
-																font-weight="normal">
-																<tspan dy="4"
-																	style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-																	75</tspan>
-															</text>
-															<path fill="none" stroke="#e0e0e0"
-																d="M45.34765625,202H610.328" stroke-width="0.5"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</path><text x="32.84765625" y="143" text-anchor="end"
-																font-family="sans-serif" font-size="12px" stroke="none"
-																fill="#888888"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;"
-																font-weight="normal">
-																<tspan dy="4"
-																	style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-																	150</tspan>
-															</text>
-															<path fill="none" stroke="#e0e0e0"
-																d="M45.34765625,143H610.328" stroke-width="0.5"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</path><text x="32.84765625" y="84" text-anchor="end"
-																font-family="sans-serif" font-size="12px" stroke="none"
-																fill="#888888"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;"
-																font-weight="normal">
-																<tspan dy="4"
-																	style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-																	225</tspan>
-															</text>
-															<path fill="none" stroke="#e0e0e0"
-																d="M45.34765625,84H610.328" stroke-width="0.5"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</path><text x="32.84765625" y="25" text-anchor="end"
-																font-family="sans-serif" font-size="12px" stroke="none"
-																fill="#888888"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;"
-																font-weight="normal">
-																<tspan dy="4"
-																	style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-																	300</tspan>
-															</text>
-															<path fill="none" stroke="#e0e0e0"
-																d="M45.34765625,25H610.328" stroke-width="0.5"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</path><text x="610.328" y="273.5" text-anchor="middle"
-																font-family="sans-serif" font-size="12px" stroke="none"
-																fill="#888888"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;"
-																font-weight="normal" transform="matrix(1,0,0,1,0,7)">
-																<tspan dy="4"
-																	style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-																	2016</tspan>
-															</text><text x="516.2075867326563" y="273.5"
-																text-anchor="middle" font-family="sans-serif"
-																font-size="12px" stroke="none" fill="#888888"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;"
-																font-weight="normal" transform="matrix(1,0,0,1,0,7)">
-																<tspan dy="4"
-																	style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-																	2015</tspan>
-															</text><text x="422.0871734653126" y="273.5"
-																text-anchor="middle" font-family="sans-serif"
-																font-size="12px" stroke="none" fill="#888888"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;"
-																font-weight="normal" transform="matrix(1,0,0,1,0,7)">
-																<tspan dy="4"
-																	style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-																	2014</tspan>
-															</text><text x="327.96676019796894" y="273.5"
-																text-anchor="middle" font-family="sans-serif"
-																font-size="12px" stroke="none" fill="#888888"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;"
-																font-weight="normal" transform="matrix(1,0,0,1,0,7)">
-																<tspan dy="4"
-																	style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-																	2013</tspan>
-															</text><text x="233.58848278468736" y="273.5"
-																text-anchor="middle" font-family="sans-serif"
-																font-size="12px" stroke="none" fill="#888888"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;"
-																font-weight="normal" transform="matrix(1,0,0,1,0,7)">
-																<tspan dy="4"
-																	style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-																	2012</tspan>
-															</text><text x="139.46806951734368" y="273.5"
-																text-anchor="middle" font-family="sans-serif"
-																font-size="12px" stroke="none" fill="#888888"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;"
-																font-weight="normal" transform="matrix(1,0,0,1,0,7)">
-																<tspan dy="4"
-																	style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-																	2011</tspan>
-															</text><text x="45.34765625" y="273.5" text-anchor="middle"
-																font-family="sans-serif" font-size="12px" stroke="none"
-																fill="#888888"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;"
-																font-weight="normal" transform="matrix(1,0,0,1,0,7)">
-																<tspan dy="4"
-																	style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-																	2010</tspan>
-															</text>
-															<path fill="#2adc0c" stroke="none"
-																d="M45.34765625,221.66666666666669C68.87775956683592,205.93333333333334,115.93796620050776,161.68333333333334,139.46806951734368,158.73333333333335C162.9981728341796,155.78333333333336,210.05837946785144,192.17473780209758,233.58848278468736,198.06666666666666C257.1830521380077,203.97473780209756,304.37219084464857,215.78011855905152,327.96676019796894,205.93333333333334C351.4968635148049,196.11345189238486,398.55707014847667,122.84166666666667,422.0871734653126,119.4C445.61727678214856,115.95833333333334,492.67748341582035,185.28333333333333,516.2075867326563,178.4C539.7376900494922,171.51666666666668,586.797896683164,92.85000000000001,610.328,64.33333333333334L610.328,261L45.34765625,261Z"
-																fill-opacity="0"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0;">
-															</path>
-															<path fill="none" stroke="#1cc100"
-																d="M45.34765625,221.66666666666669C68.87775956683592,205.93333333333334,115.93796620050776,161.68333333333334,139.46806951734368,158.73333333333335C162.9981728341796,155.78333333333336,210.05837946785144,192.17473780209758,233.58848278468736,198.06666666666666C257.1830521380077,203.97473780209756,304.37219084464857,215.78011855905152,327.96676019796894,205.93333333333334C351.4968635148049,196.11345189238486,398.55707014847667,122.84166666666667,422.0871734653126,119.4C445.61727678214856,115.95833333333334,492.67748341582035,185.28333333333333,516.2075867326563,178.4C539.7376900494922,171.51666666666668,586.797896683164,92.85000000000001,610.328,64.33333333333334"
-																stroke-width="1"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</path>
-															<circle cx="45.34765625" cy="221.66666666666669" r="3"
-																fill="#1cc100" stroke="#1cc100" stroke-width="1"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</circle>
-															<circle cx="139.46806951734368" cy="158.73333333333335"
-																r="3" fill="#1cc100" stroke="#1cc100" stroke-width="1"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</circle>
-															<circle cx="233.58848278468736" cy="198.06666666666666"
-																r="3" fill="#1cc100" stroke="#1cc100" stroke-width="1"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</circle>
-															<circle cx="327.96676019796894" cy="205.93333333333334"
-																r="3" fill="#1cc100" stroke="#1cc100" stroke-width="1"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</circle>
-															<circle cx="422.0871734653126" cy="119.4" r="3"
-																fill="#1cc100" stroke="#1cc100" stroke-width="1"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</circle>
-															<circle cx="516.2075867326563" cy="178.4" r="3"
-																fill="#1cc100" stroke="#1cc100" stroke-width="1"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</circle>
-															<circle cx="610.328" cy="64.33333333333334" r="3"
-																fill="#1cc100" stroke="#1cc100" stroke-width="1"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</circle>
-															<path fill="#f4c843" stroke="none"
-																d="M45.34765625,198.06666666666666C68.87775956683592,194.13333333333333,115.93796620050776,180.36666666666667,139.46806951734368,182.33333333333334C162.9981728341796,184.3,210.05837946785144,223.6198814409485,233.58848278468736,213.8C257.1830521380077,203.95321477428183,304.37219084464857,112.52877336981307,327.96676019796894,103.66666666666669C351.4968635148049,94.82877336981306,398.55707014847667,133.16666666666666,422.0871734653126,143C445.61727678214856,152.83333333333334,492.67748341582035,182.33333333333334,516.2075867326563,182.33333333333334C539.7376900494922,182.33333333333334,586.797896683164,152.83333333333334,610.328,143L610.328,261L45.34765625,261Z"
-																fill-opacity="0"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0;">
-															</path>
-															<path fill="none" stroke="#fdc006"
-																d="M45.34765625,198.06666666666666C68.87775956683592,194.13333333333333,115.93796620050776,180.36666666666667,139.46806951734368,182.33333333333334C162.9981728341796,184.3,210.05837946785144,223.6198814409485,233.58848278468736,213.8C257.1830521380077,203.95321477428183,304.37219084464857,112.52877336981307,327.96676019796894,103.66666666666669C351.4968635148049,94.82877336981306,398.55707014847667,133.16666666666666,422.0871734653126,143C445.61727678214856,152.83333333333334,492.67748341582035,182.33333333333334,516.2075867326563,182.33333333333334C539.7376900494922,182.33333333333334,586.797896683164,152.83333333333334,610.328,143"
-																stroke-width="1"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</path>
-															<circle cx="45.34765625" cy="198.06666666666666" r="3"
-																fill="#fdc006" stroke="#fdc006" stroke-width="1"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</circle>
-															<circle cx="139.46806951734368" cy="182.33333333333334"
-																r="3" fill="#fdc006" stroke="#fdc006" stroke-width="1"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</circle>
-															<circle cx="233.58848278468736" cy="213.8" r="3"
-																fill="#fdc006" stroke="#fdc006" stroke-width="1"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</circle>
-															<circle cx="327.96676019796894" cy="103.66666666666669"
-																r="3" fill="#fdc006" stroke="#fdc006" stroke-width="1"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</circle>
-															<circle cx="422.0871734653126" cy="143" r="3" fill="#fdc006"
-																stroke="#fdc006" stroke-width="1"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</circle>
-															<circle cx="516.2075867326563" cy="182.33333333333334" r="3"
-																fill="#fdc006" stroke="#fdc006" stroke-width="1"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</circle>
-															<circle cx="610.328" cy="143" r="3" fill="#fdc006"
-																stroke="#fdc006" stroke-width="1"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</circle>
-															<path fill="#31ccd5" stroke="none"
-																d="M45.34765625,245.26666666666668C68.87775956683592,233.46666666666667,115.93796620050776,202.98333333333332,139.46806951734368,198.06666666666666C162.9981728341796,193.15,210.05837946785144,211.82526219790242,233.58848278468736,205.93333333333334C257.1830521380077,200.02526219790244,304.37219084464857,157.75941632466942,327.96676019796894,150.86666666666667C351.4968635148049,143.99274965800274,398.55707014847667,144.96666666666667,422.0871734653126,150.86666666666667C445.61727678214856,156.76666666666668,492.67748341582035,203.96666666666667,516.2075867326563,198.06666666666666C539.7376900494922,192.16666666666666,586.797896683164,127.26666666666668,610.328,103.66666666666669L610.328,261L45.34765625,261Z"
-																fill-opacity="0"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0;">
-															</path>
-															<path fill="none" stroke="#1db4bd"
-																d="M45.34765625,245.26666666666668C68.87775956683592,233.46666666666667,115.93796620050776,202.98333333333332,139.46806951734368,198.06666666666666C162.9981728341796,193.15,210.05837946785144,211.82526219790242,233.58848278468736,205.93333333333334C257.1830521380077,200.02526219790244,304.37219084464857,157.75941632466942,327.96676019796894,150.86666666666667C351.4968635148049,143.99274965800274,398.55707014847667,144.96666666666667,422.0871734653126,150.86666666666667C445.61727678214856,156.76666666666668,492.67748341582035,203.96666666666667,516.2075867326563,198.06666666666666C539.7376900494922,192.16666666666666,586.797896683164,127.26666666666668,610.328,103.66666666666669"
-																stroke-width="1"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</path>
-															<circle cx="45.34765625" cy="245.26666666666668" r="3"
-																fill="#1db4bd" stroke="#1db4bd" stroke-width="1"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</circle>
-															<circle cx="139.46806951734368" cy="198.06666666666666"
-																r="3" fill="#1db4bd" stroke="#1db4bd" stroke-width="1"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</circle>
-															<circle cx="233.58848278468736" cy="205.93333333333334"
-																r="3" fill="#1db4bd" stroke="#1db4bd" stroke-width="1"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</circle>
-															<circle cx="327.96676019796894" cy="150.86666666666667"
-																r="3" fill="#1db4bd" stroke="#1db4bd" stroke-width="1"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</circle>
-															<circle cx="422.0871734653126" cy="150.86666666666667" r="3"
-																fill="#1db4bd" stroke="#1db4bd" stroke-width="1"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</circle>
-															<circle cx="516.2075867326563" cy="198.06666666666666" r="3"
-																fill="#1db4bd" stroke="#1db4bd" stroke-width="1"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</circle>
-															<circle cx="610.328" cy="103.66666666666669" r="3"
-																fill="#1db4bd" stroke="#1db4bd" stroke-width="1"
-																style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-															</circle>
-														</svg>
-														<div class="morris-hover morris-default-style"
-															style="left: 371.158px; top: 43px; display: none;">
-															<div class="morris-hover-row-label">2014</div>
-															<div class="morris-hover-point" style="color: #1cc100">
-																iPhone:
-																180
-															</div>
-															<div class="morris-hover-point" style="color: #fdc006">
-																iPad:
-																150
-															</div>
-															<div class="morris-hover-point" style="color: #1db4bd">
-																iPod Touch:
-																140
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-
-										<div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
-											<div class="card">
-												<div class="card-header">
-													<h4>Notifications</h4>
-												</div>
-												<div class="ground-list ground-list-hove">
-													<div class="ground ground-single-list d-flex">
-														<a href="JavaScript:Void(0);">
-															<div class="btn-circle-40 text-warning bg-light-warning"><i
-																	class="fas fa-home"></i></div>
-														</a>
-
-														<div class="ground-content">
-															<h6><a href="JavaScript:Void(0);"><strong>Kr. Shaury
-																		Preet</strong> Replied your message</a></h6>
-															<span class="small">Just Now</span>
-														</div>
-													</div>
-
-													<div class="ground ground-single-list d-flex">
-														<a href="JavaScript:Void(0);">
-															<div class="btn-circle-40 text-danger bg-light-danger"><i
-																	class="fa-solid fa-comments"></i></div>
-														</a>
-
-														<div class="ground-content">
-															<h6><a href="JavaScript:Void(0);">Mortin Denver accepted
-																	your resume on <strong>Job Stock</strong></a></h6>
-															<span class="small">20 min ago</span>
-														</div>
-													</div>
-
-													<div class="ground ground-single-list d-flex">
-														<a href="JavaScript:Void(0);">
-															<div class="btn-circle-40 text-info bg-light-info"><i
-																	class="fa-solid fa-heart"></i></div>
-														</a>
-
-														<div class="ground-content">
-															<h6><a href="JavaScript:Void(0);">Your job #456256 expired
-																	yesterday <strong>View More</strong></a></h6>
-															<span class="small">1 day ago</span>
-														</div>
-													</div>
-
-													<div class="ground ground-single-list d-flex">
-														<a href="JavaScript:Void(0);">
-															<div class="btn-circle-40 text-danger bg-light-danger"><i
-																	class="fa-solid fa-thumbs-up"></i></div>
-														</a>
-
-														<div class="ground-content">
-															<h6><a href="JavaScript:Void(0);"><strong>Daniel
-																		Kurwa</strong> has been approved your
-																	resume!.</a></h6>
-															<span class="small">10 days ago</span>
-														</div>
-													</div>
-
-													<div class="ground ground-single-list d-flex">
-														<a href="JavaScript:Void(0);">
-															<div class="btn-circle-40 text-success bg-light-success"><i
-																	class="fa-solid fa-comment-dots"></i></div>
-														</a>
-
-														<div class="ground-content">
-															<h6><a href="JavaScript:Void(0);">Khushi Verma left a review
-																	on <strong>Your Message</strong></a></h6>
-															<span class="small">Just Now</span>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- Row End -->
-
-
-
-								</div>
-
+								
 
 							</div>
 
 						</div>
 
 					</div>
-				</div>
+			
+					<div class="container p-2 border" >
+					<div class="row" style="display: block;">
+
+							<div class="col-sm-12 ">
+
+								
+
+;;;;;;;;
+
+							</div>
+
+						</div>
+					</div>
+			</div>
 			</div>
 
 

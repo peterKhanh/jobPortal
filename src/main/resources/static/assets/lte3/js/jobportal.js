@@ -1,16 +1,4 @@
 $(document).ready(function(){ 
-
-/*
-		$(".btn-open-dialog").click(function(){
-			var id = $(this).closest("ul").attr("data-id");
-			// $modal.find('[data-value="firstname"]').text(firstname );
-			$("#myModal #id").val(id);
-			$("#myModal #name").val(id);
-
-		});
-
-*/
-
 	
 	/*
 	Nút Gủi Job cho Ứng viên khi xem hồ sơ

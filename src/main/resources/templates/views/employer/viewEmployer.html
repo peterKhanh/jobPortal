@@ -1,112 +1,97 @@
-<head th:replace="~{views/fragments/head :: head}"></head>
-
+<head th:replace="~{views/fragments/head :: head}"/>
 <body>
 	<!-- Header Start -->
 	<header th:replace="~{views/fragments/menu_bar_2 :: menu_bar_2}"> </header>
-
 	<main>
-
-		<div class="container py-2">
+			<div class="container py-2">
 			<div class="row pt-15">
 				<div th:replace="~{views/employer/profile-panel :: profile-panel}"></div>
 				<div class="col-xl-9 col-lg-9 col-md-8">
 					<div class="container p-2">
 						<!--Thông tin cá nhân-->
 						<div class="row">
-							<div class="col-sm-12 d-flex justify-content-between align-items-center" th:switch="${employer}">
+							<div class="col-sm-12 d-flex justify-content-between align-items-center">
 								<div class="widget_title">
 									<p class="mb-2">Thông nhà tuyển dụng</p>
 								</div>
-								<span th:case="'NOTSET'">
-								<a th:href="@{/employer/add-employer/}" class="genric-btn success-border circle arrow small">
-									<i class="fas fa-pencil-alt"></i> Thêm</a>
-								</span>
-								<span th:case="*">
-								<a th:href="@{/employer/edit-employer/}" class="genric-btn success-border circle arrow small">
+								<a th:href="@{/employer/edit-employer/}" class="genric-btn info-border circle arrow small">
 									<i class="fas fa-pencil-alt"></i> Sửa</a>
-								</span>
 							</div>
 						</div>
+
 						
-													<div class="col-sm-12 border">
-								<ul class="list-group list-group-flush rounded-3">
-									<li class="list-group-item d-flex justify-content-between align-items-center p-2">
-										<div class="col-sm-4">
-											<p class="mb-0">Tên công ty</p>
-										</div>
-										<div class="col-sm-8">
-											<p class="text-muted mb-0" th:text="${employer.name}">Trần Văn
+						
+						<div class="col-sm-12 border">
+							<ul class="list-group list-group-flush rounded-3">
+								<li class="list-group-item d-flex justify-content-between align-items-center p-2">
+									<div class="col-sm-4">
+										<p class="mb-0">Tên công ty</p>
+									</div>
+									<div class="col-sm-8">
+										<p class="text-muted mb-0" th:text="${employer.name}">Trần Văn
 												Long</p>
-										</div>
-									</li>
-									<li class="list-group-item d-flex justify-content-between align-items-center p-2">
-										<div class="col-sm-4">
-											<p class="mb-0">Địa chỉ</p>
-										</div>
-										<div class="col-sm-8">
-											<p class="text-muted mb-0" th:text="${employer.address}">Trần Văn
+									</div>
+								</li>
+								<li class="list-group-item d-flex justify-content-between align-items-center p-2">
+									<div class="col-sm-4">
+										<p class="mb-0">Địa chỉ</p>
+									</div>
+									<div class="col-sm-8">
+										<p class="text-muted mb-0" th:text="${employer.address}">Trần Văn
 												Long</p>
-										</div>
-									</li>
-									<li class="list-group-item d-flex justify-content-between align-items-center p-2">
-										<div class="col-sm-4">
-											<p class="mb-0">Lĩnh vực</p>
-										</div>
-										<div class="col-sm-8">
-											<select disabled class="form-control" id="IndustrialType" name="IndustrialType" th:field="${employer.industrialType}">
-												<option th:each="cate : ${industrialType}" th:value="${cate.id}"
-													th:text="${cate.name}">
+									</div>
+								</li>
+								<li class="list-group-item d-flex justify-content-between align-items-center p-2">
+									<div class="col-sm-4">
+										<p class="mb-0">Lĩnh vực hoạt động</p>
+									</div>
+									<div class="col-sm-8">
+										<select width="100%" class="form-select" id="IndustrialType" name="IndustrialType" th:field="${employer.industrialType}">
+											<option th:each="cate : ${industrialType}" th:value="${cate.id}" th:text="${cate.name}">
 												</option>
-											</select>
-										</div>
-									</li>
-									<li class="list-group-item d-flex justify-content-between align-items-center p-2">
-										<div class="col-sm-4">
-											<p class="mb-0">Quy mô công ty</p>
-										</div>
-										<div class="col-sm-8">
-											<p class="text-muted mb-0" th:text="${employer.numberOfEmployee}">Bay Area,
+										</select>
+									</div>
+								</li>
+								<li class="list-group-item d-flex justify-content-between align-items-center p-2">
+									<div class="col-sm-4">
+										<p class="mb-0">Quy mô công ty</p>
+									</div>
+									<div class="col-sm-8">
+										<p class="text-muted mb-0" th:text="${employer.numberOfEmployee}">Bay Area,
 												San Francisco, CA</p>
-										</div>
-									</li>
-									<li class="list-group-item d-flex justify-content-between align-items-center p-2">
-										<div class="col-sm-4">
-											<p class="mb-0">Website</p>
-										</div>
-										<div class="col-sm-8">
-											<p class="text-muted mb-0" th:text="${employer.website}">
+									</div>
+								</li>
+								<li class="list-group-item d-flex justify-content-between align-items-center p-2">
+									<div class="col-sm-4">
+										<p class="mb-0">Website</p>
+									</div>
+									<div class="col-sm-8">
+										<p class="text-muted mb-0" th:text="${employer.website}">
 												example@example.com</p>
-										</div>
-									</li>
-									<li class="list-group-item d-flex justify-content-between align-items-center p-2">
-										<div class="col-sm-4">
-											<p class="mb-0">Giới thiệu</p>
-										</div>
-										<div class="col-sm-8">
-											<p class="text-muted mb-0" th:text="${employer.introduction}">
+									</div>
+								</li>
+								<li class="list-group-item d-flex justify-content-between align-items-center p-2">
+									<div class="col-sm-4">
+										<p class="mb-0">Giới thiệu</p>
+									</div>
+									<div class="col-sm-8">
+										<p class="text-muted mb-0" th:text="${employer.introduction}">
 												example@example.com</p>
-										</div>
-									</li>
-								</ul>
-							</div>
+									</div>
+								</li>
+							</ul>
+						</div>
 					</div>
-					
 				</div>
 			</div>
 		</div>
-
-
 	</main>
-
 	<!-- Footer Include -->
-	<div th:replace="~{views/fragments/footer :: footer}"></div>
+	<div th:replace="~{views/fragments/footer :: footer}"/>
 	<!-- Script Include -->
-	<div th:replace="~{views/fragments/script :: script}"></div>
+	<div th:replace="~{views/fragments/script :: script}"/>
 </body>
-
 <style>
-
-
 
 .btn-save.unsave {
     color: #a3a3a3;
@@ -122,6 +107,7 @@
     border: 1px solid #e4e4e4;
     border-radius: 5px;
 }
-</style>
 
+
+</style>
 </html>

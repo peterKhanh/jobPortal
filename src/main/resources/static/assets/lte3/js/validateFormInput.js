@@ -4,7 +4,6 @@ $(document).ready(function() {
 	$("#titlecheck").hide();
 	let titleError = true;
 	$("#title").keyup(function() {
-		//validateTitle(); 
 		validateTextInput(element_title, element_title_error, "Title not Blank")
 	});
 

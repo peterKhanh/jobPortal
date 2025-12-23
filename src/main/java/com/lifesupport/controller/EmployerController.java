@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 import java.security.Principal;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -28,7 +27,7 @@ import com.lifesupport.ConstantsClass;
 import com.lifesupport.models.MailInfo;
 import com.lifesupport.models.Enterprise;
 import com.lifesupport.models.IndustrialType;
-import com.lifesupport.models.JobApply;
+import com.lifesupport.models.Job;
 import com.lifesupport.models.JobCategory;
 import com.lifesupport.models.Location;
 import com.lifesupport.models.Profile;
@@ -39,6 +38,7 @@ import com.lifesupport.models.WorkingModel;
 import com.lifesupport.repository.EnterpriseRepository;
 import com.lifesupport.repository.JobApplyRepository;
 import com.lifesupport.repository.JobCategoryRepository;
+import com.lifesupport.repository.JobRepository;
 import com.lifesupport.repository.LocationRepository;
 import com.lifesupport.repository.ProfileRepository;
 import com.lifesupport.repository.RoleRepository;
@@ -47,6 +47,7 @@ import com.lifesupport.repository.UserRoleRepository;
 import com.lifesupport.repository.WorkingModelRepository;
 import com.lifesupport.service.FilesStorageService;
 import com.lifesupport.service.IndustrialTypeService;
+import com.lifesupport.service.JobService;
 import com.lifesupport.service.UserService;
 import com.lifesupport.service.MailService;
 
@@ -78,6 +79,12 @@ public class EmployerController {
 
 	@Autowired
 	private JobApplyRepository jobApplyRepo;
+
+	@Autowired
+	private JobRepository jobRepo;
+
+	@Autowired
+	private JobService  jobService;
 
 	@Autowired
 	private RoleRepository repoRole;
@@ -359,9 +366,6 @@ public class EmployerController {
 			return "redirect:/logon/";
 		}
 	}
-
-	
-	
 	
 //	Hiển thị màn hình them cong ty
 	@GetMapping("/add-employer/")
@@ -407,7 +411,7 @@ public class EmployerController {
 			 if (enterprise == null) {
 				 System.out.println("enterprise:sdsdfsd "); 
 			 }else {
-				 System.out.println("enterprise:OK "); 		 
+				System.out.println("enterprise:OK "); 		 
 				model.addAttribute("user", loggedUser);
 				model.addAttribute("employer", enterprise);
 			 }
@@ -421,26 +425,8 @@ public class EmployerController {
 	
 	
 	
-/*	
-	
-	
-	@GetMapping("/add-profile/")
-	public String viewAddProfiler(Model model, Principal principal) {
-		userService.checkLogin(model, principal);
-		getAllList(model);
 
-		if (principal != null) {
-			String userName = principal.getName();
-			User loggedUser = repoUser.findByUserName(userName);
-			model.addAttribute("user", loggedUser);
 
-		} else {
-			return "redirect:/logon/";
-
-		}
-		return "views/candidate/add-profile";
-	}
-*/	
 
 	@PostMapping("/add-employer")
 	public String addEmployer(Principal principal, @ModelAttribute Enterprise form) {
@@ -516,8 +502,70 @@ public class EmployerController {
 		return "redirect:/employer/viewemployer/";
 	}
 
+
 	
 	
+	
+//	Hiển thị màn hình them cong viec
+	@GetMapping("/add-job/")
+	public String viewAddJob(Model model, Principal principal) {
+		userService.checkLogin(model, principal);
+		getAllList(model);
+
+		if (principal != null) {
+			String userName = principal.getName();
+			User loggedUser = repoUser.findByUserName(userName);
+			
+			Enterprise enterprise = enterpriseRepo.findByUser(loggedUser);
+
+			List<IndustrialType> industrialType = industrialTypeService.getAllActiveIndustrialType();
+			model.addAttribute("industrialType", industrialType);
+	
+			 if (enterprise == null) {
+				model.addAttribute("employer", "NOTSET");
+			 }else {
+				System.out.println("enterprise:OK "); 		 
+				model.addAttribute("user", loggedUser);
+				model.addAttribute("employer", enterprise);
+			 }
+		} else {
+			return "redirect:/logon/";
+		}
+		return "views/employer/add-job";
+	}
+	
+	
+	@PostMapping("/add-job")
+	public String addJob(Model model, @RequestParam Long employer_id, @ModelAttribute Job form) {
+		Date createAt = new Date();
+		Enterprise enterprise = enterpriseRepo.findById(employer_id).get();
+		System.out.println("employer_id: "+ employer_id.toString());
+
+		
+		Job job = new Job(); 
+		job.setEnterprise(enterprise);
+		job.setCreateAt(createAt); job.setTitle(form.getTitle());
+		job.setJobCategory(form.getJobCategory());
+		job.setWorkingModel(form.getWorkingModel());
+		job.setNumberOfRecruitement(form.getNumberOfRecruitement());
+		job.setYearOfExperience(form.getYearOfExperience());
+		job.setTrialTime(form.getTrialTime());
+		job.setWorkingTime(form.getWorkingTime()); job.setSalary(form.getSalary());
+		job.setLocation(form.getLocation());
+		job.setWorkingAddress(form.getWorkingAddress());
+		job.setWorkingAddress(form.getWorkingAddress());
+		
+		job.setGender(form.getGender()); job.setAgeRange(form.getAgeRange());
+		job.setExpiredDate(form.getExpiredDate());
+		job.setReponsibility(form.getReponsibility());
+		job.setDescription(form.getDescription()); job.setBenefit(form.getBenefit());
+		job.setStatus(form.getStatus()); jobRepo.save(job);
+		return "redirect:job-by-employer/"; 
+		
+	}
+		
+	
+/*	
 	
 	@GetMapping("/view-profile")
 	public String viewProfile(Model model, @RequestParam Long id, Principal principal) {
@@ -534,8 +582,8 @@ public class EmployerController {
 		}
 		return "views/candidate/view-profile";
 	}
-
-	@GetMapping("/delete")
+*/
+/*	@GetMapping("/delete")
 	public String deleteProfi(@RequestParam Long id) {
 		Profile profile = repoProfile.findById(id).get();
 	  	try {
@@ -567,7 +615,9 @@ public class EmployerController {
 		return "redirect:/candidate/profile/";
 
 	}
+	*/
 	
+/*	
 	@GetMapping("/edit-profile")
 	public String editProfile(Model model, @RequestParam Long id, Principal principal) {
 		userService.checkLogin(model, principal);
@@ -588,9 +638,9 @@ public class EmployerController {
 
 		return "views/candidate/edit-profile";
 	}
+*/
 
-
-	@PostMapping("/edit-profile")
+/*	@PostMapping("/edit-profile")
 	public String editProfile(Model model,Principal principal, @RequestParam Long id, @ModelAttribute Profile form, 
 			@RequestParam("cv_1") MultipartFile cv_1,
 			@RequestParam("cv_2") MultipartFile cv_2,
@@ -744,23 +794,25 @@ public class EmployerController {
 
 		return "redirect:/candidate/profile/";
 	}
+	*/
 
 		
 	
-	@GetMapping("/view-apply-job/")
-	public String viewApplyJob(Model model, Principal principal) {
+	@GetMapping("/job-by-employer/")
+	public String viewJobByEmployer(Model model, Principal principal) {
 		userService.checkLogin(model, principal);
 		if (principal != null) {
 			String userName = principal.getName();
 			User loggedUser = repoUser.findByUserName(userName);
-			model.addAttribute("user", loggedUser);
-			List<JobApply> jobApplyByUser = jobApplyRepo.findByUser(loggedUser);
-			model.addAttribute("jobApplyByUser", jobApplyByUser);
+			Enterprise enterprise = enterpriseRepo.findByUser(loggedUser);
+			model.addAttribute("user", loggedUser); //GetAllActiveJobByEnterprise
+			List<Job> jobApplyByEmployer = jobService.GetAllActiveJobByEnterprise(enterprise);
+			model.addAttribute("jobApplyByEmployer", jobApplyByEmployer);
 
 		} else {
 			return "redirect:/logon/";
 		}
-		return "views/candidate/view-apply-job";
+		return "views/employer/job-by-employer";
 	}
 
 

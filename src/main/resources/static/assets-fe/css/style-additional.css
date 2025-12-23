@@ -4,8 +4,15 @@ b:root{
 }
 
 .normal-title {
-    border-left: 10px solid #fb246a;
+    border-left: 10px solid #4caf50;
     margin-bottom: 4px;
+    padding-left: 15px;
+    font-size: large;
+}
+.small-title {
+    border-left: 5px solid #4caf50;
+    margin-bottom: 4px;
+    margin-top: 15px;
     padding-left: 15px;
     font-size: large;
 }
@@ -58,6 +65,55 @@ b:root{
 } 
 
 
+ .job_edit{
+ font-size: 10px;
+ position: absolute;
+ right: 5px;
+ top: 25px;
+ cursor: pointer;
+} 
+
+.job_delete {
+ font-size: 10px;
+ position: absolute;
+ right: 5px;
+ bottom: 2px;
+ cursor: pointer;
+} 
+
+.hot-job {
+ position: absolute;
+ right: 5px;
+ top: 2px;
+   width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f63737;
+    border-radius: 50px;
+    color: #fff !important;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+ cursor: pointer;
+/*  
+  position: relative;
+    overflow: hidden;
+	padding: 4px 12px;
+	right: 5px;
+	top: 5px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f63737;
+    border-radius: 50px;
+    color: #fff !important;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+*/
+}
 
 .job_right_sidebar .widget_title {
     font-size: 20px;
@@ -377,10 +433,10 @@ b:root{
 }
 
 /*
-Left menu của ứng viên
+Left menu 
 */
 
-.candidate_panel-items{
+.menu_panel-items{
 	display: inline-block;
 	margin-right: 2px;
 	font-size: 15px;
@@ -388,20 +444,29 @@ Left menu của ứng viên
 	line-height: 1.8
 }
 
-.candidate_panel-items:hover {
+.menu_panel-items:hover {
 	border: 1px solid yellowgreen;
 	border-color:  yellowgreen;
-		background-color: yellowgreen;
+	background-color: yellowgreen;
 
 }
 
-.candidate_panel-items:active {
+.menu_panel-items:active {
 	border: 1px solid yellowgreen;
 	border-color:  yellowgreen;
 }
 
 
-
+.group_menu {
+	font-size: 18px;
+    background: #f5f6f7;
+    padding: 8px 20px;
+    margin-top: 1px;
+    line-height: 1.6;
+    border-radius: 2px;
+    color: #35434e;
+    border-left: 1px solid #11b719;
+}
 
 
 

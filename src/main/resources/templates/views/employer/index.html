@@ -17,71 +17,58 @@
 								<div class="widget_title">
 									<p class="mb-2">Thông nhà tuyển dụng</p>
 								</div>
-								<a th:href="@{/employer/edit-user/}" class="genric-btn success-border circle arrow small">
+								<a th:href="@{/employer/edit-user/}" class="genric-btn info-border circle arrow small">
 									<i class="fas fa-pencil-alt"></i> Sửa</a>
 							</div>
-							<!--		<div class="col-sm-3">
-								<div class="card-body text-center">
-
-									<img th:if="${loggedUser.avata == null}"
-										src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-										alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
-
-									<img th:if="${loggedUser.avata}" id="user_image"
-										th:src="@{'/upload/user/'+ ${loggedUser.avata}}"
-										class="rounded-circle img-fluid" width="150px" height="160">
-
-									<div>
-										<a th:href="@{'/upload/user/'+ ${loggedUser.avata}}"><span
-												class="text-muted mb-0">Xem</span></a>
-									</div>
-								</div>
-							</div>-->
-							<div class="col-sm-12 border">
-								<ul class="list-group list-group-flush rounded-3">
-									<li class="list-group-item d-flex justify-content-between align-items-center p-2">
-										<div class="col-sm-4">
-											<p class="mb-0">Họ và tên</p>
-										</div>
-										<div class="col-sm-8">
-											<p class="text-muted mb-0" th:text="${loggedUser.fullName}">Trần Văn
-												Long</p>
-										</div>
-									</li>
-									<li class="list-group-item d-flex justify-content-between align-items-center p-2">
-										<div class="col-sm-4">
-											<p class="mb-0">Tên đăng nhập</p>
-										</div>
-										<div class="col-sm-8">
-											<p class="text-muted mb-0" th:text="${loggedUser.userName}">Trần Văn
-												Long</p>
-										</div>
-									</li>
-
-									<li class="list-group-item d-flex justify-content-between align-items-center p-2">
-										<div class="col-sm-4">
-											<p class="mb-0">Địa chỉ</p>
-										</div>
-										<div class="col-sm-8">
-											<p class="text-muted mb-0" th:text="${loggedUser.address}">Bay Area,
-												San Francisco, CA</p>
-										</div>
-									</li>
-									<li class="list-group-item d-flex justify-content-between align-items-center p-2">
-										<div class="col-sm-4">
-											<p class="mb-0">Email</p>
-										</div>
-										<div class="col-sm-8">
-											<p class="text-muted mb-0" th:text="${loggedUser.email}">
-												example@example.com</p>
-										</div>
-									</li>
-								</ul>
-							</div>
-
 						</div>
-						<!--End Thông tin cá nhân-->
 
+						
+
+
+						<div class="col-sm-12 border">
+							<ul class="list-group list-group-flush rounded-3">
+								<li class="list-group-item d-flex justify-content-between align-items-center p-2">
+									<div class="col-sm-4">
+										<p class="mb-0">Họ và tên</p>
+									</div>
+									<div class="col-sm-8">
+										<p class="text-muted mb-0" th:text="${loggedUser.fullName}">Trần Văn
+											Long</p>
+									</div>
+								</li>
+								<li class="list-group-item d-flex justify-content-between align-items-center p-2">
+									<div class="col-sm-4">
+										<p class="mb-0">Tên đăng nhập</p>
+									</div>
+									<div class="col-sm-8">
+										<p class="text-muted mb-0" th:text="${loggedUser.userName}">Trần Văn
+											Long</p>
+									</div>
+								</li>
+
+								<li class="list-group-item d-flex justify-content-between align-items-center p-2">
+									<div class="col-sm-4">
+										<p class="mb-0">Địa chỉ</p>
+									</div>
+									<div class="col-sm-8">
+										<p class="text-muted mb-0" th:text="${loggedUser.address}">Bay Area,
+											San Francisco, CA</p>
+									</div>
+								</li>
+								<li class="list-group-item d-flex justify-content-between align-items-center p-2">
+									<div class="col-sm-4">
+										<p class="mb-0">Email</p>
+									</div>
+									<div class="col-sm-8">
+										<p class="text-muted mb-0" th:text="${loggedUser.email}">
+											example@example.com</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+						<!--End Thông tin cá nhân-->
 
 					</div>
 

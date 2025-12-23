@@ -27,4 +27,5 @@ public interface JobApplyRepository extends JpaRepository<JobApply, Long> {
 	@Query(value = "SELECT ja.user_id, ja.job_id, ja.apply_date from jobapply ja ORDER BY ja.apply_date DESC",  nativeQuery = true)
 	Page<JobApply> findRecentApplyCandidate(Pageable pageable);
 
+
 }

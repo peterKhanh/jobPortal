@@ -42,8 +42,8 @@
 						<!-- Begin-job list-content -->
 
 						<div class="single-job-items mb-30 joblist border" th:each="job: ${jobs}">
-							<div class="job-items" th:data-id="${job.id}">
-<!--								<div class="company-img">
+							<div class="job-items" >
+								<div class="company-img">
 									<a href="#">
 										<img th:if="${job.enterprise.getDefaultLogo}==true"
 											th:src="@{'/upload/default.png'}" alt="..." width="90">
@@ -53,7 +53,7 @@
 
 									</a>
 								</div>
--->								<div class="job-tittle job-tittle2 ">
+							<div class="job-tittle job-tittle2 ">
 									<a th:href="@{/job/viewjob/{id}(id=${job.id})}">
 										<h6 th:text="${job.getTitle()}" />
 									</a>
@@ -80,19 +80,10 @@
 										</li>
 									</ul>
 								</div>
-
-								<!--
-									<div class="job_apply">
-									<div class="items-link items-link2 f-right small">
-										<a href="#" class="default-border circle arrow small">Ứng tuyển</a>
-									</div>
-
-								</div>
-							
-								<li class="job_apply items-link items-link2 f-right small">
-									<span class="badge rounded-pill small">Ứng tuyểnd</span>
-								</li>
-								-->
+							<div class="items-link items-link2 f-right small" th:data-id="${job.id}" th:user-login="${LoggedIn}">
+								<a href="#" class="job_apply default-border text-black circle arrow" title="">Apply</a>
+								<a href="#" class="job_save default-border text-black circle arrow" title="">Save</a>
+						</div>
 							</div>
 
 						</div>

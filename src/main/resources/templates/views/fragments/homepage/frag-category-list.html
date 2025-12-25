@@ -11,7 +11,7 @@
 			</div>
 			<div class="col-lg-6">
 				<div class="text-right" style="display: block;">
-					<a href="#" class="genric-btn info-border circle arrow small">Xem thêm<span
+					<a href="#" class="genric-btn info-border circle small">Xem thêm<span
 							class="lnr lnr-arrow-right"></span></a>
 				</div>
 			</div>
@@ -33,11 +33,11 @@
 
 		<div id="owl-category-on-homepagevv" class="button-group-area mt-10">
 			<span th:each="cate: ${lists}">
-				<a th:href="@{/job/jobbycate/{id}(id=${cate.id})}" class="genric-btn primary-border circle"
+				<a th:href="@{/job/jobbycate/{id}(id=${cate.id})}" class="genric-btn info-border circle"
 					th:text="${cate.name}" />
 			</span>
 			<span >
-				<a class="genric-btn primary-border circle"
+				<a class="genric-btn info-border circle"
 					>Xem thêm</a>
 			</span>	</div>
 

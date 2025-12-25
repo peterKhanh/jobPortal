@@ -1,7 +1,7 @@
 <header th:fragment="menu_bar">
-	<div class="header-area header-transparrent">
+	<div class="header-area header-transparrent ">
 		<div class="headder-top header-sticky" >
-			<div class="container">
+			<div class="container border">
 				<div class="row align-items-center">
 					<div class="col-lg-3 col-md-2">
 						<!-- Logo -->
@@ -11,7 +11,8 @@
 									style="height: 70px; width: 180px;"></a>
 						</div>
 					</div>
-					<div class="col-lg-9 col-md-9">
+
+					<div class="col-lg-6 col-md-6">
 						<div class="menu-wrapper">
 							<!-- Main-menu -->
 							<div class="main-menu">
@@ -40,7 +41,7 @@
 							<ul>
 								<div class="header-btn d-none f-right d-lg-block d-flex small" th:switch="${LoggedIn}">
 									<div class="main-menu" th:case="'NOT_LOGIN'">
-										<a th:href="@{/candidate/register}" class="btn head-btn2">Ứng viên Đăng ký</a>
+										<a th:href="@{/candidate/register}" class="btn head-btn2">Đăng ký</a>
 										<a th:href="@{/logout-url}" class="btn head-btn2">Đăng nhập</a>
 									</div>
 
@@ -67,7 +68,13 @@
 
 						</div>
 					</div>
-					<!-- Mobile Menu -->
+					<div class="col-lg-2 col-md-2" th:switch="${LoggedIn}">
+						<!-- Logo -->
+						<div class="logo"  th:case="'NOT_LOGIN'">
+								<a th:href="@{/employer/}" class="btn head-btn2">Employer</a>
+
+						</div>
+					</div>					<!-- Mobile Menu -->
 					<div class="col-12">
 						<div class="mobile_menu d-block d-lg-none"></div>
 					</div>

@@ -1,5 +1,9 @@
-<div class="container" th:data-background="@{/assets-fe/img/banner/company_cover_1.webp}" th:fragment="search-area">
-	<div class="row">
+<!-- <div class="container" th:data-background="@{/assets-fe/img/banner/company_cover_1.webp}" th:fragment="search-area"> -->
+<div class="container border" th:data-background="@{/assets-fe/img/banner/banner-featured.jpg}" th:fragment="search-area">
+                      
+	
+	
+	<div class="row border">
 		<div class="col-xl-12 mb-3">
 			<div class="online-cv  pt-10 pb-10">
 				<div class="container">
@@ -19,7 +23,7 @@
 				<div class="input-form">
 					<input type="text" name="keyword" th:value="${keyword}" placeholder="Tìm kiếm: tiêu đề, công ty, địa điểm, khu vực">
 				</div>
-				<!--
+				
 				<div class="select-form">
 					<div class="select-items">
 						<select name="location" id="location">
@@ -30,7 +34,7 @@
 						</select>
 					</div>
 				</div>
--->
+
 				<div class="search-form">
 					<a href="" onclick="this.closest('form').submit();return false;">Tìm việc ngay</a>
 				</div>

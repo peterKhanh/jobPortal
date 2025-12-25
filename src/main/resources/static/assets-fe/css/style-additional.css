@@ -1,7 +1,4 @@
-b:root{
-    --border-color: rgb(255, 0, 0);
-    --background-hover: rgb(4, 177, 187);
-}
+
 
 .normal-title {
     border-left: 10px solid #4caf50;
@@ -123,14 +120,13 @@ b:root{
 .job_right_sidebar .widget_title::after {
     content: "";
     display: block;
-    padding-top: 15px;
     border-bottom: 1px solid #f0e9ff
 }
 
 .job_right_sidebar .single_sidebar_widget {
     background: rgb(255, 255, 255);
     padding: 5px;
-    margin-bottom: 10px
+    margin-bottom: 2px
 }
 .job_right_sidebar:hover{
     
@@ -310,7 +306,7 @@ b:root{
 
 
 
-
+/*
 
 .testimonial {
   position: relative;
@@ -431,7 +427,7 @@ b:root{
     display: none;
   }
 }
-
+*/
 /*
 Left menu 
 */
@@ -492,3 +488,55 @@ Left menu
 }
 
 
+.slide-banner .fl-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.fl-wrap {
+    float: left;
+    width: 100%;
+    color: #fff;
+}
+.fl-wrap, .job-feature.advance-fr {
+    position: relative;
+    text-align: center;
+}
+
+.slide-banner .form-horizontal {
+    margin-top: 20px;
+}
+form.form-horizontal {
+    padding: 20px;
+    display: table;
+    width: 100%;
+    background: rgba(255, 255, 255, .2);
+    border-radius: 4px;
+}
+.form-group, form {
+    width: 100%;
+}
+.modal .submit-btn, form {
+    display: inline-block;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.form {
+    display: block;
+    margin-top: 0em;
+    unicode-bidi: isolate;
+}
+.fl-wrap {
+    float: left;
+    width: 100%;
+    color: #fff;
+}
+.fl-wrap, .job-feature.advance-fr {
+    position: relative;
+    text-align: center;
+}

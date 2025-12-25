@@ -32,7 +32,7 @@ public interface JobRepository extends JpaRepository<Job, Long> {
 
 	
 	// Danh sach Jon theo Doanh nghiep
-	@Query("SELECT c FROM Job c WHERE c.enterprise = %?1% ")
+	@Query("SELECT c FROM Job c WHERE c.enterprise = %?1%  ORDER BY c.createAt DESC")
 	List<Job> GetAllActiveJobByEnterprise(Enterprise enterprise);
 	
 	@Query("SELECT c FROM Job c WHERE c.expiredDate >  DATE(NOW()) AND c.status ='APPROVED'")

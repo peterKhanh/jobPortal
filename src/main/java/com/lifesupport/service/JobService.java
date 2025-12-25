@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 
-import com.lifesupport.models.Blog;
 import com.lifesupport.models.Enterprise;
 import com.lifesupport.models.Job;
 

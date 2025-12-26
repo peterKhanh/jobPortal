@@ -1,4 +1,4 @@
-<div class="container " th:fragment="frag-category-list">
+<div class="our-services section-pad-t20 " th:fragment="frag-category-list">
 
 	<div class="container  mt-4">
 		<!-- Section Tittle -->
@@ -9,14 +9,147 @@
 					<h4> Công việc theo ngành nghề</h4>
 				</div>
 			</div>
-			<div class="col-lg-6">
-				<div class="text-right" style="display: block;">
-					<a href="#" class="genric-btn info-border circle small">Xem thêm<span
-							class="lnr lnr-arrow-right"></span></a>
-				</div>
-			</div>
+			
 		</div>
+		<div class="row d-flex justify-contnet-center border">
+            <!--      
+			<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6" th:each="cate: ${lists}">
+                        <div class="single-services text-center mb-10 border">
+                            
+							<div class="services-ion">
+                                <span class="flaticon-tour"></span>
+                            </div>
+							
+                            <div class="services-cap">
+                                <h5><a href="job_listing.html" th:text="${cate.name}" class="genric-btn primary-border circle arrow">Design &amp; Creative</a></h5>
+                                <span>(653)</span>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-services text-center mb-10">
+                            <div class="services-ion">
+                                <span class="flaticon-cms"></span>
+                            </div>
+                            <div class="services-cap">
+                                <h5><a href="job_listing.html">Development</a></h5>
+                                <span>(658)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span class="flaticon-report"></span>
+                            </div>
+                            <div class="services-cap">
+                                <h5><a href="job_listing.html">Sales &amp; Marketing</a></h5>
+                                <span>(658)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span class="flaticon-app"></span>
+                            </div>
+                            <div class="services-cap">
+                                <h5><a href="job_listing.html">Mobile Application</a></h5>
+                                <span>(658)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span class="flaticon-helmet"></span>
+                            </div>
+                            <div class="services-cap">
+                                <h5><a href="job_listing.html">Construction</a></h5>
+                                <span>(658)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span class="flaticon-high-tech"></span>
+                            </div>
+                            <div class="services-cap">
+                                <h5><a href="job_listing.html"> Technology</a></h5>
+                                <span>(658)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span class="flaticon-real-estate"></span>
+                            </div>
+                            <div class="services-cap">
+                                <h5><a href="job_listing.html">Real Estate</a></h5>
+                                <span>(658)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span class="flaticon-content"></span>
+                            </div>
+                            <div class="services-cap">
+                                <h5><a href="job_listing.html">Content Writer</a></h5>
+                                <span>(658)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-services text-center mb-10">
+                            <div class="services-ion">
+                                <span class="flaticon-cms"></span>
+                            </div>
+                            <div class="services-cap">
+                                <h5><a href="job_listing.html">Development</a></h5>
+                                <span>(658)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span class="flaticon-report"></span>
+                            </div>
+                            <div class="services-cap">
+                                <h5><a href="job_listing.html">Sales &amp; Marketing</a></h5>
+                                <span>(658)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span class="flaticon-app"></span>
+                            </div>
+                            <div class="services-cap">
+                                <h5><a href="job_listing.html">Mobile Application</a></h5>
+                                <span>(658)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span class="flaticon-helmet"></span>
+                            </div>
+                            <div class="services-cap">
+                                <h5><a href="job_listing.html">Construction</a></h5>
+                                <span>(658)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+-->
 <!--		<div id="owl-category-on-homepage_" class="owl-carousel our-services section-pad-t10">
 			<ul th:each="cate: ${lists}">
 
@@ -31,13 +164,14 @@
 -->
 
 
-		<div id="owl-category-on-homepagevv" class="button-group-area mt-10">
+		<div id="owl-category-on-homepagevv" class="button-group-area p-2">
 			<span th:each="cate: ${lists}">
-				<a th:href="@{/job/jobbycate/{id}(id=${cate.id})}" class="genric-btn info-border circle"
+				<a th:href="@{/job/jobbycate/{id}(id=${cate.id})}" class="genric-btn primary-border circle arrow"
 					th:text="${cate.name}" />
+					
 			</span>
 			<span >
-				<a class="genric-btn info-border circle"
+				<a class="genric-btn primary-border circle arrow"
 					>Xem thêm</a>
 			</span>	</div>
 

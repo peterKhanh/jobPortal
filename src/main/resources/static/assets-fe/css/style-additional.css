@@ -17,6 +17,7 @@
 .widget_title {
     border-left: 10px solid #4caf50;
     padding-left: 15px;
+    margin-top: 10px;
     font-size: large;
 }
 
@@ -126,6 +127,7 @@
 .job_right_sidebar .single_sidebar_widget {
     background: rgb(255, 255, 255);
     padding: 5px;
+    margin-top: 8px;
     margin-bottom: 2px
 }
 .job_right_sidebar:hover{

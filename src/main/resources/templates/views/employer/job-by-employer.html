@@ -83,7 +83,7 @@
 							<a href="#" class="genric-btn primary circle small">Save<span class="lnr lnr-arrow-right"></span></a>
 						</p>
 						-->
-						<div class="items-link items-link2 f-right small">
+						<div class="items-link f-right small">
 							
 							<!--
 							<span th:switch="${job.getStatus()}">
@@ -101,9 +101,11 @@
 								</p>
 							</span>
 							-->
-							<p class="hot-job">Hot</p>
+							<p class="new-job">Mới</p>
+							
+							<p class="hot-job">Gấp</p>
 
-							<a href="#" class="job_edit default-border text-black circle arrow" title="">Sửa</a>
+							<a th:href="@{/employer/edit-job/{id}(id=${job.id})}" class="job_edit default-border text-black circle arrow" title="">Sửa</a>
 							<a href="#" class="job_delete default-border text-black circle arrow" title="">Xóa</a>
 						</div>
 

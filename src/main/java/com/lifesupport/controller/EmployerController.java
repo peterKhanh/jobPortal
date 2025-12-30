@@ -396,34 +396,7 @@ public class EmployerController {
 	
 	
 	
-//	Hiển thị màn hình sửa thông tin cong ty
-	@GetMapping("/edit-employer/")
-	public String viewEditEmployer(Model model, Principal principal) {
-		userService.checkLogin(model, principal);
-		if (principal != null) {
-			String userName = principal.getName();
-			User loggedUser = repoUser.findByUserName(userName);
-			
-			Enterprise enterprise = enterpriseRepo.findByUser(loggedUser);
-			List<IndustrialType> industrialType = industrialTypeService.getAllActiveIndustrialType();
-			model.addAttribute("industrialType", industrialType);
-						
-			 if (enterprise == null) {
-				 System.out.println("enterprise:sdsdfsd "); 
-			 }else {
-				System.out.println("enterprise:OK "); 		 
-				model.addAttribute("user", loggedUser);
-				model.addAttribute("employer", enterprise);
-			 }
-		} else {
-			return "redirect:/logon/";
-		}
-		return "views/employer/edit-employer";
-	}
-	
-	
-	
-	
+
 	
 
 
@@ -463,7 +436,34 @@ public class EmployerController {
 		return "redirect:/employer/viewemployer/";
 	}
 
+//	Hiển thị màn hình sửa thông tin cong ty
+	@GetMapping("/edit-employer/")
+	public String viewEditEmployer(Model model, Principal principal) {
+		userService.checkLogin(model, principal);
+		if (principal != null) {
+			String userName = principal.getName();
+			User loggedUser = repoUser.findByUserName(userName);
+			
+			Enterprise enterprise = enterpriseRepo.findByUser(loggedUser);
+			List<IndustrialType> industrialType = industrialTypeService.getAllActiveIndustrialType();
+			model.addAttribute("industrialType", industrialType);
+						
+			 if (enterprise == null) {
+				 System.out.println("enterprise:sdsdfsd "); 
+			 }else {
+				System.out.println("enterprise:OK "); 		 
+				model.addAttribute("user", loggedUser);
+				model.addAttribute("employer", enterprise);
+			 }
+		} else {
+			return "redirect:/logon/";
+		}
+		return "views/employer/edit-employer";
+	}
 	
+	
+	
+		
 
 	@PostMapping("/edit-employer")
 	public String editEmployer(Principal principal,@RequestParam Long id, @ModelAttribute Enterprise form) {
@@ -564,7 +564,73 @@ public class EmployerController {
 		
 	}
 		
+//	Hiển thị màn hình them cong viec
+	@GetMapping("/edit-job/{id}")
+	public String vieweditJob(Model model, @PathVariable("id") Long id, Principal principal) {
+		userService.checkLogin(model, principal);
+		getAllList(model);
+		System.out.println("enterprise:OK " + id.toString()); 		 
+
+		if (principal != null) {
+			String userName = principal.getName();
+			User loggedUser = repoUser.findByUserName(userName);
+			
+			Job job = jobService.getSingleJob(id).get();
+			model.addAttribute("job", job);
+		
+
+		} else {
+			return "redirect:/logon/";
+		}
+		return "views/employer/edit-job";
+	}
+
 	
+
+	@PostMapping("/edit-job")
+	public String editJob(Principal principal,@RequestParam Long id, @ModelAttribute Job form) {
+		Date updateAt = new Date();
+		Boolean status = true;
+		if (principal != null) {
+			String userName = principal.getName();
+			User loggedUser = repoUser.findByUserName(userName);
+			
+			
+			Job job = jobRepo.findById(id).get();
+		
+			System.out.println(form.getTitle());
+			System.out.println(form.getAddress());
+			System.out.println(form.getDescription());
+			System.out.println(form.getReponsibility());
+		
+				job.setUpdateAt(updateAt);
+				 job.setTitle(form.getTitle());
+		job.setJobCategory(form.getJobCategory());
+		job.setWorkingModel(form.getWorkingModel());
+		job.setNumberOfRecruitement(form.getNumberOfRecruitement());
+		job.setYearOfExperience(form.getYearOfExperience());
+		job.setTrialTime(form.getTrialTime());
+		job.setWorkingTime(form.getWorkingTime()); job.setSalary(form.getSalary());
+		job.setLocation(form.getLocation());
+		job.setWorkingAddress(form.getWorkingAddress());
+		
+		job.setGender(form.getGender()); job.setAgeRange(form.getAgeRange());
+		job.setExpiredDate(form.getExpiredDate());
+		job.setReponsibility(form.getReponsibility());
+		job.setDescription(form.getDescription()); job.setBenefit(form.getBenefit());
+		job.setStatus(form.getStatus()); jobRepo.save(job);
+	
+					return "redirect:job-by-employer/"; 
+
+
+
+		} else {
+			return "redirect:/logon/";
+
+		}
+
+	}	
+		
 /*	
 	
 	@GetMapping("/view-profile")

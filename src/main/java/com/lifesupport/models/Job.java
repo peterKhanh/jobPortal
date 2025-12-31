@@ -68,9 +68,6 @@ public class Job {
 	@ManyToOne
 	@JoinColumn(name = "enterpriseId")
 	Enterprise enterprise;
-	@ManyToOne
-	@JoinColumn(name = "categoryId")
-	Category category;
 
 	@ManyToOne
 	@JoinColumn(name = "jobcategoryId")
@@ -102,7 +99,7 @@ public class Job {
 			String salary, String address, String workingAddress, String workingTime, String gender, String ageRange,
 			String reponsibility, String description, String benefit, Integer viewCount, Integer likeCount,
 			Integer applyCount, String status, Date createAt, Date updateAt, Date expiredDate, Enterprise enterprise,
-			Category category, JobCategory jobCategory, Location location,  WorkingModel workingModel) {
+			JobCategory jobCategory, Location location,  WorkingModel workingModel) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -126,7 +123,6 @@ public class Job {
 		this.updateAt = updateAt;
 		this.expiredDate = expiredDate;
 		this.enterprise = enterprise;
-		this.category = category;
 		this.jobCategory = jobCategory;
 		this.location = location;
 		this.workingModel = workingModel;
@@ -292,14 +288,7 @@ public class Job {
 		this.expiredDate = expiredDate;
 	}
 
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-
+	
 	public Location getLocation() {
 		return location;
 	}

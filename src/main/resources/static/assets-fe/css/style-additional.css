@@ -440,7 +440,6 @@ Left menu
 	margin-right: 2px;
 	font-size: 15px;
 	color: #4caf50;
-	line-height: 1.8
 }
 
 .menu_panel-items:hover {
@@ -458,7 +457,7 @@ Left menu
 
 .group_menu {
 	font-size: 18px;
-    background: #f5f6f7;
+    background: #2cc582;
     padding: 8px 20px;
     margin-top: 1px;
     line-height: 1.6;

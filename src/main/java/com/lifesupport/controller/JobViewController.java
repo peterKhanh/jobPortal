@@ -92,6 +92,44 @@ public class JobViewController {
 		return "views/job/view-job-search";
 	}
 
+
+	@GetMapping("/view-cate-search")
+	public String getAllJobCate(Model model, @Param("keyword") String keyword,
+			@Param("location") Location location, @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
+			Principal principal) {
+		getAllList(model);
+		userService.checkLogin(model, principal);
+		Page<Job> jobs = jobService.getAll(pageNo);
+
+		if (keyword != null) {
+			jobs = jobService.searchJob(keyword, pageNo);
+			model.addAttribute("keyword", keyword);
+			System.out.println("keyword:" + keyword);
+		}
+
+//		if (location != null) {
+//			System.out.println("Location search:" + location.getName());
+//			model.addAttribute("location", location);
+//
+//			
+//		}
+		model.addAttribute("totalPage", jobs.getTotalPages());
+		model.addAttribute("currentPage", pageNo);
+
+		System.out.println("Total page by search:" + jobs.getTotalPages());
+
+		model.addAttribute("jobs", jobs);
+
+		List<Job> recentjobs = jobRepo.findTop10ByOrderByCreateAtDesc();
+		model.addAttribute("recentjobs", recentjobs);
+
+		List<JobCategory> listsCate123 = jobCateRepo.findAllPopularCate();
+		model.addAttribute("listsCate123", listsCate123);
+
+		return "views/job/view-cate-search";
+	}
+
+
 //	Get company in formation
 //	Get all Opening Job of Company
 	@GetMapping("/viewEnterprise/{id}")
@@ -117,6 +155,8 @@ public class JobViewController {
 	public String getApprovedJobByCate(Model model, @PathVariable("id") Integer id,
 			@RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo, Principal principal) {
 		userService.checkLogin(model, principal);
+				getAllList(model);
+
 		JobCategory jobCategory = jobCateRepo.findById(id).get();
 		model.addAttribute("jobCategory", jobCategory);
 
@@ -197,6 +237,11 @@ public class JobViewController {
 //		List<JobCategory> jobcategories = jobCategoryRepo.findAllByActive();
 //		model.addAttribute("jobcategories", jobcategories);
 //	
+
+
+		List<JobCategory> lists = jobCateRepo.findAllPopularCate()	;
+		model.addAttribute("lists", lists);
+
 		List<Location> locations = locationRepo.findAllByActive();
 		model.addAttribute("locations", locations);
 //		List<WorkingModel> workingModels = workingModelRepo.findAllByActive();

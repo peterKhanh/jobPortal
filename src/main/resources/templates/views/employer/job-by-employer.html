@@ -32,13 +32,13 @@
 				<div class="card single-job-items p-2 mt-2" th:each="job: ${jobApplyByEmployer}">
 					<div class="job-items pd-4 joblist" th:data-id="${job.id}" th:user-login="${LoggedIn}">
 
-						<div class="company-img">
+						<div>
 							<a href="#">
 								<img th:if="${job.enterprise.getDefaultLogo}==true" th:src="@{'/upload/default.png'}"
 									alt="..." width="80">
-								<img th:unless="${job.enterprise.getDefaultLogo}==true"
+								<img class="img-thumbnail" th:unless="${job.enterprise.getDefaultLogo}==true"
 									th:src="@{'/upload/enterprise/'+ ${job.enterprise.getLogoName}}"
-									style="width: 60px; height: 60px;" alt="">
+									style="width: 80px; height: 80px;" alt="">
 
 							</a>
 						</div>

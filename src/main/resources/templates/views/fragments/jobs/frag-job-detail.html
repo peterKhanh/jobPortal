@@ -76,7 +76,7 @@
 				</div>
 			</div>
 
-			<div class="normal-title small-section-tittle">
+			<div class="small-section-tittle">
 				<h4>Thông tin chung về công việc</h4>
 			</div>
 			<div class="container mt-3 border">
@@ -84,19 +84,19 @@
 				<div class="row row-cols-2 " style="border-bottom: 1px cornflowerblue;">
 					<div class="col">
 						<ul>
-							<li class="small">Ngày đăng tuyển</li>
+							<li class="">Ngày đăng</li>
 							<p th:text="${#dates.format(job.createAt, 'dd/MM/yyyy')}"></p>
 						</ul>
 					</div>
 					<div class="col">
 						<ul>
-							<li class="small">Số lượng tuyển </li>
+							<li class="">Số lượng </li>
 							<p th:text="${job.numberOfRecruitement}"></p>
 						</ul>
 					</div>
 					<div class="col">
 						<ul>
-							<li class="small">Thử việc </li>
+							<li class="">Thử việc </li>
 							<p th:text="${job.trialTime}"></p>
 						</ul>
 					</div>
@@ -105,14 +105,14 @@
 				<div class="row row-cols-2">
 					<div class="col">
 						<ul>
-							<li class="small">Hình thức làm việc </li>
+							<li class="">Hình thức làm việc </li>
 							<p th:text="${job.workingModel.getName()}"></p>
 						</ul>
 					</div>
 
 					<div class="col">
 						<ul>
-							<li class="small">Kinh nghiệm </li>
+							<li class="">Kinh nghiệm </li>
 							<p th:text="${job.yearOfExperience}"></p>
 						</ul>
 					</div>
@@ -125,7 +125,7 @@
 -->
 					<div class="col">
 						<ul>
-							<li class="small">Độ tuổi </li>
+							<li class="">Độ tuổi </li>
 							<p th:text="${job.ageRange}"></p>
 						</ul>
 					</div>
@@ -135,14 +135,14 @@
 			<div class="job-post-details mt-3">
 				<div class="post-details2  ">
 					<!-- Small Section Tittle -->
-					<div class="small-title small-section-tittle">
+					<div class="small-section-tittle">
 						<h4>Yêu cầu công việc</h4>
 					</div>
 					<p th:utext="${job.reponsibility}" />
 				</div>
 				<div class="post-details2 mb-10 ">
 					<!-- Small Section Tittle -->
-					<div class="small-title small-section-tittle">
+					<div class="small-section-tittle">
 						<h4>Mô tả công việc</h4>
 					</div>
 					<p th:utext="${job.description}" />
@@ -150,7 +150,7 @@
 
 				<div class="post-details2  mb-10 ">
 					<!-- Small Section Tittle -->
-					<div class="small-title small-section-tittle">
+					<div class="small-section-tittle">
 						<h4>Quyền lợi được hưởng</h4>
 					</div>
 					<p th:utext="${job.benefit}" />

@@ -1,0 +1,23 @@
+<div class="our-services section-pad-t20 " th:fragment="frag-category">
+
+	<div class="container  mt-4">
+		<!-- Section Tittle -->
+
+		
+       
+	<div id="owl-category-on-homepagevv" class="button-group-area p-2">
+			<span th:each="cate: ${lists}">
+				<a th:href="@{/job/jobbycate/{id}(id=${cate.id})}" class="genric-btn primary-border circle "
+					th:text="${cate.name}" />
+					
+			</span>
+			<span >
+				<a href="#" class="genric-btn primary-border circle arrow"
+					>Xem thêm</a>
+			</span>	</div>
+
+
+	
+
+	</div>
+</div>

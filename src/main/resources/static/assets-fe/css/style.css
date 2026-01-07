@@ -2999,7 +2999,7 @@ hr {
 }
 
 .blog_item {
-	margin-bottom: 50px
+	margin-bottom: 5px
 }
 
 .blog_details {
@@ -4472,7 +4472,7 @@ del {
 .genric-btn {
 	display: inline-block;
 	outline: none;
-	line-height: 40px;
+	line-height: 20px;
 	padding: 0 30px;
 	font-size: .8em;
 	text-align: center;

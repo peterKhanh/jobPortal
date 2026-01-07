@@ -1,7 +1,28 @@
-<div class=" container job-listing-area pb-10 pt-4" th:fragment="view-enterprise">
+<div class=" container job-listing-area" th:fragment="view-enterprise">
 
-	<div class="container pt-4 pb-4 border">
+	<div class="container">
 		<div class="col-lg-12">
+
+			<div class="row">
+
+				<article class="blog_item">
+                            
+								<img class="card-img rounded-0 border"  
+								 src="https://cdn1.vieclam24h.vn/images/assets/img/generic_25.jpg" style="width:110%; height:100%" alt="">
+                            
+							<!--
+								<a href="#" class="blog_item_date">
+                                    <img class= "img-thumbnail"  th:if="${enterprise.getDefaultLogo}==true" th:src="@{'/upload/default.png'}" alt="..."
+						width="90">
+							<img class= "img-thumbnail"  th:unless="${enterprise.getDefaultLogo}==true"
+						th:src="@{'/upload/enterprise/'+ ${enterprise.getLogoName}}" style="width: 90px; height: 90px;" alt="">
+
+                                </a>
+
+							-->
+                        </article>
+			</div>
+
 			<div class="row">
 				<div class="col-2 text-center">
 					<img class= "img-thumbnail"  th:if="${enterprise.getDefaultLogo}==true" th:src="@{'/upload/default.png'}" alt="..."

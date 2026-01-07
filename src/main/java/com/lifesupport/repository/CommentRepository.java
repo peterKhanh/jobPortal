@@ -10,7 +10,7 @@ import com.lifesupport.models.Comment;
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, Integer> {
 
-	// Search Blog by CategoryID
+// Search Blog by CategoryID
 //	@Query("SELECT c FROM Blog c WHERE c.category = %?1%")
 //	List<Blog> SearchByCategory(Category category);
 	

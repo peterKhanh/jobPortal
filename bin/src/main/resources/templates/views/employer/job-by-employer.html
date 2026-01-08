@@ -1,0 +1,140 @@
+<!--<section class="featured-job-area feature-padding" th:fragment="view-enterprise">
+-->
+
+<head th:replace="~{views/fragments/head :: head}"></head>
+
+<body>
+		<!-- Header Start -->
+	<header th:replace="~{views/fragments/menu_bar_2 :: menu_bar_2}"> </header>
+
+	<main>
+
+		<!--Begin-->
+
+		<div class=" container py-2">
+			<div class="row pt-15">
+				<div th:replace="~{views/employer/profile-panel :: profile-panel}"></div>
+				<div class="col-xl-9 col-lg-9 col-md-8">
+					<div class="container p-2">
+						<div class="widget_title">
+							<p class="mb-2">Công việc đang tuyển</p>
+						</div>
+								<!--Danh sách CV - Hồ sơ-->
+								
+
+
+								
+								
+								<div class="row" style="display: block;">
+									<div class="col-sm-12 ">
+
+
+				<div class="card single-job-items p-2 mt-2" th:each="job: ${jobApplyByEmployer}">
+					<div class="job-items pd-4 joblist" th:data-id="${job.id}" th:user-login="${LoggedIn}">
+
+						<div>
+							<a href="#">
+								<img th:if="${job.enterprise.getDefaultLogo}==true" th:src="@{'/upload/default.png'}"
+									alt="..." width="80">
+								<img class="img-thumbnail" th:unless="${job.enterprise.getDefaultLogo}==true"
+									th:src="@{'/upload/enterprise/'+ ${job.enterprise.getLogoName}}"
+									style="width: 80px; height: 80px;" alt="">
+
+							</a>
+						</div>
+
+						<div class="job-tittle">
+							<a th:href="@{/job/viewjob/{id}(id=${job.id})}">
+								<h6 th:text="${job.getTitle()}" />
+							</a>
+							<ul>
+								<li><i class="icofont-listing-box"></i>
+									<span th:text="${job.jobCategory.getName()}">Category </span>
+								</li>
+								<li>
+									<i class="icofont-location-pin"></i>
+									<span th:text="${job.getLocation().getName()}"></span>
+								</li>
+								</ul>
+								<ul>
+								<li>
+									<i class="icofont-money"></i>
+									<span th:text="${job.salary}">Salary 30$</span>
+								</li>
+								<li>
+									<i class="icofont--calendar"></i>
+									<span class="small" th:text="${#dates.format(job.getExpiredDate(), 'dd/MM/yyyy')}">dd/MM/yyy</span>
+								</li>
+							</ul>
+							<ul>
+								<li>
+									<i class="icofont-location-arrow"></i>
+									<span th:text="${job.getWorkingAddress()}">ha noi </span>
+								</li>
+							</ul>
+
+						</div>
+						<!--
+						<p class="job_apply">
+							<a href="#" class="genric-btn info-border circle arrow small">Apply<span class="lnr lnr-arrow-right"></span></a>
+						</p>
+						
+						<p class="job_save">
+							<a href="#" class="genric-btn primary circle small">Save<span class="lnr lnr-arrow-right"></span></a>
+						</p>
+						-->
+						<div class="items-link f-right small">
+							
+							<!--
+							<span th:switch="${job.getStatus()}">
+								<p th:case="'APPROVED'">
+									<button type="button" class="genric-btn primary circle arrow small"> Đang
+										tuyển</button>
+								</p>
+								<p th:case="'EDITING'">
+									<button type="button" class="genric-btn warning  circle arrow small"> Đang
+										sửa</button>
+								</p>
+								<p th:case="'BLOCKED'">
+									<button type="button" class="genric-btn danger  circle arrow small">Bị
+										khóa</button>
+								</p>
+							</span>
+							-->
+							<p class="new-job">Mới</p>
+							
+							<p class="hot-job">Gấp</p>
+
+							<a th:href="@{/employer/edit-job/{id}(id=${job.id})}" class="job_edit default-border text-black circle arrow" title="">Sửa</a>
+							<a href="#" class="job_delete default-border text-black circle arrow" title="">Xóa</a>
+						</div>
+
+					</div>
+
+				</div>
+				<!-- End-job list-content -->
+								
+						
+									</div>
+								</div>
+
+								<!--Hết Danh sách CV - Hồ sơ-->
+					</div> 
+
+				</div>
+			</div>
+		</div>
+
+		<!--End-->
+
+
+
+	</main>
+
+	<!-- Footer Include -->
+	<div th:replace="~{views/fragments/footer :: footer}"></div>
+	<!-- Script Include -->
+	<div th:replace="~{views/fragments/script :: script}"></div>
+</body>
+
+</html>

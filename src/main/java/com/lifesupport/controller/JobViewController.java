@@ -99,7 +99,7 @@ public class JobViewController {
 			Principal principal) {
 		getAllList(model);
 		userService.checkLogin(model, principal);
-		Page<Job> jobs = jobService.getAll(pageNo);
+		Page<Job> jobs = jobService.getAllJobForHomePage(pageNo);
 
 		if (keyword != null) {
 			jobs = jobService.searchJob(keyword, pageNo);

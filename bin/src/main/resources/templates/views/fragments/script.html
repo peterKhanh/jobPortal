@@ -1,0 +1,152 @@
+<div th:fragment="script">
+
+
+	<!-- All JS Custom Plugins Link Here here -->
+	<script th:src="@{/assets-fe/js/vendor/modernizr-3.5.0.min.js}"></script>
+	<!-- Jquery, Popper, Bootstrap -->
+	<script th:src="@{/assets-fe/js/vendor/jquery-1.12.4.min.js}"></script>
+	<script th:src="@{/assets-fe/js/popper.min.js}"></script>
+	<script th:src="@{/assets-fe/js/bootstrap.min.js}"></script>
+	<!-- Jquery Mobile Menu -->
+	<script th:src="@{/assets-fe/js/jquery.slicknav.min.js}"></script>
+
+	<!-- Jquery Slick , Owl-Carousel Plugins -->
+	<script th:src="@{/assets-fe/js/owl.carousel.min.js}"></script>
+	<script th:src="@{/assets-fe/js/slick.min.js}"></script>
+<!--	
+	<script th:src="@{/assets-fe/js/price_rangs.js}"></script>
+-->
+	<!-- One Page, Animated-HeadLin -->
+	<script th:src="@{/assets-fe/js/wow.min.js}"></script>
+	<script th:src="@{/assets-fe/js/animated.headline.js}"></script>
+	<script th:src="@{/assets-fe/js/jquery.magnific-popup.js}"></script>
+
+	<!-- Scrollup, nice-select, sticky -->
+	<script th:src="@{/assets-fe/js/jquery.scrollUp.min.js}"></script>
+	<script th:src="@{/assets-fe/js/jquery.nice-select.min.js}"></script>
+	<script th:src="@{/assets-fe/js/jquery.sticky.js}"></script>
+
+	<!-- contact js -->
+	<script th:src="@{/assets-fe/js/contact.js}"></script>
+	<script th:src="@{/assets-fe/js/jquery.form.js}"></script>
+	<script th:src="@{/assets-fe/js/jquery.validate.min.js}"></script>
+	<script th:src="@{/assets-fe/js/mail-script.js}"></script>
+	<script th:src="@{/assets-fe/js/jquery.ajaxchimp.min.js}"></script>
+
+	<!-- Jquery Plugins, main Jquery -->
+	<script th:src="@{/assets-fe/js/plugins.js}"></script>
+	<script th:src="@{/assets-fe/js/main.js}"></script>
+	<!--
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+-->
+	<!-- Jquery Toast -->
+	<script th:src="@{/assets-fe/toast/js/jquery.toast.js}"></script>
+	
+	<!-- jQuery Validate -->
+	<script th:src="@{/assets/lte3/plugins/jquery-validation/jquery.validate.min.js}"></script>
+	
+	<script th:src="@{/assets-fe/js/action/js_main.js}"></script>
+
+	<!-- Owl Carousel Assets -->
+
+
+<!--	<script th:src="@{/assets-fe/owl-carousel/js/jquery-1.9.1.min.js}"></script>
+-->	<script th:src="@{/assets-fe/owl-carousel/owl-carousel/owl.carousel.min.js}"></script>
+
+
+	<!-- Frontpage Demo -->
+	<script>
+	
+<!--		Scrip call Conpany owlCarousel
+
+
+-->		
+		$(document).ready(function ($) {
+			$("#owl-location").owlCarousel();
+		});
+
+		$(document).ready(function ($) {
+			$("#owl-company").owlCarousel();
+		});
+
+
+		// Begin Script call Category on frontpage
+		$(document).ready(function () {
+			var owl = $("#owl-category-on-homepage");
+			owl.owlCarousel({
+				items: 6, //10 items above 1000px browser width
+				itemsDesktop: [1000, 5], //5 items between 1000px and 901px
+				itemsDesktopSmall: [900, 3], // betweem 900px and 601px
+				itemsTablet: [600, 2], //2 items between 600 and 0
+				loop:true,
+			    margin:10,
+			    autoplay:true,
+			    autoplayTimeout:1000,
+			    autoplayHoverPause:true,
+				itemsMobile: false // itemsMobile disabled - inherit from itemsTablet option
+			});
+
+			// Custom Navigation Events
+			$(".next").click(function () {
+				owl.trigger('owl.next');
+			})
+			$(".prev").click(function () {
+				owl.trigger('owl.prev');
+			})
+			$(".play").click(function () {
+				owl.trigger('owl.play', 1000); //owl.play event accept autoPlay speed as second parameter
+			})
+			$(".stop").click(function () {
+				owl.trigger('owl.stop');
+			})
+		});
+		// End Script call Category on frontpage
+
+
+		// Begin Script Blog on Homepage
+		$(document).ready(function () {
+			var owl = $("#owl-blog_on_homepage");
+			owl.owlCarousel({
+				items: 4, //10 items above 1000px browser width
+				itemsDesktop: [1000, 5], //5 items between 1000px and 901px
+				itemsDesktopSmall: [900, 3], // betweem 900px and 601px
+				itemsTablet: [600, 2], //2 items between 600 and 0
+				loop:true,
+			    margin:10,
+			    autoplay:true,
+			    autoplayTimeout:1000,
+			    autoplayHoverPause:true,
+				itemsMobile: false // itemsMobile disabled - inherit from itemsTablet option
+			});
+		
+		});
+		// End Script Blog on Homepage
+
+
+
+		// Begin Script Testimonial on frontpage
+		$(document).ready(function () {
+			var owl = $("#owl-testimonial");
+			owl.owlCarousel({
+				items: 3, //10 items above 1000px browser width
+				itemsDesktop: [1000, 5], //5 items between 1000px and 901px
+				itemsDesktopSmall: [900, 3], // betweem 900px and 601px
+				itemsTablet: [600, 2], //2 items between 600 and 0
+				loop:true,
+			    margin:10,
+			    autoplay:true,
+			    autoplayTimeout:1000,
+			    autoplayHoverPause:true,
+				itemsMobile: false // itemsMobile disabled - inherit from itemsTablet option
+			});
+		
+		});
+		// End Script call Testimonial on frontpage
+		// 
+    
+
+
+
+	</script>
+
+</div>

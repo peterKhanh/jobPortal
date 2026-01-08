@@ -87,24 +87,13 @@ public class HomeController {
 		model.addAttribute("locations", locations);
 
 		
-		Page<Job> jobs = jobService.getAll(pageNo);
-		
+		// Page<Job> jobs = jobService.getAll(pageNo);
+		Page<Job> jobs = jobService.getAllJobForHomePage(pageNo);
 		model.addAttribute("totalPage", jobs.getTotalPages());
 		model.addAttribute("currentPage", pageNo);
 		System.out.println("totalPage : " + jobs.getTotalPages());
 		model.addAttribute("jobs", jobs);
 
-/*	
-		List<Category> listCate = categoryService.getAllActiveCate();	
-		model.addAttribute("listCate", listCate);
-
-		List<Slide> listSlide = slideRepository.findByStatusTrue();
-		int v_active_slide_id = listSlide.get(0).getId();
-		System.out.println("v_first_id:" + v_active_slide_id);
-		model.addAttribute("v_active_slide_id", v_active_slide_id);
-
-		model.addAttribute("listSlide", listSlide);
-	*/	
 		Category cate = cateRepository.findById(2).get();
 	
 		List<Blog> blogOnHomePage1 = blogRepository.findTop4ByCategory(cate);

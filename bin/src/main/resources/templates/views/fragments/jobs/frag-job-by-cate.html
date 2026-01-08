@@ -1,0 +1,131 @@
+<div class="container border pd-2" th:fragment="frag-job-by-cate">
+	<div class="online-cv pt-10 pb-10">
+		<div class="container" th:data-background="@{/assets-fe/img/banner/banner-featured.jpg}">
+			<div class="row justify-content-center">
+				<div class="col-xl-10">
+					<div class="cv-caption text-center">
+						<p class="sub-title">VIỆC LÀM THEO LĨNH VỰC</p>
+						<p class="sub-title2" th:text="${jobCategory.getName()}"></p>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<br>
+	<div class="section-tittle">
+		<h4>Danh sách công việc</h4>
+	</div>
+
+	<div class="row">
+		<div class="col-xl-8 col-lg-8">
+			<div class="card single-job-items joblist mb-2" th:each="job: ${jobs}">
+				<div class="job-items" >
+					<!--
+					<div class="company-img  pd-2">
+						<a th:href="@{/job/viewEnterprise/{id}(id=${job.enterprise.getId()})}">
+							<img th:if="${job.enterprise.getDefaultLogo}==true" th:src="@{/upload/default.png}"
+								alt="..." width="80">
+							<img th:unless="${job.enterprise.getDefaultLogo}==true"
+								th:src="@{'/upload/enterprise/'+ ${job.enterprise.getLogoName}}"
+								style="width: 60px; height: 60px;" alt="">
+						</a>
+					</div>
+					-->
+
+					<div class="row">
+
+						<div class="col-3 text-center">
+							<img th:if="${job.enterprise.getDefaultLogo}==true" th:src="@{'/upload/default.png'}"
+								alt="..." width="90">
+							<img th:unless="${job.enterprise.getDefaultLogo}==true"
+								th:src="@{'/upload/enterprise/'+ ${job.enterprise.getLogoName}}"
+								style="width: 70px; height: 70px;" alt="">
+
+						</div>
+
+
+					</div>
+
+					<div class="job-tittle">
+						<div class="title">
+							<a th:href="@{/job/viewjob/{id}(id=${job.id})}">
+								<h5 th:text="${job.title}"></h5>
+							</a>
+
+						</div>
+						<a th:href="@{/job/viewEnterprise/{id}(id=${job.enterprise.getId()})}">
+
+							<h6 th:text="${job.enterprise.getName()}">Micrsoft Corp</h6>
+						</a>
+						<ul>
+							<li><i class="icofont-listing-box"></i>
+
+								<span th:text="${job.jobCategory.getName()}">Category </span>
+							</li>
+							<li>
+								<i class="icofont-location-pin"></i>
+								<span th:text="${job.location.getName()}">Location </span>
+							</li>
+							<li>
+								<i class="icofont-money"></i>
+								<span th:text="${job.getSalary()}"> </span>
+							</li>
+
+						</ul>
+					</div>
+					<div class="items-link items-link2 f-right small" th:data-id="${job.id}" th:user-login="${LoggedIn}">
+								<a href="#" class="job_apply default-border text-black circle arrow" title="">Apply</a>
+								<a href="#" class="job_save default-border text-black circle arrow" title="">Save</a>
+						</div>
+				</div>
+			</div>
+
+			<!--Pagination Start  -->
+			<div class="pagination-area pt-2 pb-10 text-center" th:if="${totalPage > 0}">
+				<div class="container">
+					<div class="row">
+						<div class="col-xl-12">
+							<div class="single-wrap d-flex justify-content-center">
+								<nav aria-label="Page navigation example">
+									<ul class="pagination justify-content-start">
+
+										<li class="page-item" th:if="${currentPage > 1}">
+											<a class="page-link" th:href="@{'?pageNo='+${currentPage-1}}">
+												<span class="ti-angle-left"></span></a>
+										</li>
+
+
+										<li class="page-item" th:each="i:${#numbers.sequence(1,totalPage)}"
+											th:classappend="${currentPage == i ? 'active':''}">
+											<a class="page-link" th:text="${i}" th:href="@{'?pageNo='+${i}}"></a>
+										</li>
+
+
+										<li class="page-item" th:if="${currentPage < totalPage}">
+											<a class="page-link" th:href="@{'?pageNo='+${currentPage+1}}"><span
+													class="ti-angle-right"></span></a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--Pagination End  -->
+
+		</div>
+		<!-- Right Content -->
+		<div class="col-xl-4 col-lg-4">
+			<div class="job_right_sidebar" border>
+
+				<div class="job_right_sidebar" border>
+					<aside th:replace="~{views/fragments/jobs/frag-recent-job :: frag-recent-job}"></aside>
+				</div>
+
+			</div>
+
+		</div>
+	</div>

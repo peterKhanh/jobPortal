@@ -1,0 +1,68 @@
+<!--Clients Says-->
+<section class="container section testimonial-2" th:fragment="tastimonial">
+
+	<!-- Section Tittle -->
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="section-tittle text-center">
+				<h2>Liên hệ với tư vấn tuyển dụng</h2>
+			</div>
+		</div>
+	</div>
+
+	<div id="owl-testimonial" class="owl-carousel">
+
+		<ul th:each="tastimonial :${listTastimonial}">
+			<div class="card mr-2 text-center">
+				<p>
+					<img class="rounded-circle shadow-1-strong mb-4"
+						th:src="@{'/upload/tastimonial/'+ ${tastimonial.fileName}}" alt="avatar"
+						style="width: 200px;" />
+				</p>
+				<h5 class="mb-3" th:text=${tastimonial.title}>John Doe</h5>
+				<p th:text="${tastimonial.subTitle}">Web Developer</p>
+				<p class="text-muted">
+					<i class="fas fa-quote-left pe-2"></i>
+					<span th:text="${tastimonial.comment}"></span>
+				</p>
+				<!--
+				<ul class="list-unstyled d-flex justify-content-center text-warning mb-0">
+					<li><i class="fas fa-star fa-sm"></i></li>
+					<li><i class="fas fa-star fa-sm"></i></li>
+					<li><i class="fas fa-star fa-sm"></i></li>
+					<li><i class="fas fa-star fa-sm"></i></li>
+					<li><i class="fas fa-star fa-sm"></i></li>
+				</ul>
+	
+				<div class="card-body">Basic card</div>
+				-->
+			</div>
+		</ul>
+
+
+	</div>
+
+
+
+
+
+
+	<!--
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-12 testimonial-wrap-2">
+				<div class="testimonial-block style-2  gray-bg" th:each="tastimonial :${listTastimonial}">
+					<i class="icofont-quote-right"></i>
+					<div class="testimonial-thumb">
+						<img th:src="@{'/images/tastimonial/'+ ${tastimonial.fileName}}" alt="" class="img-fluid">
+					</div>
+					<div class="client-info ">
+						<h4 th:text="${tastimonial.title}"/>
+						<span th:text="${tastimonial.subTitle}"/>
+						<p th:text="${tastimonial.comment}"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>-->
+</section>

@@ -1,0 +1,88 @@
+<head th:replace="~{views/fragments/head :: head}"></head>
+
+<body>
+	<!-- Header Start -->
+	<header th:replace="~{views/fragments/menu_bar_2 :: menu_bar_2}"> </header>
+
+	<main>
+
+		<div class="container py-2">
+			<div class="row pt-15">
+				<div th:replace="~{views/employer/profile-panel :: profile-panel}"></div>
+				<div class="col-xl-9 col-lg-9 col-md-8">
+					<div class="container p-2">
+						<!--Thông tin cá nhân-->
+						<div class="row">
+							<div class="col-sm-12 d-flex justify-content-between align-items-center">
+								<div class="widget_title">
+									<p class="mb-2">Thông nhà tuyển dụng</p>
+								</div>
+								<a th:href="@{/employer/edit-user/}" class="genric-btn info-border circle arrow small">
+									<i class="fas fa-pencil-alt"></i> Sửa</a>
+							</div>
+						</div>
+
+						
+
+
+						<div class="col-sm-12 border">
+							<ul class="list-group list-group-flush rounded-3">
+								<li class="list-group-item d-flex justify-content-between align-items-center p-2">
+									<div class="col-sm-4">
+										<p class="mb-0">Họ và tên</p>
+									</div>
+									<div class="col-sm-8">
+										<p class="text-muted mb-0" th:text="${loggedUser.fullName}">Trần Văn
+											Long</p>
+									</div>
+								</li>
+								<li class="list-group-item d-flex justify-content-between align-items-center p-2">
+									<div class="col-sm-4">
+										<p class="mb-0">Tên đăng nhập</p>
+									</div>
+									<div class="col-sm-8">
+										<p class="text-muted mb-0" th:text="${loggedUser.userName}">Trần Văn
+											Long</p>
+									</div>
+								</li>
+
+								<li class="list-group-item d-flex justify-content-between align-items-center p-2">
+									<div class="col-sm-4">
+										<p class="mb-0">Địa chỉ</p>
+									</div>
+									<div class="col-sm-8">
+										<p class="text-muted mb-0" th:text="${loggedUser.address}">Bay Area,
+											San Francisco, CA</p>
+									</div>
+								</li>
+								<li class="list-group-item d-flex justify-content-between align-items-center p-2">
+									<div class="col-sm-4">
+										<p class="mb-0">Email</p>
+									</div>
+									<div class="col-sm-8">
+										<p class="text-muted mb-0" th:text="${loggedUser.email}">
+											example@example.com</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+						<!--End Thông tin cá nhân-->
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+
+	</main>
+
+	<!-- Footer Include -->
+	<div th:replace="~{views/fragments/footer :: footer}"></div>
+	<!-- Script Include -->
+	<div th:replace="~{views/fragments/script :: script}"></div>
+</body>
+
+</html>

@@ -1,0 +1,191 @@
+<!--View job by Cate-->
+
+<head th:replace="~{views/fragments/head :: head}"></head>
+
+<body>
+
+	<!-- Header Start -->
+	<header th:replace="~{views/fragments/menu_bar :: menu_bar}"> </header>
+
+	<main>
+
+		<!--Searching Erea-->
+		<!--<div th:replace="~{views/fragments/search-area :: search-area}"></div>-->
+		<!-- Search Area End-->
+
+		<!-- List Job by Category Start -->
+		<div class="container border pd-2">
+
+			<div class="row" style="display: block;">
+
+				<div class="col-lg-12">
+					<div class="online-cv cv-bg section-overly pt-10 pb-10"
+						data-background="/assets-fe/img/gallery/cv_bg.jpg">
+						<div class="container">
+							<div class="row justify-content-center">
+								<div class="col-xl-10">
+									<div class="cv-caption text-center">
+										<p class="pera1">CÔNG VIỆC ĐANG TUYỂN</p>
+
+										<p class="pera2" th:text="${location.getName()}"></p>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<br>
+
+			<div class="widget_title">Công việc theo địa điểm</div>
+
+
+			<div class="row">
+
+				<div class="col-xl-8 col-lg-8">
+					<div class="single-job-items joblist border mb-2" th:each="job: ${jobs}">
+						<div class="job-items" th:data-id="${job.id}" th:user-login="${LoggedIn}">
+							<!--
+							<div class="company-img  pd-2">
+								<a th:href="@{/job/viewEnterprise/{id}(id=${job.enterprise.getId()})}">
+									<img th:src="@{'/upload/enterprise/'+ ${job.enterprise.getLogoName}}"
+										style="width: 60px; height: 60px;" alt="">
+									
+									<img th:if="${job.enterprise.getDefaultLogo}==true"
+										th:src="@{'/upload/default.png'}" alt="..." width="90">
+									<img th:unless="${job.enterprise.getDefaultLogo}==true"
+										th:src="@{'/upload/enterprise/'+ ${job.enterprise.getLogoName}}"
+										style="width: 90px; height: 90px;" alt="">
+
+								</a>
+							</div>
+							-->	
+							<div class="job-tittle">
+								<div class="job-tittle">
+									<a th:href="@{/job/viewjob/{id}(id=${job.id})}">
+										<h5 th:text="${job.title}">Digital Mabbrketer</h5>
+									</a>
+
+								</div>
+								<a th:href="@{/job/viewEnterprise/{id}(id=${job.enterprise.getId()})}">
+
+									<h6 th:text="${job.enterprise.getName()}">Micrsoft Corp</h6>
+								</a>
+								<ul>
+									<li><i class="icofont-listing-box"></i>
+										<span th:text="${job.jobCategory.getName()}">Category </span>
+									</li>
+									<li>
+										<i class="icofont-location-pin"></i>
+										<span th:text="${job.location.getName()}">Location </span>
+									</li>
+									<li>
+										<i class="icofont-money"></i>
+										<span th:text="${job.getSalary()}">Location </span>
+									</li>
+
+								</ul>
+							</div>
+							<!--
+							<li class="job_apply items-link items-link2 f-right small">
+								<span class="badge rounded-pill small">Ứng tuyển</span>
+							</li>
+								<p class="job_save">
+						<i class="icofont-heart-alt small"></i>
+					</p>-->
+
+						</div>
+
+
+
+
+
+					</div>
+
+					<!--Pagination Start  -->
+					<div class="pagination-area pt-2 pb-10 text-center" th:if="${totalPage > 0}">
+						<div class="container">
+							<div class="row">
+								<div class="col-xl-12">
+									<div class="single-wrap d-flex justify-content-center">
+										<nav aria-label="Page navigation example">
+											<ul class="pagination justify-content-start">
+
+												<li class="page-item" th:if="${currentPage > 1}">
+													<a class="page-link" th:href="@{'?pageNo='+${currentPage-1}}">
+														<span class="ti-angle-left"></span></a>
+												</li>
+
+
+												<li class="page-item" th:each="i:${#numbers.sequence(1,totalPage)}"
+													th:classappend="${currentPage == i ? 'active':''}">
+													<a class="page-link" th:text="${i}"
+														th:href="@{'?pageNo='+${i}}"></a>
+												</li>
+
+
+												<li class="page-item" th:if="${currentPage < totalPage}">
+													<a class="page-link" th:href="@{'?pageNo='+${currentPage+1}}"><span
+															class="ti-angle-right"></span></a>
+												</li>
+											</ul>
+
+
+										</nav>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--Pagination End  -->
+
+				</div>
+				<!-- Right Content -->
+				<div class="col-xl-4 col-lg-4">
+					<div class="job_right_sidebar" border>
+
+						<div class="job_right_sidebar" border>
+							<aside th:replace="~{views/fragments/jobs/frag-recent-job :: frag-recent-job}"></aside>
+						</div>
+
+					</div>
+
+
+				</div>
+
+			</div>
+		</div>
+
+		<!-- List Job by Category End -->
+
+		<hr>
+		<!-- How  Apply Process Start-->
+
+		<!--		<div th:replace="views/fragments/apply-process :: apply-process"></div>
+-->
+		<!-- How  Apply Process End-->
+
+
+		<!-- Blog Area Start -->
+		<!--		<div th:replace="views/fragments/seeker/blog :: blog"></div>
+--> <!-- Blog Area End -->
+
+		<!--Banner Contact-->
+		<!--	<div th:replace="views/fragments/banner-contact :: banner-contact"></div>-->
+
+		<!-- End Banner  Contact-->
+
+	</main>
+
+	<!-- Footer Include -->
+	<div th:replace="~{views/fragments/footer :: footer}"></div>
+	<!-- Script Include -->
+	<div th:replace="~{views/fragments/script :: script}"></div>
+
+
+
+</body>
+
+</html>

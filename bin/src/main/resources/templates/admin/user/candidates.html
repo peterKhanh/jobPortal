@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
+
+<head th:replace="~{admin/frags/head :: head}"></head>
+
+<body class="hold-transition sidebar-mini ayout-fixed">
+	<div class="wrapper">
+
+		<!-- Navbar -->
+		<nav th:replace="~{admin/frags/navbar :: navbar}"></nav>
+		<!-- /.navbar -->
+
+		<!-- Main Sidebar Container -->
+
+		<aside th:replace="~{admin/frags/aside :: aside}"></aside>
+
+		<!--Content from here-->
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div class="content-header" style="display: none;">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1 class="m-0 text-dark">Dashboard</h1>
+						</div><!-- /.col -->
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a href="#">Home</a></li>
+								<li class="breadcrumb-item active">Dashboard v1</li>
+							</ol>
+						</div><!-- /.col -->
+					</div><!-- /.row -->
+				</div><!-- /.container-fluid -->
+			</div>
+			<!-- /.content-header -->
+
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="container-fluid">
+					<!-- /.row -->
+					<!-- Main row -->
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<h2 class="card-title">Danh sách các ứng viên</h2>
+
+							</div>
+							<!-- /.card-header -->
+							<div class="card-body">
+								<form>
+									<div class="row">
+										<div class="col-6">
+											<input type="text" name="keyword" class="form-control pull-right"
+												placeholder="Từ khóa" th:value="${keyword}">
+										</div>
+
+										<div class="col-2">
+											<button type="submit" class="btn btn-default"><i
+													class="fa fa-search"></i></button>
+										</div>
+										<!--										<div class="col-3">
+											<a th:href="@{/admin/add-user}" class="btn btn-info float-right"><i
+													class="fas fa-plus"></i>
+												<span>Thêm</span>
+											</a>
+
+										</div>
+-->
+									</div>
+								</form>
+								<!-- /.card-body -->
+							</div>
+
+							<div class="card-body">
+
+								<table class="table table-bordered">
+									<thead>
+										<thead>
+											<tr>
+												<th style="width: 20%;">Tên ứng viên</th>
+												<th style="width: 25%;">Địa chỉ</th>
+												<th style="width: 13.748763600395646%;">Điện thoại</th>
+												<th style="width: 13.748763600395646%;">Trạng thái</th>
+												<th class="text-center" style="width: 16.61721068249258%;">Hành động
+												</th>
+											</tr>
+										</thead>
+									<tbody>
+										<tr th:each="user :${listUser}">
+											<td class="col-3 text-center">
+												<div class="row">
+													<div class="d-flex">
+														<img th:if="${user.avata != null}"
+															th:src="@{'/upload/user/'+ ${user.avata}}" alt="..."
+															width="80" class="wid-40 rounded-circle" />
+														<div>
+															<h5 class="mb-0" th:text="${user.fullName}">Addie Bass</h5>
+															<p class="text-muted f-12 mb-0" th:text="${user.userName}">
+																</p>
+															<p class="text-muted f-12 mb-0" th:text="${user.email}">
+																mareva@gmail.com</p>
+														</div>
+													</div>
+
+												</div>
+											</td>
+											<td th:text="${user.address}">United Kingdom</td>
+											<td th:text="${user.telephone}">+1 (247) 849-6968</td>
+
+											<td th:if="${user.enabled}"> <span class="label label-success">Hiện
+													thị</span>
+											</td>
+											<td th:if="${!user.enabled}"> <span class="label label-danger">Đang
+													ẩn</span>
+											</td>
+											<td class="col-2 text-center">
+												<ul class="list-inline me-auto mb-0" th:data-id="${user.id}">
+<!--													
+													<a th:href="@{/admin/edit-user/{id}(id=${user.id})}"
+														class="btn btn-success">Xem Tài khoản</a>
+														
+-->													<a th:href="@{/admin/user-view-profile/{id}(id=${user.id})}"
+														class="btn btn-success">Xem hồ sơ</a>
+													<!--
+													 <button type="button" class="btn btn-primary btn-open-dialog" data-bs-toggle="modal" 
+													  data-bs-target="#modal-view-profile" >Xem hồ sơ</button>-->
+
+												</ul>
+											</td>
+
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!-- /.card-body -->
+							<div class="card-footer clearfix">
+								<ul class="pagination pagination-sm m-0 float-right">
+									<li class="page-item" th:if="${currentPage > 1}"><a class="page-link"
+											th:href="@{'?pageNo='+${currentPage-1}}">«</a></li>
+									<!--<li class="page-item"><a class="page-link" href="#">1</a></li>
+									<li class="page-item"><a class="page-link" href="#">2</a></li>-->
+									<li class="page-item" th:each="i:${#numbers.sequence(1,totalPage)}"
+										th:classappend="${currentPage == i ? 'active':''}"><a class="page-link"
+											th:text="${i}" th:href="@{${keyword != null && keyword != ''?'?keyword='+keyword+'&':'?'}+'pageNo='+${i}}"></a></li>
+									<li class="page-item" th:if="${currentPage < totalPage}"><a class="page-link"
+											th:href="@{'?pageNo='+${currentPage+1}}">»</a></li>
+								</ul>
+							</div>
+						</div>
+						<!-- /.card -->
+					</div>
+				</div><!-- /.container-fluid -->
+			</section>
+			<!-- /.content -->
+			
+
+
+  
+  <div class="modal fade" id="modal-view-profile" tabindex="-1"  aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Nesdfdsfe</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+			  <input type="hidden" id="id">
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Recipient:</label>
+              <input type="text" class="form-control" id="name">
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Message:</label>
+              <textarea class="form-control" id="message-text"></textarea>
+            </div>
+    		
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Send message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+		<!-- /.content -->
+	</div>
+
+	<!--Content end here-->
+
+
+
+	<!-- /.content-wrapper -->
+	<footer th:replace="~{admin/frags/footer :: footer}"></footer>
+
+	<!-- Control Sidebar -->
+	<aside class="control-sidebar control-sidebar-dark">
+		<!-- Control sidebar content goes here -->
+	</aside>
+	<!-- /.control-sidebar -->
+	</div>
+	<!-- ./wrapper -->
+	<div th:replace="~{admin/frags/script :: script}"></div>
+
+</body>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<head th:replace="admin/fragments/head :: head"></head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+		<div th:replace="admin/fragments/header :: header"></div>
+		<!-- Left side column. contains the sidebar -->
+		<div th:replace="admin/fragments/sidebar :: sidebar"></div>
+		<div class="content-wrapper">
+
+			<section class="content-header">
+				<h1>
+					Dashboard
+					<small>Version 2.0</small>
+				</h1>
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+					<li class="active">Dashboard</li>
+				</ol>
+			</section>
+
+			<section class="content">
+				<!-- Box Info before content 
+				<div th:replace="admin/fragments/top_page :: top_page"></div>
+				-->
+				<!-- Main content -->
+				<div class="row">
+					<div class="row">
+						<div class="col-md-10">
+							<div class="box box-info">
+								<div class="box-header with-border">
+									<h3 class="box-title">Edit Gallery</h3>
+									<div class="box-tools pull-right">
+										<button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+												class="fa fa-minus"></i>
+										</button>
+										<button type="button" class="btn btn-box-tool" data-widget="remove"><i
+												class="fa fa-times"></i></button>
+									</div>
+								</div>
+
+								<div class="box-body">
+									<div class="table-responsive">
+										<table class="table no-margin">
+											<div class="box box-primary">
+												<form id="frmSlide" enctype="multipart/form-data" th:object="${slide}"
+													method="POST">
+													<div class="box-body">
+														<input type="hidden" name="id" th:value="${slide.id}" />
+
+														<div class="form-group">
+															<label> Title </label>
+															<input type="text" id="title" name="title"
+																class="form-control" th:field="${slide.title}"
+																placeholder="Enter title" />
+															<h5 id="title_err_message"></h5>
+														</div>
+														<div class="form-group">
+															<label> Type {Image / Video} </label>
+															<select class="form-control" id="type" name="type"
+																th:field="${slide.type}">
+																<option value="">select option</option>
+																<option value="IMAGE">Hình ảnh</option>
+																<option value="VIDEO">Video</option>
+															</select>
+														</div>
+
+														<!--
+														<div class="form-group">
+															<label> Comment </label>
+															<input type="text" id="comment" name="comment" class="form-control"  th:field="${slide.comment}"
+																placeholder="Enter comment" />
+														</div>
+														-->
+														<div class="form-group" <label> Image </label>
+															<input type="file" id="file" name="file"
+																class="form-control" />
+															<h5 id="file_err_message"></h5>
+
+														</div>
+
+														<div class="form-group">
+															<label> Status </label>
+															<div>
+																<div class="form-check form-check-inline">
+																	<input type="radio" name="status"
+																		class="form-check-input"
+																		th:field="${slide.status}" value="1"
+																		checked="checked" />
+																	<label class="form-check-label"
+																		for="inlineRadio1">Active</label>
+																</div>
+
+																<div class="form-check form-check-inline">
+																	<input type="radio" name="status"
+																		class="form-check-input"
+																		th:field="${slide.status}" value="0" />
+																	<label class="form-check-label"
+																		for="inlineRadio2">Hidden</label>
+																</div>
+
+															</div>
+
+														</div>
+
+
+														<div class="box-footer">
+															<button id="update_slide" class="btn btn-primary slide_add">
+																Update
+															</button>
+
+														</div>
+													</div>
+												</form>
+											</div>
+
+										</table>
+									</div>
+
+								</div>
+							</div>
+
+						</div>
+						<!-- Right Content -->
+						<!--
+						<div th:replace="admin/fragments/right_content :: right_content"></div>
+						-->
+					</div>
+				</div>
+				<!-- End Main content -->
+
+		</div>
+		</section>
+
+	</div>
+	<div th:replace="admin/fragments/footer :: footer"></div>
+	<div th:replace="admin/fragments/sidebar_right :: sidebar_right"></div>
+	<div class="control-sidebar-bg"></div>
+	</div>
+
+
+
+	<div th:replace="admin/fragments/script :: script"></div>
+
+</body>
+
+</html>

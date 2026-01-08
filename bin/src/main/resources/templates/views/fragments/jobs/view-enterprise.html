@@ -1,0 +1,175 @@
+<div class=" container job-listing-area" th:fragment="view-enterprise">
+
+	<div class="container">
+		<div class="col-lg-12">
+
+			<div class="row">
+
+				<article class="blog_item">
+                            
+								<img class="card-img rounded-0 border"  
+								 src="https://cdn1.vieclam24h.vn/images/assets/img/generic_25.jpg" style="width:110%; height:100%" alt="">
+                            
+							<!--
+								<a href="#" class="blog_item_date">
+                                    <img class= "img-thumbnail"  th:if="${enterprise.getDefaultLogo}==true" th:src="@{'/upload/default.png'}" alt="..."
+						width="90">
+							<img class= "img-thumbnail"  th:unless="${enterprise.getDefaultLogo}==true"
+						th:src="@{'/upload/enterprise/'+ ${enterprise.getLogoName}}" style="width: 90px; height: 90px;" alt="">
+
+                                </a>
+
+							-->
+                        </article>
+			</div>
+
+			<div class="row">
+				<div class="col-2 text-center">
+					<img class= "img-thumbnail"  th:if="${enterprise.getDefaultLogo}==true" th:src="@{'/upload/default.png'}" alt="..."
+						width="90">
+					<img class= "img-thumbnail"  th:unless="${enterprise.getDefaultLogo}==true"
+						th:src="@{'/upload/enterprise/'+ ${enterprise.getLogoName}}" style="width: 90px; height: 90px;" alt="">
+
+				</div>
+				<div class="col-8">
+					<div class="row">
+						<div class="col-sm-12">
+							<h4 th:text="${enterprise.getName()}"></h4>
+						</div>
+
+					</div>
+					<div class="row">
+						<div class="col-sm-12"><span th:text="${enterprise.getAddress()}"></span></div>
+					</div>
+					<div class="row">
+						<div class="col-sm-5">
+							<i class="icofont-listing-box"></i>
+							<span th:text="${enterprise.industrialType.getName()}"></span>
+						</div>
+						<div class="col-sm-4">
+							<i class="icofont-ui-user-group"></i>
+							<span th:text="${enterprise.getNumberOfEmployee()}"></span>
+						</div>
+						<div class="col-sm-3">
+							<i class="icofont-calendar"></i>
+							<span th:text="${#dates.format(enterprise.getCreateAt(), 'dd/MM/yyyy')}"></span>
+						</div>
+					</div>
+				</div>
+				
+					<div class="col-2 items-link items-link2 f-right small">
+								<a href="#" class="default-border text-black circle arrow" title=""><span th:text="${enterprise.getFollowCount()}"></span></a>
+								<a href="#" class="default-border text-black circle arrow" title="">Follow</a>
+					</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="row pt-15">
+		<!-- Left content -->
+		<div class="col-xl-4 col-lg-4 col-md-4">
+		
+		
+
+	<div class="container pt-4 pb-4 border">
+			<div class="section-tittle">
+						<h4>Thông tin chung</h4>
+						
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<span th:utext="${enterprise.getIntroduction()}"></span>
+						</div>
+						
+					</div>
+				
+
+		
+										
+				<!--
+				<aside th:replace="~{views/fragments/jobs/frag-recent-job :: frag-recent-job}"></aside>
+				-->
+			</div>
+			<!--
+			<div class="job_right_sidebar">
+				<aside th:replace="~{views/fragments/jobs/frag-cate-list :: frag-cate-list}"></aside>
+
+			</div>
+		-->
+		</div>
+
+
+		<!-- Right content -->
+		<div class="col-xl-8 col-lg-8 col-md-8">
+			<!-- Featured_job_start -->
+			<section class="featured-job-area">
+				<!-- Count of Job list Start -->
+				<div class="col-lg-12">
+					<div class="section-tittle">
+						<h4>Việc làm đang tuyển</h4>
+					</div>
+				</div>
+
+				<!-- Begin-job list-content -->
+				<div class="card single-job-items p-2 mt-2" th:each="job: ${jobs}">
+					<div class="job-items pd-4" th:data-id="${job.id}" th:user-login="${LoggedIn}">
+						
+						<div class="company-img">
+							<a href="#">
+								<img th:if="${job.enterprise.getDefaultLogo}==true" th:src="@{'/upload/default.png'}"
+									alt="..." width="80">
+								<img th:unless="${job.enterprise.getDefaultLogo}==true"
+									th:src="@{'/upload/enterprise/'+ ${job.enterprise.getLogoName}}"
+									style="width: 60px; height: 60px;" alt="">
+
+							</a>
+						</div>
+
+						<div class="job-tittle">
+							<a th:href="@{/job/viewjob/{id}(id=${job.id})}">
+								<h6 th:text="${job.getTitle()}" />
+							</a>
+							<ul>
+								<li><i class="icofont-listing-box"></i>
+									<span th:text="${job.jobCategory.getName()}">Category </span>
+								</li>
+								<li>
+									<i class="icofont-location-pin"></i>
+									<span th:text="${job.getLocation().getName()}"></span>
+								</li>
+								<li>
+									<i class="icofont-money"></i>
+									<span th:text="${job.salary}">Salary 30$</span>
+								</li>
+							</ul>
+							<ul>
+								<li>
+									<i class="icofont-location-arrow"></i>
+									<span th:text="${job.getWorkingAddress()}">Category </span>
+								</li>
+							</ul>
+						</div>
+						<!--
+						<p class="job_apply">
+							<a href="#" class="genric-btn info-border circle arrow small">Apply<span class="lnr lnr-arrow-right"></span></a>
+						</p>
+						
+						<p class="job_save">
+							<a href="#" class="genric-btn primary circle small">Save<span class="lnr lnr-arrow-right"></span></a>
+						</p>
+						-->
+						<div class="items-link items-link2 f-right small">
+								<a href="#" class="job_apply default-border text-black circle arrow" title="">Apply</a>
+								<a href="#" class="job_save default-border text-black circle arrow" title="">Save</a>
+						</div>
+					</div>
+
+				</div>
+				<!-- End-job list-content -->
+
+			</section>
+			<!-- Featured_job_end -->
+		</div>
+	</div>
+</div>

@@ -1,0 +1,93 @@
+<section class="featured-job-area feature-padding" th:fragment="jobs-on-homepage">
+
+	<div class="container">
+		<!-- Section Tittle -->
+		<div class="col-lg-6 mb-10">
+			<div class="widget_title float-start">
+				<h4>Việc làm mới đăng tuyển</h4>
+			</div>
+		</div>
+
+		<div class="row justify-content-center mt-20 p-10">
+			<div class="col-xl-6" th:each="job: ${jobs}">
+				<!-- single-job-content -->
+				<div class="card single-job-items p-2 mt-2">
+			<div class="row">
+							<div class="col-2 text-center">	
+							<img th:if="${job.enterprise.getDefaultLogo}==true" th:src="@{'/upload/default.png'}" alt="..."
+						width="90">	
+											<img th:unless="${job.enterprise.getDefaultLogo}==true"
+						th:src="@{'/upload/enterprise/'+ ${job.enterprise.getLogoName}}" style="width: 70px; height: 70px;"
+						alt="">
+
+						</div>
+
+							<div class="col-10">
+					<div class="job-items pd-10">
+						<div class="job-tittle">
+							<div class="job-tittle">
+								<a th:href="@{/job/viewjob/{id}(id=${job.id})}">
+									<h5 th:text="${job.title}">Digital Mabbrketer</h5>
+								</a>
+							</div>
+							<a th:href="@{/job/viewEnterprise/{id}(id=${job.enterprise.getId()})}">
+
+								<h6 th:text="${job.enterprise.getName()}">Micrsoft Corp</h6>
+							</a>
+							<ul>
+								<li>
+									<i class="icofont-location-pin"></i>
+									<span th:text="${job.location.getName()}">Location </span>
+								</li>
+								<li>
+									<i class="icofont-money"></i>
+									<span th:text="${job.getSalary()}"> </span>
+								</li>
+							</ul>
+						</div>
+
+					</div>	</div>
+
+					</div>
+				
+				</div>
+			</div>
+		</div>
+
+
+		<!--Pagination Start  -->
+		<div class="pagination-area pt-2 pb-10 text-center" th:if="${totalPage > 0}">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-12">
+						<div class="single-wrap d-flex justify-content-center">
+							<nav aria-label="Page navigation example">
+								<ul class="pagination justify-content-start">
+
+									<li class="page-item" th:if="${currentPage > 1}">
+										<a class="page-link" th:href="@{'?pageNo='+${currentPage-1}}">
+											<span class="ti-angle-left"></span></a>
+									</li>
+									<li class="page-item" th:each="i:${#numbers.sequence(1,totalPage)}"
+										th:classappend="${currentPage == i ? 'active':''}">
+										<a class="page-link" th:text="${i}" th:href="@{'?pageNo='+${i}}"></a>
+									</li>
+
+									<li class="page-item" th:if="${currentPage < totalPage}">
+										<a class="page-link" th:href="@{'?pageNo='+${currentPage+1}}"><span
+												class="ti-angle-right"></span></a>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--Pagination End  -->
+
+
+	</div>
+
+
+</section>

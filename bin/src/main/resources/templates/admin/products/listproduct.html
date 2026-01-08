@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/fragments/head :: head"></head>
+<body class="hold-transition skin-blue sidebar-mini">
+	<!-- Site wrapper -->
+	<div class="wrapper">
+		<!-- Header Admin page -->
+		<div th:replace="admin/fragments/header :: header"></div>
+
+		<!-- Left side column. contains the sidebar -->
+		<div th:replace="admin/fragments/sidebar :: sidebar"></div>
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<h1 style="display: block;">
+					Products list
+					<small>it all starts here</small>
+				</h1>
+				<ol class="breadcrumb" style="display: block;">
+					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+					<li><a href="#">Examples</a></li>
+					<li class="active">Blank page</li>
+				</ol>
+			</section>
+				<!-- Box Info before content -->
+				<!--div th:replace="admin/fragments/top_page :: top_page"></div>
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="box">
+					<div class="box-header with-border">
+						<div>
+							<a th:href="@{/admin/products/add}" class="btn btn-success"> + Add Product</a>
+						</div>
+					</div>
+				<div class="box-body">
+						<form>
+							<div class="input-group input-group-sm hidden-xs" style="width: 150px;">
+								<input type="text" name="keyword" class="form-control pull-right" placeholder="Search" th:value="${keyword}">
+								<div class="input-group-btn">
+									<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+								</div>
+						</form>
+					</div>
+						<table class="table table-bordered">
+						<thead class="table-dark">
+							<tr>
+								<th> Name</th>
+								<th> Brand</th>
+								<th> Category</th>
+								<th> Price</th>
+								<th> Image</th>
+								<th> Create At</th>
+								<th> Actions </th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr th:each="pro: ${listproduct}">
+								<td th:text="${pro.name}" style="width: 30%;"></td>
+								<td th:text="${pro.brand}"></td>
+								<td th:text="${pro.category}"></td>
+								<td th:text="${pro.price}"></td>
+								<td><img th:src="@{'/images/'+ ${pro.imageFileName}}" alt="..." width="60"></td>
+								<td th:text="${pro.createAt.toString().substring(0,10)}"></td>
+								<td>
+									<a th:href="@{/admin/products/edit(id=${pro.id})}"
+										class="btn btn-primary">Update</a>
+
+									<a th:href="@{/admin/products/delete(id=${pro.id})}" class="btn btn-danger"
+										onclick="return confirm('Are you sure?')">Delete</a>
+
+								</td>
+							</tr>
+						</tbody>
+
+					</table>
+				<div class="box-footer clearfix">
+					<ul class="pagination pagination-sm no-margin pull-right">
+						<li th:if="${currentPage > 1}"><a th:href="@{'?pageNo='+${currentPage-1}}">«</a></li>
+						<li th:each = "i:${#numbers.sequence(1,totalPage)}" th:classappend="${currentPage == i ? 'active':''}"><a th:href="@{${keyword != null && keyword != ''?'?keyword='+keyword+'&':'?'}+'pageNo='+${i}}" th:text="${i}"></a></li>
+					
+						<li th:if="${currentPage < totalPage}"><a th:href="@{'?pageNo='+${currentPage+1}}">»</a></li>
+					</ul>
+				</div>
+
+				</div>
+
+
+
+			</section>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
+
+		<div th:replace="admin/fragments/footer :: footer"></div>
+
+
+	</div>
+	<!-- ./wrapper -->
+
+	<div th:replace="admin/fragments/script :: script"></div>
+
+</body>
+
+</html>

@@ -15,7 +15,7 @@ import com.lifesupport.models.Location;
 @Repository
 public interface JobRepository extends JpaRepository<Job, Long> {
 	// Search Job by Title
-	@Query("SELECT c FROM Job c WHERE (c.title LIKE %?1% or c.workingAddress LIKE %?1% or c.description LIKE %?1%) AND c.expiredDate >  DATE(NOW()) AND c.status ='APPROVED' ORDER BY c.createAt DESC" )
+	@Query("SELECT c FROM Job c WHERE (c.title LIKE %?1% or c.workingAddress LIKE %?1% or c.description LIKE %?1%) AND c.expiredDate >  DATE(NOW()) AND c.status ='APPROVED' ORDER BY c.updateAt DESC, c.createAt DESC" )
 	List<Job> SearchJob(String keyword);
 	
 	// Find All Approved Job by Job Category
@@ -40,12 +40,12 @@ public interface JobRepository extends JpaRepository<Job, Long> {
 	
 	
 	// Lấy danh sách 10 công việc mới đăng
-	//@Query("SELECT TOP 25 c FROM Job c WHERE c.expiredDate >  DATE(NOW()) AND c.status ='APPROVED'")
+	@Query("SELECT c FROM Job c WHERE c.expiredDate >  DATE(NOW()) AND c.status ='APPROVED' ORDER BY c.createAt DESC Limit 5 ")
 	List<Job> findTop10ByOrderByCreateAtDesc();
 
 	// Lấy danh sách 10 công việc mới đăng theo Lĩnh vực
 //	@Query("SELECT * FROM Job c WHERE c.jobCategory = '?1' AND c.expiredDate >  DATE(NOW()) AND c.status ='APPROVED' ORDER BY c.createAt DESC")
-	@Query("SELECT c FROM Job c WHERE c.jobCategory = %?1% AND c.expiredDate >  DATE(NOW()) AND c.status ='APPROVED' ORDER BY c.createAt DESC Limit 10")
+	@Query("SELECT c FROM Job c WHERE c.jobCategory = %?1% AND c.expiredDate >  DATE(NOW()) AND c.status ='APPROVED' ORDER BY c.createAt DESC Limit 10 ")
 	List<Job> findTop10ByJobCategoryOrderByCreateAtDesc(JobCategory jobCategory);
 
 	

@@ -1,0 +1,248 @@
+<!--<section class="featured-job-area feature-padding" th:fragment="view-enterprise">
+-->
+
+<head th:replace="~{views/fragments/head :: head}"></head>
+
+<body>
+	<!-- Header Start -->
+	<header th:replace="~{views/fragments/menu_bar :: menu_bar}"> </header>
+	<main>
+		<!--Begin-->
+		<div class="container py-2">
+				<div class="row pt-15">
+					<div th:replace="~{views/candidate/profile-panel :: profile-panel}"></div>
+					<div class="col-lg-9">
+								<!--Thông tin cá nhân-->
+								<div class="row">
+									<div class="widget_title">
+										<p class="mb-2">Xem hồ sơ đã tạo</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-12 border">
+
+									<ul class="list-group list-group-flush rounded-3">
+										<li
+											class="list-group-item d-flex justify-content-between align-items-center p-2">
+											<div class="col-sm-3">
+												<p class="mb-0">Tiêu đề hồ sơ</p>
+											</div>
+											<div class="col-sm-9">
+												<p class="text-muted mb-0" th:text="${profile.title}"></p>
+											</div>
+										</li>
+										<li
+											class="list-group-item d-flex justify-content-between align-items-center p-2">
+											<div class="col-sm-3">
+												<p class="mb-0">Họ và tên</p>
+											</div>
+											<div class="col-sm-9">
+												<p class="text-muted mb-0" th:text="${loggedUser.fullName}">Trần Văn
+													Long</p>
+											</div>
+										</li>
+										<li
+											class="list-group-item d-flex justify-content-between align-items-center p-2">
+											<div class="col-sm-3">
+												<p class="mb-0">Ngày sinh</p>
+											</div>
+											<div class="col-sm-9">
+												<p class="text-muted mb-0" th:text="${profile.birthdate}">22 / 12
+													/2024</p>
+											</div>
+										</li>
+
+										<li
+											class="list-group-item d-flex justify-content-between align-items-center p-2">
+											<div class="col-sm-3">
+												<p class="mb-0">Address</p>
+											</div>
+											<div class="col-sm-9">
+												<p class="text-muted mb-0" th:text="${profile.address}">Bay Area,
+													San Francisco, CA</p>
+											</div>
+										</li>
+										<li
+											class="list-group-item d-flex justify-content-between align-items-center p-2">
+											<div class="col-sm-3">
+												<p class="mb-0">Mobile</p>
+											</div>
+											<div class="col-sm-9">
+												<p class="text-muted mb-0" th:text="${profile.phone}">(098)
+													765-4321</p>
+											</div>
+										</li>
+										<li
+											class="list-group-item d-flex justify-content-between align-items-center p-2">
+											<div class="col-sm-3">
+												<p class="mb-0">Email</p>
+											</div>
+											<div class="col-sm-9">
+												<p class="text-muted mb-0" th:text="${loggedUser.email}">
+													example@example.com</p>
+											</div>
+										</li>
+										<li
+											class="list-group-item d-flex justify-content-between align-items-center p-2">
+											<div class="col-sm-3">
+												<p class="mb-0">Url</p>
+											</div>
+											<div class="col-sm-9">
+												<p class="text-muted mb-0" th:text="${profile.url}">
+													example@example.com</p>
+											</div>
+										</li>
+									</ul>
+								</div>
+								</div>
+								<!--End Thông tin cá nhân-->
+
+								<div class="row ">
+									<div class="col-6">
+										<div class="small-section-tittle"><h4>Xem CV</h4></div>
+										<ul class="list-group">
+											<li class="list-group-item" th:if="${profile.cv_1_Filename}" >
+												<span class="text-muted mb-0"
+														th:text="${profile.cv_1_Filename} ? ${#strings.arraySplit(profile.cv_1_Filename,'_')[1]} : ''">
+													</span>
+												<a th:href="@{'/upload/user/'+ ${profile.cv_1_Filename}}" th:target="_blank">
+													<span class="btn btn-primary float-right"> Tải CV </span>
+												</a>
+											</li>
+											<li class="list-group-item" th:if="${profile.cv_2_Filename}" >
+													<span class="text-muted mb-0" th:text="${profile.cv_2_Filename} ? ${#strings.arraySplit(profile.cv_2_Filename,'_')[1]} : ''"></span>
+												<a th:href="@{'/upload/user/'+ ${profile.cv_2_Filename}}" th:target="_blank">
+													<span class="btn btn-primary float-right"> Tải CV </span>
+												</a>
+
+											</li>
+											<li class="list-group-item" th:if="${profile.cv_3_Filename}" >
+													<span class="text-muted mb-0"
+														th:text="${profile.cv_3_Filename} ? ${#strings.arraySplit(profile.cv_3_Filename,'_')[1]} : ''"></span>
+												<a th:href="@{'/upload/user/'+ ${profile.cv_3_Filename}}" th:target="_blank">
+													<span class="btn btn-primary float-right"> Tải CV </span>	</a>
+											</li>
+										</ul>
+									</div>
+									<div class="col-6">
+										<div class="small-section-tittle"><h4>Xem bảng điểm</h4></div>
+										<ul class="list-group">
+											<li class="list-group-item" th:if="${profile.bd_1_Filename}" >
+													<span class="text-muted mb-0"
+														th:text="${profile.bd_1_Filename} ? ${#strings.arraySplit(profile.bd_1_Filename,'_')[1]} : ''"></span>
+												<a th:href="@{'/upload/user/'+ ${profile.bd_1_Filename}}" th:target="_blank">
+													<span class="btn btn-primary float-right"> Tải bảng điểm </span>	</a>
+												</a>
+
+											</li>
+											<li class="list-group-item" th:if="${profile.bd_2_Filename}" >
+													<span class="text-muted mb-0"
+														th:text="${profile.bd_2_Filename} ? ${#strings.arraySplit(profile.bd_2_Filename,'_')[1]} : ''"></span>
+												<a th:href="@{'/upload/user/'+ ${profile.bd_2_Filename}}" th:target="_blank">
+													<span class="btn btn-primary float-right"> Tải bảng điểm </span>	</a>
+												</a>
+												
+											</li>
+											<li class="list-group-item" th:if="${profile.bd_3_Filename}" >
+													<span class="text-muted mb-0"
+														th:text="${profile.bd_3_Filename} ? ${#strings.arraySplit(profile.bd_3_Filename,'_')[1]} : ''"></span>
+													<a th:href="@{'/upload/user/'+ ${profile.bd_3_Filename}}" th:target="_blank">
+													<span class="btn btn-primary float-right"> Tải bảng điểm </span>	</a>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+
+
+								<!--Kỹ năng-->
+								<div class="row" style="display: none;">
+									<div class="col-sm-12 card-header">
+										<h6>Kỹ năng chuyên môn</h6>
+									</div>
+
+									<div class="col-sm-12 border">
+										<div class="card-body">
+											<p class="mb-4"><span class="text-primary "
+													th:utext="${profile.skills}">assigment</span>
+											</p>
+
+
+										</div>
+
+									</div>
+								</div>
+								<!--End Kỹ năng-->
+
+								<!--Kinh nghiệm làm việc-->
+								<div class="row" style="display: none;">
+									<div class="col-sm-12 card-header">
+										<h6>Kinh nghiệm làm việc</h6>
+									</div>
+
+									<div class="col-sm-12 border">
+										<div class="card-body">
+											<p class="mb-4"><span class="text-primary "
+													th:utext="${profile.expericences}">assigment</span>
+											</p>
+
+
+										</div>
+
+									</div>
+								</div>
+								<!--End Kinh nghiệm làm việc-->
+
+								<!--Quá trình học tập + Khả năng ngoại ngữ-->
+
+								<div class="row" style="display: none;">
+									<div class="col-md-6">
+										<div class="col-sm-12 card-header">
+											<h6>Quá trình học tập</h6>
+										</div>
+										<div class="card mb-4 mb-md-0">
+
+											<div class="card-body">
+												<p class="mb-4"><span class="text-primary "
+														th:utext="${profile.licences}">assigment</span>
+												</p>
+
+
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="col-sm-12 card-header">
+											<h6>Khả năng ngoại ngữ</h6>
+										</div>
+										<div class="card mb-4 mb-md-0">
+											<div class="card-body">
+												<p class="mb-4"><span class="text-primary "
+														th:utext="${profile.langugages}"></span>
+
+												</p>
+
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--End Quá trình học tập + + Khả năng ngoại ngữ-->
+
+							</div>
+				
+
+				</div>
+			</div>
+		<!--End-->
+
+
+
+	</main>
+
+	<!-- Footer Include -->
+	<div th:replace="~{views/fragments/footer :: footer}"></div>
+	<!-- Script Include -->
+	<div th:replace="~{views/fragments/script :: script}"></div>
+</body>
+
+</html>

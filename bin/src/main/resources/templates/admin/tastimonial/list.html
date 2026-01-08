@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
+
+<head th:replace="~{admin/frags/head :: head}"></head>
+
+<body class="hold-transition sidebar-mini ayout-fixed">
+	<div class="wrapper">
+
+		<!-- Navbar -->
+		<nav th:replace="~{admin/frags/navbar :: navbar}"></nav>
+		<!-- /.navbar -->
+
+		<!-- Main Sidebar Container -->
+
+		<aside th:replace="~{admin/frags/aside :: aside}"></aside>
+
+		<!--Content from here-->
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div class="content-header" style="display: none;">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1 class="m-0 text-dark">Dashboard</h1>
+						</div><!-- /.col -->
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a href="#">Home</a></li>
+								<li class="breadcrumb-item active">Dashboard v1</li>
+							</ol>
+						</div><!-- /.col -->
+					</div><!-- /.row -->
+				</div><!-- /.container-fluid -->
+			</div>
+			<!-- /.content-header -->
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="container-fluid">
+					<!-- /.row -->
+					<!-- Main row -->
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<h2 class="card-title">Danh sách nhân viên tư vấn</h2>
+
+							</div>
+							<!-- /.card-header -->
+							<div class="card-body">
+								<form>
+									<div class="row">
+										<div class="col-6">
+											<input type="text" name="keyword" class="form-control pull-right"
+												placeholder="từ khóa" th:value="${keyword}">
+										</div>
+										<!--	
+												<div class="col-3">
+													<div class="form-group">
+														<select clas="form-control" name="location">
+															<option th:each="location : ${locations}"
+																th:value="${location.id}" th:text="${location.name}">
+															</option>
+														</select>
+													</div>
+												</div>
+											
+												<div class="col-3">
+													<input type="text"  name="location" class="form-control" placeholder=".col-4">
+												</div>
+												-->
+										<div class="col-4">
+											<button type="submit" class="btn btn-default"><i
+													class="fa fa-search"></i></button>
+											<a th:href="@{/admin/tastimonial/add}" class="btn btn-info float-right"><i
+													class="fas fa-plus"></i>
+												<span>Thêm</span>
+											</a>
+
+										</div>
+									</div>
+								</form>
+								<!-- /.card-body -->
+							</div>
+
+							<div class="card-body">
+
+								<table class="table table-bordered">
+									<thead class="table-light">
+										<tr>
+											<th> #</th>
+											<th> Tên</th>
+											<th> Vị trí</th>
+											<th> Update At</th>
+											<th> Trạng thái</th>
+											<th> Actions </th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="obj: ${tastimoniallist}">
+											<td><img th:src="@{'/upload/tastimonial/'+ ${obj.fileName}}" alt="..."
+													width="60"></td>
+											<td th:text="${obj.title}" style="width: 30%;"></td>
+											<td th:text="${obj.subTitle}" style="width: 20%;"></td>
+											<td th:text="${obj.createAt}"></td>
+											<td th:if="${obj.status}"> <span class="label label-success">Hiện thị</span>
+											</td>
+											<td th:if="${!obj.status}"> <span class="label label-danger">Đang ẩn</span>
+											</td>
+											<td>
+												<a th:href="@{/admin/tastimonial/edit(id=${obj.id})}"
+													class="btn btn-success">Sửa</a>
+												<a th:href="@{/admin/tastimonial/delete(id=${obj.id})}"
+													class="btn btn-danger"
+													onclick="return confirm('Are you sure?')">Xóa</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!-- /.card-body -->
+							<div class="card-footer clearfix">
+								<ul class="pagination pagination-sm m-0 float-right">
+									<li class="page-item" th:if="${currentPage > 1}"><a class="page-link"
+											th:href="@{'?pageNo='+${currentPage-1}}">«</a></li>
+									<!--<li class="page-item"><a class="page-link" href="#">1</a></li>
+									<li class="page-item"><a class="page-link" href="#">2</a></li>-->
+									<li class="page-item" th:each="i:${#numbers.sequence(1,totalPage)}"
+										th:classappend="${currentPage == i ? 'active':''}"><a class="page-link"
+											th:text="${i}" th:href="@{'?pageNo='+${i}}"></a></li>
+									<li class="page-item" th:if="${currentPage < totalPage}"><a class="page-link"
+											th:href="@{'?pageNo='+${currentPage+1}}">»</a></li>
+								</ul>
+							</div>
+						</div>
+						<!-- /.card -->
+					</div>
+				</div><!-- /.container-fluid -->
+			</section>
+			<!-- /.content -->
+		</div>
+
+		<!--Content end here-->
+
+
+
+		<!-- /.content-wrapper -->
+		<footer th:replace="~{admin/frags/footer :: footer}"></footer>
+
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Control sidebar content goes here -->
+		</aside>
+		<!-- /.control-sidebar -->
+	</div>
+	<!-- ./wrapper -->
+	<div th:replace="~{admin/frags/script :: script}"></div>
+
+</body>

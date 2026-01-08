@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
+
+<head th:replace="~{admin/frags/head :: head}"></head>
+
+<body class="hold-transition sidebar-mini ayout-fixed">
+	<div class="wrapper">
+		<!-- Navbar -->
+		<nav th:replace="~{admin/frags/navbar :: navbar}"></nav>
+		<!-- /.navbar -->
+
+		<!-- Main Sidebar Container -->
+
+		<aside th:replace="~{admin/frags/aside :: aside}"></aside>
+
+		<!--Content from here-->
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div class="content-header" style="display: none;">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1 class="m-0 text-dark">Dashboard</h1>
+						</div><!-- /.col -->
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a href="#">Home</a></li>
+								<li class="breadcrumb-item active">Dashboard v1</li>
+							</ol>
+						</div><!-- /.col -->
+					</div><!-- /.row -->
+				</div><!-- /.container-fluid -->
+			</div>
+			<!-- /.content-header -->
+			<!-- Main content -->
+			<section class="content">
+				<div class="container-fluid">
+					<div class="box-body">
+						<div class="table-responsive">
+							<table class="table no-margin">
+
+								<div class="box box-primary">
+
+
+									<form id="frmSlide" enctype="multipart/form-data" th:object="${ourService}"
+										method="POST">
+										<div class="box-body">
+											<div class="form-group">
+												<label> Title </label>
+												<input type="text" id="title" name="title" class="form-control"
+													placeholder="Enter title" />
+												<h5 id="title_err_message"></h5>
+											</div>
+											<div class="form-group">
+												<label> Sub Title </label>
+												<input type="text" id="subtitle" name="subTitle" class="form-control"
+													placeholder="Enter sub title" />
+												<h5 id="title_err_message"></h5>
+											</div>
+											<div class="form-group">
+												<label> Comment </label>
+												<textarea name="comment" class="form-control" rows="5" cols="30"
+													placeholder="Enter comment"></textarea>
+
+
+												<!--	<textarea id="comment" name="comment" class="form-control"
+																		rows="5" cols="30" placeholder="Enter Comment" />-->
+
+											</div>
+
+											<div class="form-group" <label> Image </label>
+												<input type="file" id="file" name="file" class="form-control" />
+												<h5 id="file_err_message"></h5>
+
+											</div>
+
+											<div class="form-group">
+												<label> Status </label>
+												<div>
+													<div class="form-check form-check-inline">
+														<input type="radio" name="status" class="form-check-input"
+															value="1" checked="checked" />
+														<label class="form-check-label"
+															for="inlineRadio1">Active</label>
+													</div>
+
+													<div class="form-check form-check-inline">
+														<input type="radio" name="status" class="form-check-input"
+															value="0" />
+														<label class="form-check-label"
+															for="inlineRadio2">Hidden</label>
+													</div>
+
+												</div>
+
+											</div>
+
+
+											<div class="box-footer">
+												<button id="save_slide" class="btn btn-primary slide_add">
+													Update
+												</button>
+
+											</div>
+										</div>
+									</form>
+								</div>
+
+							</table>
+						</div>
+					</div><!-- /.container-fluid -->
+			</section>
+			<!-- /.content -->
+		</div>
+
+
+
+		<!-- /.content-wrapper -->
+		<footer th:replace="~{admin/frags/footer :: footer}"></footer>
+
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Control sidebar content goes here -->
+		</aside>
+		<!-- /.control-sidebar -->
+	</div>
+	<!-- ./wrapper -->
+	<div th:replace="~{admin/frags/script :: script}"></div>
+
+</body>

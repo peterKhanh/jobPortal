@@ -1,0 +1,1004 @@
+<head th:replace="~{views/fragments/head :: head}"></head>
+
+<link rel="stylesheet" th:href="@{/assets-fe/css/nice-select.css}">
+
+<body>
+	<header th:replace="~{views/fragments/menu_bar_2 :: menu_bar_2}"> </header>
+
+	<main>
+		<div class=" container py-2">
+			<div class="row pt-15">
+				<div th:replace="~{views/employer/profile-panel :: profile-panel}"></div>
+				<div class="col-xl-9 col-lg-9 col-md-8">
+					<div class="container p-2 mb-2 border" >
+
+						<!--Danh sách CV - Hồ sơ-->
+						<div class="row" style="display: block;">
+
+							<div class="col-sm-12 ">
+
+								<ul class="d-flex justify-content-between align-items-center p-2">
+									<li class="col-sm-4">
+										<div class="card bg-warning">
+											<div class="card-body">
+												<h5 class="ctr">523</h5>
+												<p>Job đang tuyển</p>
+											</div>
+										</div>
+									</li>
+									<li class="col-sm-4">
+										<div class="card bg-success">
+											<div class="card-body">
+												<h5 class="ctr">523</h5>
+												<p>Hồ sơ đã nộp</p>
+											</div>
+										</div>
+									</li>
+									<li class="col-sm-4">
+										<div class="card bg-info">
+											<div class="card-body">
+												<h5 class="ctr">523</h5>
+												<p>Hồ sơ đã lưu</p>
+											</div>
+										</div>
+									</li>
+								</ul>
+
+
+								
+
+							</div>
+
+						</div>
+
+					</div>
+			
+					<div class="container p-2 border" >
+					<div class="row" style="display: block;">
+
+							<div class="col-sm-12 ">
+
+								
+
+;;;;;;;;
+
+							</div>
+
+						</div>
+					</div>
+			</div>
+			</div>
+
+
+	</main>
+
+	<!-- Footer Include -->
+	<div th:replace="~{views/fragments/footer :: footer}"></div>
+	<!-- Script Include -->
+	<div th:replace="~{views/fragments/script :: script}"></div>
+</body>
+
+</html>
+
+<div class="dashboard-wrap bg-light border" style="display: none;">
+	<a class="mobNavigation" data-bs-toggle="collapse" href="#MobNav" role="button" aria-expanded="false"
+		aria-controls="MobNav">
+		<i class="fas fa-bars mr-2"></i>Dashboard Navigation
+	</a>
+	<div class="collapse" id="MobNav">
+		<div class="dashboard-nav">
+			<div class="dash-user-blocks pt-0">
+				<div class="jbs-grid-usrs-thumb">
+					<div class="jbs-grid-yuo">
+						<a href="candidate-detail.html">
+							<figure><img
+									src="https://shreethemes.net/jobstock-landing-2.3/jobstock/assets/img/team-2.jpg"
+									class="img-fluid circle" alt=""></figure>
+						</a>
+					</div>
+				</div>
+				<div class="jbs-grid-usrs-caption mb-3">
+					<div class="jbs-kioyer">
+						<div class="jbs-kioyer-groups">
+							<span class="fa-solid fa-star active"></span>
+							<span class="fa-solid fa-star active"></span>
+							<span class="fa-solid fa-star active"></span>
+							<span class="fa-solid fa-star active"></span>
+							<span class="fa-solid fa-star"></span>
+							<span class="aal-reveis">4.7</span>
+						</div>
+					</div>
+					<div class="jbs-tiosk">
+						<h4 class="jbs-tiosk-title"><a href="candidate-detail.html">Linda D. Strong</a></h4>
+						<div class="jbs-tiosk-subtitle"><span>Front-End Developer</span></div>
+					</div>
+				</div>
+			</div>
+			<div class="dashboard-inner">
+				<ul data-submenu-title="Main Navigation">
+					<li class="active"><a href="candidate-dashboard.html"><i
+								class="fa-solid fa-gauge-high me-2"></i>User Dashboard</a></li>
+					<li><a href="candidate-profile.html"><i class="fa-regular fa-user me-2"></i>My Profile </a></li>
+					<li><a href="candidate-resume.html"><i class="fa-solid fa-file-pdf me-2"></i>My Resumes</a></li>
+					<li><a href="candidate-applied-jobs.html"><i class="fa-regular fa-paper-plane me-2"></i>Applied
+							jobs</a></li>
+					<li><a href="candidate-alert-job.html"><i class="fa-solid fa-bell me-2"></i>Alert Jobs<span
+								class="count-tag bg-warning">4</span></a></li>
+					<li><a href="candidate-saved-jobs.html"><i class="fa-solid fa-bookmark me-2"></i>Shortlist
+							Jobs</a></li>
+					<li><a href="candidate-follow-employers.html"><i class="fa-solid fa-user-clock me-2"></i>Following
+							Employers</a></li>
+					<li><a href="candidate-messages.html"><i class="fa-solid fa-comments me-2"></i>Messages<span
+								class="count-tag">4</span></a></li>
+					<li><a href="candidate-change-password.html"><i class="fa-solid fa-unlock-keyhole me-2"></i>Change
+							Password</a></li>
+					<li><a href="candidate-delete-account.html"><i class="fa-solid fa-trash-can me-2"></i>Delete
+							Account</a></li>
+					<li><a href="index.html"><i class="fa-solid fa-power-off me-2"></i>Log Out</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="dashboard-content">
+		<div class="dashboard-tlbar d-block mb-5">
+			<div class="row">
+				<div class="colxl-12 col-lg-12 col-md-12">
+					<h1 class="mb-1 fs-3 fw-medium">Candidate Dashboard</h1>
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item text-muted"><a href="#">Candidate</a></li>
+							<li class="breadcrumb-item text-muted"><a href="#">Dashboard</a></li>
+							<li class="breadcrumb-item"><a href="#" class="text-primary">Candidate Statistics</a>
+							</li>
+						</ol>
+					</nav>
+				</div>
+			</div>
+		</div>
+
+		<div class="dashboard-widg-bar d-block">
+
+			<!-- Row Start -->
+			<div class="row align-items-center gx-4 gy-4 mb-4">
+				<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+					<div class="dash-wrap-bloud">
+						<div class="dash-wrap-bloud-icon">
+							<div class="bloud-icon text-success bg-light-success">
+								<i class="fa-solid fa-business-time"></i>
+							</div>
+						</div>
+						<div class="dash-wrap-bloud-caption">
+							<div class="dash-wrap-bloud-content">
+								<h5 class="ctr">523</h5>
+								<p>Applied jobs</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+					<div class="dash-wrap-bloud">
+						<div class="dash-wrap-bloud-icon">
+							<div class="bloud-icon text-warning bg-light-warning">
+								<i class="fa-solid fa-bookmark"></i>
+							</div>
+						</div>
+						<div class="dash-wrap-bloud-caption">
+							<div class="dash-wrap-bloud-content">
+								<h5 class="ctr">523</h5>
+								<p>Saved Jobs</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+					<div class="dash-wrap-bloud">
+						<div class="dash-wrap-bloud-icon">
+							<div class="bloud-icon text-danger bg-light-danger">
+								<i class="fa-solid fa-eye"></i>
+							</div>
+						</div>
+						<div class="dash-wrap-bloud-caption">
+							<div class="dash-wrap-bloud-content">
+								<h5 class="ctr">523</h5>
+								<p>Viewed Jobs</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+					<div class="dash-wrap-bloud">
+						<div class="dash-wrap-bloud-icon">
+							<div class="bloud-icon text-info bg-light-info">
+								<i class="fa-sharp fa-solid fa-comments"></i>
+							</div>
+						</div>
+						<div class="dash-wrap-bloud-caption">
+							<div class="dash-wrap-bloud-content">
+								<h5 class="ctr">523</h5>
+								<p>Total Review</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Row End -->
+
+			<!-- Row Start -->
+			<div class="row gx-4 gy-4 mb-4">
+				<div class="col-xl-8 col-lg-12 col-md-12 col-sm-12">
+					<div class="card d-none d-lg-block">
+						<div class="card-header">
+							<h4 class="mb-0">Extra Area Chart</h4>
+						</div>
+						<div class="card-body">
+							<ul class="list-inline text-center m-t-40">
+								<li>
+									<h5><i class="fa fa-circle me-1 text-warning"></i>Applied jobs</h5>
+								</li>
+								<li>
+									<h5><i class="fa fa-circle me-1 text-danger"></i>Viewed Jobs</h5>
+								</li>
+								<li>
+									<h5><i class="fa fa-circle me-1 text-success"></i>Saved jobs</h5>
+								</li>
+							</ul>
+							<div class="chart full-width" id="line-chart"
+								style="height: 300px; position: relative; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+								<svg height="300" version="1.1" width="639.328" xmlns="http://www.w3.org/2000/svg"
+									xmlns:xlink="http://www.w3.org/1999/xlink"
+									style="overflow: hidden; position: relative; top: -0.6875px;">
+									<desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with
+										Raphaël 2.2.0</desc>
+									<defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs><text
+										x="32.84765625" y="261" text-anchor="end" font-family="sans-serif"
+										font-size="12px" stroke="none" fill="#888888"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;"
+										font-weight="normal">
+										<tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">0
+										</tspan>
+									</text>
+									<path fill="none" stroke="#e0e0e0" d="M45.34765625,261H614.328" stroke-width="0.5"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+									</path><text x="32.84765625" y="202" text-anchor="end" font-family="sans-serif"
+										font-size="12px" stroke="none" fill="#888888"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;"
+										font-weight="normal">
+										<tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">75
+										</tspan>
+									</text>
+									<path fill="none" stroke="#e0e0e0" d="M45.34765625,202H614.328" stroke-width="0.5"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+									</path><text x="32.84765625" y="143" text-anchor="end" font-family="sans-serif"
+										font-size="12px" stroke="none" fill="#888888"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;"
+										font-weight="normal">
+										<tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">150
+										</tspan>
+									</text>
+									<path fill="none" stroke="#e0e0e0" d="M45.34765625,143H614.328" stroke-width="0.5"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+									</path><text x="32.84765625" y="84" text-anchor="end" font-family="sans-serif"
+										font-size="12px" stroke="none" fill="#888888"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;"
+										font-weight="normal">
+										<tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">225
+										</tspan>
+									</text>
+									<path fill="none" stroke="#e0e0e0" d="M45.34765625,84H614.328" stroke-width="0.5"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+									</path><text x="32.84765625" y="25" text-anchor="end" font-family="sans-serif"
+										font-size="12px" stroke="none" fill="#888888"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;"
+										font-weight="normal">
+										<tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">300
+										</tspan>
+									</text>
+									<path fill="none" stroke="#e0e0e0" d="M45.34765625,25H614.328" stroke-width="0.5"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+									</path><text x="614.328" y="273.5" text-anchor="middle" font-family="sans-serif"
+										font-size="12px" stroke="none" fill="#888888"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;"
+										font-weight="normal" transform="matrix(1,0,0,1,0,7)">
+										<tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2016
+										</tspan>
+									</text><text x="519.5412243410542" y="273.5" text-anchor="middle"
+										font-family="sans-serif" font-size="12px" stroke="none" fill="#888888"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;"
+										font-weight="normal" transform="matrix(1,0,0,1,0,7)">
+										<tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2015
+										</tspan>
+									</text><text x="424.7544486821086" y="273.5" text-anchor="middle"
+										font-family="sans-serif" font-size="12px" stroke="none" fill="#888888"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;"
+										font-weight="normal" transform="matrix(1,0,0,1,0,7)">
+										<tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2014
+										</tspan>
+									</text><text x="329.96767302316294" y="273.5" text-anchor="middle"
+										font-family="sans-serif" font-size="12px" stroke="none" fill="#888888"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;"
+										font-weight="normal" transform="matrix(1,0,0,1,0,7)">
+										<tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2013
+										</tspan>
+									</text><text x="234.92120756789137" y="273.5" text-anchor="middle"
+										font-family="sans-serif" font-size="12px" stroke="none" fill="#888888"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;"
+										font-weight="normal" transform="matrix(1,0,0,1,0,7)">
+										<tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2012
+										</tspan>
+									</text><text x="140.1344319089457" y="273.5" text-anchor="middle"
+										font-family="sans-serif" font-size="12px" stroke="none" fill="#888888"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;"
+										font-weight="normal" transform="matrix(1,0,0,1,0,7)">
+										<tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2011
+										</tspan>
+									</text><text x="45.34765625" y="273.5" text-anchor="middle" font-family="sans-serif"
+										font-size="12px" stroke="none" fill="#888888"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;"
+										font-weight="normal" transform="matrix(1,0,0,1,0,7)">
+										<tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2010
+										</tspan>
+									</text>
+									<path fill="#2adc0c" stroke="none"
+										d="M45.34765625,221.66666666666669C69.04435016473641,205.93333333333334,116.43773799420927,161.68333333333334,140.1344319089457,158.73333333333335C163.8311258236821,155.78333333333336,211.22451365315496,192.17473780209758,234.92120756789137,198.06666666666666C258.68282393170927,203.97473780209756,306.20605665934505,215.78011855905154,329.96767302316294,205.93333333333334C353.66436693789933,196.11345189238486,401.0577547673722,122.84166666666667,424.7544486821086,119.4C448.451142596845,115.95833333333334,495.8445304263178,185.28333333333333,519.5412243410542,178.4C543.2379182557906,171.51666666666668,590.6313060852635,92.85000000000001,614.328,64.33333333333334L614.328,261L45.34765625,261Z"
+										fill-opacity="0"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0;">
+									</path>
+									<path fill="none" stroke="#1cc100"
+										d="M45.34765625,221.66666666666669C69.04435016473641,205.93333333333334,116.43773799420927,161.68333333333334,140.1344319089457,158.73333333333335C163.8311258236821,155.78333333333336,211.22451365315496,192.17473780209758,234.92120756789137,198.06666666666666C258.68282393170927,203.97473780209756,306.20605665934505,215.78011855905154,329.96767302316294,205.93333333333334C353.66436693789933,196.11345189238486,401.0577547673722,122.84166666666667,424.7544486821086,119.4C448.451142596845,115.95833333333334,495.8445304263178,185.28333333333333,519.5412243410542,178.4C543.2379182557906,171.51666666666668,590.6313060852635,92.85000000000001,614.328,64.33333333333334"
+										stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+									</path>
+									<circle cx="45.34765625" cy="221.66666666666669" r="3" fill="#1cc100"
+										stroke="#1cc100" stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+									<circle cx="140.1344319089457" cy="158.73333333333335" r="3" fill="#1cc100"
+										stroke="#1cc100" stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+									<circle cx="234.92120756789137" cy="198.06666666666666" r="3" fill="#1cc100"
+										stroke="#1cc100" stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+									<circle cx="329.96767302316294" cy="205.93333333333334" r="3" fill="#1cc100"
+										stroke="#1cc100" stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+									<circle cx="424.7544486821086" cy="119.4" r="3" fill="#1cc100" stroke="#1cc100"
+										stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+									</circle>
+									<circle cx="519.5412243410542" cy="178.4" r="3" fill="#1cc100" stroke="#1cc100"
+										stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+									</circle>
+									<circle cx="614.328" cy="64.33333333333334" r="3" fill="#1cc100" stroke="#1cc100"
+										stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+									</circle>
+									<path fill="#f4c843" stroke="none"
+										d="M45.34765625,198.06666666666666C69.04435016473641,194.13333333333333,116.43773799420927,180.36666666666667,140.1344319089457,182.33333333333334C163.8311258236821,184.3,211.22451365315496,223.6198814409485,234.92120756789137,213.8C258.68282393170927,203.95321477428183,306.20605665934505,112.52877336981307,329.96767302316294,103.66666666666669C353.66436693789933,94.82877336981306,401.0577547673722,133.16666666666666,424.7544486821086,143C448.451142596845,152.83333333333334,495.8445304263178,182.33333333333334,519.5412243410542,182.33333333333334C543.2379182557906,182.33333333333334,590.6313060852635,152.83333333333334,614.328,143L614.328,261L45.34765625,261Z"
+										fill-opacity="0"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0;">
+									</path>
+									<path fill="none" stroke="#fdc006"
+										d="M45.34765625,198.06666666666666C69.04435016473641,194.13333333333333,116.43773799420927,180.36666666666667,140.1344319089457,182.33333333333334C163.8311258236821,184.3,211.22451365315496,223.6198814409485,234.92120756789137,213.8C258.68282393170927,203.95321477428183,306.20605665934505,112.52877336981307,329.96767302316294,103.66666666666669C353.66436693789933,94.82877336981306,401.0577547673722,133.16666666666666,424.7544486821086,143C448.451142596845,152.83333333333334,495.8445304263178,182.33333333333334,519.5412243410542,182.33333333333334C543.2379182557906,182.33333333333334,590.6313060852635,152.83333333333334,614.328,143"
+										stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+									</path>
+									<circle cx="45.34765625" cy="198.06666666666666" r="3" fill="#fdc006"
+										stroke="#fdc006" stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+									<circle cx="140.1344319089457" cy="182.33333333333334" r="3" fill="#fdc006"
+										stroke="#fdc006" stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+									<circle cx="234.92120756789137" cy="213.8" r="3" fill="#fdc006" stroke="#fdc006"
+										stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+									</circle>
+									<circle cx="329.96767302316294" cy="103.66666666666669" r="3" fill="#fdc006"
+										stroke="#fdc006" stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+									<circle cx="424.7544486821086" cy="143" r="3" fill="#fdc006" stroke="#fdc006"
+										stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+									</circle>
+									<circle cx="519.5412243410542" cy="182.33333333333334" r="3" fill="#fdc006"
+										stroke="#fdc006" stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+									<circle cx="614.328" cy="143" r="3" fill="#fdc006" stroke="#fdc006" stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+									</circle>
+									<path fill="#31ccd5" stroke="none"
+										d="M45.34765625,245.26666666666668C69.04435016473641,233.46666666666667,116.43773799420927,202.98333333333332,140.1344319089457,198.06666666666666C163.8311258236821,193.15,211.22451365315496,211.82526219790242,234.92120756789137,205.93333333333334C258.68282393170927,200.02526219790244,306.20605665934505,157.75941632466942,329.96767302316294,150.86666666666667C353.66436693789933,143.99274965800274,401.0577547673722,144.96666666666667,424.7544486821086,150.86666666666667C448.451142596845,156.76666666666668,495.8445304263178,203.96666666666667,519.5412243410542,198.06666666666666C543.2379182557906,192.16666666666666,590.6313060852635,127.26666666666668,614.328,103.66666666666669L614.328,261L45.34765625,261Z"
+										fill-opacity="0"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0;">
+									</path>
+									<path fill="none" stroke="#1db4bd"
+										d="M45.34765625,245.26666666666668C69.04435016473641,233.46666666666667,116.43773799420927,202.98333333333332,140.1344319089457,198.06666666666666C163.8311258236821,193.15,211.22451365315496,211.82526219790242,234.92120756789137,205.93333333333334C258.68282393170927,200.02526219790244,306.20605665934505,157.75941632466942,329.96767302316294,150.86666666666667C353.66436693789933,143.99274965800274,401.0577547673722,144.96666666666667,424.7544486821086,150.86666666666667C448.451142596845,156.76666666666668,495.8445304263178,203.96666666666667,519.5412243410542,198.06666666666666C543.2379182557906,192.16666666666666,590.6313060852635,127.26666666666668,614.328,103.66666666666669"
+										stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+									</path>
+									<circle cx="45.34765625" cy="245.26666666666668" r="3" fill="#1db4bd"
+										stroke="#1db4bd" stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+									<circle cx="140.1344319089457" cy="198.06666666666666" r="3" fill="#1db4bd"
+										stroke="#1db4bd" stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+									<circle cx="234.92120756789137" cy="205.93333333333334" r="3" fill="#1db4bd"
+										stroke="#1db4bd" stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+									<circle cx="329.96767302316294" cy="150.86666666666667" r="3" fill="#1db4bd"
+										stroke="#1db4bd" stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+									<circle cx="424.7544486821086" cy="150.86666666666667" r="3" fill="#1db4bd"
+										stroke="#1db4bd" stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+									<circle cx="519.5412243410542" cy="198.06666666666666" r="3" fill="#1db4bd"
+										stroke="#1db4bd" stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+									<circle cx="614.328" cy="103.66666666666669" r="3" fill="#1db4bd" stroke="#1db4bd"
+										stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+									</circle>
+								</svg>
+								<div class="morris-hover morris-default-style"
+									style="left: 537.469px; top: 35px; display: none;">
+									<div class="morris-hover-row-label">2016</div>
+									<div class="morris-hover-point" style="color: #1cc100">
+										iPhone:
+										250
+									</div>
+									<div class="morris-hover-point" style="color: #fdc006">
+										iPad:
+										150
+									</div>
+									<div class="morris-hover-point" style="color: #1db4bd">
+										iPod Touch:
+										200
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
+					<div class="card">
+						<div class="card-header">
+							<h4>Notifications</h4>
+						</div>
+						<div class="ground-list ground-list-hove">
+							<div class="ground ground-single-list">
+								<a href="JavaScript:Void(0);">
+									<div class="btn-circle-40 text-warning bg-light-warning"><i class="fas fa-home"></i>
+									</div>
+								</a>
+
+								<div class="ground-content">
+									<h6><a href="JavaScript:Void(0);"><strong>Kr. Shaury Preet</strong> Replied your
+											message</a></h6>
+									<span class="small">Just Now</span>
+								</div>
+							</div>
+
+							<div class="ground ground-single-list">
+								<a href="JavaScript:Void(0);">
+									<div class="btn-circle-40 text-danger bg-light-danger"><i
+											class="fa-solid fa-comments"></i></div>
+								</a>
+
+								<div class="ground-content">
+									<h6><a href="JavaScript:Void(0);">Mortin Denver accepted your resume on
+											<strong>Job Stock</strong></a></h6>
+									<span class="small">20 min ago</span>
+								</div>
+							</div>
+
+							<div class="ground ground-single-list">
+								<a href="JavaScript:Void(0);">
+									<div class="btn-circle-40 text-info bg-light-info"><i class="fa-solid fa-heart"></i>
+									</div>
+								</a>
+
+								<div class="ground-content">
+									<h6><a href="JavaScript:Void(0);">Your job #456256 expired yesterday
+											<strong>View More</strong></a></h6>
+									<span class="small">1 day ago</span>
+								</div>
+							</div>
+
+							<div class="ground ground-single-list">
+								<a href="JavaScript:Void(0);">
+									<div class="btn-circle-40 text-danger bg-light-danger"><i
+											class="fa-solid fa-thumbs-up"></i></div>
+								</a>
+
+								<div class="ground-content">
+									<h6><a href="JavaScript:Void(0);"><strong>Daniel Kurwa</strong> has been
+											approved your resume!.</a></h6>
+									<span class="small">10 days ago</span>
+								</div>
+							</div>
+
+							<div class="ground ground-single-list">
+								<a href="JavaScript:Void(0);">
+									<div class="btn-circle-40 text-success bg-light-success"><i
+											class="fa-solid fa-comment-dots"></i></div>
+								</a>
+
+								<div class="ground-content">
+									<h6><a href="JavaScript:Void(0);">Khushi Verma left a review on <strong>Your
+												Message</strong></a></h6>
+									<span class="small">Just Now</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Row End -->
+
+			<!-- Row Start -->
+			<div class="row" style="display: block;">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+					<div class="card">
+						<div class="card-header">
+							<h4 class="mb-0">Shortlisted Jobs</h4>
+						</div>
+						<div class="card-body px-4 py-4">
+							<!-- Start All List -->
+							<div class="row justify-content-start gx-3 gy-4">
+
+								<!-- Single Item -->
+								<div class="col-xl-12 col-lg-12 col-md-12">
+									<div class="jbs-list-box border">
+										<div class="jbs-list-head">
+											<div class="jbs-list-head-thunner">
+												<div class="jbs-list-emp-thumb jbs-verified"><a href="job-detail.html">
+														<figure><img src="assets/img/l-1.png" class="img-fluid" alt="">
+														</figure>
+													</a></div>
+												<div class="jbs-list-job-caption">
+													<div class="jbs-job-types-wrap"><span
+															class="label text-success bg-light-success">Full
+															Time</span></div>
+													<div class="jbs-job-title-wrap">
+														<h4><a href="job-detail.html" class="jbs-job-title">Product
+																Designer</a></h4>
+													</div>
+													<div class="jbs-job-mrch-lists">
+														<div class="single-mrch-lists">
+															<span>Tripadvisor</span>.<span><i
+																	class="fa-solid fa-location-dot me-1"></i>California</span>.<span>07
+																Apr 2023</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="jbs-list-head-middle">
+												<div class="elsocrio-jbs">
+													<div class="ilop-tr"><i class="fa-solid fa-sack-dollar"></i>
+													</div>
+													<h5 class="jbs-list-pack">$85K - 95K<span class="patype">\PA</span>
+													</h5>
+												</div>
+											</div>
+											<div class="jbs-list-head-last">
+												<a href="job-detail.html"
+													class="btn btn-md btn-outline-secondary px-3 me-2">View
+													Detail</a>
+												<a href="JavaScript:Void(0);" class="btn btn-md btn-primary px-3">Quick
+													Apply</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Single Item -->
+								<div class="col-xl-12 col-lg-12 col-md-12">
+									<div class="jbs-list-box border">
+										<div class="jbs-list-head">
+											<div class="jbs-list-head-thunner">
+												<div class="jbs-list-emp-thumb"><a href="job-detail.html">
+														<figure><img src="assets/img/l-2.png" class="img-fluid" alt="">
+														</figure>
+													</a></div>
+												<div class="jbs-list-job-caption">
+													<div class="jbs-job-types-wrap"><span
+															class="label text-success bg-light-success">Full
+															Time</span></div>
+													<div class="jbs-job-title-wrap">
+														<h4><a href="job-detail.html" class="jbs-job-title">Product
+																Designer</a></h4>
+													</div>
+													<div class="jbs-job-mrch-lists">
+														<div class="single-mrch-lists">
+															<span>Pinterest</span>.<span><i
+																	class="fa-solid fa-location-dot me-1"></i>Allahabad</span>.<span>2
+																Apr 2023</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="jbs-list-head-middle">
+												<div class="elsocrio-jbs">
+													<div class="ilop-tr"><i class="fa-solid fa-sack-dollar"></i>
+													</div>
+													<h5 class="jbs-list-pack">$90K - 100K<span class="patype">\PA</span>
+													</h5>
+												</div>
+											</div>
+											<div class="jbs-list-head-last">
+												<a href="job-detail.html"
+													class="btn btn-md btn-outline-secondary px-3 me-2">View
+													Detail</a>
+												<a href="JavaScript:Void(0);" class="btn btn-md btn-primary px-3">Quick
+													Apply</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Single Item -->
+								<div class="col-xl-12 col-lg-12 col-md-12">
+									<div class="jbs-list-box border">
+										<div class="jbs-list-head">
+											<div class="jbs-list-head-thunner">
+												<div class="jbs-list-emp-thumb"><a href="job-detail.html">
+														<figure><img src="assets/img/l-3.png" class="img-fluid" alt="">
+														</figure>
+													</a></div>
+												<div class="jbs-list-job-caption">
+													<div class="jbs-job-types-wrap"><span
+															class="label text-success bg-light-success">Full
+															Time</span></div>
+													<div class="jbs-job-title-wrap">
+														<h4><a href="job-detail.html" class="jbs-job-title">Product
+																Designer</a></h4>
+													</div>
+													<div class="jbs-job-mrch-lists">
+														<div class="single-mrch-lists">
+															<span>Shopify</span>.<span><i
+																	class="fa-solid fa-location-dot me-1"></i>Canada,
+																USA</span>.<span>15 March 2023</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="jbs-list-head-middle">
+												<div class="elsocrio-jbs">
+													<div class="ilop-tr"><i class="fa-solid fa-sack-dollar"></i>
+													</div>
+													<h5 class="jbs-list-pack">$90K - 115K<span class="patype">\PA</span>
+													</h5>
+												</div>
+											</div>
+											<div class="jbs-list-head-last">
+												<a href="job-detail.html"
+													class="btn btn-md btn-outline-secondary px-3 me-2">View
+													Detail</a>
+												<a href="JavaScript:Void(0);" class="btn btn-md btn-primary px-3">Quick
+													Apply</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Single Item -->
+								<div class="col-xl-12 col-lg-12 col-md-12">
+									<div class="jbs-list-box border">
+										<div class="jbs-list-head">
+											<div class="jbs-list-head-thunner">
+												<div class="jbs-list-emp-thumb jbs-verified"><a href="job-detail.html">
+														<figure><img src="assets/img/l-4.png" class="img-fluid" alt="">
+														</figure>
+													</a></div>
+												<div class="jbs-list-job-caption">
+													<div class="jbs-job-types-wrap"><span
+															class="label text-success bg-light-success">Full
+															Time</span></div>
+													<div class="jbs-job-title-wrap">
+														<h4><a href="job-detail.html" class="jbs-job-title">Jr.
+																Laravel Developer</a></h4>
+													</div>
+													<div class="jbs-job-mrch-lists">
+														<div class="single-mrch-lists">
+															<span>Dreezoo</span>.<span><i
+																	class="fa-solid fa-location-dot me-1"></i>Liverpool,
+																UK</span>.<span>20 March 2023</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="jbs-list-head-middle">
+												<div class="elsocrio-jbs">
+													<div class="ilop-tr"><i class="fa-solid fa-sack-dollar"></i>
+													</div>
+													<h5 class="jbs-list-pack">$85K - 110K<span class="patype">\PA</span>
+													</h5>
+												</div>
+											</div>
+											<div class="jbs-list-head-last">
+												<a href="job-detail.html"
+													class="btn btn-md btn-outline-secondary px-3 me-2">View
+													Detail</a>
+												<a href="JavaScript:Void(0);" class="btn btn-md btn-primary px-3">Quick
+													Apply</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Single Item -->
+								<div class="col-xl-12 col-lg-12 col-md-12">
+									<div class="jbs-list-box border">
+										<div class="jbs-list-head">
+											<div class="jbs-list-head-thunner">
+												<div class="jbs-list-emp-thumb"><a href="job-detail.html">
+														<figure><img src="assets/img/l-5.png" class="img-fluid" alt="">
+														</figure>
+													</a></div>
+												<div class="jbs-list-job-caption">
+													<div class="jbs-job-types-wrap"><span
+															class="label text-success bg-light-success">Enternship</span>
+													</div>
+													<div class="jbs-job-title-wrap">
+														<h4><a href="job-detail.html" class="jbs-job-title">Java
+																&amp; Python Developer</a></h4>
+													</div>
+													<div class="jbs-job-mrch-lists">
+														<div class="single-mrch-lists">
+															<span>Photoshop</span>.<span><i
+																	class="fa-solid fa-location-dot me-1"></i>California</span>.<span>20
+																Feb 2023</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="jbs-list-head-middle">
+												<div class="elsocrio-jbs">
+													<div class="ilop-tr"><i class="fa-solid fa-sack-dollar"></i>
+													</div>
+													<h5 class="jbs-list-pack">$90K - 120K<span class="patype">\PA</span>
+													</h5>
+												</div>
+											</div>
+											<div class="jbs-list-head-last">
+												<a href="job-detail.html"
+													class="btn btn-md btn-outline-secondary px-3 me-2">View
+													Detail</a>
+												<a href="JavaScript:Void(0);" class="btn btn-md btn-primary px-3">Quick
+													Apply</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Single Item -->
+								<div class="col-xl-12 col-lg-12 col-md-12">
+									<div class="jbs-list-box border">
+										<div class="jbs-list-head">
+											<div class="jbs-list-head-thunner">
+												<div class="jbs-list-emp-thumb"><a href="job-detail.html">
+														<figure><img src="assets/img/l-6.png" class="img-fluid" alt="">
+														</figure>
+													</a></div>
+												<div class="jbs-list-job-caption">
+													<div class="jbs-job-types-wrap"><span
+															class="label text-success bg-light-success">Full
+															Time</span></div>
+													<div class="jbs-job-title-wrap">
+														<h4><a href="job-detail.html" class="jbs-job-title">Sr. Code
+																Ignetor Developer</a></h4>
+													</div>
+													<div class="jbs-job-mrch-lists">
+														<div class="single-mrch-lists">
+															<span>Firefox</span>.<span><i
+																	class="fa-solid fa-location-dot me-1"></i>Canada,
+																USA</span>.<span>18 Feb 2023</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="jbs-list-head-middle">
+												<div class="elsocrio-jbs">
+													<div class="ilop-tr"><i class="fa-solid fa-sack-dollar"></i>
+													</div>
+													<h5 class="jbs-list-pack">$80K - 90K<span class="patype">\PA</span>
+													</h5>
+												</div>
+											</div>
+											<div class="jbs-list-head-last">
+												<a href="job-detail.html"
+													class="btn btn-md btn-outline-secondary px-3 me-2">View
+													Detail</a>
+												<a href="JavaScript:Void(0);" class="btn btn-md btn-primary px-3">Quick
+													Apply</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Single Item -->
+								<div class="col-xl-12 col-lg-12 col-md-12">
+									<div class="jbs-list-box border">
+										<div class="jbs-list-head">
+											<div class="jbs-list-head-thunner">
+												<div class="jbs-list-emp-thumb"><a href="job-detail.html">
+														<figure><img src="assets/img/l-7.png" class="img-fluid" alt="">
+														</figure>
+													</a></div>
+												<div class="jbs-list-job-caption">
+													<div class="jbs-job-types-wrap"><span
+															class="label text-success bg-light-success">Part
+															Time</span></div>
+													<div class="jbs-job-title-wrap">
+														<h4><a href="job-detail.html" class="jbs-job-title">Sr.
+																Magento Developer</a></h4>
+													</div>
+													<div class="jbs-job-mrch-lists">
+														<div class="single-mrch-lists">
+															<span>Airbnb</span>.<span><i
+																	class="fa-solid fa-location-dot me-1"></i>London,
+																UK</span>.<span>15 Feb 2023</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="jbs-list-head-middle">
+												<div class="elsocrio-jbs">
+													<div class="ilop-tr"><i class="fa-solid fa-sack-dollar"></i>
+													</div>
+													<h5 class="jbs-list-pack">$75K - 85K<span class="patype">\PA</span>
+													</h5>
+												</div>
+											</div>
+											<div class="jbs-list-head-last">
+												<a href="job-detail.html"
+													class="btn btn-md btn-outline-secondary px-3 me-2">View
+													Detail</a>
+												<a href="JavaScript:Void(0);" class="btn btn-md btn-primary px-3">Quick
+													Apply</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Single Item -->
+								<div class="col-xl-12 col-lg-12 col-md-12">
+									<div class="jbs-list-box border">
+										<div class="jbs-list-head">
+											<div class="jbs-list-head-thunner">
+												<div class="jbs-list-emp-thumb jbs-verified"><a href="job-detail.html">
+														<figure><img src="assets/img/l-8.png" class="img-fluid" alt="">
+														</figure>
+													</a></div>
+												<div class="jbs-list-job-caption">
+													<div class="jbs-job-types-wrap"><span
+															class="label text-success bg-light-success">Full
+															Time</span></div>
+													<div class="jbs-job-title-wrap">
+														<h4><a href="job-detail.html" class="jbs-job-title">New
+																Shopify Developer</a></h4>
+													</div>
+													<div class="jbs-job-mrch-lists">
+														<div class="single-mrch-lists">
+															<span>Snapchat</span>.<span><i
+																	class="fa-solid fa-location-dot me-1"></i>Denver,
+																USA</span>.<span>15 Feb 2023</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="jbs-list-head-middle">
+												<div class="elsocrio-jbs">
+													<div class="ilop-tr"><i class="fa-solid fa-sack-dollar"></i>
+													</div>
+													<h5 class="jbs-list-pack">$70K - 95K<span class="patype">\PA</span>
+													</h5>
+												</div>
+											</div>
+											<div class="jbs-list-head-last">
+												<a href="job-detail.html"
+													class="btn btn-md btn-outline-secondary px-3 me-2">View
+													Detail</a>
+												<a href="JavaScript:Void(0);" class="btn btn-md btn-primary px-3">Quick
+													Apply</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Single Item -->
+								<div class="col-xl-12 col-lg-12 col-md-12">
+									<div class="jbs-list-box border">
+										<div class="jbs-list-head">
+											<div class="jbs-list-head-thunner">
+												<div class="jbs-list-emp-thumb"><a href="job-detail.html">
+														<figure><img src="assets/img/l-9.png" class="img-fluid" alt="">
+														</figure>
+													</a></div>
+												<div class="jbs-list-job-caption">
+													<div class="jbs-job-types-wrap"><span
+															class="label text-success bg-light-success">Full
+															Time</span></div>
+													<div class="jbs-job-title-wrap">
+														<h4><a href="job-detail.html" class="jbs-job-title">Front-end
+																Developer</a></h4>
+													</div>
+													<div class="jbs-job-mrch-lists">
+														<div class="single-mrch-lists">
+															<span>Dribbble</span>.<span><i
+																	class="fa-solid fa-location-dot me-1"></i>New
+																York, USA</span>.<span>7 March 2023</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="jbs-list-head-middle">
+												<div class="elsocrio-jbs">
+													<div class="ilop-tr"><i class="fa-solid fa-sack-dollar"></i>
+													</div>
+													<h5 class="jbs-list-pack">$60K - 70K<span class="patype">\PA</span>
+													</h5>
+												</div>
+											</div>
+											<div class="jbs-list-head-last">
+												<a href="job-detail.html"
+													class="btn btn-md btn-outline-secondary px-3 me-2">View
+													Detail</a>
+												<a href="JavaScript:Void(0);" class="btn btn-md btn-primary px-3">Quick
+													Apply</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Single Item -->
+								<div class="col-xl-12 col-lg-12 col-md-12">
+									<div class="jbs-list-box border">
+										<div class="jbs-list-head">
+											<div class="jbs-list-head-thunner">
+												<div class="jbs-list-emp-thumb jbs-verified"><a href="job-detail.html">
+														<figure><img src="assets/img/l-10.png" class="img-fluid" alt="">
+														</figure>
+													</a></div>
+												<div class="jbs-list-job-caption">
+													<div class="jbs-job-types-wrap"><span
+															class="label text-success bg-light-success">Full
+															Time</span></div>
+													<div class="jbs-job-title-wrap">
+														<h4><a href="job-detail.html" class="jbs-job-title">Technical
+																Content Writer</a>
+														</h4>
+													</div>
+													<div class="jbs-job-mrch-lists">
+														<div class="single-mrch-lists">
+															<span>Skype</span>.<span><i
+																	class="fa-solid fa-location-dot me-1"></i>Canada,
+																USA</span>.<span>10 March 2022</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="jbs-list-head-middle">
+												<div class="elsocrio-jbs">
+													<div class="ilop-tr"><i class="fa-solid fa-sack-dollar"></i>
+													</div>
+													<h5 class="jbs-list-pack">$80K - 100K<span class="patype">\PA</span>
+													</h5>
+												</div>
+											</div>
+											<div class="jbs-list-head-last">
+												<a href="job-detail.html"
+													class="btn btn-md btn-outline-secondary px-3 me-2">View
+													Detail</a>
+												<a href="JavaScript:Void(0);" class="btn btn-md btn-primary px-3">Quick
+													Apply</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<!-- End All Job List -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Row End -->
+
+		</div>
+
+	</div>
+
+</div>

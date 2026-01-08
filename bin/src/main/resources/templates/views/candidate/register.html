@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<title>Đăng ký thông tin ứng viên</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<body>
+
+	<head th:replace="~{admin/frags/head :: head}" />
+
+
+	<section class="bg-light p-1 p-md-2 p-xl-2">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-12 col-xxl-11">
+					<div class="card border-light-subtle shadow-sm">
+						<div class="row g-0">
+							<div class="col-12 col-md-6">
+								<img class="img-fluid rounded-start w-100 h-100 object-fit-cover" loading="lazy"
+									src="/assets/lte3/img/logo-img-1.webp" alt="Login to JobPortal">
+							</div>
+							<div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
+								<div class="col-12 col-lg-11 col-xl-10">
+									<div class="card-body p-1 p-md-2 p-xl-3">
+										<div class="row">
+											<div class="col-12">
+												<div class="mb-1">
+													<h3 class="text-center">Đăng ký thông tin ứng viên
+													</h3>
+												</div>
+											</div>
+										</div>
+
+										<form id="frm_register_new_user" method="post"
+											th:action="@{/candidate/register}" th:object="${user}">
+
+											<div class="row gy-3 overflow-hidden">
+
+												<div class="col-12">
+													<div class="form-group mb-2">
+														<label for="Username" class="form-label">Tên đầy đủ</label>
+														<input type="text" class="form-control" name="fullName"
+															id="fullName" th:field="*{fullName}"
+															placeholder="Nhập tên của bạn" />
+													</div>
+												</div>
+
+												<div class="col-12">
+													<div class="form-group mb-2">
+														<label for="Username" class="form-label">Địa chỉ</label>
+														<input type="text" class="form-control" name="address"
+															id="address" th:field="*{address}"
+															placeholder="Nhập địa chỉ của bạn" />
+													</div>
+												</div>
+
+												<div class="col-12">
+													<div class="form-group mb-2">
+														<label for="Username" class="form-label">Tên đăng nhập</label>
+														<input type="text" class="form-control" name="userName"
+															id="userName" th:field="*{userName}"
+															placeholder="Tên đăng nhập" />
+													</div>
+												</div>
+												<div class="col-12">
+													<div class="form-group mb-2">
+														<label for="Email" class="form-label">Email</label>
+														<input type="email" class="form-control" name="email"
+															id="Email" th:field="*{email}"
+															placeholder="Nhập Email" />
+													</div>
+												</div>
+												
+												<div class="col-12">
+													<div class="form-group mb-2">
+														<label for="password" class="form-label">Mật khẩu</label>
+														<input type="passWord" class="form-control" name="passWord"
+															id="passWord" th:field="*{passWord}"
+															placeholder="Mật khẩu" />
+													</div>
+												</div>
+												<div class="col-12">
+													<div class="form-group mb-2">
+														<label for="password" class="form-label">Nhập lại mật
+															khẩu</label>
+														<input type="password" class="form-control"
+															name="retypepassword" id="retypepassword" />
+													</div>
+												</div>
+
+
+												<button class="btn btn-default btn-block" type="submit">Đăng ký tài
+													khoản</button>
+											</div>
+										</form>
+										<div class="row">
+											<div class="col-6">
+												<a href="/logon" class="text-dark text-decoration-none">Đã có tài
+													khoản</a>
+												<!--<a href="/register/forgotPass"
+													class="btn btn-outline-light text-dark text-decoration-none">Lấy lại mật khẩu</a>
+-->
+
+											</div>
+											<div class="col-6">
+											
+												<a href="/" class=" text-dark text-decoration-none pd-50">Vào trang
+													chủ</a>
+
+											</div>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Script Include -->
+	<div th:replace="~{views/fragments/script :: script}"></div>
+
+</body>
+
+</html>

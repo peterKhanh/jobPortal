@@ -1,0 +1,109 @@
+<!--<section class="featured-job-area feature-padding" th:fragment="view-enterprise">
+-->
+<head th:replace="~{views/fragments/head :: head}"/>
+<body>
+	<!-- Header Start -->
+	<header th:replace="~{views/fragments/menu_bar_2 :: menu_bar_2}"> </header>
+	<main>
+		<!--Begin-->
+		<div class="container py-2">
+			<div class="row pt-15">
+				<div th:replace="~{views/employer/profile-panel :: profile-panel}"/>
+				<div class="col-xl-9 col-lg-9 col-md-8">
+					<div class="container p-2">
+						<div class="widget_title">
+							<p class="mb-2">Cập nhật thông tin tin công ty</p>
+						</div>
+						<div class="card card-default col-md-12">
+							<form id="frm_enterprise" th:object="${enterprise}" method="POST" th:action="@{/employer/add-employer}">
+								<!-- /.card-header -->
+								<div class="card-body">
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label> Tên doanh nghiệp </label>
+												<input type="text" id="name" name="name" class="form-control" placeholder="Enter Enterprise name"/>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label> Địa chỉ</label>
+												<input type="text" id="address" name="address" class="form-control"/>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-7">
+											<div class="form-group">
+												<label> Nhóm nghành nghề</label>
+												<select class="form-control" id="IndustrialType" name="IndustrialType">
+													<option th:each="cate : ${industrialType}" th:value="${cate.id}" th:text="${cate.name}">
+												</option>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-5">
+											<div class="form-group">
+												<label> Quy mô </label>
+												<input type="text" id="numberOfEmployee" name="numberOfEmployee" class="form-control"/>
+											</div>
+										</div>
+										<div class="col-5">
+											<div class="form-group">
+												<label> Website </label>
+												<input type="text" id="website" name="website" class="form-control"/>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label> Giới thiệu doanh nghiệp </label>
+												<textarea id="introduction" name="introduction" class="form-control" rows="5" cols="30"/>
+												<!--
+											<script>
+												ClassicEditor
+													.create(document.querySelector('#introduction'), {
+														height: 800,
+
+														toolbar: [
+															'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
+															'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList'
+														],
+													})
+													.catch(error => {
+														console.error(error);
+													});
+											</script>
+											-->
+											</div>
+										</div>
+									</div>
+									<!-- /.card-body -->
+									<hr/>
+									<div class="card-footer">
+										<button type="submit" class="btn btn-primary">
+										Lưu thông tin
+									</button>
+									</div>
+								</form>
+							</div>
+						</div>
+						<!--End Thông tin chung-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--End-->
+</main>
+<!-- Footer Include -->
+<div th:replace="~{views/fragments/footer :: footer}"/>
+<!-- Script Include -->
+<div th:replace="~{views/fragments/script :: script}"/>
+</body>
+</html>

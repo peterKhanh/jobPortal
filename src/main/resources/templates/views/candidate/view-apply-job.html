@@ -25,7 +25,7 @@
 
 									<div class="col-sm-12 ">
 										<ul class="list-group-item d-flex justify-content-between align-items-center p-2 bg-light">
-											<li  class="col-sm-2">ứng tuyển</li>
+											<li  class="col-sm-2">Ứng tuyển</li>
 											<li class="col-sm-5">Tiêu đề</li>
 											<li class="col-sm-3">Ngày hết hạn</li>
 											<li  class="col-sm-2">#</li>
@@ -46,16 +46,18 @@
 												</p>
 												<span th:switch="${jobApply.job.getStatus()}">
 													<p th:case="'APPROVED'">
-														<button type="button" class="genric-btn primary circle arrow small"> Đang
-															tuyển</button>
+														<span class="badge bg-success"> Đang
+															tuyển</span>
 													</p>
 													<p th:case="'EDITING'">
-														<button type="button" class="genric-btn warning  circle arrow small"> Đang
-															sửa</button>
+														<span class="badge bg-warning"> Đang
+															sửa</span>
+															
 													</p>
 													<p th:case="'BLOCKED'">
-														<button type="button" class="genric-btn danger  circle arrow small">Bị
-															khóa</button>
+														<span class="badge bg-danger"> Đang
+															khóa</span>
+														
 													</p>
 												</span>
 											</li>
@@ -65,7 +67,7 @@
 												<a href="#"
 														onclick="return confirm('Bạn có muốn xóa không?')">
 														<span class="" title="Xóa">
-														<i class='fas fa-trash-alt' style='font-size:24px;color:red'></i>
+														<i class='fas fa-trash-alt' style='font-size:16px;color:red'></i>
 
 														</span>
 													</a>

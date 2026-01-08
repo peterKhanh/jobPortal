@@ -14,8 +14,10 @@
 								<div class="widget_title">
 									<p class="mb-2">Thông nhà tuyển dụng</p>
 								</div>
-								<a th:href="@{/employer/edit-employer/}" class="genric-btn info-border circle arrow small">
-									<i class="fas fa-pencil-alt"></i> Sửa</a>
+								<a th:if="${employer == 'NOTSET'}" th:href="@{/employer/add-employer/}" class="genric-btn primary-border circle arrow small">						Thêm</a>
+
+								<a th:unless="${employer == 'NOTSET'}" th:href="@{/employer/edit-employer/}" class="genric-btn primary-border circle arrow small">
+									 Sửa</a>
 							</div>
 						</div>
 

@@ -18,26 +18,25 @@
 							<form id="frm_job" th:object="${job}" method="POST" th:action="@{/employer/add-job}">
 								<input type="hidden" name="employer_id" th:value="${employer.id}"/>
 								<div class="card-body">
-								<!--
-								<div class="row" >
-									<div class="col-12">
-										<div class="form-group">
-											<select class="form-select" id="enterprise" name="enterprise">
-												<option value=""> -----------Select Enterprise -------------
-												<option th:each="enterprise : ${enterprises}"
-													th:value="${enterprise.id}" th:text="${enterprise.name}">
-												</option>
-											</select>
-										</div>
-									</div>
+								
+								<div class="row">
+ <div class="row">
+  <div class="col-sm-6 col-lg-5 mb-3 mb-sm-0">
+    <div data-coreui-locale="en-US" data-coreui-toggle="date-picker"></div>
+  </div>
+  <div class="col-sm-6 col-lg-5">
+    <div data-coreui-date="2023/03/15" data-coreui-locale="en-US" data-coreui-toggle="date-picker"></div>
+  </div>
+</div>
+
 								</div>
-								-->	
+								
 								<div class="row">
 									<div class="col-12">
 										<div class="form-group">
 											<label> Tên công việc</label>
 											<input type="text" id="title" name="title" class="form-control"
-												placeholder="Enter job title" />
+												placeholder="Nhập tên công việc" />
 										</div>
 									</div>
 

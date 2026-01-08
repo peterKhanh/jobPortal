@@ -9,29 +9,43 @@
 			<div class="row pt-15">
 				<div th:replace="~{views/candidate/profile-panel :: profile-panel}"></div>
 				<div class="col-xl-9 col-lg-9 col-md-8">
-					<div class="container p-2">
+				
+
+					
+
+					<div class="container">
 									<!--Danh sách CV - Hồ sơ-->
 								<div class="row">
 									<div class="col-sm-12 d-flex justify-content-between align-items-center" th:switch="${employer}">
 										<div class="widget_title">
-											<p class="mb-2">Thông nhà tuyển dụng</p>
+											<p class="mb-2">Danh sách hồ sơ</p>
 										</div>
 										<span th:case="*">
 										<a th:if="${pro} < 1" th:href="@{/candidate/add-profile/}"><span
-												class="genric-btn success-border circle arrow small">Tạo hồ sơ</span> </a>
+												class="genric-btn primary-border circle arrow small">Tạo hồ sơ</span> </a>
 										</span>
 									</div>		
 								</div>
-									<div class="col-sm-12 ">
-										<ul class="list-group-item d-flex justify-content-between align-items-center p-2 bg-light">
-											<li  class="col-sm-5">Tiêu đề hồ sơ</li>
-											<li class="col-sm-4">Tương tác</li>
-											<li class="col-sm-3">Hành động</li>
-										</ul>
-										<ul class="list-group list-group-flush rounded-3 border" th:each="profile: ${profiles}">
-											<li
-												class="list-group-item d-flex justify-content-between align-items-center p-2">
-												<div class="col-sm-5">
+
+
+								<div class="col-sm-12 border">
+									<ul class="list-group list-group-flush rounded-3">
+										<li class="list-group-item d-flex justify-content-between align-items-center p-0">
+											<div class="col-sm-5">
+												<p class="mb-0">Tiêu đề hồ sơ</p>
+											</div>
+											<div class="col-sm-4">
+												<p class="mb-0">Tương tác</p>
+											</div>
+											<div class="col-sm-4">
+												<p class="mb-0">Hành động</p>
+											</div>
+										</li>
+									</ul>
+							
+									<ul class="list-group list-group-flush rounded-3" th:each="profile: ${profiles}">
+										<li class="list-group-item d-flex justify-content-between align-items-center p-0">
+											<div class="col-sm-5">
 													<p class="mb-0" th:text="${profile.getTitle()}"></p>
 													<p class="mb-0" th:if="${profile.status}"><span
 															class="badge bg-success">Đã duyệt</span></p>
@@ -45,25 +59,25 @@
 												</div>
 												<div class="col-sm-3">
 															<a th:href="@{/candidate/view-profile(id=${profile.id})}">
-																<span class="pr-4" title="Xem"><i class="fas fa-eye-slash" style='font-size:24px;color:green'></i></span></a>
+																<span class="pr-4" title="Xem"><i class="fas fa-eye-slash" style='font-size:16px;color:green'></i></span></a>
 
 													<a th:href="@{/candidate/edit-profile(id=${profile.id})}">
-														<span class="pr-4" title="Sửa"><i class='fas fa-pencil-alt' style='font-size:24px;color:blue'></i></span></a>
+														<span class="pr-4" title="Sửa"><i class='fas fa-pencil-alt' style='font-size:16px;color:blue'></i></span></a>
 
 													<a th:href="@{/candidate/delete(id=${profile.id})}"
 														onclick="return confirm('Bạn có muốn xóa không?')">
 														<span class="" title="Xóa">
-														<i class='fas fa-trash-alt' style='font-size:24px;color:red'></i>
+														<i class='fas fa-trash-alt' style='font-size:16px;color:red'></i>
 
 														</span>
 													</a>
 
 												</div>
+										</li>
+									</ul>
+								</div>
 
-											</li>
-
-										</ul>
-									</div>
+									
 								</div>
 
 								<!--Hết Danh sách CV - Hồ sơ-->

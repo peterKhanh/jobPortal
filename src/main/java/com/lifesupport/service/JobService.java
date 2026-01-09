@@ -14,7 +14,11 @@ public interface JobService {
 		Page<Job> getAll(Integer pageNo);
 		Page<Job> searchJob(String keyword, Integer pageNo);
 		Page<Job> getAllByLocation(Integer pageNo, Integer locationId);
+
 		public List<Job> GetAllActiveJobByEnterprise(Enterprise enterprise);
+		public List<Job> GetAllExpiredJobByEnterprise(Enterprise enterprise);
+	
+		public List<Job> GetAllJobOfEnterpriseByStatus(Enterprise enterprise, String status);
 
 		Optional<Job> getSingleJob(Long id);
 	

@@ -19,12 +19,12 @@ public interface JobRepository extends JpaRepository<Job, Long> {
 	List<Job> SearchJob(String keyword);
 	
 	// Find All Approved Job by Job Category
-	@Query("SELECT c FROM Job c WHERE c.jobCategory = %?1% AND c.expiredDate >  DATE(NOW()) AND c.status ='APPROVED' ORDER BY c.createAt DESC")
+	@Query("SELECT c FROM Job c WHERE c.jobCategory = ?1 AND c.expiredDate >  DATE(NOW()) AND c.status ='APPROVED' ORDER BY c.createAt DESC")
 	Page<Job> findApprovedJobByCategory(JobCategory jobCategory, Pageable pageable);
 
 
 	// Find All Approved Job by Job Location
-	@Query("SELECT c FROM Job c WHERE c.location = %?1% AND c.expiredDate >  DATE(NOW()) AND c.status ='APPROVED' ORDER BY c.createAt DESC")
+	@Query("SELECT c FROM Job c WHERE c.location = ?1 AND c.expiredDate >  DATE(NOW()) AND c.status ='APPROVED' ORDER BY c.createAt DESC")
 	Page<Job> findApprovedJobByLocation(Location location, Pageable pageable);
 
 	
@@ -32,12 +32,20 @@ public interface JobRepository extends JpaRepository<Job, Long> {
 
 	
 	// Danh sach Jon theo Doanh nghiep
-	@Query("SELECT c FROM Job c WHERE c.enterprise = %?1%  ORDER BY c.createAt DESC")
+	@Query("SELECT c FROM Job c WHERE c.enterprise = ?1  ORDER BY c.createAt DESC")
 	List<Job> GetAllActiveJobByEnterprise(Enterprise enterprise);
-	
+
+	// Danh sach Jon theo Doanh nghiep
+	// Theo trang thai STATUS
+	@Query("SELECT c FROM Job c WHERE c.enterprise = ?1 AND c.status = ?2 ORDER BY c.createAt DESC")
+	List<Job> GetAllJobOfEnterpriseByStatus(Enterprise enterprise, String status);
+
 	@Query("SELECT c FROM Job c WHERE c.expiredDate >  DATE(NOW()) AND c.status ='APPROVED'")
 	Page<Job> findAllJobForHomePage(Pageable pageable);
 	
+	// Danh sach Cong viec het han theo Doanh nghiep
+	@Query("SELECT c FROM Job c WHERE c.enterprise = ?1 AND  c.expiredDate <  DATE(NOW()) AND c.status ='APPROVED' ORDER BY c.createAt DESC")
+	List<Job> GetAllExpiredJobByEnterprise(Enterprise enterprise);
 	
 	// Lấy danh sách 10 công việc mới đăng
 	@Query("SELECT c FROM Job c WHERE c.expiredDate >  DATE(NOW()) AND c.status ='APPROVED' ORDER BY c.createAt DESC Limit 5 ")
@@ -45,7 +53,7 @@ public interface JobRepository extends JpaRepository<Job, Long> {
 
 	// Lấy danh sách 10 công việc mới đăng theo Lĩnh vực
 //	@Query("SELECT * FROM Job c WHERE c.jobCategory = '?1' AND c.expiredDate >  DATE(NOW()) AND c.status ='APPROVED' ORDER BY c.createAt DESC")
-	@Query("SELECT c FROM Job c WHERE c.jobCategory = %?1% AND c.expiredDate >  DATE(NOW()) AND c.status ='APPROVED' ORDER BY c.createAt DESC Limit 10 ")
+	@Query("SELECT c FROM Job c WHERE c.jobCategory = ?1 AND c.expiredDate >  DATE(NOW()) AND c.status ='APPROVED' ORDER BY c.createAt DESC Limit 10 ")
 	List<Job> findTop10ByJobCategoryOrderByCreateAtDesc(JobCategory jobCategory);
 
 	

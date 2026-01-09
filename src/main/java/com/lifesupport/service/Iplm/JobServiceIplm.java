@@ -77,6 +77,16 @@ public class JobServiceIplm implements JobService {
 	public List<Job> GetAllActiveJobByEnterprise(Enterprise enterprise) {
 		return repository.GetAllActiveJobByEnterprise(enterprise);
 	}
+	@Override
+	public List<Job> GetAllExpiredJobByEnterprise(Enterprise enterprise) {
+		return repository.GetAllExpiredJobByEnterprise(enterprise);
+	}
+
+	@Override
+	public List<Job> GetAllJobOfEnterpriseByStatus(Enterprise enterprise, String status) {
+		return repository.GetAllJobOfEnterpriseByStatus(enterprise, status);
+	}
+
 
 	@Override
 	public Optional<Job> getSingleJob(Long id) {

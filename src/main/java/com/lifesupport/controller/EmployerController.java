@@ -881,6 +881,57 @@ public class EmployerController {
 		return "views/employer/job-by-employer";
 	}
 
+	@GetMapping("/editjob-by-employer/")
+	public String viewEditingJobByEmployer(Model model, Principal principal) {
+		userService.checkLogin(model, principal);
+		if (principal != null) {
+			String userName = principal.getName();
+			User loggedUser = repoUser.findByUserName(userName);
+			Enterprise enterprise = enterpriseRepo.findByUser(loggedUser);
+			model.addAttribute("user", loggedUser); //GetAllActiveJobByEnterprise
+			List<Job> jobEditByEmployer = jobService.GetAllJobOfEnterpriseByStatus(enterprise, "EDITING");
+			model.addAttribute("jobEditByEmployer", jobEditByEmployer);
+			System.out.println("jobEditByEmployer: " + jobEditByEmployer.size());
+		} else {
+			return "redirect:/logon/";
+		}
+		return "views/employer/job-editing-by-employer";
+	}
+
+	@GetMapping("/blockedjob-by-employer/")
+	public String viewBlockedJobByEmployer(Model model, Principal principal) {
+		userService.checkLogin(model, principal);
+		if (principal != null) {
+			String userName = principal.getName();
+			User loggedUser = repoUser.findByUserName(userName);
+			Enterprise enterprise = enterpriseRepo.findByUser(loggedUser);
+			model.addAttribute("user", loggedUser); 
+			List<Job> jobBlockedByEmployer = jobService.GetAllJobOfEnterpriseByStatus(enterprise, "BLOCKED");
+			model.addAttribute("jobEditByEmployer", jobBlockedByEmployer);
+			System.out.println("jobEditByEmployer: " + jobBlockedByEmployer.size());
+		} else {
+			return "redirect:/logon/";
+		}
+		return "views/employer/job-block-by-employer";
+	}
+
+
+	@GetMapping("/expiredjob-by-employer/")
+	public String viewExpiredJobByEmployer(Model model, Principal principal) {
+		userService.checkLogin(model, principal);
+		if (principal != null) {
+			String userName = principal.getName();
+			User loggedUser = repoUser.findByUserName(userName);
+			Enterprise enterprise = enterpriseRepo.findByUser(loggedUser);
+			model.addAttribute("user", loggedUser); 
+			List<Job> jobExpiredByEmployer = jobService.GetAllExpiredJobByEnterprise(enterprise);
+			model.addAttribute("jobExpiredByEmployer", jobExpiredByEmployer);
+			System.out.println("jobExpiredByEmployer: " + jobExpiredByEmployer.size());
+		} else {
+			return "redirect:/logon/";
+		}
+		return "views/employer/job-expired-by-employer";
+	}
 
 
 	@GetMapping("/forgotPassword")

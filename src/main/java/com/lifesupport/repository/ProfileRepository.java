@@ -12,7 +12,7 @@ import com.lifesupport.models.User;
 @Repository
 public interface ProfileRepository extends JpaRepository<Profile, Long> {
 	// 
-	@Query("SELECT c FROM Profile c WHERE c.user = %?1%")
+	@Query("SELECT c FROM Profile c WHERE c.user = ?1")
 	List<Profile> findAllByUser(User user);
 
 }

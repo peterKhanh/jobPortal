@@ -17,12 +17,12 @@ public interface BlogRepository extends JpaRepository<Blog, Integer> {
 	List<Blog> SearchBlog(String keyword);
 	
 	// Search Blog by CategoryID
-	@Query("SELECT c FROM Blog c WHERE c.category = %?1%")
+	@Query("SELECT c FROM Blog c WHERE c.category = ?1")
 	List<Blog> SearchByCategory(Category category);
 	
 	Page<Blog> findByCategory(Category category, Pageable pageable);
 
-	@Query("SELECT c FROM Blog c WHERE c.category = %?1% Order By c.createAt DESC ")
+	@Query("SELECT c FROM Blog c WHERE c.category = ?1 Order By c.createAt DESC ")
 	List<Blog> findTop4ByCategory(Category category);
 
 

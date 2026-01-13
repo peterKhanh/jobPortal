@@ -47,7 +47,13 @@
 
 											<textarea id="shortcontent" name="shortcontent" class="form-control" th:field="${blog.shortcontent}" 
 												rows="5" cols="30" placeholder="Enter Short Content"></textarea>
-											<script>
+												<script>
+													$(document).ready(function() {
+														$('#shortcontent').summernote();
+													});
+												</script>
+												<!--
+												<script>
 												ClassicEditor
 													.create(document.querySelector('#shortcontent'), {
 														height: 800,
@@ -61,6 +67,7 @@
 														console.error(error);
 													});
 											</script>
+											-->
 										</div>
 									</div>
 								</div>
@@ -87,7 +94,13 @@
 											<label> Nội dung bài viết </label>
 											<textarea id="content" name="content" class="form-control" rows="5" th:field="${blog.content}"
 												cols="30" placeholder="Blog content"></textarea>
-											<script>
+												<script>
+													$(document).ready(function() {
+														$('#content').summernote();
+													});
+												</script>
+												<!--
+												<script>
 												ClassicEditor
 													.create(document.querySelector('#content'), {
 														height: 800,
@@ -101,6 +114,7 @@
 														console.error(error);
 													});
 											</script>
+											-->
 										</div>
 									</div>
 								</div>

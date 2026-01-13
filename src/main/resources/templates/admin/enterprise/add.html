@@ -107,21 +107,10 @@
 											<textarea id="introduction" name="introduction" class="form-control"
 												rows="5" cols="30"></textarea>
 											<script>
-												ClassicEditor
-													.create(document.querySelector('#introduction'), {
-														height: 800,
-
-														toolbar: [
-															'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
-															'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList'
-														],
-													})
-													.catch(error => {
-														console.error(error);
+													$(document).ready(function() {
+														$('#introduction').summernote();
 													});
-											</script>
-
-										</div>
+												</script>
 
 									</div>
 								</div>
@@ -136,8 +125,6 @@
 									</div>
 									<div class="col-8">
 										<div class="form-group">
-											
-
 											<label>
 												<input type="checkbox" checked="checked" id="defaultLogo"
 													name="defaultLogo">

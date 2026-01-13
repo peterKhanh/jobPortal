@@ -21,22 +21,22 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	List<User> SearchUser(String keyword);
 
 	// Search SystemAdmin and UserAdmin by Name
-	@Query(value = "SELECT u.id, u.fullname, u.userName, u.address , u.email, u.password , u.telephone , u.gender , u.enabled, u.avata   from users u , users_roles ur WHERE u.id = ur.user_id AND (ur.role_id = %?1% or ur.role_id = %?2%) AND  u.fullName LIKE %?1%",  nativeQuery = true)
+	@Query(value = "SELECT u.id, u.fullname, u.userName, u.address , u.email, u.password , u.telephone , u.gender , u.enabled, u.avata   from users u , users_roles ur WHERE u.id = ur.user_id AND (ur.role_id = ?1 or ur.role_id = ?2) AND  u.fullName LIKE %?1%",  nativeQuery = true)
 	List<User> SearchSystemUserAndUserAdmin(String keyword, Long roleIdSystemAdmin, Long roleIdUserAdmin);
 
 
 	// Search Candidate
-	@Query(value = "SELECT u.id, u.fullname, u.userName, u.address , u.email, u.password , u.telephone , u.gender , u.enabled, u.avata   from users u , users_roles ur WHERE u.id = ur.user_id AND (ur.role_id = %?1%) AND  u.fullName LIKE %?1%",  nativeQuery = true)
+	@Query(value = "SELECT u.id, u.fullname, u.userName, u.address , u.email, u.password , u.telephone , u.gender , u.enabled, u.avata   from users u , users_roles ur WHERE u.id = ur.user_id AND (ur.role_id = ?1) AND  u.fullName LIKE %?1%",  nativeQuery = true)
 	List<User> SearchCandidate(String keyword, Long roleIdCandidate);
 	
 
 	// Xem danh sach User với vai trò là SystemUser or Admin User
-	@Query(value = "SELECT u.id, u.fullname, u.userName, u.address , u.email, u.password , u.telephone , u.gender , u.enabled, u.avata   from users u , users_roles ur WHERE u.id = ur.user_id AND (ur.role_id = %?1% or ur.role_id = %?2%)",  nativeQuery = true)
+	@Query(value = "SELECT u.id, u.fullname, u.userName, u.address , u.email, u.password , u.telephone , u.gender , u.enabled, u.avata   from users u , users_roles ur WHERE u.id = ur.user_id AND (ur.role_id = ?1 or ur.role_id = ?2)",  nativeQuery = true)
 	Page<User> findAdminUserAndSystemAdmin(Pageable pageable, Long roleIdSystemAdmin, Long roleIdUserAdmin);
 	
 	
 	// Xem danh sach User theo nhom quyen
-	@Query(value = "SELECT u.id, u.fullname, u.userName, u.address , u.email, u.password , u.telephone , u.gender , u.enabled, u.avata   from users u , users_roles ur WHERE u.id = ur.user_id AND ur.role_id = %?1%",  nativeQuery = true)
+	@Query(value = "SELECT u.id, u.fullname, u.userName, u.address , u.email, u.password , u.telephone , u.gender , u.enabled, u.avata   from users u , users_roles ur WHERE u.id = ur.user_id AND ur.role_id = ?1",  nativeQuery = true)
 	Page<User> findByUserRoles(Pageable pageable, Long roleId );
 
 

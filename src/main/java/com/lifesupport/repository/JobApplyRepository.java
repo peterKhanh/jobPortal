@@ -15,13 +15,13 @@ import com.lifesupport.models.User;
 public interface JobApplyRepository extends JpaRepository<JobApply, Long> {
 	
 	List<JobApply> findByUserId(Long id);
-	@Query("SELECT c FROM JobApply c WHERE c.user = %?1% Order By c.applyDate DESC") 
+	@Query("SELECT c FROM JobApply c WHERE c.user = ?1 Order By c.applyDate DESC") 
 	List<JobApply> findByUser(User user);
 
-	@Query("SELECT c FROM JobApply c WHERE c.user = %?1% Order By c.applyDate DESC") 
+	@Query("SELECT c FROM JobApply c WHERE c.user = ?1 Order By c.applyDate DESC") 
 	Page<JobApply> findByUser(User user, Pageable pageable );
 	
-	@Query("SELECT c FROM JobApply c WHERE c.job = %?1% Order By c.applyDate DESC") 
+	@Query("SELECT c FROM JobApply c WHERE c.job = ?1 Order By c.applyDate DESC") 
 	Page<JobApply> findByJob(Job job, Pageable pageable );
 
 	@Query(value = "SELECT ja.user_id, ja.job_id, ja.apply_date from jobapply ja ORDER BY ja.apply_date DESC",  nativeQuery = true)

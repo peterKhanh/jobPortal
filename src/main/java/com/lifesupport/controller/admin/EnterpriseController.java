@@ -93,10 +93,7 @@ public class EnterpriseController {
 		List<IndustrialType> industrialType = industrialTypeService.getAllActiveIndustrialType();
 		model.addAttribute("industrialType", industrialType);
 
-//		// All BlogTag
-////		List<BlogTag> listBlogTag = blogTagRepo.findAll();
-////		model.addAttribute("listBlogTag", listBlogTag);
-//
+
 		Enterprise enterprise = new Enterprise();
 		model.addAttribute("enterprise", enterprise);
 		return "admin/enterprise/add";

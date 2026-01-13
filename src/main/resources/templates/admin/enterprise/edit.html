@@ -115,27 +115,16 @@
 												<textarea id="introduction" name="introduction" class="form-control"
 													rows="5" cols="30" placeholder=""
 													th:field="${enterprise.introduction}"></textarea>
-
-												<script>
-													ClassicEditor
-														.create(document.querySelector('#introduction'), {
-															height: 800,
-
-															toolbar: [
-																'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
-																'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList'
-															],
-														})
-														.catch(error => {
-															console.error(error);
+													<script>
+														$(document).ready(function() {
+															$('#introduction').summernote();
 														});
-												</script>
+													</script>												
 											</section>
 										</div>
 
 									</div>
 								</div>
-
 								<div class="row">
 									<div class="col-6" style="display: none;">
 										<div class="form-group">
@@ -143,9 +132,6 @@
 											<input type="file" name="banner" class="form-control"
 												placeholder="Choose Banner" />
 										</div>
-
-
-
 									</div>
 									<div class="col-12">
 										<div class="form-group">

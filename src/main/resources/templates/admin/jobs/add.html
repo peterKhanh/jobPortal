@@ -45,7 +45,7 @@
 										<div class="form-group">
 											<label> Tên công việcc</label>
 											<input type="text" id="title" name="title" class="form-control"
-												placeholder="Enter job title" />
+												placeholder="" />
 										</div>
 									</div>
 
@@ -111,7 +111,7 @@
 											<div class="input-group date" id="reservationdate"
 												data-target-input="nearest">
 												<input type="text" id="expiredDate" name="expiredDate"
-													class="form-control datetimepicker-input"
+													class="form-control datepicker-input"
 													data-target="#reservationdate">
 												<div class="input-group-append" data-target="#reservationdate"
 													data-toggle="datetimepicker">
@@ -187,55 +187,40 @@
 									</div>
 
 								</div>
+							
+								<div class="row">
+									<div class="col-12">
+										<div class="form-group">
 
+											<label> Mô tả công việc </label>
+											<textarea id="description" name="description" class="form-control" rows="6"
+												cols="30" placeholder="Job Description"></textarea>
+										<script>
+													$(document).ready(function() {
+														$('#description').summernote();
+													});
+											</script>
+										
+										</div>
+									</div>
+								</div>			
 								<div class="row">
 									<div class="col-12">
 										<div class="form-group">
 
 											<label> Yêu cầu công việc </label>
 											<textarea id="reponsibility" name="reponsibility" class="form-control"
-												rows="5" cols="30" placeholder="Job Reposibility"></textarea>
+												rows="6" cols="30" placeholder="Job Reposibility"></textarea>
 											<script>
-												ClassicEditor
-													.create(document.querySelector('#reponsibility'), {
-														height: 800,
-
-														toolbar: [
-															'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
-															'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList'
-														],
-													})
-													.catch(error => {
-														console.error(error);
+													$(document).ready(function() {
+														$('#reponsibility').summernote();
 													});
 											</script>
+											
 										</div>
 									</div>
 								</div>
-								<div class="row">
-									<div class="col-12">
-										<div class="form-group">
-
-											<label> Mô tả công việc </label>
-											<textarea id="description" name="description" class="form-control" rows="5"
-												cols="30" placeholder="Job Description"></textarea>
-											<script>
-												ClassicEditor
-													.create(document.querySelector('#description'), {
-														height: 800,
-
-														toolbar: [
-															'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
-															'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList'
-														],
-													})
-													.catch(error => {
-														console.error(error);
-													});
-											</script>
-										</div>
-									</div>
-								</div>
+							
 								<div class="row">
 									<div class="col-12">
 										<div class="form-group">
@@ -244,19 +229,11 @@
 											<textarea id="benefit" name="benefit" class="form-control" rows="5"
 												cols="30" placeholder="Job Benefits"></textarea>
 											<script>
-												ClassicEditor
-													.create(document.querySelector('#benefit'), {
-														height: 800,
-
-														toolbar: [
-															'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
-															'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList'
-														],
-													})
-													.catch(error => {
-														console.error(error);
+													$(document).ready(function() {
+														$('#benefit').summernote();
 													});
 											</script>
+										
 										</div>
 									</div>
 								</div>
@@ -264,7 +241,7 @@
 					</div>
 					<!-- /.card-body -->
 
-					<div class="card-footer">
+					<div class="card-footer  text-center">
 						<button type="submit" id="btn_post_job" class="btn btn-primary">Lưu thông tin</button>
 					</div>
 					</form>

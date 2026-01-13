@@ -18,7 +18,7 @@ public interface EnterpriseRepository extends JpaRepository<Enterprise, Long> {
 	List<Enterprise> SearchEnterprise(String keyword);
 	
 	// Search enterprise by industrialType
-	@Query("SELECT c FROM Enterprise c WHERE c.industrialType = %?1%")
+	@Query("SELECT c FROM Enterprise c WHERE c.industrialType = ?1")
 	List<Enterprise> SearchByIndustrialType(IndustrialType industrialType);
 
 	// Search enterprise by industrialType

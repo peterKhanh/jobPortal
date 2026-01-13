@@ -1,11 +1,7 @@
-<!-- <div class="container" th:data-background="@{/assets-fe/img/banner/company_cover_1.webp}" th:fragment="search-area"> -->
-<div class="container border" th:data-background="@{/assets-fe/img/banner/banner-featured.jpg}"  th:fragment="search-area-small">
-                      
-	
-	
-	<div class="row border">
-		<div class="col-xl-12 mb-3">
-			
+<!-- <div class="container" th:data-background="@{/assets-fe/img/banner/banner-featured.jpg}" th:fragment="search-area"> -->
+<div class="container mt-1" th:fragment="search-area-small">
+	<div class="row ">
+		<div class="col-xl-12">			
 			<form action="/job" class="search-box">
 				<div class="input-form">
 					<input type="text" name="keyword" th:value="${keyword}" placeholder="Tìm kiếm: tiêu đề, công ty, địa điểm, khu vực">
@@ -28,6 +24,4 @@
 			</form>
 		</div>
 	</div>
-
-
 </div>

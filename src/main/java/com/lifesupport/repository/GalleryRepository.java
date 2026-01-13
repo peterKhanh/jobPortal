@@ -17,7 +17,7 @@ public interface GalleryRepository extends JpaRepository<Gallery, Integer> {
 		@Query("SELECT c FROM Gallery c WHERE c.title LIKE %?1%")
 		List<Gallery> SearchGallery(String keyword);
 
-		@Query("SELECT c FROM Gallery c WHERE c.type = %?1%")
+		@Query("SELECT c FROM Gallery c WHERE c.type = ?1")
 		List<Gallery> SearchByType(String type);
 
 	

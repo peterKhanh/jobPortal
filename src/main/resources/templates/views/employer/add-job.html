@@ -1,6 +1,8 @@
 <!--<section class="featured-job-area feature-padding" th:fragment="view-enterprise">
 -->
-<head th:replace="~{views/fragments/head :: head}"/>
+
+<head th:replace="~{views/fragments/head :: head}" />
+
 <body>
 	<!-- Header Start -->
 	<header th:replace="~{views/fragments/menu_bar_2 :: menu_bar_2}"> </header>
@@ -8,7 +10,7 @@
 		<!--Begin-->
 		<div class="container py-2">
 			<div class="row pt-15">
-				<div th:replace="~{views/employer/profile-panel :: profile-panel}"/>
+				<div th:replace="~{views/employer/profile-panel :: profile-panel}" />
 				<div class="col-xl-9 col-lg-9 col-md-8">
 					<div class="container p-2">
 						<div class="widget_title">
@@ -16,267 +18,280 @@
 						</div>
 						<div class="container card card-default col-md-12 border">
 							<form id="frm_job" th:object="${job}" method="POST" th:action="@{/employer/add-job}">
-								<input type="hidden" name="employer_id" th:value="${employer.id}"/>
+								<input type="hidden" name="employer_id" th:value="${employer.id}" />
 								<div class="card-body">
-								
-								<div class="row">
- <div class="row">
-  <div class="col-sm-6 col-lg-5 mb-3 mb-sm-0">
-    <div data-coreui-locale="en-US" data-coreui-toggle="date-picker"></div>
-  </div>
-  <div class="col-sm-6 col-lg-5">
-    <div data-coreui-date="2023/03/15" data-coreui-locale="en-US" data-coreui-toggle="date-picker"></div>
-  </div>
-</div>
 
-								</div>
-								
-								<div class="row">
-									<div class="col-12">
-										<div class="form-group">
-											<label> Tên công việc</label>
-											<input type="text" id="title" name="title" class="form-control"
-												placeholder="Nhập tên công việc" />
+									<div class="row">
+										<div class="row">
+											<div class="col-sm-6 col-lg-5 mb-3 mb-sm-0">
+												<div data-coreui-locale="en-US" data-coreui-toggle="date-picker"></div>
+											</div>
+											<div class="col-sm-6 col-lg-5">
+												<div data-coreui-date="2023/03/15" data-coreui-locale="en-US"
+													data-coreui-toggle="date-picker"></div>
+											</div>
 										</div>
+
 									</div>
 
-									
-								</div>
-
-								<div class="row">
-									<div class="col-4">
-										<div class="form-group">
-											<p> Lĩnh vực </p>
-											<select class="form-select" id="jobCategory" name="jobCategory">
-												<option value=""> -- Chọn lĩnh vực--- </option>
-												<option th:each="cate : ${jobcategories}" th:value="${cate.id}"
-													th:text="${cate.name}">
-												</option>
-											</select>
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label> Tên công việc</label>
+												<input type="text" id="title" name="title" class="form-control"
+													placeholder="Nhập tên công việc" />
+											</div>
 										</div>
-									</div>
-									<div class="col-4">
-										<div class="form-group">
-											<p> Loại hình công việc </p>
-											<select class="form-select" id="workingModel" name="workingModel">
-												<option value=""> -- Chọn --- </option>
-												<option th:each="workingModel : ${workingModels}"
-													th:value="${workingModel.id}" th:text="${workingModel.name}">
-												</option>
-											</select>
-										</div>
-									</div>
-
-									<div class="col-4">
-										<div class="form-group">
-											<p> Trạng thái </p>
-											<select class="form-select" name="status">
-												<option value="APPROVED">Đang tuyển</option>
-												<option value="EDITING">Đang sửa</option>
-												<option value="BLOCKED">Bị khóa</option>
-											</select>
-										</div>
-									</div>
 
 
-								</div>
-								
-								
-								<div class="row">
-									<div class="col-4">
-										<div class="form-group">
-											<label> Số lượng cần tuyển</label>
-											<input type="number" id="numberOfRecruitement" name="numberOfRecruitement"
-												class="form-control" />
-										</div>
 									</div>
-									<div class="col-4">
-										<div class="form-group">
-											<label> Số năm kinh nghiệm </label>
-											<input type="text" id="yearOfExperience" name="yearOfExperience"
-												class="form-control" placeholder="Over 2 years experience" />
-										</div>
-									</div>
-									<div class="col-4">
 
-										<div class="form-group">
-											
-											<label>Ngày hết hạn:</label>
-											<div class="input-group date" id="reservationdate"
-												data-target-input="nearest">
-												<input type="text" id="expiredDate" name="expiredDate"
-													class="form-control datetimepicker-input"
-													data-target="#reservationdate">
-												<div class="input-group-append" data-target="#reservationdate"
-													data-toggle="datetimepicker">
-													<div class="input-group-text"><i class="fa fa-calendar"></i>
+									<div class="row">
+										<div class="col-4">
+											<div class="form-group">
+												<p> Lĩnh vực </p>
+												<select class="form-select" id="jobCategory" name="jobCategory">
+													<option value=""> -- Chọn lĩnh vực--- </option>
+													<option th:each="cate : ${jobcategories}" th:value="${cate.id}"
+														th:text="${cate.name}">
+													</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-4">
+											<div class="form-group">
+												<p> Loại hình công việc </p>
+												<select class="form-select" id="workingModel" name="workingModel">
+													<option value=""> -- Chọn --- </option>
+													<option th:each="workingModel : ${workingModels}"
+														th:value="${workingModel.id}" th:text="${workingModel.name}">
+													</option>
+												</select>
+											</div>
+										</div>
+
+										<div class="col-4">
+											<div class="form-group">
+												<p> Trạng thái </p>
+												<select class="form-select" name="status">
+													<option value="APPROVED">Đang tuyển</option>
+													<option value="EDITING">Đang sửa</option>
+													<option value="BLOCKED">Bị khóa</option>
+												</select>
+											</div>
+										</div>
+
+
+									</div>
+
+
+									<div class="row">
+										<div class="col-4">
+											<div class="form-group">
+												<label> Số lượng cần tuyển</label>
+												<input type="number" id="numberOfRecruitement"
+													name="numberOfRecruitement" class="form-control" />
+											</div>
+										</div>
+										<div class="col-4">
+											<div class="form-group">
+												<label> Số năm kinh nghiệm </label>
+												<input type="text" id="yearOfExperience" name="yearOfExperience"
+													class="form-control" placeholder="Over 2 years experience" />
+											</div>
+										</div>
+										<div class="col-4">
+
+											<div class="form-group">
+
+												<label>Ngày hết hạn:</label>
+												<div class="input-group date" id="reservationdate"
+													data-target-input="nearest">
+													<input type="text" id="expiredDate" name="expiredDate"
+														class="form-control datetimepicker-input"
+														data-target="#reservationdate">
+													<div class="input-group-append" data-target="#reservationdate"
+														data-toggle="datetimepicker">
+														<div class="input-group-text"><i class="fa fa-calendar"></i>
+														</div>
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
+
+									<div class="row">
+										<div class="col-4">
+											<div class="form-group">
+												<label> Thời gian thử việc </label>
+												<input type="text" id="trialTime" name="trialTime" class="form-control"
+													placeholder="02 tháng" />
+											</div>
+										</div>
+										<div class="col-4">
+											<div class="form-group">
+												<label> Thời gian làm việc </label>
+												<input type="text" id="workingTime" name="workingTime"
+													class="form-control" placeholder="08:00 AM - 17:00 PM" />
+											</div>
+										</div>
+										<div class="col-4">
+											<div class="form-group">
+												<label> Mức lương </label>
+												<input type="text" id="salary" name="salary" class="form-control"
+													placeholder="10 - 20 triệu" />
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-4">
+											<div class="form-group">
+												<p> Khu vực làm việc </p>
+												<select class="form-select" name="location" width="100%">
+													<option th:each="location : ${locations}" th:value="${location.id}"
+														th:text="${location.name}">
+													</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-8">
+											<div class="form-group">
+												<label> Địa chỉ làm việc </label>
+												<input type="text" id="workingAddress" name="workingAddress"
+													class="form-control" placeholder="Địa điểm làm việc" />
+											</div>
+										</div>
+									</div>
+
+
+
+									<div class="row">
+										<div class="col-4">
+											<div class="form-group">
+												<label> Giới tính </label>
+												<select class="form-select " name="gender" width="120">
+													<option value="MALE">Nam </option>
+													<option value="FEMALE">Nữ</option>
+													<option value="NOTREQUIRE">Không yêu cầu</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-4">
+											<div class="form-group">
+												<label> Độ tuổi </label>
+												<input type="text" id="website" name="ageRange" class="form-control"
+													placeholder="Below 35" />
+											</div>
+										</div>
+
+									</div>
+
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+
+												<label> Yêu cầu công việc </label>
+												<textarea id="reponsibility" name="reponsibility" class="form-control"
+													rows="5" cols="30" placeholder="Job Reposibility"></textarea>
+												<script>
+													ClassicEditor
+														.create(document.querySelector('#reponsibility'), {
+															height: 800,
+
+															toolbar: [
+																'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
+																'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList'
+															],
+														})
+														.catch(error => {
+															console.error(error);
+														});
+												</script>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+
+												<label> Mô tả công việc </label>
+												<textarea id="description" name="description" class="form-control"
+													rows="5" cols="30" placeholder="Job Description"></textarea>
+												<script>
+													ClassicEditor
+														.create(document.querySelector('#description'), {
+															height: 800,
+
+															toolbar: [
+																'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
+																'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList'
+															],
+														})
+														.catch(error => {
+															console.error(error);
+														});
+												</script>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+
+												<label> Quyền lợi của ứng viên </label>
+												<textarea id="benefit" name="benefit" class="form-control" rows="5"
+													cols="30" placeholder="Job Benefits"></textarea>
+												<script>
+													ClassicEditor
+														.create(document.querySelector('#benefit'), {
+															height: 800,
+
+															toolbar: [
+																'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
+																'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList'
+															],
+														})
+														.catch(error => {
+															console.error(error);
+														});
+												</script>
+											</div>
+										</div>
+									</div>
 								</div>
-
-								<div class="row">
-									<div class="col-4">
-										<div class="form-group">
-											<label> Thời gian thử việc </label>
-											<input type="text" id="trialTime" name="trialTime" class="form-control"
-												placeholder="02 tháng" />
-										</div>
-									</div>
-									<div class="col-4">
-										<div class="form-group">
-											<label> Thời gian làm việc </label>
-											<input type="text" id="workingTime" name="workingTime" class="form-control"
-												placeholder="08:00 AM - 17:00 PM" />
-										</div>
-									</div>
-									<div class="col-4">
-										<div class="form-group">
-											<label> Mức lương </label>
-											<input type="text" id="salary" name="salary" class="form-control"
-												placeholder="10 - 20 triệu" />
-										</div>
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="col-4">
-										<div class="form-group">
-											<p> Khu vực làm việc </p>
-											<select class="form-select" name="location" width="100%">
-												<option th:each="location : ${locations}" th:value="${location.id}"
-													th:text="${location.name}">
-												</option>
-											</select>
-										</div>
-									</div>
-									<div class="col-8">
-										<div class="form-group">
-											<label> Địa chỉ làm việc </label>
-											<input type="text" id="workingAddress" name="workingAddress"
-												class="form-control" placeholder="Địa điểm làm việc" />
-										</div>
-									</div>
-								</div>
-
-								
-
-								<div class="row">
-									<div class="col-4">
-										<div class="form-group">
-											<label> Giới tính </label>
-											<select class="form-select " name="gender" width="120">
-												<option value="MALE">Nam </option>
-												<option value="FEMALE">Nữ</option>
-												<option value="NOTREQUIRE">Không yêu cầu</option>
-											</select>
-										</div>
-									</div>
-									<div class="col-4">
-										<div class="form-group">
-											<label> Độ tuổi </label>
-											<input type="text" id="website" name="ageRange" class="form-control"
-												placeholder="Below 35" />
-										</div>
-									</div>
-
-								</div>
-
-								<div class="row">
-									<div class="col-12">
-										<div class="form-group">
-
-											<label> Yêu cầu công việc </label>
-											<textarea id="reponsibility" name="reponsibility" class="form-control"
-												rows="5" cols="30" placeholder="Job Reposibility"></textarea>
-											<script>
-												ClassicEditor
-													.create(document.querySelector('#reponsibility'), {
-														height: 800,
-
-														toolbar: [
-															'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
-															'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList'
-														],
-													})
-													.catch(error => {
-														console.error(error);
-													});
-											</script>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-12">
-										<div class="form-group">
-
-											<label> Mô tả công việc </label>
-											<textarea id="description" name="description" class="form-control" rows="5"
-												cols="30" placeholder="Job Description"></textarea>
-											<script>
-												ClassicEditor
-													.create(document.querySelector('#description'), {
-														height: 800,
-
-														toolbar: [
-															'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
-															'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList'
-														],
-													})
-													.catch(error => {
-														console.error(error);
-													});
-											</script>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-12">
-										<div class="form-group">
-
-											<label> Quyền lợi của ứng viên </label>
-											<textarea id="benefit" name="benefit" class="form-control" rows="5"
-												cols="30" placeholder="Job Benefits"></textarea>
-											<script>
-												ClassicEditor
-													.create(document.querySelector('#benefit'), {
-														height: 800,
-
-														toolbar: [
-															'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
-															'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList'
-														],
-													})
-													.catch(error => {
-														console.error(error);
-													});
-											</script>
-										</div>
-									</div>
-								</div>
-							</div>
 								<div class="card-bottom text-center">
 									<button type="submit" id="btn_save" class="btn btn-primary">Lưu thông tin</button>
 								</div>
-					</div>
-					<!-- /.card-body -->
-								
-							</form>
 						</div>
+						<!-- /.card-body -->
+
+						</form>
 					</div>
-					<!--End Thông tin chung-->
 				</div>
+				<!--End Thông tin chung-->
 			</div>
 		</div>
-	</div>
-</div>
-<!--End-->
-</main>
-<!-- Footer Include -->
-<div th:replace="~{views/fragments/footer :: footer}"/>
-<!-- Script Include -->
-<div th:replace="~{views/fragments/script :: script}"/>
+		</div>
+		</div>
+		</div>
+		<!--End-->
+	</main>
+	<!-- Footer Include -->
+	<div th:replace="~{views/fragments/footer :: footer}" />
+	<!-- Script Include -->
+	<div th:replace="~{views/fragments/script :: script}" />
+	
+	
+	  <script>
+        $(function () {
+            $("#reservationdate").datepicker({ 
+                autoclose: true, 
+                todayHighlight: true,
+                format:"dd/mm/yyyy"
+            }).datepicker('update', new Date());
+        });
+    </script>
 </body>
+
 </html>

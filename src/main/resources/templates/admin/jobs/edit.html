@@ -223,72 +223,46 @@
 										</div>
 									</div>
 								</div>
-
-								<div class="row">
-									<div class="col-12">
-										<label> Yêu cầu công việc </label>
-										<textarea id="reponsibility" name="reponsibility" class="form-control" rows="5"
-											cols="30" th:field="${job.reponsibility}"
-											placeholder="Job Reposibility"></textarea>
-										<script>
-											ClassicEditor
-												.create(document.querySelector('#reponsibility'), {
-													height: 800,
-
-													toolbar: [
-														'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
-														'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList'
-													],
-												})
-												.catch(error => {
-													console.error(error);
-												});
-										</script>
-
-									</div>
-								</div>
 								<div class="row">
 									<div class="col-12">
 										<label> Mô tả công việc </label>
 										<textarea id="description" name="description" class="form-control" rows="5"
 											cols="30" th:field="${job.description}"
 											placeholder="Job Description"></textarea>
-										<script>
-											ClassicEditor
-												.create(document.querySelector('#description'), {
-													height: 800,
-
-													toolbar: [
-														'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
-														'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList'
-													],
-												})
-												.catch(error => {
-													console.error(error);
-												});
-										</script>
+											<script>
+													$(document).ready(function() {
+														$('#description').summernote();
+													});
+											</script>
 
 									</div>
 								</div>
+								<div class="row">
+									<div class="col-12">
+										<label> Yêu cầu công việc </label>
+										<textarea id="reponsibility" name="reponsibility" class="form-control" rows="5"
+											cols="30" th:field="${job.reponsibility}"
+											placeholder="Job Reposibility"></textarea>
+											<script>
+													$(document).ready(function() {
+														$('#reponsibility').summernote();
+													});
+											</script>
+									
+
+									</div>
+								</div>
+		
 								<div class="row">
 									<div class="col-12">
 										<label> Lợi ích </label>
 										<textarea id="benefit" name="benefit" class="form-control" rows="5" cols="30"
 											th:field="${job.benefit}" placeholder="Job Benefits"></textarea>
 										<script>
-											ClassicEditor
-												.create(document.querySelector('#benefit'), {
-													height: 800,
-
-													toolbar: [
-														'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
-														'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList'
-													],
-												})
-												.catch(error => {
-													console.error(error);
-												});
-										</script>
+													$(document).ready(function() {
+														$('#benefit').summernote();
+													});
+											</script>
 
 									</div>
 								</div>
@@ -296,7 +270,7 @@
 					</div>
 					<!-- /.card-body -->
 
-					<div class="card-footer">
+					<div class="card-footer text-center">
 						<button type="submit" id="btn_post_job" class="btn btn-primary">Lưu thông tin</button>
 					</div>
 					</form>

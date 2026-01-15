@@ -46,6 +46,9 @@ public class Blog {
 	@ManyToOne
 	@JoinColumn(name = "categoryId")
 	Category category;
+	@ManyToOne
+	@JoinColumn(name = "blogcateId")
+	BlogCate blogcate;
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "blog_tag_link", joinColumns = @JoinColumn(name = "blog_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
@@ -55,8 +58,22 @@ public class Blog {
 		super();
 	}
 
+
+	
+	public BlogCate getBlogcate() {
+		return blogcate;
+	}
+
+
+
+	public void setBlogcate(BlogCate blogcate) {
+		this.blogcate = blogcate;
+	}
+
+
+
 	public Blog(Integer id, String title, String shortcontent, String content, Date createAt, Date updateAt,
-			String imageFileName, Integer count, Category category) {
+			String imageFileName, Integer count, Category category, BlogCate blogcate, List<BlogTag> tags) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -67,9 +84,12 @@ public class Blog {
 		this.imageFileName = imageFileName;
 		this.count = count;
 		this.category = category;
+		this.blogcate = blogcate;
+		this.tags = tags;
 	}
 
-	
+
+
 	public List<BlogTag> getTags() {
 		return tags;
 	}

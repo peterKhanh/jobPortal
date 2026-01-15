@@ -9,10 +9,10 @@
 				<div class="row border">
 					<div class="col-2" vertical-align="center">
 						<img  class= "img-thumbnail" th:if="${job.enterprise.getDefaultLogo}==true" th:src="@{'/upload/default.png'}" alt="..."
-							width="90">
+							width="90"/>
 						<img class= "img-thumbnail" th:unless="${job.enterprise.getDefaultLogo}==true"
 							th:src="@{'/upload/enterprise/'+ ${job.enterprise.getLogoName}}"
-							style="width: 70px; height: 70px;" alt="">
+							style="width: 70px; height: 70px;" alt=""/>
 
 					</div>
 					<div class="col-10">
@@ -21,10 +21,9 @@
 								<h6 th:text="${job.enterprise.getName()}"></h6>
 							</a>
 							<h5 th:text="${job.title}" />
-
 							<div class="row">
 								<div class="col">
-									<i class="icofont-listing-box"></i> Lĩnh vực:
+									<i class="icofont-listing-box"></i> <small>Lĩnh vực:</small>
 									<span th:text="${job.jobCategory.getName()}">Category </span>
 								</div>
 								<div class="col">
@@ -84,19 +83,19 @@
 				<div class="row row-cols-2 " style="border-bottom: 1px cornflowerblue;">
 					<div class="col">
 						<ul>
-							<li class="">Ngày đăng</li>
+							<li class="small">Ngày đăng</li>
 							<p th:text="${#dates.format(job.createAt, 'dd/MM/yyyy')}"></p>
 						</ul>
 					</div>
 					<div class="col">
 						<ul>
-							<li class="">Số lượng </li>
+							<li class="small">Số lượng </li>
 							<p th:text="${job.numberOfRecruitement}"></p>
 						</ul>
 					</div>
 					<div class="col">
 						<ul>
-							<li class="">Thử việc </li>
+							<li class="small">Thử việc </li>
 							<p th:text="${job.trialTime}"></p>
 						</ul>
 					</div>
@@ -105,14 +104,14 @@
 				<div class="row row-cols-2">
 					<div class="col">
 						<ul>
-							<li class="">Hình thức làm việc </li>
+							<li class="small">Hình thức làm việc </li>
 							<p th:text="${job.workingModel.getName()}"></p>
 						</ul>
 					</div>
 
 					<div class="col">
 						<ul>
-							<li class="">Kinh nghiệm </li>
+							<li class="small">Kinh nghiệm </li>
 							<p th:text="${job.yearOfExperience}"></p>
 						</ul>
 					</div>
@@ -125,7 +124,7 @@
 -->
 					<div class="col">
 						<ul>
-							<li class="">Độ tuổi </li>
+							<li class="small">Độ tuổi </li>
 							<p th:text="${job.ageRange}"></p>
 						</ul>
 					</div>

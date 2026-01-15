@@ -1,10 +1,16 @@
 
 
+
+
 .normal-title {
-    border-left: 10px solid #4caf50;
-    margin-bottom: 4px;
-    padding-left: 15px;
-    font-size: large;
+    font-size: 18px;
+    background: #f5f6f7;
+    padding: 2px 8px;
+    margin-bottom: 12px;
+    line-height: 1.6;
+    border-radius: 2px;
+    color: #35434e;
+    border-left: 3px solid #11b719;
 }
 .small-title {
     border-left: 5px solid #4caf50;
@@ -23,21 +29,6 @@
 
 
 
-
-.card-cate{
-	height: 80px;
-	border: 1pt solid;
-	border-color:var(--boder-color);
-	margin-left: 3px;
-	vertical-align: middle;	
-
-}
-
-.card-cate :hover{
-	background: var(--background-hover);
-	border-color: #fb246a;
-	background-color: rgb(255, 0, 0);
-}
 
 
 

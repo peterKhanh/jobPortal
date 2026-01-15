@@ -1,7 +1,7 @@
 <div class="  pd-2" th:fragment="frag-cate-list">
 
 	<aside class="single_sidebar_widget post_category_widget">
-		<h4 class="widget_title">Ngành nghề phổ biến</h4>
+		<h4 class="normal-title">Ngành nghề phổ biến</h4>
 		<ul class="card single-job-items mt-1" th:each="cateItem: ${listsCate123}">
 			<li>
 				<a th:href="@{/job/jobbycate/{id}(id=${cateItem.id})}" class="d-flex">

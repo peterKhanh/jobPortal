@@ -18,20 +18,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.lifesupport.models.Blog;
 import com.lifesupport.models.BlogTag;
 import com.lifesupport.models.Category;
+import com.lifesupport.models.BlogCate;
 import com.lifesupport.models.Comment;
 import com.lifesupport.models.Job;
-import com.lifesupport.models.User;
 import com.lifesupport.repository.BlogRepository;
 import com.lifesupport.repository.BlogTagRepository;
 import com.lifesupport.repository.CommentRepository;
 import com.lifesupport.repository.JobRepository;
-import com.lifesupport.repository.UserRepository;
 import com.lifesupport.service.BlogService;
+import com.lifesupport.service.BlogCateService;
 import com.lifesupport.service.CategoryService;
 import com.lifesupport.service.CommentService;
 import com.lifesupport.service.UserService;
 
-import jakarta.servlet.http.Cookie;
 
 
 
@@ -40,6 +39,8 @@ import jakarta.servlet.http.Cookie;
 public class FeBlogController {
 	@Autowired
 	private CategoryService categoryService;
+	@Autowired
+	private BlogCateService blogCateService;
 	@Autowired
 	private BlogRepository blogRepo;
 	@Autowired
@@ -116,7 +117,11 @@ public class FeBlogController {
 		userService.checkLogin(model, principal);
 		
 		//Get All Active Category for side bar
-		List<Category> listCate = categoryService.getAllActiveCate();
+		//List<Category> listCate = categoryService.getAllActiveCate();
+		//model.addAttribute("listCate", listCate);
+
+		//Get All Active Category for side bar
+		List<BlogCate> listCate = blogCateService.getAllActiveBlogCate();
 		model.addAttribute("listCate", listCate);
 
 		//Get Blog detail

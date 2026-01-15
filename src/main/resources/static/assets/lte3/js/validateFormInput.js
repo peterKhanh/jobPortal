@@ -68,6 +68,7 @@ $(document).ready(function() {
 
 
 	// Save and Update Category    
+	/*
 	const e_category_name = document.getElementById("category_name");
 	const e_category_name_error = document.getElementById("category_name_message");
 
@@ -80,20 +81,7 @@ $(document).ready(function() {
 		}
 	});
 
-
-
-	// Save and Update Blog  
-	const e_blog_title = document.getElementById("title");
-	const e_blog_title_error = document.getElementById("title_message");
-
-	$('#btn_save_blog').click(function(e) {
-		e.preventDefault();
-
-		error_title = validateInput(e_blog_title, e_blog_title_error, "Blog Title not Blank")
-		if (error_title == true) {
-			$("#frm_blog").submit();
-		}
-	});
+*/
 
 
 
@@ -262,6 +250,40 @@ $(document).ready(function() {
 	});
 	
 
+
+	// This function Validate form Add and Update Danh muc
+
+	$(function() {
+		$.validator.setDefaults({
+			submitHandler: function() {
+				//alert("kk")	;
+				$("#frmListCate").submit();
+			}
+		});
+		$('#frmListCate').validate({
+			rules: {
+				catename: { required: true, },
+		
+			},
+			messages: {
+				catename: "Nhập tên danh muc",
+			
+			},
+			errorElement: 'span',
+			errorPlacement: function(error, element) {
+				error.addClass('invalid-feedback');
+				element.closest('.form-group').append(error);
+			},
+			highlight: function(element, errorClass, validClass) {
+				$(element).addClass('is-invalid');
+			},
+			unhighlight: function(element, errorClass, validClass) {
+				$(element).removeClass('is-invalid');
+			}
+		});
+	});
+	
+	
 
 	// This function Validate form Add and Update Enterprise
 
@@ -450,6 +472,54 @@ $(document).ready(function() {
 
 
 
+	// This function Validate form Add and Update Blog
+
+	$(function() {
+		$.validator.setDefaults({
+			submitHandler: function() {
+				$("#frm_blog").submit();
+			}
+		});
+		$('#frm_blog').validate({
+			rules: {
+				title: { required: true, },
+				shortcontent: {
+					required: true
+				},
+				category: {
+					required: true
+					,
+				},
+				content: {
+					required: true
+				},
+			},
+			messages: {
+				title: "Nhập tiêu đề bài viết",
+
+				shortcontent: {
+					required: "Nhập nội dung",
+				},
+				category: {
+					required: "Nhập nhóm bài viết",
+				},
+				content: {
+					required: "Cần nhập nội dung chi tiết",
+				},
+			},
+			errorElement: 'span',
+			errorPlacement: function(error, element) {
+				error.addClass('invalid-feedback');
+				element.closest('.form-group').append(error);
+			},
+			highlight: function(element, errorClass, validClass) {
+				$(element).addClass('is-invalid');
+			},
+			unhighlight: function(element, errorClass, validClass) {
+				$(element).removeClass('is-invalid');
+			}
+		});
+	});
 
 
 

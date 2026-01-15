@@ -26,8 +26,10 @@ import com.lifesupport.ConstantsClass;
 import com.lifesupport.models.Blog;
 import com.lifesupport.models.BlogTag;
 import com.lifesupport.models.Category;
+import com.lifesupport.models.BlogCate;
 import com.lifesupport.repository.BlogRepository;
 import com.lifesupport.repository.BlogTagRepository;
+import com.lifesupport.service.BlogCateService;
 import com.lifesupport.service.BlogService;
 import com.lifesupport.service.CategoryService;
 import com.lifesupport.service.FilesStorageService;
@@ -41,6 +43,8 @@ public class BlogController {
 	private BlogRepository repo;
 	@Autowired
 	private CategoryService categoryService;
+	@Autowired
+	private BlogCateService blogcateService;
 	@Autowired
 	private BlogService blogService;
 	@Autowired
@@ -56,6 +60,9 @@ public class BlogController {
 
 		List<Category> listCate = categoryService.getAllActiveCate();
 		model.addAttribute("listCate", listCate);
+		List<BlogCate> listBlogcate = blogcateService.getAllActiveBlogCate();
+		model.addAttribute("listBlogcate", listBlogcate);
+
 		// All BlogTag
 		List<BlogTag> listBlogTag = blogTagRepo.findAll();
 		model.addAttribute("listBlogTag", listBlogTag);
@@ -102,6 +109,8 @@ public class BlogController {
 		blog.setCreateAt(createAt);
 		blog.setShortcontent(blog_form.getShortcontent());
 		blog.setCategory(blog_form.getCategory());
+		blog.setBlogcate(blog_form.getBlogcate());
+			
 		blog.setContent(blog_form.getContent());
 		blog.setCategory(blog_form.getCategory());
 		blog.setImageFileName(storageFileName);
@@ -115,6 +124,9 @@ public class BlogController {
 
 		List<Category> listCate = categoryService.getAllActiveCate();
 		model.addAttribute("listCate", listCate);
+		List<BlogCate> listBlogcate = blogcateService.getAllActiveBlogCate();
+		model.addAttribute("listBlogcate", listBlogcate);
+		
 		Blog blog = repo.findById(id).get();
 		model.addAttribute("blog", blog);
 
@@ -189,6 +201,8 @@ public class BlogController {
 
 		curent_blog.setUpdateAt(createAt);
 		curent_blog.setCategory(blog_form.getCategory());
+		curent_blog.setBlogcate(blog_form.getBlogcate());
+
 		curent_blog.setContent(blog_form.getContent());
 		curent_blog.setTags(listBlogTag);
 		repo.save(curent_blog);

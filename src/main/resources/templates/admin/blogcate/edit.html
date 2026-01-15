@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
+
+<head th:replace="~{admin/frags/head :: head}"></head>
+
+<body class="hold-transition sidebar-mini ayout-fixed">
+	<div class="wrapper">
+		<!-- Navbar -->
+		<nav th:replace="~{admin/frags/navbar :: navbar}"></nav>
+		<!-- /.navbar -->
+
+		<!-- Main Sidebar Container -->
+
+		<aside th:replace="~{admin/frags/aside :: aside}"></aside>
+
+		<!--Content from here-->
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div class="content-header" style="display: none;">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1 class="m-0 text-dark">Dashboard</h1>
+						</div><!-- /.col -->
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a href="#">Home</a></li>
+								<li class="breadcrumb-item active">Dashboard v1</li>
+							</ol>
+						</div><!-- /.col -->
+					</div><!-- /.row -->
+				</div><!-- /.container-fluid -->
+			</div>
+			<!-- /.content-header -->
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="container-fluid">
+
+					<!-- Small boxes (Stat box) -->
+					<!--<div class="row" th:replace="~{admin/frags/stat_box :: stat_box}">
+					</div>
+					-->
+					<!-- /.row -->
+					<!-- Main row -->
+					<div class="card card-default col-md-12">
+						<form id="frmList" role="form" method="post"
+																	th:action="@{/admin/edit-blogcate}" th:object="${blogcate}">
+							<div class="card-header">
+								<h3 class="card-title">Sửa nhóm bài viết </h3>
+							</div>
+							<!-- /.card-header -->
+							<div class="card-body">
+								<input type="hidden" class="form-control" th:field="*{id}">
+
+
+								<div class="row">
+									<div class="col-7">
+										<div class="form-group">
+											<label> Tên nhóm bài viết </label>
+											<input type="text" id="name" name="name" class="form-control"
+												placeholder="" th:field="*{name}" />
+										</div>
+									</div>
+								
+								</div>
+
+
+							
+
+
+
+								<div class="row">
+
+								
+									<div class="form-group">
+										<label for="exampleInputEmail1">Trạng thái</label>
+										<div class="form-check form-check-inline">
+											<input type="radio" class="form-check-input" th:field="*{status}" value="1"
+												checked="checked" />
+											<label class="form-check-label" for="inlineRadio1">Active</label>
+											<input type="radio" class="form-check-input" th:field="*{status}"
+												value="0" />
+											<label class="form-check-label" for="inlineRadio2">Block</label>
+										</div>
+
+									</div>
+								</div>
+								<!-- /.card-body -->
+								<hr />
+
+								<div class="card-footer">
+									<button type="submit" id="btn_update_blogcate" class="btn btn-primary">
+										Submit
+									</button>
+								</div>
+						</form>
+
+
+
+					</div>
+					<!-- /.card -->
+				</div><!-- /.container-fluid -->
+			</section>
+			<!-- /.content -->
+		</div>
+
+		<!--Content end here-->
+
+
+
+		<!-- /.content-wrapper -->
+		<footer th:replace="~{admin/frags/footer :: footer}"></footer>
+
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Control sidebar content goes here -->
+		</aside>
+		<!-- /.control-sidebar -->
+	</div>
+	<!-- ./wrapper -->
+	<div th:replace="~{admin/frags/script :: script}"></div>
+
+</body>

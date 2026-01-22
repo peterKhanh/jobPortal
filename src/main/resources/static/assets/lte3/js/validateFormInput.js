@@ -67,22 +67,6 @@ $(document).ready(function() {
 	});
 
 
-	// Save and Update Category    
-	/*
-	const e_category_name = document.getElementById("category_name");
-	const e_category_name_error = document.getElementById("category_name_message");
-
-	$('#btn_save_category').click(function(e) {
-		e.preventDefault();
-
-		error_catetegory_name = validateInput(e_category_name, e_category_name_error, "Category Name not Blank")
-		if (error_catetegory_name == true) {
-			$("#frm_category").submit();
-		}
-	});
-
-*/
-
 
 
 
@@ -110,8 +94,8 @@ $(document).ready(function() {
 				},
 				email: {
 					required: true,
-					   email: true,
-					   					remote: "/candidate/checkemail",
+					email: true,
+					remote: "/candidate/checkemail",
 
 				},
 				passWord: {
@@ -136,8 +120,8 @@ $(document).ready(function() {
 					remote: "Email đã sử dụng, hãy nhập email khác",
 				},
 				userName: {
-           		   required: "Xin vui lòng nhập tên đăng nhập hợp lệ",
-           		   					remote: "Tên đăng nhập đã tồn tại",
+           		   	required: "Xin vui lòng nhập tên đăng nhập hợp lệ",
+           			remote: "Tên đăng nhập đã tồn tại",
 
 				},
       			passWord: {
@@ -379,9 +363,96 @@ $(document).ready(function() {
 			messages: {
 				enterprise: "Chọn tên doanh nghiệp tuyển dụng",
 				title: {
-					required: "Hãy nhập tiêu đề công việc",
+					required: "Hãy nhập tiêu đề công việc v",
 				},
 				jobCategory: {
+					required: "Hãy nhập lĩnh vực",
+				},
+				workingModel: {
+					required: "Loại hình công việc",
+				},
+				numberOfRecruitement: {
+					required: "Nhập số lượng cần tuyển",
+					number: "Dữ liệu là dạng số"
+				},
+				expiredDate: {
+					required: "Hãy chọn ngày hết hạn đăng tuyển",
+					date: "Đinh dạng chưa đúng dd/MM/yyyy"
+				},
+				salary: {
+					required: "Cần nhập mức lương",
+				},
+				workingAddress: {
+					required: "Cần nhập địa điểm làm việc",
+				},
+				reponsibility: {
+					required: "Cần nhập yêu cầu công việc",
+				},
+				description: {
+					required: "Cần nhập mô tả công việc",
+				},
+				benefit: {
+					required: "Cần nhập quyền lợi người lao động",
+				}
+
+			},
+			errorElement: 'span',
+			errorPlacement: function(error, element) {
+				error.addClass('invalid-feedback');
+				element.closest('.form-group').append(error);
+			},
+			highlight: function(element, errorClass, validClass) {
+				$(element).addClass('is-invalid');
+			},
+			unhighlight: function(element, errorClass, validClass) {
+				$(element).removeClass('is-invalid');
+			}
+		});
+	});
+
+
+		// This function Validate form Add and Update Job
+
+	$(function() {
+		$.validator.setDefaults({
+			submitHandler: function() {
+				$("#frm_job_fe").submit();
+			}
+		});
+		$('#frm_job_fe').validate({
+			rules: {
+				title: { required: true, },
+				category: { required: true, },
+				workingModel: { required: true, },
+				numberOfRecruitement: {
+					required: true,
+					number: true
+				},
+				expiredDate: {
+					required: true,
+					date: true
+				},
+				salary: {
+					required: true
+				},
+				workingAddress: {
+					required: true
+				},
+				reponsibility: {
+					required: true
+				},
+				description: {
+					required: true
+				},
+				benefit: {
+					required: true
+				},
+			},
+			messages: {
+				title: {
+					required: "Hãy nhập tiêu đề công việc v",
+				},
+				category: {
 					required: "Hãy nhập lĩnh vực",
 				},
 				workingModel: {
@@ -486,7 +557,7 @@ $(document).ready(function() {
 				shortcontent: {
 					required: true
 				},
-				category: {
+				blogcate: {
 					required: true
 					,
 				},
@@ -500,7 +571,7 @@ $(document).ready(function() {
 				shortcontent: {
 					required: "Nhập nội dung",
 				},
-				category: {
+				blogcate: {
 					required: "Nhập nhóm bài viết",
 				},
 				content: {

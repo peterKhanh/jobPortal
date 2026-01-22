@@ -1,3 +1,5 @@
+<!--<section class="featured-job-area feature-padding" th:fragment="view-enterprise">
+-->
 
 <head th:replace="~{views/fragments/head :: head}" />
 
@@ -11,22 +13,32 @@
 				<div th:replace="~{views/employer/profile-panel :: profile-panel}" />
 				<div class="col-xl-9 col-lg-9 col-md-8">
 					<div class="container p-2">
-						<div class="normal-title">
-							<p class="mb-2">Đăng tin tuyển dụng</p>
+						<div class="widget_title">
+							<p class="mb-2">Đăng tải thông tin tuyển dụng</p>
 						</div>
   
 						<div class=" card-default col-md-12 border">
 							<form id="frm_job_fe" th:object="${job}" method="POST" th:action="@{/employer/add-job}">
 								<input type="hidden" name="employer_id" th:value="${employer.id}" />
 									<div class="row">
-										<div class="col-12">
+										<div class="col-7">
 											<div class="form-group">
 												<label> Tên công việc</label>
 												<input type="text" id="title" name="title" class="form-control"
 													placeholder="Nhập tên công việc" />
 											</div>
 										</div>
-									
+										<div class="col-5">
+										<div class="form-group">
+											<label> Nhóm bài viết </label>
+											<select class="form-control" id="category" name="category">
+												<option value=""> -----------Select Category -------------
+												<option th:each="cate : ${listCate}" th:value="${cate.id}"
+													th:text="${cate.categoryName}">
+												</option>
+											</select>
+										</div>
+									</div>
 
 									</div>
 
@@ -35,6 +47,7 @@
 											<div class="form-group">
 												<p> Lĩnh vực </p>
 												<select class="form-select" id="jobCategory" name="jobCategory">
+													<option value=""> -- Chọn lĩnh vực--- </option>
 													<option th:each="cate : ${jobcategories}" th:value="${cate.id}"
 														th:text="${cate.name}">
 													</option>
@@ -174,28 +187,7 @@
 
 									</div>
 								
-									<div class="row">
-										<div class="col-12">
-											<div class="form-group">
-												<label> Mô tả công việc </label>
-												<textarea id="description" name="description" class="form-control"
-													rows="5" cols="30"></textarea>
-												<script>
-													ClassicEditor
-														.create(document.querySelector('#description'), {
-															height: 800,
-															toolbar: [
-																'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
-																'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList'
-															],
-														})
-														.catch(error => {
-															console.error(error);
-														});
-												</script>
-											</div>
-										</div>
-									</div>	
+  
 									<div class="row">
 										<div class="col-12">
 											<div class="form-group">
@@ -219,7 +211,28 @@
 											</div>
 										</div>
 									</div>
-									
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label> Mô tả công việc </label>
+												<textarea id="description" name="description" class="form-control"
+													rows="5" cols="30"></textarea>
+												<script>
+													ClassicEditor
+														.create(document.querySelector('#description'), {
+															height: 800,
+															toolbar: [
+																'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
+																'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList'
+															],
+														})
+														.catch(error => {
+															console.error(error);
+														});
+												</script>
+											</div>
+										</div>
+									</div>
 									<div class="row">
 										<div class="col-12">
 											<div class="form-group">
@@ -243,11 +256,10 @@
 											</div>
 										</div>
 									</div>
-									<div class="card-bottom text-center">
-										<button type="submit" id="btn_save_job" class="btn btn-primary">Lưu thông tin</button>
-									</div>
 								</div>
-								
+								<div class="card-bottom text-center">
+									<button type="submit" id="btn_save" class="btn btn-primary">Lưu thông tin</button>
+								</div>
 						<!-- /.card-body -->
 
 						</form>
@@ -267,6 +279,15 @@
 	<div th:replace="~{views/fragments/script :: script}" />
 	
 	
+	  <script>
+        $(function () {
+            $("#reservationdate").datepicker({ 
+                autoclose: true, 
+                todayHighlight: true,
+                format:"dd/mm/yyyy"
+            }).datepicker('update', new Date());
+        });
+    </script>
 </body>
 
 </html>

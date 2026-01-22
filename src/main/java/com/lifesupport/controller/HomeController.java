@@ -1,6 +1,5 @@
 package com.lifesupport.controller;
 
-import java.nio.file.FileSystem;
 import java.security.Principal;
 import java.util.Collection;
 import java.util.List;
@@ -19,22 +18,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lifesupport.models.Blog;
-import com.lifesupport.models.Category;
+import com.lifesupport.models.BlogCate;
 import com.lifesupport.models.Enterprise;
 import com.lifesupport.models.Job;
 import com.lifesupport.models.JobCategory;
 import com.lifesupport.models.Location;
 import com.lifesupport.models.MailInfo;
-import com.lifesupport.models.Slide;
 import com.lifesupport.models.Tastimonial;
 import com.lifesupport.repository.BlogRepository;
 import com.lifesupport.repository.CategoryRepository;
+import com.lifesupport.repository.BlogCateRepository;
+
 import com.lifesupport.repository.EnterpriseRepository;
 import com.lifesupport.repository.JobCategoryRepository;
 import com.lifesupport.repository.LocationRepository;
 import com.lifesupport.repository.SlideRepository;
 import com.lifesupport.repository.TastimonialRepository;
-import com.lifesupport.service.CategoryService;
+import com.lifesupport.service.BlogCateService;
 import com.lifesupport.service.JobService;
 import com.lifesupport.service.MailService;
 import com.lifesupport.service.UserService;
@@ -46,7 +46,7 @@ public class HomeController {
 	private EnterpriseRepository enterpriseRepo;
 
 	@Autowired
-	private CategoryService categoryService;
+	private BlogCateService blogCateService;
 	@Autowired
 	private JobCategoryRepository jobCateRepo;
 
@@ -58,7 +58,7 @@ public class HomeController {
 	@Autowired
 	private TastimonialRepository tastimonialRepository;
 	@Autowired
-	private SlideRepository slideRepository;
+	private BlogCateRepository blogCateRepository;
 	@Autowired
 	private CategoryRepository cateRepository;
 	@Autowired
@@ -86,7 +86,10 @@ public class HomeController {
 		List<Location> locations = locationRepo.findAllByActive();
 		model.addAttribute("locations", locations);
 
-		
+		List<BlogCate> blogcates = blogCateService.getAllActiveBlogCate();
+		model.addAttribute("blogcates", blogcates);
+		System.out.println("blogcates size:" + blogcates.size());
+
 		// Page<Job> jobs = jobService.getAll(pageNo);
 		Page<Job> jobs = jobService.getAllJobForHomePage(pageNo);
 		model.addAttribute("totalPage", jobs.getTotalPages());
@@ -94,9 +97,9 @@ public class HomeController {
 		System.out.println("totalPage : " + jobs.getTotalPages());
 		model.addAttribute("jobs", jobs);
 
-		Category cate = cateRepository.findById(2).get();
+	//	BlogCate blogcate = blogCateRepository.findById(2).get();
 	
-		List<Blog> blogOnHomePage1 = blogRepository.findTop4ByCategory(cate);
+		List<Blog> blogOnHomePage1 = blogRepository.findAll();
 		
 		List<Blog> blogOnHomePage = blogOnHomePage1.subList(0, 4);
 		System.out.println("blogOnHomePage:" + blogOnHomePage.size());

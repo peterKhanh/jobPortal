@@ -132,13 +132,6 @@
 			</div>
 
 			<div class="job-post-details mt-3">
-				<div class="post-details2  ">
-					<!-- Small Section Tittle -->
-					<div class="small-section-tittle">
-						<h4>Yêu cầu công việc</h4>
-					</div>
-					<p th:utext="${job.reponsibility}" />
-				</div>
 				<div class="post-details2 mb-10 ">
 					<!-- Small Section Tittle -->
 					<div class="small-section-tittle">
@@ -147,6 +140,13 @@
 					<p th:utext="${job.description}" />
 				</div>
 
+				<div class="post-details2  mb-10">
+					<!-- Small Section Tittle -->
+					<div class="small-section-tittle">
+						<h4>Yêu cầu công việc</h4>
+					</div>
+					<p th:utext="${job.reponsibility}" />
+				</div>
 				<div class="post-details2  mb-10 ">
 					<!-- Small Section Tittle -->
 					<div class="small-section-tittle">
@@ -160,17 +160,12 @@
 		</div>
 		<!-- Right Content -->
 		<div class="col-xl-4 col-lg-4">
-
 			<div class="job_right_sidebar" border>
 				<aside th:replace="~{views/fragments/jobs/frag-relate-job :: frag-relate-job}"></aside>
 			</div>
-
 			<div class="job_right_sidebar">
 				<aside th:replace="~{views/fragments/jobs/frag-cate-list :: frag-cate-list}"></aside>
-
 			</div>
-
-
 		</div>
 	</div>
 

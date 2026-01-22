@@ -18,8 +18,7 @@
 							</div>
 						</div>
 						<div class="card-body ">
-							<!---->
-							<form id="frm_edituser" enctype="multipart/form-data" th:action="@{/employer/edit-employer}" th:object="${employer}" method="POST">
+							<form id="frm_enterprise" enctype="multipart/form-data" th:action="@{/employer/edit-employer}" th:object="${employer}" method="POST">
 								<input type="hidden" name="id" th:value="${employer.id}"/>
 								<div class="row">
 									<div class="col-sm-12 border">
@@ -61,7 +60,7 @@
 											</li>
 											<li class="list-group-item d-flex justify-content-between align-items-center p-2">
 												<div class="col-sm-4">
-													<p class="mb-0">website</p>
+													<p class="mb-0">Website</p>
 												</div>
 												<div class="col-sm-8 form-group">
 													<input type="text" id="website" name="website" class="form-control" th:field="*{website}" placeholder=""/>
@@ -73,8 +72,23 @@
 												</div>
 												<div class="col-sm-8 form-group">
 													<textarea type="text" id="introduction" name="introduction" class="form-control" th:field="*{introduction}" rows="5" placeholder=""/>
+												
+											<script>
+													ClassicEditor
+														.create(document.querySelector('#introduction'), {
+															height: 800,
+															toolbar: [
+																'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
+																'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList'
+															],
+														})
+														.catch(error => {
+															console.error(error);
+														});
+												</script>
 												</div>
 											</li>
+										
 										</ul>
 									</div>
 								</div>

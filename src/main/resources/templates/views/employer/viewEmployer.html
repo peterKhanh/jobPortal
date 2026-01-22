@@ -21,9 +21,12 @@
 							</div>
 						</div>
 
+						<div class="row" th:if="${employer == 'NOTSET'}">
+							<p class="mb-2">Thông nhà tuyển dụng chua update</p>
+						</div>
 						
 						
-						<div class="col-sm-12 border">
+						<div class="col-sm-12 border" th:unless="${employer == 'NOTSET'}">
 							<ul class="list-group list-group-flush rounded-3">
 								<li class="list-group-item d-flex justify-content-between align-items-center p-2">
 									<div class="col-sm-4">

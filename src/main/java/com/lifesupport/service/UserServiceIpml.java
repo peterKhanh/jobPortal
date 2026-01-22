@@ -159,6 +159,18 @@ public class UserServiceIpml implements UserService {
 	}
 
 	@Override
+	public	Page<User> getApplyCandidateByEnterprise(Integer pageNo, Long enterpriseId){
+		
+		Pageable pageable = PageRequest.of(pageNo-1, number_of_item_perpage);
+		  
+		return userRepository.GetAllCandidateApplyToEnterprise(pageable, enterpriseId);
+	}
+
+
+
+
+
+	@Override
 	public Page<User> getApplyCandidate(Integer pageNo) {
 		Pageable pageable = PageRequest.of(pageNo-1, 10);
 		return userRepository.findRecentApplyCandidate(pageable);
@@ -178,3 +190,7 @@ public class UserServiceIpml implements UserService {
 		return userRepository.findAdminUserAndSystemAdmin(pageable, roleIdSystemUser, roleIdAdminUser);
 	}
 }
+
+
+
+

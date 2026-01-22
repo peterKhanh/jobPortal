@@ -17,31 +17,26 @@
 				<div class="col-xl-9 col-lg-9 col-md-8">
 					<div class="container p-2">
 						<div class="widget_title">
-							<p class="mb-2">Công việc đang tuyển</p>
+							<p class="mb-2">Công việc chưa đăng</p>
 						</div>
 								<!--Danh sách CV - Hồ sơ-->
-								
-
-
-								
-								
 								<div class="row" style="display: block;">
 									<div class="col-sm-12 ">
 
 
-				<div class="card single-job-items p-2 mt-2" th:each="job: ${jobEditByEmployer}">
-					<div class="job-items pd-4 joblist" th:data-id="${job.id}" th:user-login="${LoggedIn}">
+						<div class="card single-job-items p-2 mt-2" th:each="job: ${jobEditByEmployer}">
+							<div class="job-items pd-4 joblist" th:data-id="${job.id}" th:user-login="${LoggedIn}">
 
-						<div>
-							<a href="#">
-								<img th:if="${job.enterprise.getDefaultLogo}==true" th:src="@{'/upload/default.png'}"
-									alt="..." width="80">
-								<img class="img-thumbnail" th:unless="${job.enterprise.getDefaultLogo}==true"
-									th:src="@{'/upload/enterprise/'+ ${job.enterprise.getLogoName}}"
-									style="width: 80px; height: 80px;" alt="">
+								<div>
+									<a href="#">
+										<img th:if="${job.enterprise.getDefaultLogo}==true" th:src="@{'/upload/default.png'}"
+											alt="..." width="80">
+										<img class="img-thumbnail" th:unless="${job.enterprise.getDefaultLogo}==true"
+											th:src="@{'/upload/enterprise/'+ ${job.enterprise.getLogoName}}"
+											style="width: 80px; height: 80px;" alt="">
 
-							</a>
-						</div>
+									</a>
+								</div>
 
 						<div class="job-tittle">
 							<a th:href="@{/job/viewjob/{id}(id=${job.id})}">

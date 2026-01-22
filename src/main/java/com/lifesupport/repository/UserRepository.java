@@ -45,5 +45,11 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	@Query(value = "SELECT u.id, u.fullname, u.userName, u.address , u.avata, u.email, u.password , u.telephone , u.gender , u.enabled  from users u , job j, jobapply ja WHERE u.id = ja.user_id AND j.id = ja.job_id ORDER BY ja.apply_date DESC"
 			+ "",  nativeQuery = true)
 	Page<User> findRecentApplyCandidate(Pageable pageable);
-	
+
+	// Lay danh sach ứng viên đã ứng tuyển vào 01 công ty
+	@Query(value = "SELECT u.id, u.fullname, u.userName, u.address , u.avata, u.email, u.password , u.telephone , u.gender , u.enabled  from users u , job j, jobapply ja WHERE u.id = ja.user_id AND j.id = ja.job_id AND j.enterprise_id = ?1 ORDER BY ja.apply_date DESC"
+			+ "",  nativeQuery = true)
+	Page<User> GetAllCandidateApplyToEnterprise(Pageable pageable, Long enterpriseId);
+
+
 }

@@ -24,6 +24,8 @@ public interface UserService {
 
 	Page<User> getApplyCandidate(Integer pageNo);
 
+	Page<User> getApplyCandidateByEnterprise(Integer pageNo, Long enterpriseId);
+
 	Page<User>  searchUser(String keyword, Integer pageNo);
 	Page<User>  SearchSystemUserAndUserAdmin(String keyword, Integer pageNo);
 

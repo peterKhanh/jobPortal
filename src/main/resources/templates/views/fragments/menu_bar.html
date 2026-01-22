@@ -1,7 +1,7 @@
 <header th:fragment="menu_bar">
 	<div class="header-area header-transparrent ">
 		<div class="headder-top header-sticky" >
-			<div class="container border">
+			<div class="container">
 				<div class="row align-items-center">
 					<div class="col-lg-2 col-md-2">
 						<!-- Logo -->
@@ -19,22 +19,46 @@
 								<nav class="d-none d-lg-block">
 									<ul id="navigation">
 										<li><a href="/">Trang chủ</a></li>
-										<li><a href="#">Tìm việc</a>
-											<ul class="submenu" style="display: block;">
-												<li><a th:href="@{/job/view-cate-search}">Theo ngành nghề</a></li>
-												<li><a href="#">Theo địa điểm</a></li>
+										<li><a href="#">Công ty</a>
+											<ul class="submenu">
+												<p th:each="blogcate: ${blogcates}">
+													<li>
+														<a th:href="@{/blog/blogbycate/{id}(id=${blogcate.id})}" th:text="${blogcate.name}" />
+													</li>
+												</p>
 											</ul>
 										</li>
 										<li><a href="/blog">Tư vấn</a>
-											<ul class="submenu" style="display: block;">
-												<li><a href="#">Kỹ Năng Phỏng Vấn</a></li>
-												<li><a href="#">Cách viết CV hay</a></li>
-												<li><a href="#">Đặc điểm ngành nghề</a></li>
-												<li><a href="#">Văn Hoá Doanh Nghiệp</a></li>
+											<ul class="submenu">
+												<p th:each="blogcate: ${blogcates}">
+													<li>
+														<a th:href="@{/blog/blogbycate/{id}(id=${blogcate.id})}" th:text="${blogcate.name}" />
+													</li>
+												</p>
 											</ul>
 										</li>
+										<li><a href="#">Công việc</a>
+											<ul class="submenu">
+												<li>Ngành nghề</li>
+													<p th:each="blogcate: ${blogcates}">
+														<li>
+															<a th:href="@{/blog/blogbycate/{id}(id=${blogcate.id})}" th:text="${blogcate.name}" />
+														</li>
+													</p>
+													<li>Địa điểm</li>
+														<p th:each="blogcate: ${blogcates}">
+														<li>
+															<a th:href="@{/blog/blogbycate/{id}(id=${blogcate.id})}" th:text="${blogcate.name}" />
+														</li>
+													</p>
+											</ul>
+										</li>
+										
 									</ul>
 								</nav>
+							</div>
+							<div>
+								
 							</div>
 							<!-- Header-btn -->
 							<!---->
@@ -58,26 +82,28 @@
 																tuyển</a></li>
 														<li><a th:href="@{/logout-url}">Đăng xuất</a></li>
 													</ul>
+													
 												</li>
-												
-												
+												<li>
+													<a th:href="@{/employer/}" class=" ">Trang Nhà tuyển dụng</a>
+												</li>
 											</ul>
+
 										</nav>
 									</div>
+									
 								</div>
 
 						</div>
 					</div>
-					<div class="col-lg-2 col-md-2" th:switch="${LoggedIn}">
+					<div class="col-lg-2 col-md-2 float-right" th:switch="${LoggedIn}">
 						<!-- Trang Nhà Tuyển dụng -->
 						<div class="logo"  th:case="'NOT_LOGIN'">
-								<a th:href="@{/employer/}" class="btn head-btn2">Employer</a>
+								<a th:href="@{/employer/register}" class="btn head-btn2">Đăng ký NTD</a>
 
 						</div>
-					</div>					<!-- Mobile Menu -->
-					<div class="col-12">
-						<div class="mobile_menu d-block d-lg-none"></div>
-					</div>
+					</div>					
+					
 				</div>
 			</div>
 		</div>

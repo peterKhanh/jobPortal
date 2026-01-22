@@ -122,7 +122,7 @@ public class CandidateController {
 		user.setFullName(form_data.getFullName());
 		user.setAddress(form_data.getAddress());
 		user.setEmail(form_data.getEmail());
-
+		
 		user.setUserName(form_data.getUserName());
 		user.setPassWord(bCryptPasswordEncoder.encode(form_data.getPassWord()));
 

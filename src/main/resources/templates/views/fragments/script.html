@@ -3,55 +3,54 @@
 
 	<!-- All JS Custom Plugins Link Here here -->
 	<script th:src="@{/assets-fe/js/vendor/modernizr-3.5.0.min.js}"></script>
-	<!-- Jquery, Popper, Bootstrap -->
-	<script th:src="@{/assets-fe/js/vendor/jquery-1.12.4.min.js}"></script>
-	<script th:src="@{/assets-fe/js/popper.min.js}"></script>
+	
 	<script th:src="@{/assets-fe/js/bootstrap.min.js}"></script>
+	<script th:src="@{/assets-fe/js/popper.min.js}"></script>
+	
+	<!-- Jquery, Popper, Bootstrap -->
+	<script th:src="@{/assets/lte3/plugins/jquery/jquery.min.js}"></script>
+	
 	<!-- Jquery Mobile Menu -->
 	<script th:src="@{/assets-fe/js/jquery.slicknav.min.js}"></script>
 
 	<!-- Jquery Slick , Owl-Carousel Plugins -->
 	<script th:src="@{/assets-fe/js/owl.carousel.min.js}"></script>
 	<script th:src="@{/assets-fe/js/slick.min.js}"></script>
-<!--	
-	<script th:src="@{/assets-fe/js/price_rangs.js}"></script>
--->
+
 	<!-- One Page, Animated-HeadLin -->
+	 <!--
 	<script th:src="@{/assets-fe/js/wow.min.js}"></script>
 	<script th:src="@{/assets-fe/js/animated.headline.js}"></script>
 	<script th:src="@{/assets-fe/js/jquery.magnific-popup.js}"></script>
-
+	-->
 	<!-- Scrollup, nice-select, sticky -->
 	<script th:src="@{/assets-fe/js/jquery.scrollUp.min.js}"></script>
 	<script th:src="@{/assets-fe/js/jquery.nice-select.min.js}"></script>
 	<script th:src="@{/assets-fe/js/jquery.sticky.js}"></script>
 
-	<!-- contact js -->
+	<!-- contact js 
 	<script th:src="@{/assets-fe/js/contact.js}"></script>
 	<script th:src="@{/assets-fe/js/jquery.form.js}"></script>
-	<script th:src="@{/assets-fe/js/jquery.validate.min.js}"></script>
 	<script th:src="@{/assets-fe/js/mail-script.js}"></script>
 	<script th:src="@{/assets-fe/js/jquery.ajaxchimp.min.js}"></script>
-
+-->
 	<!-- Jquery Plugins, main Jquery -->
+	<script th:src="@{/assets-fe/js/jquery.validate.min.js}"></script>
 	<script th:src="@{/assets-fe/js/plugins.js}"></script>
 	<script th:src="@{/assets-fe/js/main.js}"></script>
-	<!--
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
--->
 	<!-- Jquery Toast -->
 	<script th:src="@{/assets-fe/toast/js/jquery.toast.js}"></script>
 	
-	<!-- jQuery Validate -->
-	<script th:src="@{/assets/lte3/plugins/jquery-validation/jquery.validate.min.js}"></script>
-	
-	<script th:src="@{/assets-fe/js/action/js_main.js}"></script>
+	<!--  Validate -->
+	<script th:src="@{/assets/lte3/js/validateFormInput.js}"></script>
+	<script th:src="@{/assets-fe/js/action/validate.js}"></script>
+ 
+	<!-- Summernote -->
+	<!--
+	<script th:src="@{/assets/lte3/plugins/summernote/summernote-bs4.min.js}"></script>
+	-->
 
-	<!-- Owl Carousel Assets -->
-
-
-<!--	<script th:src="@{/assets-fe/owl-carousel/js/jquery-1.9.1.min.js}"></script>
--->	<script th:src="@{/assets-fe/owl-carousel/owl-carousel/owl.carousel.min.js}"></script>
+	<script th:src="@{/assets-fe/owl-carousel/owl-carousel/owl.carousel.min.js}"></script>
 
 
 
@@ -71,11 +70,7 @@
 
 	<!-- Frontpage Demo -->
 	<script>
-	
-<!--		Scrip call Conpany owlCarousel
 
-
--->		
 		$(document).ready(function ($) {
 			$("#owl-location").owlCarousel();
 		});

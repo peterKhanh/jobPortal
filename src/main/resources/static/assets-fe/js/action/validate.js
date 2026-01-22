@@ -349,6 +349,62 @@ $(document).ready(function() {
 	})
 
 
+
+
+	// This function Validate form Add and Update Enterprise
+
+	$(function() {
+		$.validator.setDefaults({
+			submitHandler: function() {
+				$("#frm_enterprise").submit();
+			}
+		});
+		$('#frm_enterprise').validate({
+			rules: {
+				name: { required: true, },
+				numberOfEmployee: {
+					required: true
+				},
+				address: {
+					required: true
+					,
+				},
+				introduction: {
+					required: true
+				},
+			},
+			messages: {
+				name: "Nhập tên doanh nghiệp tuyển dụng",
+
+				numberOfEmployee: {
+					required: "Nhập quy mô công ty",
+				},
+				address: {
+					required: "Nhập địa chỉ trụ sở",
+				},
+				introduction: {
+					required: "Cần nhập giới thiệu công ty",
+				},
+			},
+			errorElement: 'span',
+			errorPlacement: function(error, element) {
+				error.addClass('invalid-feedback');
+				element.closest('.form-group').append(error);
+			},
+			highlight: function(element, errorClass, validClass) {
+				$(element).addClass('is-invalid');
+			},
+			unhighlight: function(element, errorClass, validClass) {
+				$(element).removeClass('is-invalid');
+			}
+		});
+	});
+
+
+
+
+
+
 });
 
 

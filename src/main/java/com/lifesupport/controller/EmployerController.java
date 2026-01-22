@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -124,8 +125,6 @@ public class EmployerController {
 		Date createAt = new Date();
 //		System.out.println(user.toString());
 		System.out.println("Time create: " + createAt);
-//		System.out.println("Full Name : " + form_data.getFullName());
-//		System.out.println("Email : " + form_data.getEmail());
 		System.out.println("User name: " + form_data.getUserName());
 		System.out.println("Pasword: " + form_data.getPassWord());
 
@@ -134,7 +133,6 @@ public class EmployerController {
 		user.setFullName(form_data.getFullName());
 		user.setAddress(form_data.getAddress());
 		user.setEmail(form_data.getEmail());
-		
 		user.setUserName(form_data.getUserName());
 		user.setPassWord(bCryptPasswordEncoder.encode(form_data.getPassWord()));
 
@@ -186,7 +184,6 @@ public class EmployerController {
 		// if (!gala.getImageFileName().isBlank()) {
 		if (!image.getOriginalFilename().isEmpty()) {
 			// Xoa File
-
 			Path imagePath = Paths.get(upload_path + updateUser.getAvata());
 			
 			try {
@@ -354,9 +351,7 @@ public class EmployerController {
 			
 			 if (enterprise == null) {
 				model.addAttribute("employer", "NOTSET");
-
 			 }else {
-			
 				model.addAttribute("user", loggedUser);
 				model.addAttribute("employer", enterprise);
 			 }
@@ -620,10 +615,7 @@ public class EmployerController {
 		job.setDescription(form.getDescription()); job.setBenefit(form.getBenefit());
 		job.setStatus(form.getStatus()); jobRepo.save(job);
 	
-					return "redirect:job-by-employer/"; 
-
-
-
+		return "redirect:job-by-employer/"; 
 		} else {
 			return "redirect:/logon/";
 
@@ -631,236 +623,6 @@ public class EmployerController {
 
 	}	
 		
-/*	
-	
-	@GetMapping("/view-profile")
-	public String viewProfile(Model model, @RequestParam Long id, Principal principal) {
-		userService.checkLogin(model, principal);
-
-		if (principal != null) {
-			String userName = principal.getName();
-			User loggedUser = repoUser.findByUserName(userName);
-			model.addAttribute("loggedUser", loggedUser);
-			Profile profile = repoProfile.findById(id).get();
-			model.addAttribute("profile", profile);
-		} else {
-			return "redirect:/logon/";
-		}
-		return "views/candidate/view-profile";
-	}
-*/
-/*	@GetMapping("/delete")
-	public String deleteProfi(@RequestParam Long id) {
-		Profile profile = repoProfile.findById(id).get();
-	  	try {
-			Path cv_1_filepath = Paths.get(upload_path + profile.getCv_1_Filename());		
-			Path cv_2_filepath = Paths.get(upload_path + profile.getCv_2_Filename());
-			Path cv_3_filepath = Paths.get(upload_path + profile.getCv_3_Filename());
-
-			Path bd_1_filepath = Paths.get(upload_path + profile.getBd_1_Filename());		
-			Path bd_2_filepath = Paths.get(upload_path + profile.getBd_2_Filename());
-			Path bd_3_filepath = Paths.get(upload_path + profile.getBd_3_Filename());
-
-			try {
-				if (cv_1_filepath.isAbsolute())	Files.delete(cv_1_filepath);
-				if (cv_2_filepath.isAbsolute())	Files.delete(cv_2_filepath);
-				if (cv_3_filepath.isAbsolute())	Files.delete(cv_3_filepath);
-				
-				if (bd_1_filepath.isAbsolute())	Files.delete(bd_1_filepath);
-				if (bd_2_filepath.isAbsolute())	Files.delete(bd_2_filepath);
-				if (bd_3_filepath.isAbsolute())	Files.delete(bd_3_filepath);
-
-			} catch (Exception ex) {
-				System.out.print(ex.getMessage());
-			}
-	
-	  		repoProfile.delete(profile);
-		} catch (Exception ex) {
-			System.out.print(ex.getMessage());
-		}
-		return "redirect:/candidate/profile/";
-
-	}
-	*/
-	
-/*	
-	@GetMapping("/edit-profile")
-	public String editProfile(Model model, @RequestParam Long id, Principal principal) {
-		userService.checkLogin(model, principal);
-		System.out.println(id.toString());
-		getAllList(model);
-
-		if (principal != null) {
-			String userName = principal.getName();
-			User loggedUser = repoUser.findByUserName(userName);
-			model.addAttribute("loggedUser", loggedUser);
-			Profile profile = repoProfile.findById(id).get();
-			model.addAttribute("profile", profile);
-
-		} else {
-			return "redirect:/logon/";
-
-		}
-
-		return "views/candidate/edit-profile";
-	}
-*/
-
-/*	@PostMapping("/edit-profile")
-	public String editProfile(Model model,Principal principal, @RequestParam Long id, @ModelAttribute Profile form, 
-			@RequestParam("cv_1") MultipartFile cv_1,
-			@RequestParam("cv_2") MultipartFile cv_2,
-			@RequestParam("cv_3") MultipartFile cv_3,
-			@RequestParam("bd_1") MultipartFile bd_1,
-			@RequestParam("bd_2") MultipartFile bd_2,
-			@RequestParam("bd_3") MultipartFile bd_3)
-	{
-		
-		Profile cur_profile = repoProfile.findById(id).get();
-		model.addAttribute(cur_profile);
-		Date updateAt = new Date();		
-		cur_profile.setUpdateAt(updateAt);
-		
-		cur_profile.setTitle(form.getTitle());
-		cur_profile.setBirthdate(form.getBirthdate());
-		cur_profile.setPhone(form.getPhone());
-		cur_profile.setAddress(form.getAddress());
-		cur_profile.setLocation(form.getLocation());
-		cur_profile.setWorkingModel(form.getWorkingModel());
-		cur_profile.setSkills(form.getSkills());
-		cur_profile.setLangugages(form.getLangugages());
-		cur_profile.setLicences(form.getLicences());
-		cur_profile.setExpericences(form.getExpericences());
-
-		
-
-		// Upload and Edit CV 1
-		if (!cv_1.getOriginalFilename().isEmpty()) {
-			// Xoa File
-			Path filePath = Paths.get(upload_path + cur_profile.getCv_1_Filename());
-			try {
-				if (cur_profile.getCv_1_Filename() != null) {
-					Files.delete(filePath);
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			String storageFileName = updateAt.getTime() + "_" + cv_1.getOriginalFilename();
-			storageService.saveFile(upload_path, cv_1, storageFileName);
-			cur_profile.setCv_1_Filename(storageFileName);
-
-		} else {
-			System.out.println("Khong sua File: ");
-		}
-
-		
-
-		// Upload and Edit CV 2
-		if (!cv_2.getOriginalFilename().isEmpty()) {
-			// Xoa File
-			Path filePath = Paths.get(upload_path + cur_profile.getCv_2_Filename());
-			try {
-				if (cur_profile.getCv_2_Filename() != null) {
-					Files.delete(filePath);
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			String storageFileName = updateAt.getTime() + "_" + cv_2.getOriginalFilename();
-			storageService.saveFile(upload_path, cv_2, storageFileName);
-			cur_profile.setCv_2_Filename(storageFileName);
-
-		} else {
-			System.out.println("Khong sua File: ");
-		}
-
-
-		// Upload and Edit CV 3
-		if (!cv_3.getOriginalFilename().isEmpty()) {
-			// Xoa File
-			Path filePath = Paths.get(upload_path + cur_profile.getCv_3_Filename());
-			try {
-				if (cur_profile.getCv_3_Filename() != null) {
-					Files.delete(filePath);
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			String storageFileName = updateAt.getTime() + "_" + cv_3.getOriginalFilename();
-			storageService.saveFile(upload_path, cv_3, storageFileName);
-			cur_profile.setCv_3_Filename(storageFileName);
-
-		} else {
-			System.out.println("Khong sua File: ");
-		}
-
-		
-		// Upload and Edit Bảng điểm 1
-		if (!bd_1.getOriginalFilename().isEmpty()) {
-			// Xoa File
-			Path filePath = Paths.get(upload_path + cur_profile.getBd_1_Filename());
-			try {
-				if (cur_profile.getBd_1_Filename() != null) {
-					Files.delete(filePath);
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			String storageFileName = updateAt.getTime() + "_" + bd_1.getOriginalFilename();
-			storageService.saveFile(upload_path, bd_1, storageFileName);
-			cur_profile.setBd_1_Filename(storageFileName);
-
-		} else {
-			System.out.println("Khong sua File: ");
-		}		
-
-		
-		
-		// Upload and Edit Bảng điểm 2
-		if (!bd_2.getOriginalFilename().isEmpty()) {
-			// Xoa File
-			Path filePath = Paths.get(upload_path + cur_profile.getBd_2_Filename());
-			try {
-				if (cur_profile.getBd_2_Filename() != null) {
-					Files.delete(filePath);
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			String storageFileName = updateAt.getTime() + "_" + bd_2.getOriginalFilename();
-			storageService.saveFile(upload_path, bd_2, storageFileName);
-			cur_profile.setBd_2_Filename(storageFileName);
-
-		} else {
-			System.out.println("Khong sua File: ");
-		}		
-		
-		// Upload and Edit Bảng điểm 3
-		if (!bd_3.getOriginalFilename().isEmpty()) {
-			// Xoa File
-			Path filePath = Paths.get(upload_path + cur_profile.getBd_3_Filename());
-			try {
-				if (cur_profile.getBd_3_Filename() != null) {
-					Files.delete(filePath);
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			String storageFileName = updateAt.getTime() + "_" + bd_3.getOriginalFilename();
-			storageService.saveFile(upload_path, bd_3, storageFileName);
-			cur_profile.setBd_3_Filename(storageFileName);
-
-		} else {
-			System.out.println("Khong sua File: ");
-		}		
-		
-		
-		repoProfile.save(cur_profile);
-	
-
-		return "redirect:/candidate/profile/";
-	}
-	*/
 
 		
 	
@@ -932,6 +694,38 @@ public class EmployerController {
 		}
 		return "views/employer/job-expired-by-employer";
 	}
+
+
+
+	@GetMapping("/applied-by-employer/")
+	public String viewAppliedCandidateByEmployer(Model model,@RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo, Principal principal) {
+		userService.checkLogin(model, principal);
+		if (principal != null) {
+			String userName = principal.getName();
+			User loggedUser = repoUser.findByUserName(userName);
+			Enterprise enterprise = enterpriseRepo.findByUser(loggedUser);
+			if (enterprise != null){
+				Long enterpriseId = enterprise.getId();
+				System.out.println("enterpriseId : " + enterpriseId);
+
+				Page<User> users = userService.getApplyCandidateByEnterprise(pageNo, enterpriseId);
+				model.addAttribute("totalPage", users.getTotalPages());
+				model.addAttribute("currentPage", pageNo);
+
+				model.addAttribute("users", users);
+				System.out.println("users size : " + users);
+			}else{
+				model.addAttribute("message", "null_enterprise");
+
+			}
+
+		} else {
+			return "redirect:/logon/";
+		}
+		return "views/employer/applied-by-employer";
+	}
+
+
 
 
 	@GetMapping("/forgotPassword")

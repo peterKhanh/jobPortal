@@ -10,6 +10,9 @@ import org.springframework.stereotype.Repository;
 
 import com.lifesupport.models.Blog;
 import com.lifesupport.models.Category;
+import com.lifesupport.models.BlogCate;
+
+
 @Repository
 public interface BlogRepository extends JpaRepository<Blog, Integer> {
 	// Search Blog by Name
@@ -22,8 +25,8 @@ public interface BlogRepository extends JpaRepository<Blog, Integer> {
 	
 	Page<Blog> findByCategory(Category category, Pageable pageable);
 
-	@Query("SELECT c FROM Blog c WHERE c.category = ?1 Order By c.createAt DESC ")
-	List<Blog> findTop4ByCategory(Category category);
+	@Query("SELECT c FROM Blog c WHERE c.blogcate = ?1 Order By c.createAt DESC ")
+	List<Blog> findTop4ByBlogCate(BlogCate blogcate);
 
 
 }

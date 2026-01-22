@@ -63,7 +63,6 @@ public class BlogCateServiceImpl implements BlogCateService {
 
 	@Override
 	public List<BlogCate> getAllActiveBlogCate() {
-		// TODO Auto-generated method stub
 		return repository.findAllByActive();
 	}
 

@@ -11,27 +11,12 @@
 				<div th:replace="~{views/employer/profile-panel :: profile-panel}"/>
 				<div class="col-xl-9 col-lg-9 col-md-8">
 					<div class="container p-2">
-						<div class="widget_title">
+						<div class="normal-title">
 							<p class="mb-2">Sửa thông tin tuyển dụng</p>
 						</div>
-						<div class="container card card-default col-md-12 border">
+						<div class="card card-default col-md-12 border">
 							<form id="frm_job" th:object="${job}" method="POST" th:action="@{/employer/edit-job}">
 								<input type="hidden" name="id" th:value="${job.id}"/>
-								<div class="card-body">
-								<!--
-								<div class="row" >
-									<div class="col-12">
-										<div class="form-group">
-											<select class="form-select" id="enterprise" name="enterprise">
-												<option value=""> -----------Select Enterprise -------------
-												<option th:each="enterprise : ${enterprises}"
-													th:value="${enterprise.id}" th:text="${enterprise.name}">
-												</option>
-											</select>
-										</div>
-									</div>
-								</div>
-								-->	
 								<div class="row">
 									<div class="col-12">
 										<div class="form-group">
@@ -49,7 +34,6 @@
 										<div class="form-group">
 											<p> Lĩnh vực </p>
 											<select class="form-select" id="jobCategory" name="jobCategory" th:field="${job.jobCategory}">
-												<option value=""> -- Chọn lĩnh vực--- </option>
 												<option th:each="cate : ${jobcategories}" th:value="${cate.id}"
 													th:text="${cate.name}">
 												</option>
@@ -78,8 +62,6 @@
 											</select>
 										</div>
 									</div>
-
-
 								</div>
 								
 								
@@ -103,17 +85,26 @@
 										<div class="form-group">
 											
 											<label>Ngày hết hạn:</label>
-											<div class="input-group date" id="reservationdate"
-												data-target-input="nearest">
-												<input type="text" id="expiredDate" name="expiredDate"
-												th:field="${job.expiredDate}"	class="form-control datetimepicker-input"
-													data-target="#reservationdate">
-												<div class="input-group-append" data-target="#reservationdate"
-													data-toggle="datetimepicker">
-													<div class="input-group-text"><i class="fa fa-calendar"></i>
-													</div>
+												<div id="datepicker" 
+													class="input-group date" 
+													data-date-format="mm-dd-yyyy">
+													<input class="form-control" id="expiredDate" name="expiredDate"
+														type="text" th:field="${job.expiredDate}" />
+													<span class="input-group-addon">
+														<i class="glyphicon glyphicon-calendar"></i>
+													</span>
 												</div>
-											</div>
+												<script>
+												$(function () {
+													$("#datepicker").datepicker({ 
+														format:"mm/dd/yyyy",
+														autoclose: true, 
+														todayHighlight: true,
+														todayBtn : "linked"
+													});
+												});
+											</script>
+										
 										</div>
 									</div>
 								</div>
@@ -189,12 +180,12 @@
 									<div class="col-12">
 										<div class="form-group">
 
-											<label> Yêu cầu công việc </label>
-											<textarea id="reponsibility" name="reponsibility" class="form-control"
-											 th:field="${job.reponsibility}"	rows="5" cols="30" placeholder="Job Reposibility"></textarea>
+											<label> Mô tả công việc </label>
+											<textarea id="description" name="description" class="form-control" rows="5"
+											 th:field="${job.description}"	cols="30" placeholder="Job Description"></textarea>
 											<script>
 												ClassicEditor
-													.create(document.querySelector('#reponsibility'), {
+													.create(document.querySelector('#description'), {
 														height: 800,
 
 														toolbar: [
@@ -213,12 +204,12 @@
 									<div class="col-12">
 										<div class="form-group">
 
-											<label> Mô tả công việc </label>
-											<textarea id="description" name="description" class="form-control" rows="5"
-											 th:field="${job.description}"	cols="30" placeholder="Job Description"></textarea>
+											<label> Yêu cầu công việc </label>
+											<textarea id="reponsibility" name="reponsibility" class="form-control"
+											 th:field="${job.reponsibility}"	rows="5" cols="30" placeholder="Job Reposibility"></textarea>
 											<script>
 												ClassicEditor
-													.create(document.querySelector('#description'), {
+													.create(document.querySelector('#reponsibility'), {
 														height: 800,
 
 														toolbar: [
@@ -257,7 +248,6 @@
 										</div>
 									</div>
 								</div>
-							</div>
 								<div class="card-bottom text-center">
 									<button type="submit" id="btn_save" class="btn btn-primary">Lưu thông tin</button>
 								</div>

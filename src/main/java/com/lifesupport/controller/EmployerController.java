@@ -135,7 +135,7 @@ public class EmployerController {
 		user.setEmail(form_data.getEmail());
 		user.setUserName(form_data.getUserName());
 		user.setPassWord(bCryptPasswordEncoder.encode(form_data.getPassWord()));
-
+		// user.setCreateAt(createAt);
 		user.setEnabled(true);
 
 		if (this.userService.create(user)) {

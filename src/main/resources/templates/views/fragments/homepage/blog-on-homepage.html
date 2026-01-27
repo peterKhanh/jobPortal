@@ -73,11 +73,13 @@
 				<div class="col-lg-3 col-md-4 align-self-center mb-30 event_outer design" th:each="blog: ${blogOnHomePage}">
 					<div class="events_item">
 						<div class="thumb">
-							<a th:href="@{/blog/view/{id}(id=${blog.id})}"><img th:src="@{'/upload/blog/'+ ${blog.imageFileName}}" alt="" height="220"
-									width="250"></a>												
-							<!--<span class="category">Category</span>-->
-              				<!--<span class="price"><h6><em>$</em>160</h6></span>-->
-              				
+							<a th:href="@{/blog/view/{id}(id=${blog.id})}">
+								<img th:src="@{'/upload/blog/'+ ${blog.imageFileName}}" alt="" height="220" width="250"></a>												
+								<!--
+								<span class="category">Category</span>
+								th:if="${imageUrl}"
+								-->
+								<!--<span class="price"><h6><em>$</em>160</h6></span>-->              				
 						</div>
 						<div class="title">
 							<!-- <span class="author">Stella Blair</span>-->

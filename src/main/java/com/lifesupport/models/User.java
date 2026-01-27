@@ -3,6 +3,8 @@ package com.lifesupport.models;
 import java.util.Date;
 import java.util.Set;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
@@ -40,6 +42,17 @@ public class User {
 	private String email;
 	@Column(name = "telephone")
 	private String telephone;
+
+// @CreationTimestamp
+// @Temporal(TemporalType.TIMESTAMP)
+// @Column(name = "create_at")
+// private Date createAt;
+
+// @UpdateTimestamp
+// @Temporal(TemporalType.TIMESTAMP)
+// @Column(name = "update_at")
+// private Date updateAt;
+
 
 	@Column(name = "avata")
 	private String avata;

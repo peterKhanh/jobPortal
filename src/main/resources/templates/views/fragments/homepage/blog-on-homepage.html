@@ -11,28 +11,25 @@
 			</div>
 			
 		</div>
+		
 
-		<!--
-	<div id="owl-blog_on_homepage" class="owl-carousel" >
+	<div id="owl-blog_on_homepage" class="owl-carousel">
 
-		<ul th:each="blog: ${blogOnHomePage}">
-			<div class="card mr-2 text-center">
-				<p>
-					<img class="rounded-circle shadow-1-strong mb-2"
+		<ul th:each="blog :${blogOnHomePage}">
+			<div class="card text-center mr-2">
+				<a th:href="@{/blog/view/{id}(id=${blog.id})}">
+					<img class="img-thumbnail  mb-2"
 						th:src="@{'/upload/blog/'+ ${blog.imageFileName}}" alt="avatar"
 						style="width: 200px;" />
-				</p>
-				<div class="card-body">
-						<a th:href="@{/blog/view/{id}(id=${blog.id})}">
-							<p th:text="${blog.title}" />
-						</a>
-					</div>
-				
-				<h5 class="mb-3" th:text=${blog.title}>John Doe</h5>
-				<p th:text="${tastimonial.subTitle}">Web Developer</p>
-				<p class="text-muted">
+				</a>
+				<a th:href="@{/blog/view/{id}(id=${blog.id})}">
+					<p class="card-body"  th:text="${blog.title}">Basic card</p>
+				</a>
+
+				<!--
+				<p class="text-muted"> 
 					<i class="fas fa-quote-left pe-2"></i>
-					<span th:text="${tastimonial.comment}"></span>
+					<span th:text="${blog.title}"></span>
 				</p>
 				
 				<ul class="list-unstyled d-flex justify-content-center text-warning mb-0">
@@ -43,32 +40,15 @@
 					<li><i class="fas fa-star fa-sm"></i></li>
 				</ul>
 	
-				<div class="card-body">Basic card</div>
-				
+				-->
 			</div>
 		</ul>
+
+
 	</div>
-	
-		<div class="row">
-			<div class="col-xl-3 col-lg-6 col-md-6 p-20" th:each="blog: ${blogOnHomePage}">
-				<div class="home-blog-single mb-30 ">
-					<div class="blog-img-cap">
-						<div class="blog-img">
-							<img th:src="@{'/upload/blog/'+ ${blog.imageFileName}}" alt="" height="250" width="95%">
-						
-						</div>
-						<div class="card-body">
-							<a th:href="@{/blog/view/{id}(id=${blog.id})}">
-								<p th:text="${blog.title}" />
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	-->
 
 
+<!--
 		<div class="row event_box">
 				<div class="col-lg-3 col-md-4 align-self-center mb-30 event_outer design" th:each="blog: ${blogOnHomePage}">
 					<div class="events_item">
@@ -80,9 +60,8 @@
 								th:if="${imageUrl}"
 								-->
 								<!--<span class="price"><h6><em>$</em>160</h6></span>-->              				
-						</div>
+	<!--					</div>
 						<div class="title">
-							<!-- <span class="author">Stella Blair</span>-->
 							<a th:href="@{/blog/view/{id}(id=${blog.id})}">
 								<p th:text="${blog.title}" />
 							</a>
@@ -92,6 +71,6 @@
 			</div>
 
 	</div>
-
+-->
 
 </div>

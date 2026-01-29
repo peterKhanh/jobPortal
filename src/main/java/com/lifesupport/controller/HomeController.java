@@ -32,7 +32,6 @@ import com.lifesupport.repository.BlogCateRepository;
 import com.lifesupport.repository.EnterpriseRepository;
 import com.lifesupport.repository.JobCategoryRepository;
 import com.lifesupport.repository.LocationRepository;
-import com.lifesupport.repository.SlideRepository;
 import com.lifesupport.repository.TastimonialRepository;
 import com.lifesupport.service.BlogCateService;
 import com.lifesupport.service.JobService;
@@ -74,21 +73,11 @@ public class HomeController {
 	public String home(Model model, Principal principal, 
 			@RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo) {
 		userService.checkLogin(model, principal);
+		getAllList(model);
 //		Get Enterprise 
 		List<Enterprise> listEnterprise = enterpriseRepo.getAllEnterpriseForHomePage()	;
 		model.addAttribute("listEnterprise", listEnterprise);
 		System.out.println("Total listEnterprise: "+ listEnterprise.size());
-
-		List<JobCategory> lists = jobCateRepo.findAllPopularCate()	;
-		model.addAttribute("lists", lists);
-//		System.out.println("Total category: "+ lists.size());
-
-		List<Location> locations = locationRepo.findAllByActive();
-		model.addAttribute("locations", locations);
-
-		List<BlogCate> blogcates = blogCateService.getAllActiveBlogCate();
-		model.addAttribute("blogcates", blogcates);
-		System.out.println("blogcates size:" + blogcates.size());
 
 		// Page<Job> jobs = jobService.getAll(pageNo);
 		Page<Job> jobs = jobService.getAllJobForHomePage(pageNo);
@@ -97,15 +86,14 @@ public class HomeController {
 		System.out.println("totalPage : " + jobs.getTotalPages());
 		model.addAttribute("jobs", jobs);
 
-	//	BlogCate blogcate = blogCateRepository.findById(2).get();
+		BlogCate blogcate = blogCateRepository.findById(1).get();
 	
-		List<Blog> blogOnHomePage1 = blogRepository.findAll();
+		List<Blog> blogOnHomePage2 = blogRepository.SearchByBlogCate(blogcate);
 		
-		List<Blog> blogOnHomePage = blogOnHomePage1.subList(0, 4);
+		List<Blog> blogOnHomePage = blogOnHomePage2.subList(0, 6);
 		System.out.println("blogOnHomePage:" + blogOnHomePage.size());
 		
 		model.addAttribute("blogOnHomePage", blogOnHomePage);
-
 		
 		List<Tastimonial> listTastimonial = tastimonialRepository.findByStatusTrue();
 		model.addAttribute("listTastimonial", listTastimonial);
@@ -163,6 +151,31 @@ public class HomeController {
 			return false;
 		}
 		
+	}
+
+
+	
+	public void getAllList(Model model) {
+//		List<Enterprise> enterprises = enterpriseRepo.getAllEnterprise();
+//		model.addAttribute("enterprises", enterprises);
+//		List<Category> categories = categoryRepo.findAllByActive();
+//		model.addAttribute("categories", categories);
+		List<JobCategory> popular_jobcates = jobCateRepo.findAllPopularCate();
+		model.addAttribute("popular_jobcates", popular_jobcates);
+//	
+
+		List<Location> locations = locationRepo.findAllByActive();
+		model.addAttribute("locations", locations);
+
+//		System.out.println("Total category: "+ lists.size());
+		List<BlogCate> blogcates = blogCateService.getAllActiveBlogCate();
+		model.addAttribute("blogcates", blogcates);
+		System.out.println("blogcates size:" + blogcates.size());
+
+
+		List<JobCategory> lists = jobCateRepo.findAllPopularCate()	;
+		model.addAttribute("lists", lists);
+
 	}
 
 }

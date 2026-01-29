@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lifesupport.models.Blog;
 import com.lifesupport.models.BlogTag;
-import com.lifesupport.models.Category;
 import com.lifesupport.models.BlogCate;
 import com.lifesupport.models.Comment;
 import com.lifesupport.models.Job;
@@ -27,7 +26,6 @@ import com.lifesupport.repository.CommentRepository;
 import com.lifesupport.repository.JobRepository;
 import com.lifesupport.service.BlogService;
 import com.lifesupport.service.BlogCateService;
-import com.lifesupport.service.CategoryService;
 import com.lifesupport.service.CommentService;
 import com.lifesupport.service.UserService;
 
@@ -37,8 +35,6 @@ import com.lifesupport.service.UserService;
 @Controller
 @RequestMapping("/blog")
 public class FeBlogController {
-	@Autowired
-	private CategoryService categoryService;
 	@Autowired
 	private BlogCateService blogCateService;
 	@Autowired
@@ -62,7 +58,7 @@ public class FeBlogController {
 	public String getAllBlogSearchAndPaging(Model model, @Param("keyword") String keyword, @RequestParam(name="pageNo", defaultValue = "1") Integer pageNo, Principal principal) {
 		userService.checkLogin(model, principal);
 
-		List<Category> listCate = categoryService.getAllActiveCate();
+		List<BlogCate> listCate = blogCateService.getAllActiveBlogCate();
 		model.addAttribute("listCate", listCate);
 				
 		Page<Blog> blogs = blogService.getAll(pageNo);
@@ -85,18 +81,18 @@ public class FeBlogController {
 	 * 
 	 */
 	@GetMapping("/blogbycate/{id}")
-	public String shopGetBlogByCate(Model model, @PathVariable("id") Integer id,  @RequestParam(name="pageNo", defaultValue = "1") Integer pageNo, Principal principal) {
-		List<Category> listCate = categoryService.getAllActiveCate();
+	public String GetBlogByCate(Model model, @PathVariable("id") Integer id,  @RequestParam(name="pageNo", defaultValue = "1") Integer pageNo, Principal principal) {
+		List<BlogCate> listCate = blogCateService.getAllActiveBlogCate();
 		model.addAttribute("listCate", listCate);
 		
 		userService.checkLogin(model, principal);
 		
 		
 //		Get Curent Cate
-		Category current_cate = categoryService.find(id);
+		BlogCate current_cate = blogCateService.find(id);
 		model.addAttribute("current_cate", current_cate);
 
-		Page<Blog> blogs = blogService.getAllByCate(pageNo, id);
+		Page<Blog> blogs = blogService.getAllByBlogCate(pageNo, id);
 //		if (id != null) {
 //			listproduct = productService.searchProduct(keyword, pageNo);
 //			model.addAttribute("keyword", keyword);
@@ -130,7 +126,7 @@ public class FeBlogController {
 		
 		
 //		Get Curent Cate
-		Category current_cate = blog.getCategory();
+		BlogCate current_cate = blog.getBlogcate();
 		model.addAttribute("current_cate", current_cate);
 
 // 		Get All BlogTag for Blog
@@ -189,7 +185,6 @@ public class FeBlogController {
 		return info;
 	}
 	
-
 
 	@ResponseBody
 	@GetMapping("/send-contact")

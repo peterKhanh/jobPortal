@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-
 <head th:replace="~{views/fragments/head :: head}"></head>
-
 <body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
 	<!-- ============= Menu Bar// ============== -->
 	<header th:replace="~{views/fragments/menu_bar :: menu_bar}"> </header>
-
 	<!---->
 	<!--	<nav class="container" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
 		<ol class="breadcrumb">
@@ -15,33 +11,25 @@
 			<li class="breadcrumb-item active" aria-current="page"  th:if="${current_cate}" ><a th:text="${current_cate.categoryName}" /></li>
 		</ol>
 	</nav>
---> <!---->
+	--> <!---->
 	<section class="section blog-wrap">
-
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
-					<div class="normal-title">Xem bài viết</div>
+					<div class="normal-title">Danh sách bài viết</div>
 				</div>
 			</div>
-
-			<div class="row event_box">
-				<div class="col-lg-3 col-md-4 align-self-center mb-30 event_outer design" th:each="blog: ${blogs}">
-					<div class="events_item">
-						<div class="thumb">
-							<a th:href="@{/blog/view/{id}(id=${blog.id})}">
-								<img th:src="@{'/upload/blog/'+ ${blog.imageFileName}}" alt="" height="220" width="250">
-							</a>
-							<!--<span class="category">Category</span>
-             				<span class="price"><h6><em>$</em>160</h6></span>-->
-
-						</div>
-						<div class="title">
-							<!-- <span class="author">Stella Blair</span>-->
-							<a th:href="@{/blog/view/{id}(id=${blog.id})}">
-								<p th:text="${blog.title}" />
-							</a>
-						</div>
+			<div class="row">
+				<div class="col-lg-3 col-md-3 align-self-center mb-30 event_outer design" th:each="blog: ${blogs}">
+					<div class="card text-center mr-1">
+						<a th:href="@{/blog/view/{id}(id=${blog.id})}">
+							<img class="img-thumbnail"
+								th:src="@{'/upload/blog/'+ ${blog.imageFileName}}" alt="avatar"
+								style="width: 200px;" />
+						</a>
+						<a th:href="@{/blog/view/{id}(id=${blog.id})}">
+							<p class="card-body"  th:text="${blog.title}">Basic card</p>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -56,7 +44,6 @@
 					<div class="single-wrap d-flex justify-content-center">
 						<nav aria-label="Page navigation example">
 							<ul class="pagination justify-content-start">
-
 								<li class="page-item" th:if="${currentPage > 1}">
 									<a class="page-link" th:href="@{'?pageNo='+${currentPage-1}}">
 										<span class="ti-angle-left"></span></a>
@@ -65,7 +52,6 @@
 									th:classappend="${currentPage == i ? 'active':''}">
 									<a class="page-link" th:text="${i}" th:href="@{'?pageNo='+${i}}"></a>
 								</li>
-
 								<li class="page-item" th:if="${currentPage < totalPage}">
 									<a class="page-link" th:href="@{'?pageNo='+${currentPage+1}}"><span
 											class="ti-angle-right"></span></a>

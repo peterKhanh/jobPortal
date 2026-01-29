@@ -5,56 +5,22 @@
         <div class="row  mt-2">
 			<div class="col-lg-12">
 				<div class="normal-title">
-					<h5> Công việc theo ngành nghề</h5>
+					<h5>Ngành nghề phổ biến</h5>
 				</div>
 			</div>
 			
 		</div>
 
-		<div class="row d-flex justify-contnet-center ">
-<!--		<div id="owl-category-on-homepage_" class="owl-carousel our-services section-pad-t10">
-			<ul th:each="cate: ${lists}">
-
-				<div class="items bg-light pd-4">
+        <div id="owl-category-on-homepage" class=" p-2">
+			<ul th:each="cate: ${popular_jobcates}">
+				<div class="item text-center">
 					<a th:href="@{/job/jobbycate/{id}(id=${cate.id})}">
-						<h6 th:text="${cate.name}"></h6>
-					</a>
+						<img class="img-fluid img-thumbnail mb-2" style="height: 80px; width: 80px;"
+							th:src="@{'/upload/jobcate/'+ 'jobcate.png'}" alt="..." /></a>
+					<h6 th:text=${cate.name}>Can touch this</h6>
 				</div>
-
 			</ul>
+
 		</div>
--->
-
-
-		<!-- <div id="owl-category-on-homepagevv" class="button-group-area p-2">--> 
-        <div id="owl-category-on-homepagevv" class=" p-2">
-
-			<span th:each="cate: ${lists}">
-				<a th:href="@{/job/jobbycate/{id}(id=${cate.id})}" class="tag text-dark circle"
-					th:text="${cate.name}" />
-					
-			</span>
-			<span >
-				<a class="genric-btn primary-border circle arrow"
-					>Xem thêm</a>
-			</span>	</div>
-
-		<!--		<div id="owl-category-on-homepage" class="owl-carousel border our-services section-pad-t10">
--->
-		<!--	<div  class="button-group-area mt-10">
-				<span  th:each="cate: ${lists}">
-				<a th:href="@{/job/jobbycate/{id}(id=${cate.id})}" class="genric-btn primary-border circle"  th:text="${cate.name}">Primary</a>
-			</span>
-
-		</div>-->
-
-		<!--<div class="customNavigation" style="display: none;">
-			<a class="btn prev">Previous</a>
-			<a class="btn next">Next</a>
-			<a class="btn play">Autoplay</a>
-			<a class="btn stop">Stop</a>
-		</div>-->
-
-
 	</div>
 </div>

@@ -16,11 +16,10 @@
 				<div class="item text-center">
 					<a th:href="@{/job/jobbycate/{id}(id=${cate.id})}">
 						<img class="img-fluid img-thumbnail mb-2" style="height: 80px; width: 80px;"
-							th:src="@{'/upload/jobcate/'+ 'jobcate.png'}" alt="..." /></a>
+							th:src="@{'/upload/jobcate/'+ ${cate.iconName}}" alt="..." /></a>
 					<h6 th:text=${cate.name}>Can touch this</h6>
 				</div>
 			</ul>
-
 		</div>
 	</div>
 </div>

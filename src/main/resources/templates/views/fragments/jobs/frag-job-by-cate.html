@@ -17,34 +17,17 @@
 		<div class="col-xl-8 col-lg-8">
 			<h4 class="normal-title">Danh sách công việc</h4>
 			<div class="card single-job-items joblist mb-2" th:each="job: ${jobs}">
-				<div class="job-items" >
-					<!--
-					<div class="company-img  pd-2">
-						<a th:href="@{/job/viewEnterprise/{id}(id=${job.enterprise.getId()})}">
-							<img th:if="${job.enterprise.getDefaultLogo}==true" th:src="@{/upload/default.png}"
-								alt="..." width="80">
-							<img th:unless="${job.enterprise.getDefaultLogo}==true"
-								th:src="@{'/upload/enterprise/'+ ${job.enterprise.getLogoName}}"
-								style="width: 60px; height: 60px;" alt="">
-						</a>
-					</div>
-					-->
+				<div class="job-items " >
 
-					<div class="row">
-
-						<div class="col-3 text-center">
-							<img th:if="${job.enterprise.getDefaultLogo}==true" th:src="@{'/upload/default.png'}"
+						<div class="col-2 text-center">
+							<img class="img-thumbnail" th:if="${job.enterprise.getDefaultLogo}==true" th:src="@{'/upload/default.png'}"
 								alt="..." width="90">
-							<img th:unless="${job.enterprise.getDefaultLogo}==true"
+							<img class="img-thumbnail" th:unless="${job.enterprise.getDefaultLogo}==true"
 								th:src="@{'/upload/enterprise/'+ ${job.enterprise.getLogoName}}"
-								style="width: 70px; height: 70px;" alt="">
+								alt="">
 
 						</div>
-
-
-					</div>
-
-					<div class="job-tittle">
+						<div class="col-10 job-tittle p-2 ">
 						<div class="title">
 							<a th:href="@{/job/viewjob/{id}(id=${job.id})}">
 								<h5 th:text="${job.title}"></h5>
@@ -52,30 +35,31 @@
 
 						</div>
 						<a th:href="@{/job/viewEnterprise/{id}(id=${job.enterprise.getId()})}">
-
 							<h6 th:text="${job.enterprise.getName()}">Micrsoft Corp</h6>
 						</a>
-						<ul>
-							<li><i class="icofont-listing-box"></i>
-
+						<div class="row">
+							<!--
+							<div class="col-5">
+								<i class="icofont-listing-box"></i>
 								<span th:text="${job.jobCategory.getName()}">Category </span>
-							</li>
-							<li>
+							</div>
+							-->
+							<div class="col-6">
 								<i class="icofont-location-pin"></i>
 								<span th:text="${job.location.getName()}">Location </span>
-							</li>
-							<li>
+							</div>
+							<div class="col-6">
 								<i class="icofont-money"></i>
 								<span th:text="${job.getSalary()}"> </span>
-							</li>
+							</div>
+						</div>
 
-						</ul>
-					</div>
-					<div class="items-link items-link2 f-right small" th:data-id="${job.id}" th:user-login="${LoggedIn}">
+						</div>
+						<div class="items-link f-right small" th:data-id="${job.id}" th:user-login="${LoggedIn}">
 								<a href="#" class="job_apply default-border text-black circle arrow" title="">Apply</a>
 								<a href="#" class="job_save default-border text-black circle arrow" title="">Save</a>
 						</div>
-				</div>
+					</div>
 			</div>
 
 			<!--Pagination Start  -->

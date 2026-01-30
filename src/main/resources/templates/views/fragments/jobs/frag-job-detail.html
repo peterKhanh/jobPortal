@@ -22,12 +22,13 @@
 							</a>
 							<h5 th:text="${job.title}" />
 							<div class="row">
+								<!--
 								<div class="col">
 									<i class="icofont-listing-box"></i> <small>Lĩnh vực:</small>
 									<span th:text="${job.jobCategory.getName()}">Category </span>
 								</div>
+								-->
 								<div class="col">
-
 									<i class="icofont-calendar"></i> Hết hạn:
 									<span th:text="${#dates.format(job.expiredDate, 'dd/MM/yyyy')}">Expire date </span>
 								</div>
@@ -55,8 +56,7 @@
 
 			<div class="small-section-tittle pt-2">
 				<div class="row">
-
-					
+			
 					<div class="col-4 items-link items-link2 small" th:data-id="${job.id}" th:user-login="${LoggedIn}">
 					<!--	<a id="btn_addto_favour" class="default-border text-black circle arrow">Lưu việc làm</a>
 					--></div>

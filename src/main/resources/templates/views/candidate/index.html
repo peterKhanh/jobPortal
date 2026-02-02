@@ -10,33 +10,20 @@
 			<div class="row pt-15">
 				<div th:replace="~{views/candidate/profile-panel :: profile-panel}"></div>
 				<div class="col-xl-9 col-lg-9 col-md-8">
-					<div class="container p-2">
-						<!--Thông tin cá nhân-->
+					<div class="container">
 						<div class="row">
-							<div class="col-sm-12 d-flex justify-content-between align-items-center">
-								<div class="widget_title">
-									<p class="mb-2">Thông tin ứng viên</p>
-								</div>
+							<div class="col-12 normal-title">
+								<p class="mb-2">Thông tin ứng viên</p>
+							</div>
+						</div>
+						<div class="row mb-2">
+							<div class="col-12 text-right ">
 								<a th:href="@{/candidate/edituser/}" class="genric-btn primary-border circle arrow small">
 									Sửa</a>
 							</div>
-							<!--		<div class="col-sm-3">
-								<div class="card-body text-center">
-
-									<img th:if="${loggedUser.avata == null}"
-										src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-										alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
-
-									<img th:if="${loggedUser.avata}" id="user_image"
-										th:src="@{'/upload/user/'+ ${loggedUser.avata}}"
-										class="rounded-circle img-fluid" width="150px" height="160">
-
-									<div>
-										<a th:href="@{'/upload/user/'+ ${loggedUser.avata}}"><span
-												class="text-muted mb-0">Xem</span></a>
-									</div>
-								</div>
-							</div>-->
+						</div>
+						<!--Thông tin cá nhân-->
+						<div class="row">
 							<div class="col-sm-12 border">
 								<ul class="list-group list-group-flush rounded-3">
 									<li class="list-group-item d-flex justify-content-between align-items-center p-2">

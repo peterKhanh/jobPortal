@@ -59,8 +59,6 @@ public class HomeController {
 	@Autowired
 	private BlogCateRepository blogCateRepository;
 	@Autowired
-	private CategoryRepository cateRepository;
-	@Autowired
 	private UserService userService;
 	
 	@Autowired

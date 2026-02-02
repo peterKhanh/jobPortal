@@ -1,18 +1,20 @@
 package com.lifesupport;
 
 public class ConstantsClass {
-	   public static final String APPLICATION_NAME = "Job Application";
+	   public static final String APPLICATION_NAME = "JobFinder";
 	   public static final int VERSION_CODE = 1;
 	   
 	   public static final String CONST_DEFAULT_IMAGE_UPLOAD = "public/upload/default.png";
-
-	   
 	   
 	   public static final int CONST_NUMBER_ROW_PER_PAGE_IN_JOB_LIST_BACKEND = 10;
 	   public static final int CONST_NUMBER_ROW_PER_PAGE_IN_ENTERPRISE_LIST_BACKEND = 10;
+	   public static final int CONST_NUMBER_ROW_PER_PAGE_IN_ENTERPRISE_LIST_FRONTEND = 15;
+
+
 	   public static final int CONST_NUMBER_ROW_PER_PAGE_IN_USER_LIST_BACKEND = 10;
 	   
 	   public static final int CONST_NUMBER_JOB_PER_PAGE_IN_FRONTEND = 10;
+	   public static final int CONST_NUMBER_BLOG_PER_PAGE_IN_FRONTEND = 12;
 
 //	   Enterprise Upload path 
 	   public static final String CONST_ENTERPRISE_UPLOAD_PATH = "public/upload/enterprise/";

@@ -1,0 +1,92 @@
+<div id="featureContainer" th:fragment="frag-enterprise-list">
+
+
+	<div class="container">
+		<!-- Section Tittle -->
+		
+  <div class="row  mt-2">
+			<div class="col-lg-6">
+				<div class="normal-title">
+					<h5> Danh sách doanh nghiệp</h5>
+				</div>
+			</div>
+			
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-xl-4" th:each="enterprise: ${listEnterprise}">
+				<!-- single-job-content -->
+				<div class="card single-job-items p-2 mt-2">
+					<div class="row">
+							<div class="col-2 text-center">	
+							<img th:if="${enterprise.getDefaultLogo}==true" th:src="@{'/upload/default.png'}" alt="..."
+						width="50">	
+											<img th:unless="${enterprise.getDefaultLogo}==true"
+						th:src="@{'/upload/enterprise/'+ ${enterprise.getLogoName}}" style="width: 50px; height: 50px;"
+						alt="">
+
+						</div>
+
+							<div class="col-10">
+					<div class="job-items pd-10">
+						<div class="job-tittle">
+							<div class="job-tittle">
+								
+							</div>
+							<a th:href="@{/job/viewEnterprise/{id}(id=${enterprise.getId()})}">
+
+								<h6 th:text="${enterprise.getName()}">Micrsoft Corp</h6>
+							</a>
+							<ul>
+								<li>
+									<i class="icofont-location-pin"></i>
+									
+								</li>
+								<li>
+									<i class="icofont-money"></i>
+									
+								</li>
+							</ul>
+						</div>
+
+					</div>	</div>
+
+					</div>
+				
+				</div>
+			</div>
+		</div>
+
+
+		<!--Pagination Start  -->
+		<div class="pagination-area pt-2 pb-10 text-center" th:if="${totalPage > 0}">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-12">
+						<div class="single-wrap d-flex justify-content-center">
+							<nav aria-label="Page navigation example">
+								<ul class="pagination justify-content-start">
+
+									<li class="page-item" th:if="${currentPage > 1}">
+										<a class="page-link" th:href="@{'?pageNo='+${currentPage-1}}">
+											<span class="ti-angle-left"></span></a>
+									</li>
+									<li class="page-item" th:each="i:${#numbers.sequence(1,totalPage)}"
+										th:classappend="${currentPage == i ? 'active':''}">
+										<a class="page-link" th:text="${i}" th:href="@{'?pageNo='+${i}}"></a>
+									</li>
+
+									<li class="page-item" th:if="${currentPage < totalPage}">
+										<a class="page-link" th:href="@{'?pageNo='+${currentPage+1}}"><span
+												class="ti-angle-right"></span></a>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--Pagination End  -->
+
+
+	</div>

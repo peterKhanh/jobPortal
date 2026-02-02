@@ -10,8 +10,11 @@ public interface EnterService {
 	public List<Enterprise> searchEnterprise(String keyword);
 
 	//Paging
-		Page<Enterprise> getAll(Integer pageNo);
-		Page<Enterprise> searchEnterprise(String keyword, Integer pageNo);
-		Page<Enterprise> getAllByType(Integer pageNo, Integer industrialTypeId);
+	Page<Enterprise> getAll(Integer pageNo);
+	Page<Enterprise> searchEnterprise(String keyword, Integer pageNo);
+	Page<Enterprise> getAllByType(Integer pageNo, Integer industrialTypeId);
+
+
+	Page<Enterprise> getEnterpriseList(Integer pageNo);
 
 }

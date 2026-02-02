@@ -39,22 +39,13 @@ public class Tastimonial {
 		super();
 	}
 
-
-
-
 	public String getSubTitle() {
 		return subTitle;
 	}
 
-
-
-
 	public void setSubTitle(String subTitle) {
 		this.subTitle = subTitle;
 	}
-
-
-
 
 	public Tastimonial(Integer id, String title, String subTitle, String comment, Date createAt, Date updateAt,
 			String fileName, Boolean status) {
@@ -68,9 +59,6 @@ public class Tastimonial {
 		this.fileName = fileName;
 		this.status = status;
 	}
-
-
-
 
 	public Integer getId() {
 		return id;
@@ -140,7 +128,5 @@ public class Tastimonial {
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
-
-	
 	
 }

@@ -23,7 +23,6 @@ public class UserRole {
 	@JoinColumn(name = "roleId",referencedColumnName = "id")
 	private Role role;
 	public UserRole() {
-		// TODO Auto-generated constructor stub
 	}
 	public UserRole(Long id, User user, Role role) {
 		super();

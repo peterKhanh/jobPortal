@@ -29,7 +29,7 @@ public class BlogServiceIplm implements BlogService {
 	private BlogCateRepository blogcateRepo;
 	
 	// Lấy giá trị config từ file application.properties
-	int number_of_item_perpage = ConstantsClass.CONST_NUMBER_JOB_PER_PAGE_IN_FRONTEND;
+	int number_of_item_perpage = ConstantsClass.CONST_NUMBER_BLOG_PER_PAGE_IN_FRONTEND;
 
 	
 	@Override

@@ -36,7 +36,7 @@ public class UserServiceIpml implements UserService {
 //	@Autowired
 //	private BCryptPasswordEncoder encodeM;
 
-	   int number_of_item_perpage = ConstantsClass.CONST_NUMBER_ROW_PER_PAGE_IN_USER_LIST_BACKEND;
+	int number_of_item_perpage = ConstantsClass.CONST_NUMBER_ROW_PER_PAGE_IN_USER_LIST_BACKEND;
 
 
 	@Override

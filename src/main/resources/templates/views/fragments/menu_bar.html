@@ -19,16 +19,26 @@
 								<nav class="d-none d-lg-block">
 									<ul id="navigation">
 										<li><a href="/">Trang chủ</a></li>
-										<li><a href="#">Công ty</a>
+										<li><a href="/enter">Công ty</a>
 											<ul class="submenu">
-												<p th:each="blogcate: ${blogcates}">
 													<li>
-														<a th:href="@{/blog/blogbycate/{id}(id=${blogcate.id})}" th:text="${blogcate.name}" />
+														<a  >Nổi bật</a>
 													</li>
-												</p>
+													<li>
+														<a >Tài chính</a>
+													</li>
+													<li>
+														<a >Xây dựng</a>
+													</li>
+													<li>
+														<a >Công nghệ</a>
+													</li>
+													<li>
+														<a >Y tế - Giáo dục</a>
+													</li>
 											</ul>
 										</li>
-										<li><a href="/blog">Tư vấn</a>
+										<li><a href="/blog">Cẩm nang tìm việc</a>
 											<ul class="submenu">
 												<p th:each="blogcate: ${blogcates}">
 													<li>

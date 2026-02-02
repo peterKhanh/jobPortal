@@ -42,6 +42,7 @@ public class Profile {
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "MM/dd/yyyy hh:mm")
 	private Date updateAt;
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "MM/dd/yyyy hh:mm")
 	private Date approvedAt;

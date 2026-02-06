@@ -79,8 +79,8 @@ public class EnterController {
 		List<JobCategory> lists = jobCateRepo.findAllPopularCate()	;
 		model.addAttribute("lists", lists);
 
-		List<Location> locations = locationRepo.findAllByActive();
-		model.addAttribute("locations", locations);
+		//List<Location> locations = locationRepo.findAllByActive();
+		//model.addAttribute("locations", locations);
 //		List<WorkingModel> workingModels = workingModelRepo.findAllByActive();
 //		model.addAttribute("workingModels", workingModels);
 	}

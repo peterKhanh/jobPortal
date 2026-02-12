@@ -5575,7 +5575,7 @@ del {
 .header-area .main-menu ul li a {
 	color: #252b60;
 	font-weight: 500;
-	padding: 30px 20px;
+	padding: 10px 20px;
 	font-family: "Barlow", sans-serif;
 	display: block;
 	font-size: 16px;
@@ -5588,13 +5588,13 @@ del {
 
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
 	.header-area .main-menu ul li a {
-		padding: 30px 20px
+		padding: 10px 20px
 	}
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
 	.header-area .main-menu ul li a {
-		padding: 30px 13px
+		padding: 10px 13px
 	}
 }
 
@@ -5653,7 +5653,7 @@ del {
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
 	.header-sticky.sticky-bar.sticky .main-menu ul>li>a {
-		padding: 30px 13px
+		padding: 10px 13px
 	}
 }
 

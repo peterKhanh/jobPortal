@@ -267,8 +267,7 @@ public class UserController {
 	 */
 
 	@PostMapping("/admin/add-user")
-	public String save(@ModelAttribute User user) {
-		
+	public String save(@ModelAttribute User user) {	
 
 		user.setPassWord(bCryptPasswordEncoder.encode(user.getPassWord()));
 		if (this.userService.create(user)) {

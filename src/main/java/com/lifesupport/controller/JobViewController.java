@@ -1,6 +1,7 @@
 package com.lifesupport.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +28,16 @@ import com.lifesupport.service.CategoryService;
 import com.lifesupport.service.JobService;
 import com.lifesupport.service.UserService;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
+
 @Controller
 @RequestMapping("/job")
 public class JobViewController {
+	EntityManager em;
+
 	@Autowired
 	private CategoryService categoryService;
 	@Autowired
@@ -54,7 +62,8 @@ public class JobViewController {
 
 	@GetMapping("")
 	public String getAllJobSearchAndPaging(Model model, @Param("keyword") String keyword,
-			@Param("location") Location location, @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
+	@Param("location") Integer location,
+			 @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
 			Principal principal) {
 
 		userService.checkLogin(model, principal);
@@ -67,13 +76,15 @@ public class JobViewController {
 		if (keyword != null) {
 			jobs = jobService.searchJob(keyword, pageNo);
 			model.addAttribute("keyword", keyword);
-			System.out.println("keyword:" + keyword);
 		}
+		
+	
 
-//		if (location != null) {
-//			System.out.println("Location search:" + location.getName());
-//			model.addAttribute("location", location);
-//
+		if (location != null) {
+			System.out.println("location_id:" + location);
+			model.addAttribute("location_id", location);
+		}
+ 	
 //			
 //		}
 		model.addAttribute("totalPage", jobs.getTotalPages());
@@ -91,6 +102,76 @@ public class JobViewController {
 
 		return "views/job/view-job-search";
 	}
+
+
+
+	@GetMapping("/search")
+	public String getAllJobSearchAndPaging_(Model model, @Param("keyword") String keyword,
+	@Param("location") Integer location,
+			 @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
+			Principal principal) {
+
+		userService.checkLogin(model, principal);
+
+
+		List<Location> locations = locationRepo.findAllByActive();
+		model.addAttribute("locations", locations);
+
+
+
+		if (keyword.length() > 0) {
+			model.addAttribute("keyword", keyword);
+			System.out.println("keyword:" + keyword);
+		}
+		
+
+		if (location != null) {
+			System.out.println("location_id:" + location);
+			model.addAttribute("location_id", location);
+		}
+
+
+		if (keyword.length() > 0  & location != null) {
+			Location locate = 	locationRepo.findById(location).get();
+			Page<Job> jobs = jobService.getAllApprovedJobByKeywordAndLocation(pageNo, keyword, locate);
+			model.addAttribute("totalPage", jobs.getTotalPages());
+			model.addAttribute("currentPage", pageNo);
+			model.addAttribute("jobs", jobs);
+
+		}else if (location != null & keyword.length() == 0 ) {
+
+			Location locate = 	locationRepo.findById(location).get();
+			Page<Job> jobs = jobService.getAllApprovedJobByLocation(pageNo, locate);
+			model.addAttribute("totalPage", jobs.getTotalPages());
+			model.addAttribute("currentPage", pageNo);
+			model.addAttribute("jobs", jobs);
+
+		}else if (location == null & keyword.length() > 0 ) {
+			Page<Job> jobs = jobService.getAllApprovedJobByKeyword(pageNo, keyword);
+			model.addAttribute("totalPage", jobs.getTotalPages());
+			model.addAttribute("currentPage", pageNo);
+			model.addAttribute("jobs", jobs);
+		}else{
+			Page<Job> jobs = jobService.getAllApprovedJob(pageNo);
+			model.addAttribute("totalPage", jobs.getTotalPages());
+			model.addAttribute("currentPage", pageNo);
+			model.addAttribute("jobs", jobs);
+		}
+
+
+
+		
+
+		List<Job> recentjobs = jobRepo.findTop10ByOrderByCreateAtDesc();
+		model.addAttribute("recentjobs", recentjobs);
+
+		List<JobCategory> listsCate123 = jobCateRepo.findAllPopularCate();
+		model.addAttribute("listsCate123", listsCate123);
+
+		return "views/job/view-job-search";
+	}
+
+
 
 
 	@GetMapping("/view-cate-search")

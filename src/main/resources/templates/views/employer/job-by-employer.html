@@ -19,16 +19,8 @@
 						<div class="widget_title">
 							<p class="mb-2">Công việc đang tuyển</p>
 						</div>
-								<!--Danh sách CV - Hồ sơ-->
-								
-
-
-								
-								
-								<div class="row" style="display: block;">
-									<div class="col-sm-12 ">
-
-
+						<div class="row" style="display: block;">
+							<div class="col-sm-12 ">
 				<div class="card single-job-items p-2 mt-2" th:each="job: ${jobApplyByEmployer}">
 					<div class="job-items pd-4 joblist" th:data-id="${job.id}" th:user-login="${LoggedIn}">
 
@@ -43,7 +35,7 @@
 							</a>
 						</div>
 
-						<div class="job-tittle">
+						<div class="job-tittle p-2">
 							<a th:href="@{/job/viewjob/{id}(id=${job.id})}">
 								<h6 th:text="${job.getTitle()}" />
 							</a>

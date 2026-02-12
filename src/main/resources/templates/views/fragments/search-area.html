@@ -19,17 +19,18 @@
 					</div>
 				</div>
 			</div>
-			<form action="/job" class="search-box">
+			<form action="/job/search" class="search-box">
 				<div class="input-form">
 					<input type="text" name="keyword" th:value="${keyword}" placeholder="Tìm kiếm: tiêu đề, công ty, địa điểm, khu vực">
 				</div>
 				
 				<div class="select-form">
 					<div class="select-items">
-						<select name="location" id="location">
+						<select name="location" id="location" >
 							<option value="">Địa điểm làm việc </option>
-							<option th:each="location : ${locations}" th:value="${location.id}"
-								th:text="${location.name}">
+							<option th:each="loca : ${locations}" th:value="${loca.id}"
+								th:text="${loca.name}"
+								 th:selected="${loca.id == location_id}">
 							</option>
 						</select>
 					</div>

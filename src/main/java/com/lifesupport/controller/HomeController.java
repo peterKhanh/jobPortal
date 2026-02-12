@@ -26,7 +26,6 @@ import com.lifesupport.models.Location;
 import com.lifesupport.models.MailInfo;
 import com.lifesupport.models.Tastimonial;
 import com.lifesupport.repository.BlogRepository;
-import com.lifesupport.repository.CategoryRepository;
 import com.lifesupport.repository.BlogCateRepository;
 
 import com.lifesupport.repository.EnterpriseRepository;
@@ -105,15 +104,16 @@ public class HomeController {
 	}
 
 	 @RequestMapping(value= {"/default"}, method = RequestMethod.GET)
-	    public String defaultAfterLogin() {
+	    public String defaultAfterLogin(Model model) {
 	        Collection<? extends GrantedAuthority> authorities;
 	        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	        authorities = auth.getAuthorities();
 	        String myRole = authorities.toArray()[0].toString();
 	        String admin = "ADMIN";
+
 	        if (myRole.equals(admin)) {
 	            return "redirect:/admin";
-	        }else if (myRole.equals("USER")) {
+	        }else if (myRole.equals("EMPLOYER")) {
 	            return "redirect:/employer/";
 	        }else if (myRole.equals("CANDIDATE")) {
 	            return "redirect:/candidate/";

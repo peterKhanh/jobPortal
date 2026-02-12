@@ -1,14 +1,20 @@
 package com.lifesupport.service;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -131,14 +137,17 @@ public class UserServiceIpml implements UserService {
 
 		if(principal != null) {
 			String userName = principal.getName();
-			User loggedUser = this.findByUserName(userName);
-			
-			System.out.println("Username is: " + userName);
-			System.out.println("FullName is: " + loggedUser.getFullName());
-
+			User loggedUser = this.findByUserName(userName);		
 			model.addAttribute("loggedUser", loggedUser);
+			Collection<? extends GrantedAuthority> authorities;
+	        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	        authorities = auth.getAuthorities();
+	        String myRole = authorities.toArray()[0].toString();
+			System.out.println("My Roles: " + myRole);
+			model.addAttribute("myRole", myRole);
 			LoggedIn = "LOGIN";
 			logged = true;		      
+		
 		}else {
 			logged = false;
 			LoggedIn = "NOT_LOGIN";
@@ -152,7 +161,7 @@ public class UserServiceIpml implements UserService {
 		
 		Pageable pageable = PageRequest.of(pageNo-1, number_of_item_perpage);
 		  
-		  Role role = repoRole.findByName("CANDIDATE"); 
+		Role role = repoRole.findByName("CANDIDATE"); 
 		 // UserRole userRole = repoUserRole.findByRole(roleUser);
 		 Long roleId = role.getId();
 		 return userRepository.findByUserRoles(pageable, roleId);
@@ -165,9 +174,6 @@ public class UserServiceIpml implements UserService {
 		  
 		return userRepository.GetAllCandidateApplyToEnterprise(pageable, enterpriseId);
 	}
-
-
-
 
 
 	@Override

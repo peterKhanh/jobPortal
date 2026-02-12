@@ -43,7 +43,7 @@ public class AdminController {
 			User loggedUser = repoUser.findByUserName(userName);
 			System.out.println("Current Logged in FullName is: " + loggedUser.getFullName());
 			model.addAttribute("loggedUser", loggedUser);
-			System.out.println("HOme 1");
+			System.out.println("Home 1");
 
 		} else {
 			System.out.println("HOme 1");

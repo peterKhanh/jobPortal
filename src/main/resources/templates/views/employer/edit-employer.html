@@ -8,14 +8,8 @@
 			<div class="row  pt-15">
 				<div th:replace="~{views/employer/profile-panel :: profile-panel}"/>
 				<div class="col-xl-9 col-lg-9 col-md-8">
-					<div class="container p-2">
-						<!--Thông tin cá nhân-->
-						<div class="row">
-							<div class="col-sm-12 d-flex justify-content-between align-items-center" th:switch="${employer}">
-								<div class="widget_title">
-									<p class="mb-2">Thông nhà tuyển dụng</p>
-								</div>
-							</div>
+						<div class="normal-title">
+							<p class="mb-2">Thông nhà tuyển dụng</p>
 						</div>
 						<div class="card-body ">
 							<form id="frm_enterprise" enctype="multipart/form-data" th:action="@{/employer/edit-employer}" th:object="${employer}" method="POST">
@@ -97,7 +91,6 @@
 								<button type="submit" id="btn_save" class="btn btn-primary">Lưu thông tin</button>
 							</div>
 						</form>
-					</div>
 				</div>
 			</div>
 		</div>

@@ -6,7 +6,6 @@ import org.springframework.data.domain.Page;
 
 import com.lifesupport.models.Category;
 
-
 public interface CategoryService {
 	public List<Category> getAll();
 	public Boolean create(Category category);

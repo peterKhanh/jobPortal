@@ -4,107 +4,102 @@
 <head th:replace="~{views/fragments/head :: head}"></head>
 
 <body>
-		<!-- Header Start -->
+	<!-- Header Start -->
 	<header th:replace="~{views/fragments/menu_bar_2 :: menu_bar_2}"> </header>
 
 	<main>
 
 		<!--Begin-->
 
-		<div class=" container py-2">
-			<div class="row pt-15">
+		<div class=" container py-2 ">
+			<div class="row pt-15 ">
 				<div th:replace="~{views/employer/profile-panel :: profile-panel}"></div>
 				<div class="col-xl-9 col-lg-9 col-md-8">
-					<div class="container p-2">
-						<div class="widget_title">
-							<p class="mb-2">Ứng viên đã ứng tuyển</p>
-						</div>
-						
+					<div class="normal-title">
+						<p class="mb-2">Ứng viên đã ứng tuyển</p>
+					</div>
+
 					<div class="card-body" th:if="${message == 'null_enterprise'}">
 						<!-- Trang Nhà Tuyển dụng -->
-								<h6>Chua update Employer</h6>
-
-					</div>		
-
-						<!--Danh sách CV - Hồ sơ-->		
-						<div class="card-body" th:unless="${message == 'null_enterprise'}">
-
-								<table class="table table-bordered">
-									<thead>
-										<thead>
-											<tr>
-												<th style="width: 27.794263105835803%;">Người sử dụng</th>
-												<th style="width: 10.62809099901088%;">Email</th>
-												<th style="width: 13.748763600395646%;">Trạng thái</th>
-												<th class="text-center" style="width: 16.61721068249258%;">Hành động
-												</th>
-											</tr>
-										</thead>
-									<tbody>
-										<tr th:each="user :${users}">
-											<td style="width: 40%;">
-												<div class="row">
-													<div class="col-6">
-														<p th:text="${user.fullName}"></p>
-													</div>
-
-
-												</div>
+						<h6>Chua update Employer</h6>
+					</div>
 
 
 
-											</td>
-											<td th:text="${user.email}">+1 (247) 849-6968</td>
+					<div class="row" th:unless="${message == 'null_enterprise'}">
+						<div class="col-sm-12 ">
 
-											<td th:if="${user.enabled}"> <span class="label label-success">Hiện
-													thị</span>
-											</td>
-											<td th:if="${!user.enabled}"> <span class="label label-danger">Đang
-													ẩn</span>
-											</td>
+							<div class="list-group" th:each="user :${users}">
 
-
-											
-
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<!--Pagination Start  -->
-							<div class="pagination-area pt-2 pb-10 text-center" th:if="${totalPage > 0}">
-								<div class="container">
+								<a href="#" class="list-group-item list-group-item-action py-2 mb-2"
+									aria-current="true">
 									<div class="row">
-										<div class="col-xl-12">
-											<div class="single-wrap d-flex justify-content-center">
-												<nav aria-label="Page navigation example">
-													<ul class="pagination justify-content-start">
-
-														<li class="page-item" th:if="${currentPage > 1}">
-															<a class="page-link" th:href="@{'?pageNo='+${currentPage-1}}">
-																<span class="ti-angle-left"></span></a>
-														</li>
-														<li class="page-item" th:each="i:${#numbers.sequence(1,totalPage)}"
-															th:classappend="${currentPage == i ? 'active':''}">
-															<a class="page-link" th:text="${i}" th:href="@{'?pageNo='+${i}}"></a>
-														</li>
-
-														<li class="page-item" th:if="${currentPage < totalPage}">
-															<a class="page-link" th:href="@{'?pageNo='+${currentPage+1}}"><span
-																	class="ti-angle-right"></span></a>
-														</li>
-													</ul>
-												</nav>
-											</div>
+										<div class="col-sm-2">
+											<img th:if="${user.avata != null}" 
+											class="img-thumbnail" th:src="@{'/upload/user/'+ ${user.avata}}"
+												style="width: 80px; height: 80px;" alt="">
 										</div>
+										<div class="col-sm-10">
+											<div class="d-flex w-100 justify-content-between">
+												<h5 class="mb-1" th:text="${user.fullName}">John Doe</h5>
+												<small>3 days ago</small>
+											</div>
+											<small class="text-muted" th:text="${user.email}">j.doe@example.com</small>
+											<p class="mb-1">Software Developer at
+												https://getbootstrap.com/docs/5.3/components/list-group/
+											</p>
+											<p class="mb-1">
+											<div class="row">
+												<div class="col-4">Kinh nghiem</div>
+												<div class="col-8">Địa chỉ</div>
+											</div>
+
+											</p>
+
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+
+
+					<!--Pagination Start  -->
+					<div class="pagination-area pt-2 pb-10 text-center" th:if="${totalPage > 0}">
+						<div class="container">
+							<div class="row">
+								<div class="col-xl-12">
+									<div class="single-wrap d-flex justify-content-center">
+										<nav aria-label="Page navigation example">
+											<ul class="pagination justify-content-start">
+
+												<li class="page-item" th:if="${currentPage > 1}">
+													<a class="page-link" th:href="@{'?pageNo='+${currentPage-1}}">
+														<span class="ti-angle-left"></span></a>
+												</li>
+												<li class="page-item" th:each="i:${#numbers.sequence(1,totalPage)}"
+													th:classappend="${currentPage == i ? 'active':''}">
+													<a class="page-link" th:text="${i}"
+														th:href="@{'?pageNo='+${i}}"></a>
+												</li>
+
+												<li class="page-item" th:if="${currentPage < totalPage}">
+													<a class="page-link" th:href="@{'?pageNo='+${currentPage+1}}"><span
+															class="ti-angle-right"></span></a>
+												</li>
+											</ul>
+										</nav>
 									</div>
 								</div>
 							</div>
-							<!--Pagination End  -->
-																<!--Hết Danh sách CV - Hồ sơ-->
-					</div> 
-
+						</div>
+					</div>
+					<!--Pagination End  -->
+					<!--Hết Danh sách CV - Hồ sơ-->
 				</div>
+
 			</div>
+		</div>
 		</div>
 
 		<!--End-->

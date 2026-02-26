@@ -22,16 +22,6 @@
 
 				<!-- Left Content -->
 				<div class="col-xl-8 col-lg-8">
-	<!-- Section Tittle -->
-			<!--
-			<div class="row">
-				<div class="col-lg-6">
-						<div class="normal-title">Kết quả tìm kiếm</div>
-
-				</div>
-			
-			</div>
-			-->
 					<!-- Featured_job_start -->
 					<div class="featured-job-area">
 						<div class="normal-title mt-3">Kết quả tìm kiếm</div>
@@ -97,7 +87,7 @@
 
 													<li class="page-item" th:if="${currentPage > 1}">
 														<a class="page-link"
-															th:href="@{${keyword != null && keyword != ''?'?keyword='+keyword+'&':'?'}+'pageNo='+${currentPage-1}}">
+															th:href="@{${keyword != null && keyword != ''?'?keyword='+keyword+'&':'?keyword=&'}+${location_id != null && location_id != ''?'location='+location_id+'&':'&location='}+'&pageNo='+${currentPage-1}}">
 															<span class="ti-angle-left"></span></a>
 													</li>
 
@@ -105,13 +95,13 @@
 													<li class="page-item" th:each="i:${#numbers.sequence(1,totalPage)}"
 														th:classappend="${currentPage == i ? 'active':''}">
 														<a class="page-link" th:text="${i}"
-															th:href="@{${keyword != null && keyword != ''?'?keyword='+keyword+'&':'?'}+'pageNo='+${i}}"></a>
+															th:href="@{${keyword != null && keyword != ''?'?keyword='+keyword+'&':'?keyword=&'}+${location_id != null && location_id != ''?'location='+location_id+'&':'&location='}+'&pageNo='+${i}}"></a>
 													</li>
 
 
 													<li class="page-item" th:if="${currentPage < totalPage}">
 														<a class="page-link"
-															th:href="@{${keyword != null && keyword != ''?'?keyword='+keyword+'&':'?'}+'pageNo='+${currentPage+1}}"><span
+															th:href="@{${keyword != null && keyword != ''?'?keyword='+keyword+'&':'?keyword=&'}+${location_id != null && location_id != ''?'location='+location_id+'&':'&location='}+'&pageNo='+${currentPage+1}}"><span
 																class="ti-angle-right"></span></a>
 													</li>
 												</ul>

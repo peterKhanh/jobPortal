@@ -23,7 +23,6 @@ public interface JobRepository extends JpaRepository<Job, Long> {
 	@Query("SELECT c FROM Job c WHERE c.jobCategory = ?1 AND c.expiredDate >=  DATE(NOW()) AND c.status ='APPROVED' ORDER BY c.createAt DESC")
 	Page<Job> findApprovedJobByCategory(JobCategory jobCategory, Pageable pageable);
 
-
 	// Begin Search Job
 
 	// Find All Approved Job 

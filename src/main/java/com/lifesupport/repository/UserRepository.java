@@ -39,7 +39,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	@Query(value = "SELECT u.id, u.fullname, u.userName, u.address , u.email, u.password , u.telephone , u.gender , u.enabled, u.avata   from users u , users_roles ur WHERE u.id = ur.user_id AND ur.role_id = ?1",  nativeQuery = true)
 	Page<User> findByUserRoles(Pageable pageable, Long roleId );
 
-
 	
 	// Lay danh sach User moi ung tuyn
 	@Query(value = "SELECT u.id, u.fullname, u.userName, u.address , u.avata, u.email, u.password , u.telephone , u.gender , u.enabled  from users u , job j, jobapply ja WHERE u.id = ja.user_id AND j.id = ja.job_id ORDER BY ja.apply_date DESC"

@@ -119,7 +119,7 @@ public class JobViewController {
 
 
 
-		if (keyword.length() > 0) {
+		if (keyword != "") {
 			model.addAttribute("keyword", keyword);
 			System.out.println("keyword:" + keyword);
 		}
@@ -131,14 +131,14 @@ public class JobViewController {
 		}
 
 
-		if (keyword.length() > 0  & location != null) {
+		if (keyword != ""  & location != null) {
 			Location locate = 	locationRepo.findById(location).get();
 			Page<Job> jobs = jobService.getAllApprovedJobByKeywordAndLocation(pageNo, keyword, locate);
 			model.addAttribute("totalPage", jobs.getTotalPages());
 			model.addAttribute("currentPage", pageNo);
 			model.addAttribute("jobs", jobs);
 
-		}else if (location != null & keyword.length() == 0 ) {
+		}else if (location != null & keyword == "" ) {
 
 			Location locate = 	locationRepo.findById(location).get();
 			Page<Job> jobs = jobService.getAllApprovedJobByLocation(pageNo, locate);
@@ -146,7 +146,7 @@ public class JobViewController {
 			model.addAttribute("currentPage", pageNo);
 			model.addAttribute("jobs", jobs);
 
-		}else if (location == null & keyword.length() > 0 ) {
+		}else if (location == null & keyword != "" ) {
 			Page<Job> jobs = jobService.getAllApprovedJobByKeyword(pageNo, keyword);
 			model.addAttribute("totalPage", jobs.getTotalPages());
 			model.addAttribute("currentPage", pageNo);
@@ -158,9 +158,7 @@ public class JobViewController {
 			model.addAttribute("jobs", jobs);
 		}
 
-
-
-		
+	
 
 		List<Job> recentjobs = jobRepo.findTop10ByOrderByCreateAtDesc();
 		model.addAttribute("recentjobs", recentjobs);

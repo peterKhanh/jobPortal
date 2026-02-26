@@ -42,27 +42,27 @@ public class JobServiceIplm implements JobService {
 
 	@Override
 	public Page<Job> getAllApprovedJob(Integer pageNo) {
-		Pageable pageable = PageRequest.of(pageNo - 1, number_of_item_perpage, Sort.by("createAt").descending());
+		Pageable pageable = PageRequest.of(pageNo - 1, 2, Sort.by("createAt").descending());
 		return repository.findApprovedJob(pageable);
 	}
 
 	@Override
 	public Page<Job> getAllApprovedJobByKeyword(Integer pageNo, String keyword ) {
 		// TODO Auto-generated method stub
-		Pageable pageable = PageRequest.of(pageNo - 1, number_of_item_perpage, Sort.by("createAt").descending());
+		Pageable pageable = PageRequest.of(pageNo - 1, 2, Sort.by("createAt").descending());
 		return repository.findApprovedJobByKeyword(pageable, keyword);
 	}
 	@Override
 	public Page<Job> getAllApprovedJobByLocation(Integer pageNo, Location location) {
 		// TODO Auto-generated method stub
-		Pageable pageable = PageRequest.of(pageNo - 1, number_of_item_perpage, Sort.by("createAt").descending());
+		Pageable pageable = PageRequest.of(pageNo - 1, 2, Sort.by("createAt").descending());
 		return repository.findApprovedJobByLocation(location, pageable);
 	}
 	
 	@Override
 	public Page<Job> getAllApprovedJobByKeywordAndLocation(Integer pageNo, String keyword, Location location) {
 		// TODO Auto-generated method stub
-		Pageable pageable = PageRequest.of(pageNo - 1, number_of_item_perpage, Sort.by("createAt").descending());
+		Pageable pageable = PageRequest.of(pageNo - 1, 2, Sort.by("createAt").descending());
 		return repository.findApprovedJobByKeywordAndLocation(keyword, location, pageable);
 	}
 

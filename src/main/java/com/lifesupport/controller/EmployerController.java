@@ -85,7 +85,7 @@ public class EmployerController {
 	private JobRepository jobRepo;
 
 	@Autowired
-	private JobService  jobService;
+	private JobService jobService;
 
 	@Autowired
 	private RoleRepository repoRole;
@@ -97,15 +97,13 @@ public class EmployerController {
 
 	@Autowired
 	FilesStorageService storageService;
-	
+
 	@Autowired
 	MailService mailService;
 
-	
 	// Lấy giá trị CONST_USER_IMAGE_UPLOAD_PATH
 	String upload_path = ConstantsClass.CONST_USER_IMAGE_UPLOAD_PATH;
 
-	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -149,7 +147,6 @@ public class EmployerController {
 
 	}
 
-		
 //	Hiển thị màn hình sửa thông tin User
 	@GetMapping("/edit-user/")
 	public String viewEditUser(Model model, Principal principal) {
@@ -185,7 +182,7 @@ public class EmployerController {
 		if (!image.getOriginalFilename().isEmpty()) {
 			// Xoa File
 			Path imagePath = Paths.get(upload_path + updateUser.getAvata());
-			
+
 			try {
 				if (updateUser.getAvata() != null) {
 					System.out.println("Xoa File cũ " + updateUser.getAvata());
@@ -207,17 +204,13 @@ public class EmployerController {
 
 		return "redirect:/employer/account/";
 	}
-	
-	
-	
-	
-	
+
 // Kierm tra ten dang nhap
 	// Neu da ton tai => False
-	
+
 	@ResponseBody
 	@GetMapping("/checkUsername")
-	public Boolean checkUsername(Model model, @RequestParam("userName") String userName ) {
+	public Boolean checkUsername(Model model, @RequestParam("userName") String userName) {
 		System.out.println("User name: " + userName);
 		User user_check = repoUser.findByUserName(userName);
 
@@ -227,14 +220,13 @@ public class EmployerController {
 		} else {
 			return true;
 		}
-		
-		
+
 	}
 
 	/*
-	 * Kiểm tra Email khi đăng ký User
-	 * Nếu Email đã tồn tại => trả về True => Thông báo Email đã tồn tại
-	 */	
+	 * Kiểm tra Email khi đăng ký User Nếu Email đã tồn tại => trả về True => Thông
+	 * báo Email đã tồn tại
+	 */
 	@ResponseBody
 	@GetMapping("/checkemail")
 	public Boolean CheckUserEmail(Model model, @RequestParam("email") String email) {
@@ -245,10 +237,9 @@ public class EmployerController {
 			return false;
 		} else {
 			return true;
-		}	
+		}
 	}
 
-	
 	// Check password
 	// Neu Pass dung => true
 	@ResponseBody
@@ -289,7 +280,7 @@ public class EmployerController {
 		User logUser = repoUser.findById(user_id).get();
 		String pass_input_encode = bCryptPasswordEncoder.encode(newPassWord);
 		logUser.setPassWord(pass_input_encode);
-		repoUser.save(logUser);		
+		repoUser.save(logUser);
 		return "redirect:/employer/";
 	}
 
@@ -302,16 +293,13 @@ public class EmployerController {
 			String userName = principal.getName();
 			User loggedUser = repoUser.findByUserName(userName);
 			model.addAttribute("loggedUser", loggedUser);
-		 	loggedUser.getUserRoles();
-			
-			
+			loggedUser.getUserRoles();
+
 			return "views/employer/dashboard";
-		}else {
+		} else {
 			return "redirect:/logon/";
 		}
 	}
-
-	
 
 	@GetMapping("/account/")
 	public String viewAccount(Model model, Principal principal) {
@@ -328,13 +316,11 @@ public class EmployerController {
 			model.addAttribute("pro", profiles.size());
 			System.out.println("Profile: " + profiles);
 			return "views/employer/index";
-		}else {
+		} else {
 			return "redirect:/logon/";
 		}
 	}
 
-
-		
 	@GetMapping("/viewemployer/")
 	public String viewEmployer(Model model, Principal principal) {
 		userService.checkLogin(model, principal);
@@ -348,20 +334,20 @@ public class EmployerController {
 			Enterprise enterprise = enterpriseRepo.findByUser(loggedUser);
 			List<IndustrialType> industrialType = industrialTypeService.getAllActiveIndustrialType();
 			model.addAttribute("industrialType", industrialType);
-			
-			 if (enterprise == null) {
+
+			if (enterprise == null) {
 				model.addAttribute("employer", "NOTSET");
-			 }else {
+			} else {
 				model.addAttribute("user", loggedUser);
 				model.addAttribute("employer", enterprise);
-			 }
+			}
 
-			 return "views/employer/viewEmployer";
-		}else {
+			return "views/employer/viewEmployer";
+		} else {
 			return "redirect:/logon/";
 		}
 	}
-	
+
 //	Hiển thị màn hình them cong ty
 	@GetMapping("/add-employer/")
 	public String viewAddEmployer(Model model, Principal principal) {
@@ -369,32 +355,25 @@ public class EmployerController {
 		if (principal != null) {
 			String userName = principal.getName();
 			User loggedUser = repoUser.findByUserName(userName);
-			
+
 			Enterprise enterprise = enterpriseRepo.findByUser(loggedUser);
 
 			List<IndustrialType> industrialType = industrialTypeService.getAllActiveIndustrialType();
 			model.addAttribute("industrialType", industrialType);
-	
-			 if (enterprise == null) {
-				 System.out.println("enterprise:sdsdfsd "); 
+
+			if (enterprise == null) {
+				System.out.println("enterprise:sdsdfsd ");
 				model.addAttribute("employer", "NOTSET");
-			 }else {
-				 System.out.println("enterprise:OK "); 		 
+			} else {
+				System.out.println("enterprise:OK ");
 				model.addAttribute("user", loggedUser);
 				model.addAttribute("employer", enterprise);
-			 }
+			}
 		} else {
 			return "redirect:/logon/";
 		}
 		return "views/employer/add-employer";
 	}
-	
-	
-	
-
-	
-
-
 
 	@PostMapping("/add-employer")
 	public String addEmployer(Principal principal, @ModelAttribute Enterprise form) {
@@ -411,7 +390,7 @@ public class EmployerController {
 //			System.out.println(form.getWebsite());
 //			System.out.println(form.getIndustrialType());
 			Enterprise enterprise = new Enterprise();
-			
+
 			enterprise.setName(form.getName());
 			enterprise.setAddress(form.getAddress());
 			enterprise.setCreateAt(createAt);
@@ -421,7 +400,6 @@ public class EmployerController {
 			enterprise.setWebsite(form.getWebsite());
 			enterprise.setUser(loggedUser);
 			enterpriseRepo.save(enterprise);
-			
 
 		} else {
 			return "redirect:/logon/";
@@ -438,46 +416,42 @@ public class EmployerController {
 		if (principal != null) {
 			String userName = principal.getName();
 			User loggedUser = repoUser.findByUserName(userName);
-			
+
 			Enterprise enterprise = enterpriseRepo.findByUser(loggedUser);
 			List<IndustrialType> industrialType = industrialTypeService.getAllActiveIndustrialType();
 			model.addAttribute("industrialType", industrialType);
-						
-			 if (enterprise == null) {
-				 System.out.println("enterprise:sdsdfsd "); 
-			 }else {
-				System.out.println("enterprise:OK "); 		 
+
+			if (enterprise == null) {
+				System.out.println("enterprise:sdsdfsd ");
+			} else {
+				System.out.println("enterprise:OK ");
 				model.addAttribute("user", loggedUser);
 				model.addAttribute("employer", enterprise);
-			 }
+			}
 		} else {
 			return "redirect:/logon/";
 		}
 		return "views/employer/edit-employer";
 	}
-	
-	
-	
-		
 
 	@PostMapping("/edit-employer")
-	public String editEmployer(Principal principal,@RequestParam Long id, @ModelAttribute Enterprise form) {
+	public String editEmployer(Principal principal, @RequestParam Long id, @ModelAttribute Enterprise form) {
 		Date updateAt = new Date();
 		Boolean status = true;
 		if (principal != null) {
 			String userName = principal.getName();
 			User loggedUser = repoUser.findByUserName(userName);
-			
+
 			Enterprise enterprise = enterpriseRepo.findById(id).get();
-			
+
 			System.out.println(form.getName());
 			System.out.println(form.getAddress());
 			System.out.println(form.getIntroduction());
 			System.out.println(form.getNumberOfEmployee());
 			System.out.println(form.getWebsite());
 			System.out.println(form.getIndustrialType());
-	//		Enterprise enterprise = new Enterprise();
-			
+			// Enterprise enterprise = new Enterprise();
+
 			enterprise.setName(form.getName());
 			enterprise.setAddress(form.getAddress());
 			enterprise.setUpdateAt(updateAt);
@@ -486,8 +460,6 @@ public class EmployerController {
 			enterprise.setNumberOfEmployee(form.getNumberOfEmployee());
 			enterprise.setWebsite(form.getWebsite());
 			enterpriseRepo.save(enterprise);
-			
-
 
 		} else {
 			return "redirect:/logon/";
@@ -497,10 +469,6 @@ public class EmployerController {
 		return "redirect:/employer/viewemployer/";
 	}
 
-
-	
-	
-	
 //	Hiển thị màn hình them cong viec
 	@GetMapping("/add-job/")
 	public String viewAddJob(Model model, Principal principal) {
@@ -510,69 +478,71 @@ public class EmployerController {
 		if (principal != null) {
 			String userName = principal.getName();
 			User loggedUser = repoUser.findByUserName(userName);
-			
+
 			Enterprise enterprise = enterpriseRepo.findByUser(loggedUser);
 
 			List<IndustrialType> industrialType = industrialTypeService.getAllActiveIndustrialType();
 			model.addAttribute("industrialType", industrialType);
-	
-			 if (enterprise == null) {
+
+			if (enterprise == null) {
 				model.addAttribute("employer", "NOTSET");
-			 }else {
-				System.out.println("enterprise:OK "); 		 
+			} else {
+				System.out.println("enterprise:OK ");
 				model.addAttribute("user", loggedUser);
 				model.addAttribute("employer", enterprise);
-			 }
+			}
 		} else {
 			return "redirect:/logon/";
 		}
 		return "views/employer/add-job";
 	}
-	
-	
+
 	@PostMapping("/add-job")
 	public String addJob(Model model, @RequestParam Long employer_id, @ModelAttribute Job form) {
 		Date createAt = new Date();
 		Enterprise enterprise = enterpriseRepo.findById(employer_id).get();
-		System.out.println("employer_id: "+ employer_id.toString());
+		System.out.println("employer_id: " + employer_id.toString());
 
-		
-		Job job = new Job(); 
+		Job job = new Job();
 		job.setEnterprise(enterprise);
-		job.setCreateAt(createAt); job.setTitle(form.getTitle());
+		job.setCreateAt(createAt);
+		job.setTitle(form.getTitle());
 		job.setJobCategory(form.getJobCategory());
 		job.setWorkingModel(form.getWorkingModel());
 		job.setNumberOfRecruitement(form.getNumberOfRecruitement());
 		job.setYearOfExperience(form.getYearOfExperience());
 		job.setTrialTime(form.getTrialTime());
-		job.setWorkingTime(form.getWorkingTime()); job.setSalary(form.getSalary());
+		job.setWorkingTime(form.getWorkingTime());
+		job.setSalary(form.getSalary());
 		job.setLocation(form.getLocation());
 		job.setWorkingAddress(form.getWorkingAddress());
 		job.setWorkingAddress(form.getWorkingAddress());
-		
-		job.setGender(form.getGender()); job.setAgeRange(form.getAgeRange());
+
+		job.setGender(form.getGender());
+		job.setAgeRange(form.getAgeRange());
 		job.setExpiredDate(form.getExpiredDate());
 		job.setReponsibility(form.getReponsibility());
-		job.setDescription(form.getDescription()); job.setBenefit(form.getBenefit());
-		job.setStatus(form.getStatus()); jobRepo.save(job);
-		return "redirect:job-by-employer/"; 
-		
+		job.setDescription(form.getDescription());
+		job.setBenefit(form.getBenefit());
+		job.setStatus(form.getStatus());
+		jobRepo.save(job);
+		return "redirect:job-by-employer/";
+
 	}
-		
+
 //	Hiển thị màn hình them cong viec
 	@GetMapping("/edit-job/{id}")
 	public String vieweditJob(Model model, @PathVariable("id") Long id, Principal principal) {
 		userService.checkLogin(model, principal);
 		getAllList(model);
-		System.out.println("enterprise:OK " + id.toString()); 		 
+		System.out.println("enterprise:OK " + id.toString());
 
 		if (principal != null) {
 			String userName = principal.getName();
 			User loggedUser = repoUser.findByUserName(userName);
-			
+
 			Job job = jobService.getSingleJob(id).get();
 			model.addAttribute("job", job);
-		
 
 		} else {
 			return "redirect:/logon/";
@@ -580,52 +550,50 @@ public class EmployerController {
 		return "views/employer/edit-job";
 	}
 
-	
-
 	@PostMapping("/edit-job")
-	public String editJob(Principal principal,@RequestParam Long id, @ModelAttribute Job form) {
+	public String editJob(Principal principal, @RequestParam Long id, @ModelAttribute Job form) {
 		Date updateAt = new Date();
 		Boolean status = true;
 		if (principal != null) {
 			String userName = principal.getName();
 			User loggedUser = repoUser.findByUserName(userName);
-			
-			
+
 			Job job = jobRepo.findById(id).get();
-		
+
 			System.out.println(form.getTitle());
 			System.out.println(form.getAddress());
 			System.out.println(form.getDescription());
 			System.out.println(form.getReponsibility());
-		
-				job.setUpdateAt(updateAt);
-				 job.setTitle(form.getTitle());
-		job.setJobCategory(form.getJobCategory());
-		job.setWorkingModel(form.getWorkingModel());
-		job.setNumberOfRecruitement(form.getNumberOfRecruitement());
-		job.setYearOfExperience(form.getYearOfExperience());
-		job.setTrialTime(form.getTrialTime());
-		job.setWorkingTime(form.getWorkingTime()); job.setSalary(form.getSalary());
-		job.setLocation(form.getLocation());
-		job.setWorkingAddress(form.getWorkingAddress());
-		
-		job.setGender(form.getGender()); job.setAgeRange(form.getAgeRange());
-		job.setExpiredDate(form.getExpiredDate());
-		job.setReponsibility(form.getReponsibility());
-		job.setDescription(form.getDescription()); job.setBenefit(form.getBenefit());
-		job.setStatus(form.getStatus()); jobRepo.save(job);
-	
-		return "redirect:job-by-employer/"; 
+
+			job.setUpdateAt(updateAt);
+			job.setTitle(form.getTitle());
+			job.setJobCategory(form.getJobCategory());
+			job.setWorkingModel(form.getWorkingModel());
+			job.setNumberOfRecruitement(form.getNumberOfRecruitement());
+			job.setYearOfExperience(form.getYearOfExperience());
+			job.setTrialTime(form.getTrialTime());
+			job.setWorkingTime(form.getWorkingTime());
+			job.setSalary(form.getSalary());
+			job.setLocation(form.getLocation());
+			job.setWorkingAddress(form.getWorkingAddress());
+
+			job.setGender(form.getGender());
+			job.setAgeRange(form.getAgeRange());
+			job.setExpiredDate(form.getExpiredDate());
+			job.setReponsibility(form.getReponsibility());
+			job.setDescription(form.getDescription());
+			job.setBenefit(form.getBenefit());
+			job.setStatus(form.getStatus());
+			jobRepo.save(job);
+
+			return "redirect:job-by-employer/";
 		} else {
 			return "redirect:/logon/";
 
 		}
 
-	}	
-		
+	}
 
-		
-	
 	@GetMapping("/job-by-employer/")
 	public String viewJobByEmployer(Model model, Principal principal) {
 		userService.checkLogin(model, principal);
@@ -633,7 +601,7 @@ public class EmployerController {
 			String userName = principal.getName();
 			User loggedUser = repoUser.findByUserName(userName);
 			Enterprise enterprise = enterpriseRepo.findByUser(loggedUser);
-			model.addAttribute("user", loggedUser); //GetAllActiveJobByEnterprise
+			model.addAttribute("user", loggedUser); // GetAllActiveJobByEnterprise
 			List<Job> jobApplyByEmployer = jobService.GetAllActiveJobByEnterprise(enterprise);
 			model.addAttribute("jobApplyByEmployer", jobApplyByEmployer);
 
@@ -650,7 +618,7 @@ public class EmployerController {
 			String userName = principal.getName();
 			User loggedUser = repoUser.findByUserName(userName);
 			Enterprise enterprise = enterpriseRepo.findByUser(loggedUser);
-			model.addAttribute("user", loggedUser); //GetAllActiveJobByEnterprise
+			model.addAttribute("user", loggedUser); // GetAllActiveJobByEnterprise
 			List<Job> jobEditByEmployer = jobService.GetAllJobOfEnterpriseByStatus(enterprise, "EDITING");
 			model.addAttribute("jobEditByEmployer", jobEditByEmployer);
 			System.out.println("jobEditByEmployer: " + jobEditByEmployer.size());
@@ -667,7 +635,7 @@ public class EmployerController {
 			String userName = principal.getName();
 			User loggedUser = repoUser.findByUserName(userName);
 			Enterprise enterprise = enterpriseRepo.findByUser(loggedUser);
-			model.addAttribute("user", loggedUser); 
+			model.addAttribute("user", loggedUser);
 			List<Job> jobBlockedByEmployer = jobService.GetAllJobOfEnterpriseByStatus(enterprise, "BLOCKED");
 			model.addAttribute("jobEditByEmployer", jobBlockedByEmployer);
 			System.out.println("jobEditByEmployer: " + jobBlockedByEmployer.size());
@@ -677,7 +645,6 @@ public class EmployerController {
 		return "views/employer/job-block-by-employer";
 	}
 
-
 	@GetMapping("/expiredjob-by-employer/")
 	public String viewExpiredJobByEmployer(Model model, Principal principal) {
 		userService.checkLogin(model, principal);
@@ -685,7 +652,7 @@ public class EmployerController {
 			String userName = principal.getName();
 			User loggedUser = repoUser.findByUserName(userName);
 			Enterprise enterprise = enterpriseRepo.findByUser(loggedUser);
-			model.addAttribute("user", loggedUser); 
+			model.addAttribute("user", loggedUser);
 			List<Job> jobExpiredByEmployer = jobService.GetAllExpiredJobByEnterprise(enterprise);
 			model.addAttribute("jobExpiredByEmployer", jobExpiredByEmployer);
 			System.out.println("jobExpiredByEmployer: " + jobExpiredByEmployer.size());
@@ -695,16 +662,15 @@ public class EmployerController {
 		return "views/employer/job-expired-by-employer";
 	}
 
-
-
 	@GetMapping("/applied-by-employer/")
-	public String viewAppliedCandidateByEmployer(Model model,@RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo, Principal principal) {
+	public String viewAppliedCandidateByEmployer(Model model,
+			@RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo, Principal principal) {
 		userService.checkLogin(model, principal);
 		if (principal != null) {
 			String userName = principal.getName();
 			User loggedUser = repoUser.findByUserName(userName);
 			Enterprise enterprise = enterpriseRepo.findByUser(loggedUser);
-			if (enterprise != null){
+			if (enterprise != null) {
 				Long enterpriseId = enterprise.getId();
 				System.out.println("enterpriseId : " + enterpriseId);
 
@@ -714,7 +680,7 @@ public class EmployerController {
 
 				model.addAttribute("users", users);
 				System.out.println("users size : " + users);
-			}else{
+			} else {
 				model.addAttribute("message", "null_enterprise");
 
 			}
@@ -724,9 +690,6 @@ public class EmployerController {
 		}
 		return "views/employer/applied-by-employer";
 	}
-
-
-
 
 	@GetMapping("/forgotPassword")
 	public String forgotPassword(Model model) {
@@ -738,54 +701,47 @@ public class EmployerController {
 		 */
 		return "views/candidate/fogot-password";
 	}
-	
 
 	// Check email when register and Send Email to Reset Password
-	
-	//@ResponseBody  	@PostMapping("/register")
+
+	// @ResponseBody @PostMapping("/register")
 
 	@PostMapping("/forgotPassword")
-	public String SendMailToresetPassword(Model model, 		
-			@RequestParam("email") String emailValue,
+	public String SendMailToresetPassword(Model model, @RequestParam("email") String emailValue,
 			HttpServletRequest request) {
-		
-					// Get baseUrl
-			String baseUrl = ServletUriComponentsBuilder.fromRequestUri(request)
-					.replacePath(null)
-					.build()
-					.toUriString();
-		
-			System.out.println("baseUrl : " + baseUrl);
-			System.out.println("emailValue : " + emailValue);
 
-		
+		// Get baseUrl
+		String baseUrl = ServletUriComponentsBuilder.fromRequestUri(request).replacePath(null).build().toUriString();
+
+		System.out.println("baseUrl : " + baseUrl);
+		System.out.println("emailValue : " + emailValue);
+
 		User user_check = repoUser.findTop1ByEmail(emailValue);
 //		if (user_check != null) {
-			
-			//Send mail to friend
-			String from = "tkhn2020@gmail.com";
 
-			String comment = "<p>Hello,</p><p>You requested to Reset the Password?</p>";
-			String url_change_pass =  baseUrl + "/candidate/resetpassword/" + emailValue;
-			comment = comment +" <a href=" + "'" + url_change_pass +  "'" + ">Click Here to Reset Password</a>";
-			comment = comment + " <br> If not you, please ignore this Email!";
-		    String subject = "Reset Password";
-		    String file = null;
-		  
-			MailInfo info = new MailInfo(from, emailValue, null,null,subject, comment, file);
-			try {
-				mailService.send(info);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		// Send mail to friend
+		String from = "tkhn2020@gmail.com";
+
+		String comment = "<p>Hello,</p><p>You requested to Reset the Password?</p>";
+		String url_change_pass = baseUrl + "/candidate/resetpassword/" + emailValue;
+		comment = comment + " <a href=" + "'" + url_change_pass + "'" + ">Click Here to Reset Password</a>";
+		comment = comment + " <br> If not you, please ignore this Email!";
+		String subject = "Reset Password";
+		String file = null;
+
+		MailInfo info = new MailInfo(from, emailValue, null, null, subject, comment, file);
+		try {
+			mailService.send(info);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 //		} else {
 //			return "redirect:/candidate/forgotPassword";
 //
 //		}
-			return "redirect:/candidate/forgotPassword";
+		return "redirect:/candidate/forgotPassword";
 
 	}
-	
 
 	// Display form to Reset Password
 
@@ -795,24 +751,20 @@ public class EmployerController {
 		model.addAttribute("email", email);
 		return "views/candidate/reset-password";
 	}
-	
+
 	@PostMapping("/resetUserpassword")
-	public String changePassword(Model model,
-			@RequestParam("email") String emailValue,
-			@RequestParam("passWord") String password
-			) {
+	public String changePassword(Model model, @RequestParam("email") String emailValue,
+			@RequestParam("passWord") String password) {
 		System.out.println("emailValue : " + emailValue);
 		System.out.println("emailValue : " + emailValue);
-	
+
 		User user = repoUser.findTop1ByEmail(emailValue);
 		user.setPassWord(bCryptPasswordEncoder.encode(password));
 		repoUser.save(user);
-		
+
 		return "redirect:/logon";
 	}
 
-	
-	
 	public void getAllList(Model model) {
 		List<Enterprise> enterprises = enterpriseRepo.getAllEnterprise();
 		model.addAttribute("enterprises", enterprises);

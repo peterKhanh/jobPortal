@@ -6322,7 +6322,7 @@ form.search-box .search-form a {
 
 .online-cv .cv-caption .sub-title {
 	font-family: "Muli", sans-serif;
-	color: #fff;
+	color:#482d2d;
 	text-transform: uppercase
 }
 
@@ -6332,9 +6332,9 @@ form.search-box .search-form a {
 	}
 }
 
-.online-cv .cv-caption .sub-title2 {
+.cv-caption .sub-title2 {
 	font-family: "Muli", sans-serif;
-	color: #fff;
+	color:#482d2d;
 	font-weight: 700;
 	font-size: 45px;
 	line-height: 1.3;

@@ -323,7 +323,7 @@
 .left-menu-group {
     font-size: 18px;
     background: #f5f6f7;
-    padding: 2px 8px;
+    padding: 8px 8px;
     margin-bottom: 0px;
     line-height: 1.6;
     border-radius: 2px;
@@ -339,6 +339,8 @@
 	margin-right: 2px;
 	font-size: 15px;
 	color: #879787;
+    padding: 4px 8px 4px ;
+	
 }
 
 .menu_panel-items:hover {

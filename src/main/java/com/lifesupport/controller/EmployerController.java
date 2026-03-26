@@ -294,7 +294,6 @@ public class EmployerController {
 			User loggedUser = repoUser.findByUserName(userName);
 			model.addAttribute("loggedUser", loggedUser);
 			loggedUser.getUserRoles();
-
 			return "views/employer/dashboard";
 		} else {
 			return "redirect:/logon/";
@@ -330,7 +329,6 @@ public class EmployerController {
 			String userName = principal.getName();
 			User loggedUser = repoUser.findByUserName(userName);
 			model.addAttribute("loggedUser", loggedUser);
-
 			Enterprise enterprise = enterpriseRepo.findByUser(loggedUser);
 			List<IndustrialType> industrialType = industrialTypeService.getAllActiveIndustrialType();
 			model.addAttribute("industrialType", industrialType);
@@ -362,10 +360,8 @@ public class EmployerController {
 			model.addAttribute("industrialType", industrialType);
 
 			if (enterprise == null) {
-				System.out.println("enterprise:sdsdfsd ");
 				model.addAttribute("employer", "NOTSET");
 			} else {
-				System.out.println("enterprise:OK ");
 				model.addAttribute("user", loggedUser);
 				model.addAttribute("employer", enterprise);
 			}

@@ -57,20 +57,7 @@
 									</div>
 								</div>
 
-								<div class="row">
-									<div class="col-6">
-										<div class="form-group">
-											<label> Nhóm bài viết </label>
-
-											<select class="form-control" id="category" name="category" th:field="${blog.category}">
-												<option value=""> -----------Select Category -------------</option>
-												<option th:each="cate : ${listCate}" th:value="${cate.id}"
-													th:text="${cate.categoryName}">
-												</option>
-											</select>
-										</div>
-									</div>
-									
+								<div class="row">								
 									<div class="col-6">
 										<div class="form-group">
 											<label> Nhóm bài viết </label>

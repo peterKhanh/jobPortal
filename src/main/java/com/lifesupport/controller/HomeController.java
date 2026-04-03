@@ -83,6 +83,8 @@ public class HomeController {
 		System.out.println("totalPage : " + jobs.getTotalPages());
 		model.addAttribute("jobs", jobs);
 
+		
+		
 		BlogCate blogcate = blogCateRepository.findById(1).get();
 	
 		List<Blog> blogOnHomePage2 = blogRepository.SearchByBlogCate(blogcate);

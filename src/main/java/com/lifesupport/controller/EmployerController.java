@@ -378,15 +378,7 @@ public class EmployerController {
 		if (principal != null) {
 			String userName = principal.getName();
 			User loggedUser = repoUser.findByUserName(userName);
-
-//			System.out.println(form.getName());
-//			System.out.println(form.getAddress());
-//			System.out.println(form.getIntroduction());
-//			System.out.println(form.getNumberOfEmployee());
-//			System.out.println(form.getWebsite());
-//			System.out.println(form.getIndustrialType());
 			Enterprise enterprise = new Enterprise();
-
 			enterprise.setName(form.getName());
 			enterprise.setAddress(form.getAddress());
 			enterprise.setCreateAt(createAt);

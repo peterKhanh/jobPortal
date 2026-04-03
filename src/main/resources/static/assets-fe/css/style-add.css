@@ -52,24 +52,24 @@
 
 
 
-.joblist{
+.job-items{
 
     position: relative;
 }
 
  .job_apply{
- font-size: 10px;
+ font-size: 8px;
  position: absolute;
- right: 5px;
- top: 5px;
+ right: 8px;
+ bottom: 0px;
  cursor: pointer;
 } 
 
 .job_save {
  font-size: 10px;
  position: absolute;
- right: 5px;
- bottom: 2px;
+ right: 8px;
+ bottom: 25px;
  cursor: pointer;
 } 
 
@@ -122,6 +122,18 @@
     font-weight: 700;
     line-height: 16px;
  cursor: pointer;
+}
+
+.start {
+	  content: "";
+    position: absolute;
+    top: 0;
+    right: 10px;
+    border: 10px solid transparent;
+    border-right: 10px solid #f63737;
+    border-top: 10px solid #f63737;
+    width: 10px;
+    height: 10px;
 }
 
 

@@ -45,8 +45,6 @@ public class Job {
 	private String description;
 	@Column(columnDefinition = "LONGTEXT")
 	private String benefit;
-
-	
 	private Integer viewCount;
 	private Integer likeCount;
 	private Integer applyCount;			// number of CV applied	

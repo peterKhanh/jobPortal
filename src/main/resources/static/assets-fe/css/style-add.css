@@ -25,7 +25,7 @@
 }
 
 .widget_title {
-     font-size: 18px;
+    font-size: 18px;
     background: #f5f6f7;
     padding: 2px 8px;
     margin-bottom: 12px;
@@ -54,7 +54,7 @@
 
 .job-items{
 
-    position: relative;
+  position: relative;
 }
 
  .job_apply{
@@ -124,17 +124,39 @@
  cursor: pointer;
 }
 
-.start {
-	  content: "";
-    position: absolute;
-    top: 0;
-    right: 10px;
-    border: 10px solid transparent;
-    border-right: 10px solid #f63737;
-    border-top: 10px solid #f63737;
-    width: 10px;
-    height: 10px;
+.job-new-icon {
+	align-items: center;
+    border-radius: 111px;
+    color: #375af6;;
+    display: flex;
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    height: 24px;
+    justify-content: center;
+    letter-spacing: .01em;
+    line-height: 14.52px;
+    text-align: center;
+    width: 40px;
 }
+
+
+.job-hot-icon {
+	align-items: center;
+    border: #4caf50; 
+    color: rgb(255, 0, 0);
+    display: flex;
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    height: 24px;
+    justify-content: center;
+    letter-spacing: .01em;
+    line-height: 14.52px;
+    text-align: center;
+    width: 40px;
+}
+
 
 
 .job_right_sidebar .widget_title {

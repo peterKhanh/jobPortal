@@ -64,7 +64,7 @@
 											<ul>
 												<li>
 													<i class="icofont-location-arrow"></i>
-													<span th:text="${job.getWorkingAddress()}">ha noi </span>
+													<span th:text="${job.getWorkingAddress()}"></span>
 												</li>
 											</ul>
 
@@ -72,11 +72,8 @@
 										
 										<div class="items-link f-right small">
 
-
 											<p class="new-job">Mới</p>
-
-											<p class="hot-job">Gấp</p>
-
+											<p class="hot-job ">Gấp</p>
 											<a th:href="@{/employer/edit-job/{id}(id=${job.id})}"
 												class="job_edit default-border text-black circle arrow" title="">Sửa</a>
 											<a href="#" class="job_delete default-border text-black circle arrow"

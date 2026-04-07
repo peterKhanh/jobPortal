@@ -37,7 +37,6 @@ import jakarta.persistence.criteria.Root;
 @RequestMapping("/job")
 public class JobViewController {
 	EntityManager em;
-
 	@Autowired
 	private CategoryService categoryService;
 	@Autowired

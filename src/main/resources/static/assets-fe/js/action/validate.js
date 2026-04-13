@@ -137,10 +137,10 @@ $(document).ready(function() {
 	});
 
 
-/*
-	Form quên mật khẩu 
-	Thực hiên Submit để đăng ký thông tin	
-	*/
+	/*
+		Form quên mật khẩu 
+		Thực hiên Submit để đăng ký thông tin	
+		*/
 
 	$(function() {
 		$.validator.setDefaults({
@@ -397,12 +397,75 @@ $(document).ready(function() {
 				}
 			});
 		} else {
-			// Vào trang đăng nhập
+			// Vào trang đăng nhập  btn-remove-hot-employer employer-id
 			window.location.href = "/logon";
 		}
 	})
+	
+	/**
+	  * Bấm nút "Đặt nổi bật" khi xem chi tiet thông tin Nhà tuyển dụng"
+	  *
+	  * @param 
+	  * 		id the ID of the employer
+	  * 		
+	  * @return Nhà tuyển được hiển thị ở mục Doanh nghiep tieu biểu
+	  */
+
+	$("#btn-make-hot-employer").click(function() {
+		var employer_id = $(this).closest("div").attr("employer-id");
+		var LoggedIn = $(this).closest("div").attr("user-login");
+		if (LoggedIn == "LOGIN") {
+			$("#btn-remove-hot-employer").hide();
+			$("#btn-make-hot-employer").hide();
+			$.toast({
+						heading: 'Success',
+						text: 'Ứng ddd thành công',
+						icon: 'success',
+						position: 'top-center'
+						// loaderBg: 'red'  // To change the background
+					})
+					
+			window.location.href = "/employer/viewemployer/";
+
+		} else {
+			// Vào trang đăng nhập  btn-remove-hot-employer employer-id
+			window.location.href = "/logon";
+		}
+		
+	})
 
 
+	/**
+	  * Bấm nút "Hủy nổi bật" khi xem chi tiet thông tin Nhà tuyển dụng"
+	  *
+	  * @param 
+	  * 		id the ID of the employer
+	  * 		
+	  * @return Nhà tuyển bị loại khỏi danh sách doamh nghiệp tiêu biểu
+	  */
+
+	$("#btn-remove-hot-employer").click(function() {
+		var employer_id = $(this).closest("div").attr("employer-id");
+		var LoggedIn = $(this).closest("div").attr("user-login");
+		if (LoggedIn == "LOGIN") {
+			$("#btn-remove-hot-employer").hide();
+			
+			$.toast({
+						heading: 'Success',
+						text: 'Ứng ddd thành công',
+						icon: 'success',
+						position: 'top-center'
+						// loaderBg: 'red'  // To change the background
+					})
+					
+			window.location.href = "/employer/viewemployer/";
+
+		} else {
+			// Vào trang đăng nhập  btn-remove-hot-employer employer-id
+			window.location.href = "/logon";
+		}
+		
+	})
 
 
 });

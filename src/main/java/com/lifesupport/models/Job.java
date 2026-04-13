@@ -62,7 +62,11 @@ public class Job {
 	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	private Date expiredDate;
 
-	//
+	private Boolean hotJob = false;
+	private Boolean urgentJob = false;
+
+
+	
 	@ManyToOne
 	@JoinColumn(name = "enterpriseId")
 	Enterprise enterprise;
@@ -74,7 +78,6 @@ public class Job {
 	@ManyToOne
 	@JoinColumn(name = "locationId")
 	Location location;
-
 
 	@ManyToOne
 	@JoinColumn(name = "workingModelId")
@@ -93,11 +96,32 @@ public class Job {
 		this.jobCategory = jobCategory;
 	}
 
+	
+	
+
+
+	public Boolean getHotJob() {
+		return hotJob;
+	}
+
+	public void setHotJob(Boolean hotJob) {
+		this.hotJob = hotJob;
+	}
+
+	public Boolean getUrgentJob() {
+		return urgentJob;
+	}
+
+	public void setUrgentJob(Boolean urgentJob) {
+		this.urgentJob = urgentJob;
+	}
+
 	public Job(Long id, String title, Integer numberOfRecruitement, String yearOfExperience, String trialTime,
 			String salary, String address, String workingAddress, String workingTime, String gender, String ageRange,
 			String reponsibility, String description, String benefit, Integer viewCount, Integer likeCount,
-			Integer applyCount, String status, Date createAt, Date updateAt, Date expiredDate, Enterprise enterprise,
-			JobCategory jobCategory, Location location,  WorkingModel workingModel) {
+			Integer applyCount, String status, Date createAt, Date updateAt, Date expiredDate, Boolean hotJob,
+			Boolean urgentJob, Enterprise enterprise, JobCategory jobCategory, Location location,
+			WorkingModel workingModel) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -120,6 +144,8 @@ public class Job {
 		this.createAt = createAt;
 		this.updateAt = updateAt;
 		this.expiredDate = expiredDate;
+		this.hotJob = hotJob;
+		this.urgentJob = urgentJob;
 		this.enterprise = enterprise;
 		this.jobCategory = jobCategory;
 		this.location = location;

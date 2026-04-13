@@ -4,9 +4,9 @@
 		<!-- Section Tittle -->
 
 		<div class="row  mt-2">
-			<div class="col-lg-6">
+			<div class="col-lg-12">
 				<div class="normal-title">
-					<h5> Công việc mới đăng tuyển</h5>
+					<h5> Công việc nổi bật</h5>
 				</div>
 			</div>
 
@@ -30,8 +30,8 @@
 								<div class="job-tittle">
 									<div class="job-tittle">
 										<div class="d-flex">
-											<span class="job-hot-icon">Gấp</span> 
-											<span class="job-new-icon">Mới</span>	
+											<span class="job-hot-icon" th:if="${job.hotJob}==true">Hot</span> 
+											<span class="job-new-icon"  th:if="${job.urgentJob}==true">Gấp</span>	
 											<a th:href="@{/job/viewjob/{id}(id=${job.id})}">
 												<h6 th:text="${job.title}"></h6>
 											</a>
@@ -64,19 +64,16 @@
 										title="">Apply</a>
 									-->
 								</div>
-
 							</div>
 						</div>
-
 					</div>
-
 				</div>
 			</div>
 		</div>
 
 
 		<!--Pagination Start  -->
-		<div class="pagination-area pt-2 pb-10 text-center" th:if="${totalPage > 0}">
+		<div class="pagination-area pt-2 pb-10 text-center" th:if="${totalPage > 1}">
 			<div class="container">
 				<div class="row">
 					<div class="col-xl-12">

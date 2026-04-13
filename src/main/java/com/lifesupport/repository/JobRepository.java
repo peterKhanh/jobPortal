@@ -61,7 +61,7 @@ public interface JobRepository extends JpaRepository<Job, Long> {
 	@Query("SELECT c FROM Job c WHERE c.enterprise = ?1 AND c.status = ?2 ORDER BY c.createAt DESC")
 	List<Job> GetAllJobOfEnterpriseByStatus(Enterprise enterprise, String status);
 
-	@Query("SELECT c FROM Job c WHERE c.expiredDate >=  DATE(NOW()) AND c.status ='APPROVED'")
+	@Query("SELECT c FROM Job c WHERE c.expiredDate >=  DATE(NOW()) AND c.status ='APPROVED' AND c.urgentJob = true OR c.hotJob = true ORDER BY c.updateAt DESC")
 	Page<Job> findAllJobForHomePage(Pageable pageable);
 	
 	// Danh sach Cong viec het han theo Doanh nghiep

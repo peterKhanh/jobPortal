@@ -8,9 +8,9 @@
 
 .normal-title {
     font-size: 18px;
-    background: #f5f6f7;
-    padding: 2px 8px;
-    margin-bottom: 12px;
+    padding: 5px 8px;
+    margin-top: 25px;
+    margin-bottom: 6px;
     line-height: 1.6;
     border-radius: 2px;
     color: #35434e;
@@ -44,6 +44,8 @@
     border-radius: 5px;
     font-size: 13px !important;
     cursor: pointer;
+        color: #35434e;
+
 }
 .text-dark {
     color: #272727 !important;

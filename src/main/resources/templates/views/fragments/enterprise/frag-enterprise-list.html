@@ -3,55 +3,55 @@
 
 	<div class="container">
 		<!-- Section Tittle -->
-		
-  <div class="row  mt-2">
+
+		<div class="row  mt-2">
 			<div class="col-lg-6">
 				<div class="normal-title">
 					<h5> Danh sách doanh nghiệp</h5>
 				</div>
 			</div>
-			
+
 		</div>
 		<div class="row justify-content-center">
 			<div class="col-xl-4" th:each="enterprise: ${listEnterprise}">
 				<!-- single-job-content -->
 				<div class="card single-job-items p-2 mt-2">
 					<div class="row">
-							<div class="col-2 text-center">	
+						<div class="col-2 text-center">
 							<img th:if="${enterprise.getDefaultLogo}==true" th:src="@{'/upload/default.png'}" alt="..."
-						width="50">	
-											<img th:unless="${enterprise.getDefaultLogo}==true"
-						th:src="@{'/upload/enterprise/'+ ${enterprise.getLogoName}}" style="width: 50px; height: 50px;"
-						alt="">
+								width="50">
+							<img th:unless="${enterprise.getDefaultLogo}==true"
+								th:src="@{'/upload/enterprise/'+ ${enterprise.getLogoName}}"
+								style="width: 50px; height: 50px;" alt="">
 
 						</div>
 
-							<div class="col-10">
-					<div class="job-items pd-10">
-						<div class="job-tittle">
-							<div class="job-tittle">
-								
+						<div class="col-10">
+							<div class="job-items pd-10">
+								<div class="job-tittle">
+									<div class="job-tittle">
+
+									</div>
+									<a th:href="@{/job/viewEnterprise/{id}(id=${enterprise.getId()})}">
+
+										<h6 th:text="${enterprise.getName()}">Micrsoft Corp</h6>
+									</a>
+									<ul>
+										<li>
+											<p th:text="${enterprise.IndustrialType.getName()}" /p>
+										</li>
+										<li>
+											<i class="icofont-money"></i>
+
+										</li>
+									</ul>
+								</div>
+
 							</div>
-							<a th:href="@{/job/viewEnterprise/{id}(id=${enterprise.getId()})}">
-
-								<h6 th:text="${enterprise.getName()}">Micrsoft Corp</h6>
-							</a>
-							<ul>
-								<li>
-									<i class="icofont-location-pin"></i>
-									
-								</li>
-								<li>
-									<i class="icofont-money"></i>
-									
-								</li>
-							</ul>
 						</div>
-
-					</div>	</div>
 
 					</div>
-				
+
 				</div>
 			</div>
 		</div>

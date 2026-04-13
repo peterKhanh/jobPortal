@@ -19,4 +19,4 @@ VOLUME /tmp
 # Copy the JAR from the build stage
 COPY --from=build /app/target/JobFinder.jar JobFinder.jar
 ENTRYPOINT ["java","-jar","/JobFinder.jar"]
-EXPOSE 8080
+EXPOSE 80

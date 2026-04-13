@@ -1,90 +1,96 @@
-<head th:replace="~{views/fragments/head :: head}"/>
+<head th:replace="~{views/fragments/head :: head}" />
+
 <body>
 	<!-- Header Start -->
 	<header th:replace="~{views/fragments/menu_bar_2 :: menu_bar_2}"> </header>
 	<main>
-			<div class="container py-2">
+		<div class="container py-2">
 			<div class="row pt-15">
 				<div th:replace="~{views/employer/profile-panel :: profile-panel}"></div>
 				<div class="col-xl-9 col-lg-9 col-md-8">
-					<div class="container p-2">
-							<!--Thông tin cá nhân-->
+					<div class="container">
+						<!--Thông tin cá nhân-->
 						<div class="normal-title">
-							<p class="mb-2">Tài khoản nhà tuyển dụng</p>
+							Thông tin nhà tuyển dụng
 						</div>
 						<div class="row">
 							<div class="col-sm-12 d-flex justify-content-between align-items-center mb-2">
 								<div class="">
 									&nbsp;
 								</div>
-									<a th:if="${employer == 'NOTSET'}" th:href="@{/employer/add-employer/}" class="genric-btn primary-border circle arrow small">						Thêm</a>
-									<a th:unless="${employer == 'NOTSET'}" th:href="@{/employer/edit-employer/}" class="genric-btn primary-border circle arrow small">
-									 Sửa</a>
+								<a th:if="${employer == 'NOTSET'}" th:href="@{/employer/add-employer/}"
+									class="genric-btn primary-border circle arrow small"> Thêm</a>
+								<a th:unless="${employer == 'NOTSET'}" th:href="@{/employer/edit-employer/}"
+									class="genric-btn primary-border circle arrow small">
+									Sửa</a>
 							</div>
 						</div>
-						
-
 						<div class="row" th:if="${employer == 'NOTSET'}">
-							<p class="mb-2">Thông nhà tuyển dụng chua update</p>
+							<p class="mb-2">Thông nhà tuyển dụng chưa cập nhật</p>
 						</div>
-						
-						
 						<div class="col-sm-12 border" th:unless="${employer == 'NOTSET'}">
 							<ul class="list-group list-group-flush rounded-3">
 								<li class="list-group-item d-flex justify-content-between align-items-center p-2">
-									<div class="col-sm-4">
+									<div class="col-sm-3">
 										<p class="mb-0">Tên công ty</p>
 									</div>
-									<div class="col-sm-8">
-										<p class="text-muted mb-0" th:text="${employer.name}">Trần Văn
-												Long</p>
+									<div class="col-sm-6">
+										<i th:if="${employer.showOnHompage == true}" > Là doanh nghiệp tiêu biểu</i>
+										<p class="text-muted mb-0" th:text="${employer.name}"></p>
 									</div>
+									<div class="col-sm-3" th:employer-id="${employer.id}" th:user-login="${LoggedIn}">
+										<a id="btn-make-hot-employer" th:if="${employer.showOnHompage != true}" class="genric-btn danger-border circle arrow small">Đặt ra trang chủ</a>
+										<a id="btn-remove-hot-employer" th:if="${employer.showOnHompage == true}" class="genric-btn danger-border circle arrow small" >Hủy nổi bật</a>
+									</div>
+
 								</li>
 								<li class="list-group-item d-flex justify-content-between align-items-center p-2">
-									<div class="col-sm-4">
+									<div class="col-sm-3">
 										<p class="mb-0">Địa chỉ</p>
 									</div>
-									<div class="col-sm-8">
+									<div class="col-sm-9">
 										<p class="text-muted mb-0" th:text="${employer.address}">Trần Văn
-												Long</p>
+											Long</p>
 									</div>
 								</li>
 								<li class="list-group-item d-flex justify-content-between align-items-center p-2">
-									<div class="col-sm-4">
+									<div class="col-sm-3">
 										<p class="mb-0">Lĩnh vực hoạt động</p>
 									</div>
-									<div class="col-sm-8">
-										<select width="100%" class="form-select" id="IndustrialType" name="IndustrialType" th:field="${employer.industrialType}">
-											<option th:each="cate : ${industrialType}" th:value="${cate.id}" th:text="${cate.name}">
-												</option>
+									<div class="col-sm-9">
+										<select width="100%" class="form-select" id="IndustrialType"
+											name="IndustrialType" th:field="${employer.industrialType}">
+											<option th:each="cate : ${industrialType}" th:value="${cate.id}"
+												th:text="${cate.name}">
+											</option>
 										</select>
 									</div>
 								</li>
 								<li class="list-group-item d-flex justify-content-between align-items-center p-2">
-									<div class="col-sm-4">
+									<div class="col-sm-3">
 										<p class="mb-0">Quy mô công ty</p>
 									</div>
-									<div class="col-sm-8">
+									<div class="col-sm-9">
 										<p class="text-muted mb-0" th:text="${employer.numberOfEmployee}">Bay Area,
-												San Francisco, CA</p>
+											San Francisco, CA</p>
 									</div>
 								</li>
 								<li class="list-group-item d-flex justify-content-between align-items-center p-2">
-									<div class="col-sm-4">
+									<div class="col-sm-3">
 										<p class="mb-0">Website</p>
 									</div>
-									<div class="col-sm-8">
+									<div class="col-sm-9">
 										<p class="text-muted mb-0" th:text="${employer.website}">
-												example@example.com</p>
+											example@example.com</p>
 									</div>
 								</li>
 								<li class="list-group-item d-flex justify-content-between align-items-center p-2">
-									<div class="col-sm-4">
+									<div class="col-sm-3">
 										<p class="mb-0">Giới thiệu</p>
 									</div>
-									<div class="col-sm-8">
+									<div class="col-sm-9">
 										<p class="text-muted mb-0" th:utext="${employer.introduction}">
-												example@example.com</p>
+											example@example.com</p>
 									</div>
 								</li>
 							</ul>
@@ -95,27 +101,25 @@
 		</div>
 	</main>
 	<!-- Footer Include -->
-	<div th:replace="~{views/fragments/footer :: footer}"/>
+	<div th:replace="~{views/fragments/footer :: footer}" />
 	<!-- Script Include -->
-	<div th:replace="~{views/fragments/script :: script}"/>
+	<div th:replace="~{views/fragments/script :: script}" />
 </body>
 <style>
+	.btn-save.unsave {
+		color: #a3a3a3;
+	}
 
-.btn-save.unsave {
-    color: #a3a3a3;
-}
-
-.btn-save {
-    display: inline-flex;
-    padding: 0 10px !important;
-    height: 27px;
-	width: 50px;
-    font-size: 13px;
-    color: #78b43d;
-    border: 1px solid #e4e4e4;
-    border-radius: 5px;
-}
-
-
+	.btn-save {
+		display: inline-flex;
+		padding: 0 10px !important;
+		height: 27px;
+		width: 50px;
+		font-size: 13px;
+		color: #78b43d;
+		border: 1px solid #e4e4e4;
+		border-radius: 5px;
+	}
 </style>
+
 </html>

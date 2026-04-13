@@ -43,13 +43,10 @@ public class Enterprise {
 
 	@Column(name = "number_of_employee")
 	private String numberOfEmployee;
-
 	private String bannerName;
 	private String logoName;
-
 	private Integer likeCount;
 	private Integer followCount;
-
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "MM/dd/yyyy hh:mm")
 	private Date createAt;
@@ -60,7 +57,7 @@ public class Enterprise {
 	@DateTimeFormat(pattern = "MM/dd/yyyy hh:mm")
 	private Date approvedAt;
 	private Boolean defaultLogo = true;
-
+	private Boolean showOnHompage = false;
 
 	@ManyToOne
 	@JoinColumn(name = "userId")
@@ -68,9 +65,19 @@ public class Enterprise {
 
 
 	
+	public Boolean getShowOnHompage() {
+		return showOnHompage;
+	}
+
+
+	public void setShowOnHompage(Boolean showOnHompage) {
+		this.showOnHompage = showOnHompage;
+	}
+
+
 	public Enterprise(Long id, String name, IndustrialType industrialType, String address, String website,
 			String introduction, String numberOfEmployee, String bannerName, String logoName, Integer likeCount,
-			Integer followCount, Date createAt, Date updateAt, Date approvedAt, Boolean defaultLogo, User user) {
+			Integer followCount, Date createAt, Date updateAt, Date approvedAt, Boolean defaultLogo, Boolean showOnHompage, User user) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -87,6 +94,7 @@ public class Enterprise {
 		this.updateAt = updateAt;
 		this.approvedAt = approvedAt;
 		this.defaultLogo = defaultLogo;
+		this.showOnHompage = showOnHompage;
 		this.user = user;
 	}
 

@@ -31,8 +31,8 @@
 											</div>
 										</div>
 
-										<form id="frm_register_new_user" method="post"
-											th:action="@{/employer/register}" th:object="${user}">
+										<form id="frm_register_new_user" method="post" th:action="@{/employer/register}"
+											th:object="${user}">
 
 											<div class="row gy-3 overflow-hidden">
 
@@ -74,12 +74,11 @@
 												<div class="col-12">
 													<div class="form-group mb-2">
 														<label for="Email" class="form-label">Email</label>
-														<input type="email" class="form-control" name="email"
-															id="Email" th:field="*{email}"
-															placeholder="Nhập Email" />
+														<input type="email" class="form-control" name="email" id="Email"
+															th:field="*{email}" placeholder="Nhập Email" />
 													</div>
 												</div>
-												
+
 												<div class="col-12">
 													<div class="form-group mb-2">
 														<label for="password" class="form-label">Mật khẩu</label>
@@ -112,7 +111,7 @@
 
 											</div>
 											<div class="col-6">
-											
+
 												<a href="/" class=" text-dark text-decoration-none pd-50">Vào trang
 													chủ</a>
 

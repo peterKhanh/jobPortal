@@ -245,8 +245,13 @@ public class JobViewController {
 		System.out.println("keyword : " + jobs.getTotalPages());
 
 		model.addAttribute("jobs", jobs);
-		List<Job> recentjobs = jobRepo.findTop10ByOrderByCreateAtDesc();
-		model.addAttribute("recentjobs", recentjobs);
+
+	//	List<Job> recentjobs = jobRepo.findTop10ByOrderByCreateAtDesc();
+	//	model.addAttribute("recentjobs", recentjobs);
+		
+		List<JobCategory> listsCate123 = jobCateRepo.findAllPopularCate();
+		model.addAttribute("listsCate123", listsCate123);
+
 
 		return "views/job/viewJobCate";
 	}

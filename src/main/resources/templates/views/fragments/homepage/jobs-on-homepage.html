@@ -29,12 +29,12 @@
 							<div class="job-items">
 								<div class="job-tittle">
 									<div class="job-tittle">
-										<div class="d-flex">
+										<div class="d-flex">	
 											<span class="job-hot-icon" th:if="${job.hotJob}==true">Hot</span> 
 											<span class="job-new-icon"  th:if="${job.urgentJob}==true">Gấp</span>	
-											<a th:href="@{/job/viewjob/{id}(id=${job.id})}">
+											<span><a th:href="@{/job/viewjob/{id}(id=${job.id})}">
 												<h6 th:text="${job.title}"></h6>
-											</a>
+											</a></span>
 										</div>
 									</div>
 									<a th:href="@{/job/viewEnterprise/{id}(id=${job.enterprise.getId()})}">

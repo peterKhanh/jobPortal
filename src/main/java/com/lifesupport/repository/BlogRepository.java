@@ -32,7 +32,6 @@ public interface BlogRepository extends JpaRepository<Blog, Integer> {
 	Page<Blog> findByBlogcate(BlogCate blogcate, Pageable pageable);
 
 
-
 	@Query("SELECT c FROM Blog c WHERE c.blogcate = ?1 Order By c.createAt DESC ")
 	List<Blog> findTop4ByBlogCate(BlogCate blogcate);
 
